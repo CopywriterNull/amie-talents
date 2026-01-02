@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { createServiceClient } from "@/lib/supabase/server";
 import { decrypt } from "@/lib/encryption";
-import { getTemplate, createTemplate, injectFooter } from "@/lib/klaviyo";
+import { getTemplate, createTemplate, injectFeedTag, ensureWebFeedExists } from "@/lib/klaviyo";
 import { canTeamProcessTemplate, incrementTrialUsage, logActivity } from "@/lib/admin";
+import { ensureTeamHasApiKey } from "@/lib/api-keys";
 
 export async function POST(request: Request) {
   try {
@@ -76,21 +78,38 @@ export async function POST(request: Request) {
     // Decrypt the API key
     const apiKey = decrypt(connection.encrypted_api_key);
 
+    // Ensure team has an API key for the web feed
+    let teamApiKey: string | null = null;
+    if (teamId) {
+      const apiKeyRecord = await ensureTeamHasApiKey(teamId);
+      teamApiKey = apiKeyRecord.api_key;
+
+      // Ensure the MailTail web feed exists in their Klaviyo account
+      try {
+        await ensureWebFeedExists(apiKey, teamApiKey);
+      } catch (feedError) {
+        console.error("Failed to create web feed:", feedError);
+        // Continue with processing - the feed might already exist or will be created later
+      }
+    }
+
     // Fetch the original template from Klaviyo
     const { html: originalHtml, name: originalName } = await getTemplate(
       apiKey,
       templateId
     );
 
-    // Inject the footer
-    const newHtml = injectFooter(originalHtml);
+    // Inject the web feed tag (instead of the actual footer content)
+    // This hides our tech - content is fetched dynamically when email sends
+    const newHtml = injectFeedTag(originalHtml);
 
     // Create new template in Klaviyo
     const newName = `${originalName} - MailTail`;
     const newTemplateId = await createTemplate(apiKey, newName, newHtml);
 
-    // Save to processing history
-    const { error: dbError } = await supabase
+    // Save to processing history (use service client to bypass RLS)
+    const serviceClient = createServiceClient();
+    const { error: dbError } = await serviceClient
       .from("processed_templates")
       .insert({
         user_id: user.id,
@@ -98,6 +117,7 @@ export async function POST(request: Request) {
         original_template_id: templateId,
         new_template_id: newTemplateId,
         template_name: newName,
+        feed_injected: true, // Mark as using web feed
       });
 
     if (dbError) {

@@ -39,7 +39,7 @@ export default function LandingV3BStripe() {
     <div className="min-h-screen bg-[#0a0a0f] text-white overflow-hidden">
       {/* Gradient Mesh Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#7c3aed] opacity-30 blur-[120px]" />
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#3e7ae3] opacity-30 blur-[120px]" />
         <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#2563eb] opacity-25 blur-[120px]" />
         <div className="absolute bottom-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-[#0ea5e9] opacity-20 blur-[120px]" />
         <div className="absolute top-[60%] right-[20%] w-[400px] h-[400px] rounded-full bg-[#ec4899] opacity-15 blur-[100px]" />

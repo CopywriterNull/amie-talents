@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -79,6 +80,13 @@ export function DashboardNav() {
   const pathname = usePathname();
   const router = useRouter();
   const supabase = createClient();
+
+  // Prefetch all dashboard routes on mount for instant navigation
+  useEffect(() => {
+    navItems.forEach((item) => {
+      router.prefetch(item.href);
+    });
+  }, [router]);
 
   async function handleSignOut() {
     await supabase.auth.signOut();

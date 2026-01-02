@@ -86,16 +86,29 @@ export default async function HistoryPage() {
 
       {!templates || templates.length === 0 ? (
         <div className="bg-white rounded-xl border border-[#e5e5e5] p-12 text-center card-shadow">
-          <div className="w-12 h-12 rounded-xl bg-[#f5f5f5] flex items-center justify-center mx-auto mb-4">
-            <ClockIcon className="w-5 h-5 text-[#a3a3a3]" />
+          {/* Empty state illustration */}
+          <div className="relative w-24 h-24 mx-auto mb-6">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#f5f5f5] to-[#e5e5e5] rounded-2xl rotate-6" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white to-[#f5f5f5] rounded-2xl border border-[#e5e5e5] flex items-center justify-center">
+              <div className="space-y-1.5">
+                <div className="w-10 h-1.5 bg-[#e5e5e5] rounded mx-auto" />
+                <div className="w-8 h-1.5 bg-[#e5e5e5] rounded mx-auto" />
+                <div className="w-6 h-1.5 bg-[#e5e5e5] rounded mx-auto" />
+              </div>
+            </div>
+            <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-[#f5f5f5] rounded-lg flex items-center justify-center border border-[#e5e5e5]">
+              <ClockIcon className="w-4 h-4 text-[#a3a3a3]" />
+            </div>
           </div>
-          <h3 className="font-semibold text-sm mb-1">No templates processed yet</h3>
-          <p className="text-[#737373] text-sm mb-5">
-            Process your first template to see it here.
+
+          <h3 className="font-semibold mb-2">Your history is empty</h3>
+          <p className="text-[#737373] text-sm mb-6 max-w-xs mx-auto">
+            When you process templates, they&apos;ll show up here so you can track everything in one place.
           </p>
           <Link href="/dashboard/process">
-            <Button variant="outline" size="sm">
-              Get started
+            <Button size="sm" className="gap-1.5">
+              <ZapIcon className="w-3.5 h-3.5" />
+              Process Your First Template
             </Button>
           </Link>
         </div>

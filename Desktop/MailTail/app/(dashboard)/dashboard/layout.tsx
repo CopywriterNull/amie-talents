@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { DashboardSidebar } from "@/components/dashboard-sidebar";
 import { SubscriptionBanner } from "@/components/subscription-banner";
+import { AdminModeBanner } from "@/components/admin-mode-banner";
 
 export default function DashboardLayout({
   children,
@@ -31,6 +32,7 @@ export default function DashboardLayout({
         className="transition-all duration-200"
         style={{ paddingLeft: collapsed ? 60 : 200 }}
       >
+        <AdminModeBanner />
         <div className="max-w-5xl mx-auto px-6 py-6">
           <SubscriptionBanner />
           {children}

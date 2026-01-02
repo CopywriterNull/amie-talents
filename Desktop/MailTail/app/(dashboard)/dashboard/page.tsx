@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { canTeamProcessTemplate } from "@/lib/admin";
+import { getTeamApiKey } from "@/lib/api-keys";
+import { HowItWorksCard } from "@/components/how-it-works-card";
 
 function MailIcon({ className }: { className?: string }) {
   return (
@@ -72,17 +74,86 @@ function LockIcon({ className }: { className?: string }) {
   );
 }
 
+function RssIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 11a9 9 0 0 1 9 9" />
+      <path d="M4 4a16 16 0 0 1 16 16" />
+      <circle cx="5" cy="19" r="1" />
+    </svg>
+  );
+}
+
 export default async function DashboardPage() {
   const supabase = await createClient();
 
   const { data: { user } } = await supabase.auth.getUser();
 
+  if (!user) {
+    return null;
+  }
+
+  // Use service client for onboarding operations to bypass RLS
+  const serviceClient = createServiceClient();
+
+  // Ensure user has a profile (fallback if auth callback was skipped)
+  const { data: existingProfile } = await serviceClient
+    .from("profiles")
+    .select("id")
+    .eq("id", user.id)
+    .single();
+
+  if (!existingProfile) {
+    const metadata = user.user_metadata || {};
+    await serviceClient.from("profiles").upsert({
+      id: user.id,
+      email: user.email,
+      first_name: metadata.first_name || null,
+      last_name: metadata.last_name || null,
+      brand_name: metadata.brand_name || null,
+    }, { onConflict: "id" });
+  }
+
   // Get user's team membership
-  const { data: membership } = await supabase
+  let { data: membership } = await serviceClient
     .from("team_members")
     .select("team_id")
-    .eq("user_id", user?.id)
+    .eq("user_id", user.id)
     .single();
+
+  // If no team exists, create one (fallback if auth callback was skipped)
+  if (!membership) {
+    const metadata = user.user_metadata || {};
+    const brandName = metadata.brand_name || user.email?.split("@")[0] || "My Brand";
+
+    // Create team
+    const { data: team } = await serviceClient
+      .from("teams")
+      .insert({
+        name: brandName,
+        owner_id: user.id,
+      })
+      .select()
+      .single();
+
+    if (team) {
+      // Add user as team admin
+      await serviceClient.from("team_members").insert({
+        team_id: team.id,
+        user_id: user.id,
+        role: "admin",
+      });
+
+      // Refetch membership
+      const { data: newMembership } = await serviceClient
+        .from("team_members")
+        .select("team_id")
+        .eq("user_id", user.id)
+        .single();
+
+      membership = newMembership;
+    }
+  }
 
   const teamId = membership?.team_id;
 
@@ -95,23 +166,35 @@ export default async function DashboardPage() {
     subscriptionReason = result.reason || null;
   }
 
+  // Get web feed status
+  let feedStatus: { is_active: boolean; request_count: number } | null = null;
+  if (teamId) {
+    const apiKeyInfo = await getTeamApiKey(teamId);
+    if (apiKeyInfo) {
+      feedStatus = {
+        is_active: apiKeyInfo.is_active,
+        request_count: apiKeyInfo.request_count,
+      };
+    }
+  }
+
   const { data: connection } = await supabase
     .from("klaviyo_connections")
     .select("id")
-    .eq("user_id", user?.id)
+    .eq("user_id", user.id)
     .single();
 
   const { data: recentTemplates } = await supabase
     .from("processed_templates")
     .select("*")
-    .eq("user_id", user?.id)
+    .eq("user_id", user.id)
     .order("processed_at", { ascending: false })
     .limit(5);
 
   const { count: templateCount } = await supabase
     .from("processed_templates")
     .select("*", { count: "exact", head: true })
-    .eq("user_id", user?.id);
+    .eq("user_id", user.id);
 
   const isConnected = !!connection;
 
@@ -160,7 +243,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats Row */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         <div className="bg-white rounded-xl border border-[#e5e5e5] p-4 card-shadow">
           <div className="flex items-center justify-between">
             <div>
@@ -187,7 +270,34 @@ export default async function DashboardPage() {
             </div>
           </div>
         </div>
+
+        <div className="bg-white rounded-xl border border-[#e5e5e5] p-4 card-shadow">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs text-[#737373] font-medium">Web Feed</p>
+              {feedStatus ? (
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <span className={`w-2 h-2 rounded-full ${feedStatus.is_active ? "bg-[#22c55e]" : "bg-[#a3a3a3]"}`} />
+                  <p className={`text-sm font-semibold ${feedStatus.is_active ? "text-[#22c55e]" : "text-[#a3a3a3]"}`}>
+                    {feedStatus.is_active ? "Active" : "Inactive"}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-sm font-semibold text-[#a3a3a3] mt-0.5">Not set up</p>
+              )}
+            </div>
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${feedStatus?.is_active ? "bg-[#f0fdf4]" : "bg-[#f5f5f5]"}`}>
+              <RssIcon className={`w-4 h-4 ${feedStatus?.is_active ? "text-[#22c55e]" : "text-[#737373]"}`} />
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* How It Works */}
+      <HowItWorksCard
+        defaultExpanded={!recentTemplates || recentTemplates.length === 0}
+        hasProcessedTemplates={!!recentTemplates && recentTemplates.length > 0}
+      />
 
       {/* Recent Activity */}
       <div className="bg-white rounded-xl border border-[#e5e5e5] card-shadow overflow-hidden">
@@ -206,15 +316,24 @@ export default async function DashboardPage() {
 
         {!recentTemplates || recentTemplates.length === 0 ? (
           <div className="p-8 text-center">
-            <p className="text-sm text-[#737373] mb-3">No templates processed yet</p>
+            {/* Mini illustration */}
+            <div className="relative w-16 h-16 mx-auto mb-4">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#f5f5f5] to-[#e5e5e5] rounded-xl rotate-3" />
+              <div className="absolute inset-0 bg-white rounded-xl border border-[#e5e5e5] flex items-center justify-center">
+                <ZapIcon className="w-6 h-6 text-[#d4d4d4]" />
+              </div>
+            </div>
+            <p className="text-sm font-medium text-[#525252] mb-1">No activity yet</p>
+            <p className="text-xs text-[#a3a3a3] mb-4">Process a template to get started</p>
             {canProcess ? (
               <Link href="/dashboard/process">
-                <Button variant="outline" size="sm">
-                  Process your first template
+                <Button size="sm" className="gap-1.5">
+                  <ZapIcon className="w-3.5 h-3.5" />
+                  Process Template
                 </Button>
               </Link>
             ) : (
-              <Button variant="outline" size="sm" disabled className="opacity-50">
+              <Button size="sm" disabled className="opacity-50">
                 Processing disabled
               </Button>
             )}
@@ -240,7 +359,7 @@ export default async function DashboardPage() {
                   </div>
                 </div>
                 <a
-                  href={`https://www.klaviyo.com/email-templates/editor/${template.new_template_id}`}
+                  href={`https://www.klaviyo.com/email-editor/${template.new_template_id}/edit`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-1.5 rounded-lg hover:bg-[#f5f5f5] text-[#a3a3a3] hover:text-[#737373] transition-colors"

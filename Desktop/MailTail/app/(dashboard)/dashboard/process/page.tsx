@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
+import useSWR from "swr";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useSubscriptionStatus } from "@/components/subscription-banner";
+import { SparklesCore } from "@/components/ui/sparkles";
 
-const CACHE_KEY = "mailtail_templates_cache";
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-
-interface TemplateCache {
-  templates: Template[];
-  nextCursor: string | null;
-  timestamp: number;
-}
+// SWR fetcher
+const fetcher = (url: string) => fetch(url).then((res) => {
+  if (!res.ok) throw new Error("Failed to fetch templates");
+  return res.json();
+});
 
 function RefreshIcon({ className }: { className?: string }) {
   return (
@@ -164,18 +164,42 @@ function LockIcon({ className }: { className?: string }) {
 
 export default function ProcessPage() {
   const { status: subscriptionStatus, loading: subscriptionLoading, canProcess } = useSubscriptionStatus();
-  const [templates, setTemplates] = useState<Template[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
+
+  // SWR for template fetching - instant cache, background revalidation
+  const { data, error, isLoading, isValidating, mutate } = useSWR<{
+    templates: Template[];
+    nextCursor: string | null;
+  }>("/api/klaviyo/templates", fetcher, {
+    revalidateOnFocus: true,        // Refresh when tab gets focus
+    revalidateOnReconnect: true,    // Refresh when network reconnects
+    dedupingInterval: 30000,        // Dedupe requests within 30s
+    keepPreviousData: true,         // Show stale data while revalidating
+  });
+
+  const templates = data?.templates || [];
+  const nextCursor = data?.nextCursor || null;
+  const loading = isLoading;
+  const refreshing = isValidating && !isLoading;
+
+  // Additional templates from "load more"
+  const [additionalTemplates, setAdditionalTemplates] = useState<Template[]>([]);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [nextCursor, setNextCursor] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [currentCursor, setCurrentCursor] = useState<string | null>(null);
+
+  // Combine SWR templates with additional loaded templates
+  const allTemplates = [...templates, ...additionalTemplates];
+
+  // Reset additional templates when SWR data changes
+  useEffect(() => {
+    setAdditionalTemplates([]);
+    setCurrentCursor(nextCursor);
+  }, [data, nextCursor]);
+
   const [search, setSearch] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
   const [showManualInput, setShowManualInput] = useState(false);
   const [manualTemplateId, setManualTemplateId] = useState("");
   const [showProcessed, setShowProcessed] = useState(false);
-  const [cacheAge, setCacheAge] = useState<string | null>(null);
 
   // Processing state
   const [processing, setProcessing] = useState(false);
@@ -183,103 +207,32 @@ export default function ProcessPage() {
   const [result, setResult] = useState<{
     newTemplateId: string;
     templateName: string;
+    isPending?: boolean; // Optimistic UI flag
   } | null>(null);
   const [copied, setCopied] = useState(false);
 
-  // Load from cache or fetch
-  const loadTemplates = useCallback(async (forceRefresh = false) => {
-    // Try loading from cache first (unless forcing refresh)
-    if (!forceRefresh) {
-      try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          const cache: TemplateCache = JSON.parse(cached);
-          const age = Date.now() - cache.timestamp;
+  // Optimistic UI - track templates being processed
+  const [optimisticallyProcessed, setOptimisticallyProcessed] = useState<Set<string>>(new Set());
 
-          if (age < CACHE_DURATION) {
-            setTemplates(cache.templates);
-            setNextCursor(cache.nextCursor);
-            setLoading(false);
-            setCacheAge(formatCacheAge(age));
-            return;
-          }
-        }
-      } catch {
-        // Ignore cache errors
-      }
-    }
+  // Bulk processing state
+  const [bulkMode, setBulkMode] = useState(false);
+  const [selectedTemplates, setSelectedTemplates] = useState<Set<string>>(new Set());
+  const [bulkProcessing, setBulkProcessing] = useState(false);
+  const [bulkProgress, setBulkProgress] = useState<{
+    current: number;
+    total: number;
+    completed: string[];
+    failed: string[];
+  } | null>(null);
 
-    // Fetch from API
-    if (forceRefresh) {
-      setRefreshing(true);
-    } else {
-      setLoading(true);
-    }
-    setError(null);
-
-    try {
-      const res = await fetch("/api/klaviyo/templates");
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to fetch templates");
-      }
-
-      setTemplates(data.templates);
-      setNextCursor(data.nextCursor);
-      setCacheAge(null);
-
-      // Save to cache
-      const cacheData: TemplateCache = {
-        templates: data.templates,
-        nextCursor: data.nextCursor,
-        timestamp: Date.now(),
-      };
-      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
-
-      if (forceRefresh) {
-        toast.success("Templates refreshed");
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
-  }, []);
-
-  function formatCacheAge(ms: number): string {
-    const seconds = Math.floor(ms / 1000);
-    if (seconds < 60) return "just now";
-    const minutes = Math.floor(seconds / 60);
-    return `${minutes}m ago`;
+  // Refresh templates
+  async function refreshTemplates() {
+    await mutate();
+    toast.success("Templates refreshed");
   }
-
-  useEffect(() => {
-    loadTemplates();
-  }, [loadTemplates]);
-
-  // Update cache age periodically
-  useEffect(() => {
-    const interval = setInterval(() => {
-      try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          const cache: TemplateCache = JSON.parse(cached);
-          const age = Date.now() - cache.timestamp;
-          setCacheAge(formatCacheAge(age));
-        }
-      } catch {
-        // Ignore
-      }
-    }, 30000); // Update every 30 seconds
-
-    return () => clearInterval(interval);
-  }, []);
 
   async function fetchMoreTemplates(cursor: string) {
     setLoadingMore(true);
-    setError(null);
 
     try {
       const res = await fetch(`/api/klaviyo/templates?cursor=${cursor}`);
@@ -289,34 +242,38 @@ export default function ProcessPage() {
         throw new Error(data.error || "Failed to fetch templates");
       }
 
-      const newTemplates = [...templates, ...data.templates];
-      setTemplates(newTemplates);
-      setNextCursor(data.nextCursor);
-
-      // Update cache with new templates
-      const cacheData: TemplateCache = {
-        templates: newTemplates,
-        nextCursor: data.nextCursor,
-        timestamp: Date.now(),
-      };
-      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+      setAdditionalTemplates((prev) => [...prev, ...data.templates]);
+      setCurrentCursor(data.nextCursor);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      toast.error(err instanceof Error ? err.message : "Failed to load more");
     } finally {
       setLoadingMore(false);
     }
   }
 
+  // Invalidate cache after processing
   function invalidateCache() {
-    localStorage.removeItem(CACHE_KEY);
-    setCacheAge(null);
+    mutate();
   }
 
   async function handleProcess(templateId: string) {
-    setProcessError(null);
-    setResult(null);
-    setProcessing(true);
+    // Find the template for optimistic update
+    const template = allTemplates.find((t) => t.id === templateId);
+    const templateName = template?.name || "Template";
 
+    // OPTIMISTIC: Immediately show success
+    setOptimisticallyProcessed((prev) => new Set(prev).add(templateId));
+    setSelectedTemplate(null);
+    setManualTemplateId("");
+    setProcessError(null);
+    setResult({
+      newTemplateId: "pending...",
+      templateName: `${templateName} - MailTail`,
+      isPending: true,
+    });
+    toast.success("Processing template...", { duration: 2000 });
+
+    // BACKGROUND: Actually process
     try {
       const res = await fetch("/api/templates/process", {
         method: "POST",
@@ -330,17 +287,23 @@ export default function ProcessPage() {
         throw new Error(data.error || "Failed to process template");
       }
 
+      // SUCCESS: Update with real data
       setResult({
         newTemplateId: data.newTemplateId,
         templateName: data.templateName,
+        isPending: false,
       });
-      setSelectedTemplate(null);
-      setManualTemplateId("");
-      invalidateCache(); // Clear cache so new template shows on next refresh
+      toast.success("Template processed successfully!");
+      invalidateCache();
     } catch (err) {
-      setProcessError(err instanceof Error ? err.message : "An error occurred");
-    } finally {
-      setProcessing(false);
+      // FAILURE: Revert optimistic update
+      setOptimisticallyProcessed((prev) => {
+        const next = new Set(prev);
+        next.delete(templateId);
+        return next;
+      });
+      setResult(null);
+      toast.error(err instanceof Error ? err.message : "Failed to process template");
     }
   }
 
@@ -350,15 +313,105 @@ export default function ProcessPage() {
     setTimeout(() => setCopied(false), 2000);
   }
 
-  const filteredTemplates = templates.filter(t => {
+  // Bulk selection helpers
+  function toggleTemplateSelection(templateId: string) {
+    setSelectedTemplates((prev) => {
+      const next = new Set(prev);
+      if (next.has(templateId)) {
+        next.delete(templateId);
+      } else {
+        next.add(templateId);
+      }
+      return next;
+    });
+  }
+
+  function selectAllUnprocessed() {
+    const unprocessed = filteredTemplates.filter((t) => !isMailTailTemplate(t));
+    setSelectedTemplates(new Set(unprocessed.map((t) => t.id)));
+  }
+
+  function clearSelection() {
+    setSelectedTemplates(new Set());
+    setBulkMode(false);
+  }
+
+  // Bulk processing
+  async function handleBulkProcess() {
+    const templateIds = Array.from(selectedTemplates);
+    if (templateIds.length === 0) return;
+
+    setBulkProcessing(true);
+    setBulkProgress({
+      current: 0,
+      total: templateIds.length,
+      completed: [],
+      failed: [],
+    });
+
+    const completed: string[] = [];
+    const failed: string[] = [];
+
+    for (let i = 0; i < templateIds.length; i++) {
+      const templateId = templateIds[i];
+      const template = allTemplates.find((t) => t.id === templateId);
+
+      setBulkProgress({
+        current: i + 1,
+        total: templateIds.length,
+        completed,
+        failed,
+      });
+
+      try {
+        const res = await fetch("/api/templates/process", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ templateId }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json();
+          throw new Error(data.error || "Failed");
+        }
+
+        completed.push(template?.name || templateId);
+      } catch {
+        failed.push(template?.name || templateId);
+      }
+    }
+
+    setBulkProgress({
+      current: templateIds.length,
+      total: templateIds.length,
+      completed,
+      failed,
+    });
+
+    setBulkProcessing(false);
+    setSelectedTemplates(new Set());
+    setBulkMode(false);
+    invalidateCache();
+
+    // Show toast with results
+    if (failed.length === 0) {
+      toast.success(`Successfully processed ${completed.length} templates!`);
+    } else if (completed.length === 0) {
+      toast.error(`Failed to process all ${failed.length} templates`);
+    } else {
+      toast.success(`Processed ${completed.length} templates, ${failed.length} failed`);
+    }
+  }
+
+  const filteredTemplates = allTemplates.filter(t => {
     const matchesSearch = t.name.toLowerCase().includes(search.toLowerCase());
     const isProcessed = isMailTailTemplate(t);
     if (!showProcessed && isProcessed) return false;
     return matchesSearch;
   });
 
-  const unprocessedCount = templates.filter(t => !isMailTailTemplate(t)).length;
-  const processedCount = templates.filter(t => isMailTailTemplate(t)).length;
+  const unprocessedCount = allTemplates.filter(t => !isMailTailTemplate(t)).length;
+  const processedCount = allTemplates.filter(t => isMailTailTemplate(t)).length;
 
   function formatDate(dateStr: string) {
     return new Date(dateStr).toLocaleDateString("en-US", {
@@ -461,81 +514,194 @@ export default function ProcessPage() {
           <h1 className="text-2xl font-bold tracking-tight">Process Template</h1>
           <p className="text-[#737373] mt-1">
             Select a template to add the MailTail footer
-            {cacheAge && !loading && (
-              <span className="text-[#a3a3a3]"> · Cached {cacheAge}</span>
+            {refreshing && (
+              <span className="text-[#a3a3a3]"> · Refreshing...</span>
             )}
           </p>
         </div>
         <div className="flex gap-2 self-start">
-          {!showManualInput && (
+          {!showManualInput && !result && (
+            <>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={refreshTemplates}
+                disabled={refreshing}
+                className="gap-1.5"
+              >
+                <RefreshIcon className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} />
+                {refreshing ? "Refreshing..." : "Refresh"}
+              </Button>
+              <Button
+                variant={bulkMode ? "default" : "outline"}
+                size="sm"
+                onClick={() => {
+                  setBulkMode(!bulkMode);
+                  if (bulkMode) setSelectedTemplates(new Set());
+                }}
+                className="gap-1.5"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                </svg>
+                {bulkMode ? "Cancel Select" : "Select Multiple"}
+              </Button>
+            </>
+          )}
+          {!result && (
             <Button
               variant="outline"
               size="sm"
-              onClick={() => loadTemplates(true)}
-              disabled={refreshing}
-              className="gap-1.5"
+              onClick={() => setShowManualInput(!showManualInput)}
             >
-              <RefreshIcon className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} />
-              {refreshing ? "Refreshing..." : "Refresh"}
+              <KeyboardIcon className="w-4 h-4 mr-2" />
+              {showManualInput ? "Browse Templates" : "Enter ID Manually"}
             </Button>
           )}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowManualInput(!showManualInput)}
-          >
-            <KeyboardIcon className="w-4 h-4 mr-2" />
-            {showManualInput ? "Browse Templates" : "Enter ID Manually"}
-          </Button>
         </div>
       </div>
 
+      {/* What happens explainer - show when no result */}
+      {!result && (
+        <div className="flex items-start gap-3 p-4 bg-gradient-to-r from-[#fafafa] to-white border border-[#e5e5e5] rounded-xl">
+          <div className="w-8 h-8 rounded-lg bg-[#f5f5f5] flex items-center justify-center flex-shrink-0">
+            <svg className="w-4 h-4 text-[#737373]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-sm font-medium text-[#525252]">What happens when you process?</p>
+            <p className="text-xs text-[#737373] mt-0.5">
+              We create a copy of your template with our inbox-boosting magic. Your original template stays untouched,
+              and you can use the new one in your campaigns right away.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Success Result */}
-      {result && (
-        <div className="p-5 bg-gradient-to-br from-[#f0fdf4] to-[#dcfce7] border border-[#bbf7d0] rounded-xl space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#22c55e] flex items-center justify-center shadow-sm">
-              <CheckIcon className="w-4 h-4 text-white" />
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.3, type: "spring" }}
+            className={`p-5 rounded-xl space-y-4 relative overflow-hidden ${
+              result.isPending
+                ? "bg-gradient-to-br from-[#fefce8] to-[#fef9c3] border border-[#fde047]"
+                : "bg-gradient-to-br from-[#f0fdf4] to-[#dcfce7] border border-[#bbf7d0]"
+            }`}
+          >
+            {/* Sparkles on success */}
+            {!result.isPending && (
+              <SparklesCore
+                particleCount={30}
+                particleColor="#22c55e"
+                minSize={3}
+                maxSize={6}
+              />
+            )}
+
+            <div className="flex items-center gap-3 relative z-10">
+              {result.isPending ? (
+                <>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    className="w-8 h-8 rounded-full bg-[#eab308] flex items-center justify-center shadow-sm"
+                  >
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" />
+                  </motion.div>
+                  <span className="font-semibold text-[#854d0e]">Processing your template...</span>
+                </>
+              ) : (
+                <>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", delay: 0.1 }}
+                    className="w-8 h-8 rounded-full bg-[#22c55e] flex items-center justify-center shadow-sm"
+                  >
+                    <CheckIcon className="w-4 h-4 text-white" />
+                  </motion.div>
+                  <motion.span
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="font-semibold text-[#166534]"
+                  >
+                    You&apos;re all set!
+                  </motion.span>
+                </>
+              )}
             </div>
-            <span className="font-semibold text-[#166534]">Template processed successfully!</span>
-          </div>
-          <div className="space-y-3 pl-11">
+          <div className="space-y-3 pl-11 relative z-10">
+            <p className={`text-sm ${result.isPending ? "text-[#a16207]" : "text-[#15803d]"}`}>
+              {result.isPending
+                ? "Hang tight! We're adding inbox-boosting magic to your template..."
+                : "Your template is ready to send. When Klaviyo delivers emails using this template, our smart footer will automatically help them land in Primary."
+              }
+            </p>
             <div>
-              <span className="text-sm text-[#15803d]">New template:</span>
-              <p className="font-semibold text-[#166534]">{result.templateName}</p>
+              <span className={`text-xs font-medium ${result.isPending ? "text-[#a16207]" : "text-[#15803d]"}`}>New template:</span>
+              <p className={`font-semibold ${result.isPending ? "text-[#854d0e]" : "text-[#166534]"}`}>{result.templateName}</p>
             </div>
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-sm text-[#15803d]">Template ID:</span>
-              <div className="flex items-center gap-2">
-                <code className="bg-white px-3 py-1.5 rounded-lg text-sm font-mono border border-[#bbf7d0] text-[#166534]">
-                  {result.newTemplateId}
-                </code>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard(result.newTemplateId)}
-                  className="p-2 rounded-lg hover:bg-white/50 transition-colors"
-                >
-                  {copied ? (
-                    <CheckIcon className="w-4 h-4 text-[#22c55e]" />
-                  ) : (
-                    <CopyIcon className="w-4 h-4 text-[#15803d]" />
-                  )}
-                </button>
+            {!result.isPending && (
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="text-xs text-[#15803d] font-medium">Template ID:</span>
+                <div className="flex items-center gap-2">
+                  <code className="bg-white px-3 py-1.5 rounded-lg text-sm font-mono border border-[#bbf7d0] text-[#166534]">
+                    {result.newTemplateId}
+                  </code>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(result.newTemplateId)}
+                    className="p-2 rounded-lg hover:bg-white/50 transition-colors"
+                  >
+                    {copied ? (
+                      <CheckIcon className="w-4 h-4 text-[#22c55e]" />
+                    ) : (
+                      <CopyIcon className="w-4 h-4 text-[#15803d]" />
+                    )}
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
-          <div className="pl-11">
+          {!result.isPending && (
+            <div className="pl-11 pt-2 flex items-center gap-3 relative z-10">
+              <a
+                href={`https://www.klaviyo.com/email-editor/${result.newTemplateId}/edit`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#22c55e] text-white text-sm font-medium rounded-lg hover:bg-[#16a34a] transition-colors"
+              >
+              Open in Klaviyo
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setResult(null)}
               className="text-[#15803d] border-[#bbf7d0] hover:bg-white/50"
             >
-              Process Another Template
+              Process Another
             </Button>
-          </div>
-        </div>
-      )}
+            </div>
+          )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Manual Input Mode */}
       {showManualInput && !result && (
@@ -629,7 +795,7 @@ export default function ProcessPage() {
           </div>
 
           {/* Template counts */}
-          {!loading && templates.length > 0 && (
+          {!loading && allTemplates.length > 0 && (
             <div className="flex gap-4 text-xs text-[#737373]">
               <span>{unprocessedCount} unprocessed</span>
               <span>{processedCount} processed</span>
@@ -642,7 +808,7 @@ export default function ProcessPage() {
               <div className="w-5 h-5 rounded-full bg-[#dc2626] flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-white text-xs font-bold">!</span>
               </div>
-              <span>{error}</span>
+              <span>{error.message || "Failed to load templates"}</span>
             </div>
           )}
 
@@ -655,22 +821,91 @@ export default function ProcessPage() {
           )}
 
           {/* Empty State */}
-          {!loading && !error && templates.length === 0 && (
-            <div className="text-center py-12">
-              <div className="w-12 h-12 rounded-full bg-[#f5f5f5] flex items-center justify-center mx-auto mb-4">
-                <GridIcon className="w-6 h-6 text-[#737373]" />
+          {!loading && !error && allTemplates.length === 0 && (
+            <div className="bg-white rounded-xl border border-[#e5e5e5] p-12 text-center card-shadow">
+              {/* Empty state illustration */}
+              <div className="relative w-28 h-28 mx-auto mb-6">
+                {/* Stacked template cards */}
+                <div className="absolute top-4 left-2 w-20 h-24 bg-[#f5f5f5] rounded-lg border border-[#e5e5e5] rotate-[-8deg]" />
+                <div className="absolute top-2 left-4 w-20 h-24 bg-[#fafafa] rounded-lg border border-[#e5e5e5] rotate-[-4deg]" />
+                <div className="absolute top-0 left-6 w-20 h-24 bg-white rounded-lg border border-[#e5e5e5] flex flex-col items-center justify-center gap-1.5 p-3">
+                  <div className="w-full h-8 bg-[#f5f5f5] rounded" />
+                  <div className="w-full h-2 bg-[#e5e5e5] rounded" />
+                  <div className="w-3/4 h-2 bg-[#e5e5e5] rounded" />
+                </div>
+                {/* Plus icon */}
+                <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#0f0f0f] rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </div>
               </div>
-              <h3 className="font-semibold mb-1">No templates found</h3>
-              <p className="text-[#737373] text-sm">
-                Create templates in Klaviyo first, or use the manual ID input.
+
+              <h3 className="font-semibold mb-2">No templates in Klaviyo yet</h3>
+              <p className="text-[#737373] text-sm mb-6 max-w-sm mx-auto">
+                Create your first email template in Klaviyo, then come back here to add MailTail&apos;s inbox magic.
               </p>
+              <div className="flex items-center justify-center gap-3">
+                <a
+                  href="https://www.klaviyo.com/email-templates"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#0f0f0f] text-white text-sm font-medium rounded-lg hover:bg-[#262626] transition-colors"
+                >
+                  Open Klaviyo
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowManualInput(true)}
+                >
+                  Enter ID Manually
+                </Button>
+              </div>
             </div>
           )}
 
           {/* No Search Results */}
-          {!loading && !error && templates.length > 0 && filteredTemplates.length === 0 && (
+          {!loading && !error && allTemplates.length > 0 && filteredTemplates.length === 0 && (
             <div className="text-center py-12">
               <p className="text-[#737373]">No templates match &quot;{search}&quot;</p>
+            </div>
+          )}
+
+          {/* Bulk mode header */}
+          {bulkMode && (
+            <div className="flex items-center justify-between p-3 bg-[#f5f5f5] rounded-lg">
+              <span className="text-sm text-[#525252]">
+                {selectedTemplates.size === 0
+                  ? "Click templates to select them"
+                  : `${selectedTemplates.size} template${selectedTemplates.size === 1 ? "" : "s"} selected`}
+              </span>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={selectAllUnprocessed}
+                  className="h-7 text-xs"
+                >
+                  Select All Unprocessed
+                </Button>
+                {selectedTemplates.size > 0 && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={clearSelection}
+                    className="h-7 text-xs"
+                  >
+                    Clear
+                  </Button>
+                )}
+              </div>
             </div>
           )}
 
@@ -678,41 +913,77 @@ export default function ProcessPage() {
           {!loading && filteredTemplates.length > 0 && (
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-                {filteredTemplates.map((template) => (
-                  <button
-                    key={template.id}
-                    onClick={() => setSelectedTemplate(template)}
-                    className="group bg-white rounded-xl border border-[#e5e5e5] overflow-hidden text-left hover:border-[#0f0f0f] hover:shadow-md transition-all card-shadow"
-                  >
-                    {/* Preview */}
-                    <div className="aspect-[4/3] bg-[#fafafa] border-b border-[#e5e5e5] overflow-hidden relative">
-                      <TemplatePreview
-                        html={template.html}
-                        className="w-[500%] h-[500%] scale-[0.20] origin-top-left pointer-events-none"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {isMailTailTemplate(template) && (
-                        <div className="absolute top-2 right-2 px-1.5 py-0.5 bg-[#22c55e] text-white text-[10px] font-medium rounded">
-                          Processed
-                        </div>
-                      )}
-                    </div>
-                    {/* Info */}
-                    <div className="p-2.5">
-                      <h3 className={`font-medium text-xs truncate ${isMailTailTemplate(template) ? "text-[#a3a3a3]" : "group-hover:text-[#0f0f0f]"}`}>
-                        {template.name.replace(" - MailTail", "")}
-                      </h3>
-                    </div>
-                  </button>
-                ))}
+                {filteredTemplates.map((template) => {
+                  const isSelected = selectedTemplates.has(template.id);
+                  const isProcessed = isMailTailTemplate(template);
+                  const isOptimisticallyProcessed = optimisticallyProcessed.has(template.id);
+
+                  return (
+                    <button
+                      key={template.id}
+                      onClick={() => {
+                        if (bulkMode) {
+                          toggleTemplateSelection(template.id);
+                        } else {
+                          setSelectedTemplate(template);
+                        }
+                      }}
+                      className={`group bg-white rounded-xl border overflow-hidden text-left transition-all card-shadow ${
+                        isSelected
+                          ? "border-[#0f0f0f] ring-2 ring-[#0f0f0f]"
+                          : "border-[#e5e5e5] hover:border-[#0f0f0f] hover:shadow-md"
+                      }`}
+                    >
+                      {/* Preview */}
+                      <div className="aspect-[4/3] bg-[#fafafa] border-b border-[#e5e5e5] overflow-hidden relative">
+                        <TemplatePreview
+                          html={template.html}
+                          className="w-[500%] h-[500%] scale-[0.20] origin-top-left pointer-events-none"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                        {/* Checkbox in bulk mode */}
+                        {bulkMode && (
+                          <div className={`absolute top-2 left-2 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                            isSelected
+                              ? "bg-[#0f0f0f] border-[#0f0f0f]"
+                              : "bg-white border-[#d4d4d4]"
+                          }`}>
+                            {isSelected && (
+                              <CheckIcon className="w-3 h-3 text-white" />
+                            )}
+                          </div>
+                        )}
+
+                        {isOptimisticallyProcessed && !isProcessed && (
+                          <div className="absolute top-2 right-2 px-1.5 py-0.5 bg-[#eab308] text-white text-[10px] font-medium rounded flex items-center gap-1">
+                            <div className="w-2 h-2 border border-white/30 border-t-white rounded-full animate-spin" />
+                            Processing
+                          </div>
+                        )}
+                        {isProcessed && (
+                          <div className="absolute top-2 right-2 px-1.5 py-0.5 bg-[#22c55e] text-white text-[10px] font-medium rounded">
+                            Processed
+                          </div>
+                        )}
+                      </div>
+                      {/* Info */}
+                      <div className="p-2.5">
+                        <h3 className={`font-medium text-xs truncate ${isProcessed || isOptimisticallyProcessed ? "text-[#a3a3a3]" : "group-hover:text-[#0f0f0f]"}`}>
+                          {template.name.replace(" - MailTail", "")}
+                        </h3>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
 
               {/* Load More */}
-              {nextCursor && (
+              {currentCursor && (
                 <div className="flex justify-center pt-4">
                   <Button
                     variant="outline"
-                    onClick={() => fetchMoreTemplates(nextCursor)}
+                    onClick={() => fetchMoreTemplates(currentCursor)}
                     disabled={loadingMore}
                   >
                     {loadingMore ? (
@@ -804,6 +1075,75 @@ export default function ProcessPage() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Processing Floating Action Bar */}
+      {bulkMode && selectedTemplates.size > 0 && !bulkProcessing && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-slide-up">
+          <div className="flex items-center gap-4 px-5 py-3 bg-[#0f0f0f] text-white rounded-xl shadow-2xl">
+            <span className="text-sm font-medium">
+              {selectedTemplates.size} template{selectedTemplates.size === 1 ? "" : "s"} selected
+            </span>
+            <div className="w-px h-5 bg-white/20" />
+            <Button
+              size="sm"
+              onClick={handleBulkProcess}
+              className="bg-white text-[#0f0f0f] hover:bg-[#f5f5f5] gap-1.5"
+            >
+              <ZapIcon className="w-3.5 h-3.5" />
+              Process All
+            </Button>
+            <button
+              onClick={clearSelection}
+              className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <XIcon className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Processing Progress Modal */}
+      {bulkProcessing && bulkProgress && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#171717] to-[#404040] flex items-center justify-center">
+                <ZapIcon className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h2 className="font-semibold">Processing Templates</h2>
+                <p className="text-sm text-[#737373]">
+                  {bulkProgress.current} of {bulkProgress.total} complete
+                </p>
+              </div>
+            </div>
+
+            {/* Progress bar */}
+            <div className="h-2 bg-[#f5f5f5] rounded-full overflow-hidden mb-4">
+              <div
+                className="h-full bg-[#22c55e] transition-all duration-300"
+                style={{ width: `${(bulkProgress.current / bulkProgress.total) * 100}%` }}
+              />
+            </div>
+
+            {/* Stats */}
+            <div className="flex gap-4 text-sm">
+              <span className="text-[#22c55e]">
+                {bulkProgress.completed.length} completed
+              </span>
+              {bulkProgress.failed.length > 0 && (
+                <span className="text-[#dc2626]">
+                  {bulkProgress.failed.length} failed
+                </span>
+              )}
+            </div>
+
+            <p className="text-xs text-[#a3a3a3] mt-4">
+              Please wait while we process your templates...
+            </p>
           </div>
         </div>
       )}

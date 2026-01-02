@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createServiceClient } from "@/lib/supabase/server";
 
 // Types
 export interface Plan {
@@ -77,7 +77,7 @@ export interface TeamWithDetails extends Team {
 
 // Check if current user is an admin
 export async function isAdmin(): Promise<{ isAdmin: boolean; admin: Admin | null }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
@@ -135,7 +135,7 @@ export function getSubscriptionStatus(subscription: TeamSubscription): "active" 
 
 // Check if a team can process templates
 export async function canTeamProcessTemplate(teamId: string): Promise<{ allowed: boolean; reason?: string; remaining?: number | null }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   const { data: subscription, error } = await supabase
     .from("team_subscriptions")
@@ -203,7 +203,7 @@ export async function logAdminAction(
   details?: Record<string, unknown>,
   ipAddress?: string
 ): Promise<void> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   await supabase.from("admin_audit_log").insert({
     admin_id: adminId,
@@ -223,7 +223,7 @@ export async function logActivity(
   details?: Record<string, unknown>,
   ipAddress?: string
 ): Promise<void> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   await supabase.from("activity_log").insert({
     team_id: teamId,
@@ -236,7 +236,7 @@ export async function logActivity(
 
 // Increment trial usage for a team
 export async function incrementTrialUsage(teamId: string): Promise<void> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   await supabase.rpc("increment_trial_usage", { p_team_id: teamId });
 }
@@ -250,7 +250,7 @@ export async function startTrial(
   value: number, // days for time, templates for usage
   adminId: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   const updateData: Partial<TeamSubscription> = {
     status: "trial",
@@ -305,7 +305,7 @@ export async function extendTrial(
   additionalValue: number, // days or templates depending on trial type
   adminId: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   const { data: subscription, error: fetchError } = await supabase
     .from("team_subscriptions")
@@ -356,7 +356,7 @@ export async function endTrial(
   teamId: string,
   adminId: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   const { error } = await supabase
     .from("team_subscriptions")
@@ -382,17 +382,42 @@ export async function upgradeToPaid(
   customLimit?: number,
   adminId?: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
-  const { error } = await supabase
+  const subscriptionData = {
+    status: "active" as const,
+    plan_id: planId,
+    trial_type: null,
+    trial_ends_at: null,
+    custom_template_limit: customLimit ?? null,
+  };
+
+  // Check if subscription exists
+  const { data: existing } = await supabase
     .from("team_subscriptions")
-    .update({
-      status: "active",
-      plan_id: planId,
-      trial_type: null,
-      custom_template_limit: customLimit ?? null,
-    })
-    .eq("team_id", teamId);
+    .select("id")
+    .eq("team_id", teamId)
+    .single();
+
+  let error;
+  if (existing) {
+    // Update existing subscription
+    const result = await supabase
+      .from("team_subscriptions")
+      .update(subscriptionData)
+      .eq("team_id", teamId);
+    error = result.error;
+  } else {
+    // Create new subscription
+    const result = await supabase
+      .from("team_subscriptions")
+      .insert({
+        ...subscriptionData,
+        team_id: teamId,
+        started_at: new Date().toISOString(),
+      });
+    error = result.error;
+  }
 
   if (error) {
     return { success: false, error: error.message };
@@ -411,7 +436,7 @@ export async function suspendTeam(
   adminId: string,
   reason?: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   const { error } = await supabase
     .from("team_subscriptions")
@@ -435,7 +460,7 @@ export async function unsuspendTeam(
   teamId: string,
   adminId: string
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   // Get current subscription to determine what status to restore
   const { data: subscription } = await supabase
@@ -481,7 +506,7 @@ export async function getAdminDashboardStats(): Promise<{
   templatesProcessedMonth: number;
   recentSignups: number;
 }> {
-  const supabase = await createClient();
+  const supabase = createServiceClient();
 
   const now = new Date();
   const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());

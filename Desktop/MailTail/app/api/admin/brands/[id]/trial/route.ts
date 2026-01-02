@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { startTrial, extendTrial, endTrial } from "@/lib/admin";
+import { startTrial, extendTrial, endTrial, upgradeToPaid } from "@/lib/admin";
 
 async function getAdminId(supabase: Awaited<ReturnType<typeof createClient>>, userId: string) {
   const { data: admin } = await supabase
@@ -64,6 +64,10 @@ export async function POST(
 
       case "end":
         result = await endTrial(teamId, adminId);
+        break;
+
+      case "activate":
+        result = await upgradeToPaid(teamId, null, undefined, adminId);
         break;
 
       default:

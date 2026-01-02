@@ -104,12 +104,61 @@ function ShieldIcon({ className }: { className?: string }) {
   );
 }
 
+function BuildingIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="2" width="16" height="20" rx="2" />
+      <path d="M9 22v-4h6v4" />
+      <path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01" />
+    </svg>
+  );
+}
+
+function CreditCardIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="4" width="22" height="16" rx="2" />
+      <line x1="1" y1="10" x2="23" y2="10" />
+    </svg>
+  );
+}
+
+function ActivityIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+    </svg>
+  );
+}
+
+function FileTextIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  );
+}
+
 const navItems = [
   { href: "/dashboard", label: "Home", icon: LayoutDashboardIcon },
   { href: "/dashboard/process", label: "Process", icon: ZapIcon },
   { href: "/dashboard/history", label: "History", icon: ClockIcon },
   { href: "/dashboard/team", label: "Team", icon: UsersIcon },
   { href: "/dashboard/settings", label: "Settings", icon: SettingsIcon },
+];
+
+const adminNavItems = [
+  { href: "/dashboard/admin", label: "Overview", icon: LayoutDashboardIcon },
+  { href: "/dashboard/admin/brands", label: "Brands", icon: BuildingIcon },
+  { href: "/dashboard/admin/users", label: "Users", icon: UsersIcon },
+  { href: "/dashboard/admin/plans", label: "Plans", icon: CreditCardIcon },
+  { href: "/dashboard/admin/activity", label: "Activity", icon: ActivityIcon },
+  { href: "/dashboard/admin/audit", label: "Audit Log", icon: FileTextIcon },
+  { href: "/dashboard/admin/settings", label: "Settings", icon: SettingsIcon },
 ];
 
 interface UserProfile {
@@ -227,22 +276,41 @@ export function DashboardSidebar() {
           })}
         </div>
 
-        {/* Admin Link - only shown to admins */}
+        {/* Admin Section - only shown to admins */}
         {isAdmin && (
           <>
             <div className={cn("my-3 border-t border-[#e5e5e5]", collapsed && "mx-2")} />
-            <Link
-              href="/admin"
-              title={collapsed ? "Admin Panel" : undefined}
-              className={cn(
-                "flex items-center gap-2.5 px-2.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-150",
-                collapsed && "justify-center px-0",
-                "text-amber-600 hover:text-amber-700 hover:bg-amber-50"
-              )}
-            >
-              <ShieldIcon className="w-[18px] h-[18px] flex-shrink-0 text-amber-500" />
-              {!collapsed && "Admin Panel"}
-            </Link>
+            {!collapsed && (
+              <div className="px-2.5 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-red-500">
+                  Admin
+                </span>
+              </div>
+            )}
+            <div className="space-y-0.5">
+              {adminNavItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = pathname === item.href ||
+                  (item.href !== "/dashboard/admin" && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    title={collapsed ? item.label : undefined}
+                    className={cn(
+                      "flex items-center gap-2.5 px-2.5 py-2 text-[13px] font-medium rounded-lg transition-all duration-150",
+                      collapsed && "justify-center px-0",
+                      isActive
+                        ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-sm"
+                        : "text-[#525252] hover:text-red-600 hover:bg-red-50"
+                    )}
+                  >
+                    <Icon className={cn("w-[18px] h-[18px] flex-shrink-0", isActive ? "text-white" : "text-red-400")} />
+                    {!collapsed && item.label}
+                  </Link>
+                );
+              })}
+            </div>
           </>
         )}
       </nav>
@@ -290,8 +358,8 @@ export function DashboardSidebar() {
               <Link href="/dashboard/settings">Settings</Link>
             </DropdownMenuItem>
             {isAdmin && (
-              <DropdownMenuItem asChild className="cursor-pointer text-xs text-amber-600">
-                <Link href="/admin">
+              <DropdownMenuItem asChild className="cursor-pointer text-xs text-red-600">
+                <Link href="/dashboard/admin">
                   <ShieldIcon className="w-3.5 h-3.5 mr-2" />
                   Admin Panel
                 </Link>
