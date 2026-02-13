@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 interface ContactFormData {
   type: "brand" | "influencer";
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
       `;
 
     // Send email notification to the agency
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Amie Talents <noreply@amietalents.com>",
       to: ["hello@amietalents.com"], // Replace with actual email
       replyTo: email,
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
         <p>Best,<br>The Amie Talents Team</p>
       `;
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Amie Talents <noreply@amietalents.com>",
       to: [email],
       subject: isBrand

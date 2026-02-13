@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     // Send welcome email
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Amie Talents <noreply@amietalents.com>",
       to: [email],
       subject: "Welcome to the Amie Talents Newsletter!",
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     });
 
     // Notify the team
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Amie Talents <noreply@amietalents.com>",
       to: ["hello@amietalents.com"], // Replace with actual email
       subject: "New Newsletter Subscriber",
