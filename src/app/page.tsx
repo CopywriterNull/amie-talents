@@ -117,8 +117,8 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section with Aurora Background */}
-      <AuroraBackground className="min-h-screen flex items-center justify-center">
-        <div className="container mx-auto px-4 md:px-6 py-24 md:py-36 relative z-10">
+      <AuroraBackground className="flex items-center justify-center">
+        <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <FadeIn delay={0.1}>
               <Badge variant="secondary" className="mb-6 backdrop-blur-sm bg-white/10 border-white/20">
@@ -192,7 +192,7 @@ export default function HomePage() {
       </AuroraBackground>
 
       {/* Brand Marquee */}
-      <section className="py-12 border-b backdrop-blur-sm bg-background/80">
+      <section className="py-8 border-b backdrop-blur-sm bg-background/80">
         <BrandMarquee />
       </section>
 
