@@ -118,15 +118,15 @@ export default function HomePage() {
     <>
       {/* Hero Section with Aurora Background */}
       <AuroraBackground className="flex items-center justify-center">
-        <div className="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-6 md:pb-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <FadeIn delay={0.1}>
-              <Badge variant="secondary" className="mb-6 backdrop-blur-sm bg-white/10 border-white/20">
+              <Badge variant="secondary" className="mb-4 backdrop-blur-sm bg-white/10 border-white/20">
                 Boutique Talent Management
               </Badge>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-balance">
                 Where{" "}
                 <Sparkles sparkleColor="hsl(var(--primary))">
                   <GradientText>Creators</GradientText>
@@ -137,11 +137,11 @@ export default function HomePage() {
             <FadeIn delay={0.3}>
               <TextGenerate
                 words="We represent the next generation of influencers and content creators. Let's build something extraordinary together."
-                className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 font-normal"
+                className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 font-normal"
               />
             </FadeIn>
             <FadeIn delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button size="lg" asChild className="group backdrop-blur-sm">
                   <Link href="/contact?type=brand">
                     Partner With Us
@@ -162,39 +162,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Floating images */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 rounded-2xl overflow-hidden opacity-40 rotate-6 hidden lg:block">
-            <Image
-              src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=400&fit=crop"
-              alt="Content creation"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute bottom-32 right-20 w-40 h-40 md:w-56 md:h-56 rounded-2xl overflow-hidden opacity-30 -rotate-12 hidden lg:block">
-            <Image
-              src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=400&h=400&fit=crop"
-              alt="Social media"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute top-1/2 right-10 w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden opacity-25 rotate-12 hidden xl:block">
-            <Image
-              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300&h=300&fit=crop"
-              alt="Team collaboration"
-              fill
-              className="object-cover"
-            />
-          </div>
+        {/* Brand pills integrated into hero */}
+        <div className="relative z-10 pb-8 md:pb-12">
+          <BrandMarquee />
         </div>
       </AuroraBackground>
-
-      {/* Brand Marquee */}
-      <section className="py-8 border-b backdrop-blur-sm bg-background/80">
-        <BrandMarquee />
-      </section>
 
       {/* Stats Section with Glass Cards */}
       <section className="border-b bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
