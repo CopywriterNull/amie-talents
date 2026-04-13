@@ -241,6 +241,7 @@
     }
     .product-card__image-wrap {
       position: relative;
+      min-height: 200px; /* fallback for browsers without aspect-ratio */
       aspect-ratio: 1;
       background: #F5F3EE;
       border-radius: 8px;
@@ -702,6 +703,11 @@
     <h1 class="hero__headline">FUEL YOUR SUMMER</h1>
     <p class="hero__subheadline">UP TO 40% OFF WITH FREE GIFTS</p>
     <div class="hero__countdown" id="countdown">
+      <div class="hero__countdown-unit">
+        <span class="hero__countdown-number" id="countdown-days">00</span>
+        <span class="hero__countdown-label">Days</span>
+      </div>
+      <span class="hero__countdown-sep">:</span>
       <div class="hero__countdown-unit">
         <span class="hero__countdown-number" id="countdown-hours">00</span>
         <span class="hero__countdown-label">Hours</span>

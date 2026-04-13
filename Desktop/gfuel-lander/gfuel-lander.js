@@ -26,13 +26,22 @@ const PRODUCTS = [
 const quantities = {};
 PRODUCTS.forEach(p => { quantities[p.id] = 0; });
 
+function escapeHTML(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // PRODUCT CARD RENDERING
 
 function getBadgeHTML(badge) {
   if (!badge) return '';
   const labels = { new: 'NEW', bestseller: 'BEST SELLER', lowstock: 'LOW STOCK' };
   const label = labels[badge] || badge.toUpperCase();
-  return '<span class="product-card__badge product-card__badge--' + badge + '">' + label + '</span>';
+  return '<span class="product-card__badge product-card__badge--' + badge + '">' + escapeHTML(label) + '</span>';
 }
 
 function renderStars(rating) {
@@ -42,7 +51,7 @@ function renderStars(rating) {
 function renderProductCard(product) {
   var qty = quantities[product.id];
   var imageContent = product.image
-    ? '<img class="product-card__image" src="' + product.image + '" alt="' + product.title + '">'
+    ? '<img class="product-card__image" src="' + product.image + '" alt="' + escapeHTML(product.title) + '">'
     : '<span class="product-card__image-placeholder">[Product Image]</span>';
 
   return '<div class="product-card" data-product-id="' + product.id + '">' +
@@ -50,20 +59,20 @@ function renderProductCard(product) {
       getBadgeHTML(product.badge) +
       imageContent +
     '</div>' +
-    '<div class="product-card__title">' + product.title + '</div>' +
+    '<div class="product-card__title">' + escapeHTML(product.title) + '</div>' +
     '<div class="product-card__rating">' + renderStars(product.rating) + '</div>' +
     '<div class="product-card__price">' +
       '<span class="product-card__price-original">$' + product.price.toFixed(2) + '</span>' +
       '<span class="product-card__price-sale" data-base-price="' + product.price + '">$' + product.price.toFixed(2) + '</span>' +
     '</div>' +
-    (product.badge === 'lowstock' ? '<div class="product-card__stock">Low Stock: ' + product.stock + ' LEFT</div>' : '') +
+    (product.badge === 'lowstock' ? '<div class="product-card__stock">Low Stock: ' + escapeHTML(product.stock) + ' LEFT</div>' : '') +
     '<div class="product-card__actions">' +
       '<div class="product-card__qty">' +
-        '<button class="product-card__qty-btn" data-action="minus" data-id="' + product.id + '">&#8722;</button>' +
+        '<button class="product-card__qty-btn" data-action="minus" data-id="' + product.id + '" aria-label="Decrease quantity of ' + escapeHTML(product.title) + '">&#8722;</button>' +
         '<span class="product-card__qty-count" id="qty-' + product.id + '">' + qty + '</span>' +
-        '<button class="product-card__qty-btn" data-action="plus" data-id="' + product.id + '">+</button>' +
+        '<button class="product-card__qty-btn" data-action="plus" data-id="' + product.id + '" aria-label="Increase quantity of ' + escapeHTML(product.title) + '">+</button>' +
       '</div>' +
-      '<button class="product-card__add-btn" data-id="' + product.id + '">Add to Bundle</button>' +
+      '<button class="product-card__add-btn" data-id="' + product.id + '" aria-label="Add ' + escapeHTML(product.title) + ' to bundle">Add to Bundle</button>' +
     '</div>' +
   '</div>';
 }
@@ -77,6 +86,7 @@ function renderAllProducts() {
 // COUNTDOWN TIMER
 
 function startCountdown() {
+  var daysEl = document.getElementById('countdown-days');
   var hoursEl = document.getElementById('countdown-hours');
   var minutesEl = document.getElementById('countdown-minutes');
   var secondsEl = document.getElementById('countdown-seconds');
@@ -89,6 +99,8 @@ function startCountdown() {
     var diff = endDate - now;
 
     if (diff <= 0) {
+      clearInterval(intervalId);
+      if (daysEl) daysEl.textContent = '00';
       hoursEl.textContent = '00';
       minutesEl.textContent = '00';
       secondsEl.textContent = '00';
@@ -97,17 +109,19 @@ function startCountdown() {
       return;
     }
 
-    var hours = Math.floor(diff / (1000 * 60 * 60));
+    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
     hoursEl.textContent = String(hours).padStart(2, '0');
     minutesEl.textContent = String(minutes).padStart(2, '0');
     secondsEl.textContent = String(seconds).padStart(2, '0');
   }
 
   update();
-  setInterval(update, 1000);
+  var intervalId = setInterval(update, 1000);
 }
 
 // STICKY FOOTER CONTENT (defined before updateBundle since updateBundle calls it)
@@ -194,6 +208,7 @@ function updateBundle() {
 
   // Update sticky footer
   updateStickyFooterContent(total, tier, discount);
+  syncStickyFooterVisibility();
 }
 
 // QUANTITY SELECTORS
@@ -222,10 +237,10 @@ function setupQuantityListeners() {
 
     var addBtn = e.target.closest('.product-card__add-btn');
     if (addBtn) {
-      var id = parseInt(addBtn.dataset.id, 10);
-      quantities[id]++;
-      var countEl = document.getElementById('qty-' + id);
-      if (countEl) countEl.textContent = quantities[id];
+      var addId = parseInt(addBtn.dataset.id, 10);
+      quantities[addId]++;
+      var countEl = document.getElementById('qty-' + addId);
+      if (countEl) countEl.textContent = quantities[addId];
       updateBundle();
     }
   });
@@ -233,21 +248,24 @@ function setupQuantityListeners() {
 
 // STICKY FOOTER VISIBILITY
 
-function setupStickyFooter() {
+var heroIsInView = true;
+
+function syncStickyFooterVisibility() {
   var footer = document.getElementById('sticky-footer');
+  if (!footer) return;
+  var visible = !heroIsInView && getTotalQty() > 0;
+  footer.classList.toggle('sticky-footer--visible', visible);
+  document.body.classList.toggle('body--has-footer', visible);
+}
+
+function setupStickyFooter() {
   var hero = document.getElementById('hero');
-  if (!footer || !hero) return;
+  if (!hero) return;
 
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      var hasItems = getTotalQty() > 0;
-      if (!entry.isIntersecting && hasItems) {
-        footer.classList.add('sticky-footer--visible');
-        document.body.classList.add('body--has-footer');
-      } else {
-        footer.classList.remove('sticky-footer--visible');
-        document.body.classList.remove('body--has-footer');
-      }
+      heroIsInView = entry.isIntersecting;
+      syncStickyFooterVisibility();
     });
   }, { threshold: 0 });
 
