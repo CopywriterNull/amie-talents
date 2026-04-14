@@ -1,30 +1,50 @@
-// CONFIG + PRODUCT DATA
+// ============================================================
+// G FUEL LANDER — CONFIG
+// ============================================================
 
-const CONFIG = {
-  saleEndDate: '2026-05-01T23:59:59',
-  basePrice: 35.99,
+var CONFIG = {
+  saleEndDate: window.GFUEL_SALE_END || '2026-05-01T23:59:59',
+  basePrice: window.GFUEL_BASE_PRICE || 35.99,
   tiers: [
-    { min: 4, discount: 0.40, label: '40% OFF — BEST DEAL' },
-    { min: 3, discount: 0.35, label: '35% OFF' },
-    { min: 2, discount: 0.30, label: '30% OFF' },
+    { count: 1, discount: 0.00, perUnit: 35.99 },
+    { count: 2, discount: 0.30, perUnit: 25.19 },
+    { count: 3, discount: 0.35, perUnit: 23.39 },
+    { count: 4, discount: 0.40, perUnit: 21.59 },
   ],
   gifts: [
-    { min: 2, title: '4x Mystery Sampler Sticks', value: '$9.95 value' },
-    { min: 3, title: 'Free 24oz Shaker Cup', value: '$14.95 value' },
+    { minQty: 2, name: 'Sampler Sticks', value: '$9.95', unlockText: '2+ Tubs' },
+    { minQty: 3, name: 'Shaker Cup',     value: '$14.95', unlockText: '3+ Tubs' },
+    { minQty: 2, name: 'Free Shipping',  value: '$5.95',  unlockText: '2+ Tubs' },
   ],
 };
 
-const PRODUCTS = [
-  { id: 1, title: 'Placeholder Flavor 1', image: '', badge: 'new', price: 35.99, rating: 4.8, stock: 24 },
-  { id: 2, title: 'Placeholder Flavor 2', image: '', badge: 'bestseller', price: 35.99, rating: 4.9, stock: 8 },
-  { id: 3, title: 'Placeholder Flavor 3', image: '', badge: '', price: 35.99, rating: 4.7, stock: 31 },
-  { id: 4, title: 'Placeholder Flavor 4', image: '', badge: 'lowstock', price: 35.99, rating: 4.8, stock: 5 },
-  { id: 5, title: 'Placeholder Flavor 5', image: '', badge: 'new', price: 35.99, rating: 4.6, stock: 18 },
-  { id: 6, title: 'Placeholder Flavor 6', image: '', badge: 'bestseller', price: 35.99, rating: 4.9, stock: 12 },
+// ============================================================
+// PRODUCTS
+// ============================================================
+
+var PRODUCTS = window.GFUEL_PRODUCTS || [
+  { id: 1, title: 'Placeholder Flavor 1', desc: 'Delicious energy tub with premium flavor blend', image: '', badge: 'new',         price: 35.99, rating: 4.8, stock: 24 },
+  { id: 2, title: 'Placeholder Flavor 2', desc: 'Rich and bold, a fan favorite for years',        image: '', badge: 'bestseller', price: 35.99, rating: 4.9, stock: 8  },
+  { id: 3, title: 'Placeholder Flavor 3', desc: 'Sweet and smooth with a refreshing finish',      image: '', badge: '',           price: 35.99, rating: 4.7, stock: 31 },
+  { id: 4, title: 'Placeholder Flavor 4', desc: 'Limited batch, unique seasonal flavor',          image: '', badge: 'backinstock',price: 35.99, rating: 4.8, stock: 5  },
+  { id: 5, title: 'Placeholder Flavor 5', desc: 'Tropical twist with a citrus kick',             image: '', badge: 'new',         price: 35.99, rating: 4.6, stock: 18 },
+  { id: 6, title: 'Placeholder Flavor 6', desc: 'Classic flavor, always a crowd pleaser',        image: '', badge: 'bestseller', price: 35.99, rating: 4.9, stock: 12 },
+  { id: 7, title: 'Placeholder Flavor 7', desc: 'Cool and minty, a winter classic',              image: '', badge: 'gone',        price: 35.99, rating: 4.5, stock: 0  },
 ];
 
-const quantities = {};
-PRODUCTS.forEach(p => { quantities[p.id] = 0; });
+// ============================================================
+// STATE
+// ============================================================
+
+var quantities = {};
+PRODUCTS.forEach(function(p) { quantities[p.id] = 0; });
+
+// Palette for image placeholder backgrounds (cycles)
+var PLACEHOLDER_COLORS = ['#EAE6FF', '#E6F0FF', '#E6FFE6', '#FFF6E6', '#FFE6F0', '#E6FAFA', '#F0E6FF'];
+
+// ============================================================
+// HELPERS
+// ============================================================
 
 function escapeHTML(str) {
   return String(str)
@@ -35,249 +55,297 @@ function escapeHTML(str) {
     .replace(/'/g, '&#39;');
 }
 
-// PRODUCT CARD RENDERING
+function getTotalQty() {
+  var total = 0;
+  var keys = Object.keys(quantities);
+  for (var i = 0; i < keys.length; i++) {
+    total += quantities[keys[i]];
+  }
+  return total;
+}
+
+function getCurrentTier(count) {
+  var tier = CONFIG.tiers[0];
+  for (var i = 0; i < CONFIG.tiers.length; i++) {
+    if (count >= CONFIG.tiers[i].count) {
+      tier = CONFIG.tiers[i];
+    }
+  }
+  return tier;
+}
+
+// ============================================================
+// PRODUCT LIST RENDERING
+// ============================================================
 
 function getBadgeHTML(badge) {
   if (!badge) return '';
-  const labels = { new: 'NEW', bestseller: 'BEST SELLER', lowstock: 'LOW STOCK' };
-  const label = labels[badge] || badge.toUpperCase();
-  return '<span class="product-card__badge product-card__badge--' + badge + '">' + escapeHTML(label) + '</span>';
+  var map = {
+    new:         ['NEW',          'product-row__badge--new'],
+    bestseller:  ['BEST SELLER',  'product-row__badge--bestseller'],
+    lowstock:    ['LOW STOCK',    'product-row__badge--lowstock'],
+    backinstock: ['BACK IN STOCK','product-row__badge--backinstock'],
+    gone:        ['GONE FOREVER', 'product-row__badge--gone'],
+  };
+  var entry = map[badge];
+  if (!entry) return '';
+  return '<span class="product-row__badge ' + entry[1] + '">' + entry[0] + '</span>';
 }
 
-function renderStars(rating) {
-  return '&#9733;'.repeat(5) + '<span>' + rating + '/5</span>';
-}
-
-function renderProductCard(product) {
+function renderProductRow(product, index) {
   var qty = quantities[product.id];
-  var imageContent = product.image
-    ? '<img class="product-card__image" src="' + product.image + '" alt="' + escapeHTML(product.title) + '">'
-    : '<span class="product-card__image-placeholder">[Product Image]</span>';
+  var bgColor = PLACEHOLDER_COLORS[index % PLACEHOLDER_COLORS.length];
+  var imageHTML;
+  if (product.image) {
+    imageHTML = '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.title) + '" loading="lazy">';
+  } else {
+    imageHTML = '<div class="product-row__image-placeholder" style="background:' + bgColor + '"></div>';
+  }
 
-  return '<div class="product-card" data-product-id="' + product.id + '">' +
-    '<div class="product-card__image-wrap">' +
-      getBadgeHTML(product.badge) +
-      imageContent +
-    '</div>' +
-    '<div class="product-card__title">' + escapeHTML(product.title) + '</div>' +
-    '<div class="product-card__rating">' + renderStars(product.rating) + '</div>' +
-    '<div class="product-card__price">' +
-      '<span class="product-card__price-original">$' + product.price.toFixed(2) + '</span>' +
-      '<span class="product-card__price-sale" data-base-price="' + product.price + '">$' + product.price.toFixed(2) + '</span>' +
-    '</div>' +
-    (product.badge === 'lowstock' ? '<div class="product-card__stock">Low Stock: ' + escapeHTML(product.stock) + ' LEFT</div>' : '') +
-    '<div class="product-card__actions">' +
-      '<div class="product-card__qty">' +
-        '<button class="product-card__qty-btn" data-action="minus" data-id="' + product.id + '" aria-label="Decrease quantity of ' + escapeHTML(product.title) + '">&#8722;</button>' +
-        '<span class="product-card__qty-count" id="qty-' + product.id + '">' + qty + '</span>' +
-        '<button class="product-card__qty-btn" data-action="plus" data-id="' + product.id + '" aria-label="Increase quantity of ' + escapeHTML(product.title) + '">+</button>' +
+  var actionHTML;
+  if (qty === 0) {
+    actionHTML =
+      '<button class="product-row__add-btn" ' +
+        'data-action="quick-add" ' +
+        'data-id="' + product.id + '" ' +
+        'aria-label="Add ' + escapeHTML(product.title) + '">' +
+        'Add +' +
+      '</button>';
+  } else {
+    actionHTML =
+      '<div class="product-row__stepper">' +
+        '<button class="product-row__stepper-btn" ' +
+          'data-action="decrease" ' +
+          'data-id="' + product.id + '" ' +
+          'aria-label="Remove one ' + escapeHTML(product.title) + '">' +
+          '&#8722;' +
+        '</button>' +
+        '<span class="product-row__stepper-qty">' + qty + '</span>' +
+        '<button class="product-row__stepper-btn" ' +
+          'data-action="increase" ' +
+          'data-id="' + product.id + '" ' +
+          'aria-label="Add one more ' + escapeHTML(product.title) + '">' +
+          '+' +
+        '</button>' +
+      '</div>';
+  }
+
+  var selectedClass = qty > 0 ? ' is-selected' : '';
+
+  return (
+    '<div class="product-row' + selectedClass + '" data-product-id="' + product.id + '">' +
+      '<div class="product-row__image">' + imageHTML + '</div>' +
+      '<div class="product-row__info">' +
+        '<div class="product-row__name">' + escapeHTML(product.title) + '</div>' +
+        (product.desc ? '<div class="product-row__desc">' + escapeHTML(product.desc) + '</div>' : '') +
       '</div>' +
-      '<button class="product-card__add-btn" data-id="' + product.id + '" aria-label="Add ' + escapeHTML(product.title) + ' to bundle">Add to Bundle</button>' +
-    '</div>' +
-  '</div>';
+      '<div class="product-row__right">' +
+        getBadgeHTML(product.badge) +
+        actionHTML +
+      '</div>' +
+    '</div>'
+  );
 }
 
 function renderAllProducts() {
-  var grid = document.getElementById('product-grid');
-  if (!grid) return;
-  grid.innerHTML = PRODUCTS.map(renderProductCard).join('');
+  var list = document.getElementById('product-list');
+  if (!list) return;
+  list.innerHTML = PRODUCTS.map(function(p, i) {
+    return renderProductRow(p, i);
+  }).join('');
 }
 
+// ============================================================
+// PROGRESS BAR UPDATE
+// ============================================================
+
+function updateProgressBar(totalQty) {
+  // Fill/unfill each segment
+  var segments = document.querySelectorAll('[data-meter]');
+  for (var i = 0; i < segments.length; i++) {
+    var seg = segments[i];
+    var n = parseInt(seg.getAttribute('data-meter'), 10);
+    if (totalQty >= n) {
+      seg.classList.add('is-filled');
+    } else {
+      seg.classList.remove('is-filled');
+    }
+  }
+
+  // Active milestone dot
+  var milestones = document.querySelectorAll('[data-milestone]');
+  var activeMilestone = 0;
+  for (var j = 0; j < CONFIG.tiers.length; j++) {
+    if (totalQty >= CONFIG.tiers[j].count) {
+      activeMilestone = CONFIG.tiers[j].count;
+    }
+  }
+  for (var k = 0; k < milestones.length; k++) {
+    var ms = milestones[k];
+    var msN = parseInt(ms.getAttribute('data-milestone'), 10);
+    if (msN === activeMilestone && totalQty > 0) {
+      ms.classList.add('is-active');
+    } else {
+      ms.classList.remove('is-active');
+    }
+  }
+
+  // Active price tier
+  var priceEls = document.querySelectorAll('[data-price-tier]');
+  var activeTier = getCurrentTier(totalQty);
+  for (var m = 0; m < priceEls.length; m++) {
+    var priceEl = priceEls[m];
+    var pTier = parseInt(priceEl.getAttribute('data-price-tier'), 10);
+    if (pTier === activeTier.count && totalQty > 0) {
+      priceEl.classList.add('is-active');
+    } else {
+      priceEl.classList.remove('is-active');
+    }
+  }
+}
+
+// ============================================================
+// GIFT UPDATE
+// ============================================================
+
+function updateGifts(totalQty) {
+  for (var i = 0; i < CONFIG.gifts.length; i++) {
+    var gift = CONFIG.gifts[i];
+    var el = document.getElementById('gift-' + i);
+    if (el) {
+      if (totalQty >= gift.minQty) {
+        el.classList.add('is-unlocked');
+      } else {
+        el.classList.remove('is-unlocked');
+      }
+    }
+  }
+}
+
+// ============================================================
+// CTA BUTTON UPDATE
+// ============================================================
+
+function updateCTA(totalQty) {
+  var btn = document.getElementById('cta-btn');
+  var textEl = document.getElementById('cta-text');
+  if (!btn || !textEl) return;
+
+  if (totalQty === 0) {
+    textEl.textContent = 'Select at least 1 tub';
+    btn.classList.remove('is-active');
+    btn.disabled = true;
+  } else {
+    var tier = getCurrentTier(totalQty);
+    var totalPrice = totalQty * tier.perUnit;
+    var tubWord = totalQty === 1 ? 'tub' : 'tubs';
+    textEl.textContent = 'Checkout \u2014 ' + totalQty + ' ' + tubWord + ' \u2014 $' + totalPrice.toFixed(2);
+    btn.classList.add('is-active');
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// MASTER UPDATE
+// ============================================================
+
+function updateAll() {
+  var total = getTotalQty();
+  updateProgressBar(total);
+  updateGifts(total);
+  updateCTA(total);
+}
+
+// ============================================================
+// EVENT HANDLING (click delegation)
+// ============================================================
+
+function setupClickListeners() {
+  document.addEventListener('click', function(e) {
+    // "Add +" quick-add
+    var addBtn = e.target.closest('[data-action="quick-add"]');
+    if (addBtn) {
+      var addId = parseInt(addBtn.getAttribute('data-id'), 10);
+      if (!isNaN(addId)) {
+        quantities[addId] = 1;
+        renderAllProducts();
+        updateAll();
+      }
+      return;
+    }
+
+    // Stepper increase
+    var incBtn = e.target.closest('[data-action="increase"]');
+    if (incBtn) {
+      var incId = parseInt(incBtn.getAttribute('data-id'), 10);
+      if (!isNaN(incId)) {
+        quantities[incId] = (quantities[incId] || 0) + 1;
+        renderAllProducts();
+        updateAll();
+      }
+      return;
+    }
+
+    // Stepper decrease
+    var decBtn = e.target.closest('[data-action="decrease"]');
+    if (decBtn) {
+      var decId = parseInt(decBtn.getAttribute('data-id'), 10);
+      if (!isNaN(decId) && quantities[decId] > 0) {
+        quantities[decId]--;
+        // Re-render switches back to "Add +" when qty hits 0
+        renderAllProducts();
+        updateAll();
+      }
+      return;
+    }
+  });
+}
+
+// ============================================================
 // COUNTDOWN TIMER
+// ============================================================
 
 function startCountdown() {
-  var daysEl = document.getElementById('countdown-days');
-  var hoursEl = document.getElementById('countdown-hours');
+  var daysEl    = document.getElementById('countdown-days');
+  var hoursEl   = document.getElementById('countdown-hours');
   var minutesEl = document.getElementById('countdown-minutes');
   var secondsEl = document.getElementById('countdown-seconds');
   if (!hoursEl || !minutesEl || !secondsEl) return;
 
   var endDate = new Date(CONFIG.saleEndDate).getTime();
+  var intervalId;
 
-  function update() {
-    var now = Date.now();
-    var diff = endDate - now;
-
+  function tick() {
+    var diff = endDate - Date.now();
     if (diff <= 0) {
       clearInterval(intervalId);
-      if (daysEl) daysEl.textContent = '00';
-      hoursEl.textContent = '00';
+      if (daysEl)    daysEl.textContent    = '00';
+      hoursEl.textContent   = '00';
       minutesEl.textContent = '00';
       secondsEl.textContent = '00';
-      var badge = document.querySelector('.hero__badge');
-      if (badge) badge.textContent = 'SALE ENDED';
       return;
     }
-
-    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
-    hoursEl.textContent = String(hours).padStart(2, '0');
-    minutesEl.textContent = String(minutes).padStart(2, '0');
-    secondsEl.textContent = String(seconds).padStart(2, '0');
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var mn = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    if (daysEl) daysEl.textContent = String(d).padStart(2, '0');
+    hoursEl.textContent   = String(h).padStart(2, '0');
+    minutesEl.textContent = String(mn).padStart(2, '0');
+    secondsEl.textContent = String(s).padStart(2, '0');
   }
 
-  update();
-  var intervalId = setInterval(update, 1000);
+  tick();
+  intervalId = setInterval(tick, 1000);
 }
 
-// STICKY FOOTER CONTENT (defined before updateBundle since updateBundle calls it)
-
-function updateStickyFooterContent(total, tier, discount) {
-  var itemsEl = document.getElementById('footer-items');
-  var originalEl = document.getElementById('footer-original');
-  var discountedEl = document.getElementById('footer-discounted');
-  var savingsEl = document.getElementById('footer-savings');
-  var tierEl = document.getElementById('footer-tier');
-  var giftsEl = document.getElementById('footer-gifts');
-
-  if (!itemsEl) return;
-
-  var originalTotal = total * CONFIG.basePrice;
-  var discountedTotal = originalTotal * (1 - discount);
-  var savings = originalTotal - discountedTotal;
-
-  itemsEl.textContent = total + (total === 1 ? ' item' : ' items');
-  originalEl.textContent = '$' + originalTotal.toFixed(2);
-  discountedEl.textContent = '$' + discountedTotal.toFixed(2);
-
-  if (savings > 0) {
-    savingsEl.textContent = 'You save $' + savings.toFixed(2);
-  } else {
-    savingsEl.textContent = '';
-  }
-
-  if (tier) {
-    tierEl.textContent = tier.label;
-    tierEl.style.display = '';
-  } else {
-    tierEl.style.display = 'none';
-  }
-
-  var unlockedGifts = CONFIG.gifts
-    .filter(function(g) { return total >= g.min; })
-    .map(function(g) { return g.title; });
-  giftsEl.textContent = unlockedGifts.length > 0
-    ? '+ ' + unlockedGifts.join(', ')
-    : '';
-}
-
-// BUNDLE CALCULATOR
-
-function getTotalQty() {
-  return Object.values(quantities).reduce(function(sum, q) { return sum + q; }, 0);
-}
-
-function getActiveTier() {
-  var total = getTotalQty();
-  for (var i = 0; i < CONFIG.tiers.length; i++) {
-    if (total >= CONFIG.tiers[i].min) return CONFIG.tiers[i];
-  }
-  return null;
-}
-
-function updateBundle() {
-  var total = getTotalQty();
-  var tier = getActiveTier();
-  var discount = tier ? tier.discount : 0;
-
-  // Update sale prices on all cards
-  var saleEls = document.querySelectorAll('.product-card__price-sale');
-  saleEls.forEach(function(el) {
-    var base = parseFloat(el.dataset.basePrice);
-    var sale = base * (1 - discount);
-    el.textContent = '$' + sale.toFixed(2);
-  });
-
-  // Highlight active tier card
-  document.querySelectorAll('.tier-card').forEach(function(card) {
-    var min = parseInt(card.dataset.tierMin, 10);
-    card.classList.toggle('tier-card--active', tier && min === tier.min);
-  });
-
-  // Update gift ladder
-  CONFIG.gifts.forEach(function(gift, i) {
-    var giftEl = document.getElementById('gift-' + i);
-    if (giftEl) {
-      giftEl.classList.toggle('gift-card--unlocked', total >= gift.min);
-    }
-  });
-
-  // Update sticky footer
-  updateStickyFooterContent(total, tier, discount);
-  syncStickyFooterVisibility();
-}
-
-// QUANTITY SELECTORS
-
-function handleQuantityChange(productId, action) {
-  if (action === 'plus') {
-    quantities[productId]++;
-  } else if (action === 'minus' && quantities[productId] > 0) {
-    quantities[productId]--;
-  }
-
-  var countEl = document.getElementById('qty-' + productId);
-  if (countEl) countEl.textContent = quantities[productId];
-
-  updateBundle();
-}
-
-function setupQuantityListeners() {
-  document.addEventListener('click', function(e) {
-    var qtyBtn = e.target.closest('.product-card__qty-btn');
-    if (qtyBtn) {
-      var id = parseInt(qtyBtn.dataset.id, 10);
-      handleQuantityChange(id, qtyBtn.dataset.action);
-      return;
-    }
-
-    var addBtn = e.target.closest('.product-card__add-btn');
-    if (addBtn) {
-      var addId = parseInt(addBtn.dataset.id, 10);
-      quantities[addId]++;
-      var countEl = document.getElementById('qty-' + addId);
-      if (countEl) countEl.textContent = quantities[addId];
-      updateBundle();
-    }
-  });
-}
-
-// STICKY FOOTER VISIBILITY
-
-var heroIsInView = true;
-
-function syncStickyFooterVisibility() {
-  var footer = document.getElementById('sticky-footer');
-  if (!footer) return;
-  var visible = !heroIsInView && getTotalQty() > 0;
-  footer.classList.toggle('sticky-footer--visible', visible);
-  document.body.classList.toggle('body--has-footer', visible);
-}
-
-function setupStickyFooter() {
-  var hero = document.getElementById('hero');
-  if (!hero) return;
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      heroIsInView = entry.isIntersecting;
-      syncStickyFooterVisibility();
-    });
-  }, { threshold: 0 });
-
-  observer.observe(hero);
-}
-
+// ============================================================
 // INITIALIZATION
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
   renderAllProducts();
   startCountdown();
-  setupQuantityListeners();
-  setupStickyFooter();
-  updateBundle();
+  setupClickListeners();
+  updateAll();
 });

@@ -6,7 +6,7 @@
   <title>G FUEL — Summer Sale</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,842 +14,1221 @@
     button { cursor: pointer; border: none; background: none; font-family: inherit; }
     ul { list-style: none; }
 
-    /* ===== CUSTOM PROPERTIES ===== */
-    :root {
-      --bg-page: #FAF7F2;
-      --bg-card: #FFFFFF;
-      --color-primary: #3D348B;
-      --color-primary-light: #5B4FC7;
-      --color-gold: #D4A024;
-      --color-gold-light: #F0C75E;
-      --color-text: #1A1A1A;
-      --color-text-secondary: #6B6B6B;
-      --color-success: #2D8F2D;
-      --color-urgency: #D94F00;
-      --color-border: #E8E4DF;
-      --color-white: #FFFFFF;
-      --font-family: 'Inter', sans-serif;
-      --fs-hero: 48px;
-      --fs-heading: 28px;
-      --fs-body: 16px;
-      --fs-small: 14px;
-      --fs-xs: 12px;
-      --max-width: 1200px;
-      --section-pad: 60px;
-      --card-radius: 12px;
-      --btn-radius: 8px;
-      --gap: 20px;
-    }
-
     /* ===== BASE ===== */
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-family);
-      font-size: var(--fs-body);
-      color: var(--color-text);
-      background: var(--bg-page);
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #1A1A1A;
+      background: #FAF7F2;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .section-heading {
-      font-size: var(--fs-heading);
-      font-weight: 700;
+
+    /* ===== TOP BANNER ===== */
+    .top-banner {
+      background: #3D348B;
+      color: #FFFFFF;
       text-align: center;
-      margin-bottom: 32px;
-      color: var(--color-primary);
-    }
-
-    /* ===== ANNOUNCEMENT BAR ===== */
-    .announcement-bar {
-      background: var(--color-primary);
-      color: var(--color-white);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 10px 0;
-      font-size: var(--fs-small);
-      font-weight: 600;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .announcement-bar__track {
-      display: inline-flex;
-      animation: marquee 20s linear infinite;
-    }
-    .announcement-bar__text {
-      padding: 0 40px;
-      flex-shrink: 0;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
 
-    /* ===== HERO ===== */
-    .hero {
-      text-align: center;
-      padding: var(--section-pad) 20px;
-      background: linear-gradient(180deg, #EDEAFF 0%, var(--bg-page) 100%);
-    }
-    .hero__badge {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
-      color: var(--color-text);
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-    }
-    .hero__headline {
-      font-size: var(--fs-hero);
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-    .hero__subheadline {
-      font-size: 20px;
-      color: var(--color-text-secondary);
-      margin-bottom: 32px;
-      font-weight: 400;
-    }
-    .hero__countdown {
-      display: inline-flex;
-      gap: 12px;
-      background: var(--bg-card);
-      border: 2px solid var(--color-primary);
-      border-radius: var(--card-radius);
-      padding: 16px 32px;
-      margin-bottom: 32px;
-      animation: pulse-border 2s ease-in-out infinite;
-    }
-    .hero__countdown-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 60px;
-    }
-    .hero__countdown-number {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1;
-    }
-    .hero__countdown-label {
-      font-size: var(--fs-xs);
-      color: var(--color-text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-    .hero__countdown-sep {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1;
-      align-self: flex-start;
-    }
-    .hero__cta {
-      display: inline-block;
-      background: var(--color-primary);
-      color: var(--color-white);
-      font-size: 18px;
-      font-weight: 700;
-      padding: 16px 48px;
-      border-radius: var(--btn-radius);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .hero__cta:hover {
-      background: var(--color-primary-light);
-      transform: scale(1.02);
-    }
-    @keyframes pulse-border {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(61, 52, 139, 0.3); }
-      50% { box-shadow: 0 0 0 8px rgba(61, 52, 139, 0); }
-    }
-
-    /* ===== SOCIAL PROOF BAR ===== */
-    .social-proof {
-      background: var(--bg-card);
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-      padding: 16px 20px;
-    }
-    .social-proof__inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
+    /* ===== HEADER BAR ===== */
+    .header-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid #E0DDD8;
+      padding: 12px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 32px;
+      gap: 20px;
       flex-wrap: wrap;
     }
-    .social-proof__item {
-      display: flex;
+    .header-bar__badge {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: var(--fs-small);
-      color: var(--color-text-secondary);
-    }
-    .social-proof__stars {
-      color: var(--color-gold);
-      font-size: 18px;
-      letter-spacing: 2px;
-    }
-    .social-proof__rating {
+      gap: 6px;
+      background: linear-gradient(135deg, #D4A024, #F0C75E);
+      color: #1A1A1A;
+      font-size: 11px;
       font-weight: 700;
-      color: var(--color-text);
-    }
-    .social-proof__icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
-
-    /* ===== PRODUCT GRID ===== */
-    .products {
-      padding: var(--section-pad) 20px;
-    }
-    .product-grid {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gap);
-    }
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--card-radius);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.2s;
-    }
-    .product-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    .product-card__image-wrap {
-      position: relative;
-      min-height: 200px; /* fallback for browsers without aspect-ratio */
-      aspect-ratio: 1;
-      background: #F5F3EE;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .product-card__image {
-      width: 80%;
-      height: 80%;
-      object-fit: contain;
-    }
-    .product-card__image-placeholder {
-      color: var(--color-text-secondary);
-      font-size: var(--fs-small);
-    }
-    .product-card__badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .product-card__badge--new {
-      background: var(--color-primary);
-      color: var(--color-white);
-    }
-    .product-card__badge--bestseller {
-      background: var(--color-gold);
-      color: var(--color-text);
-    }
-    .product-card__badge--lowstock {
-      background: var(--color-urgency);
-      color: var(--color-white);
-    }
-    .product-card__title {
-      font-size: var(--fs-body);
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--color-text);
-    }
-    .product-card__rating {
-      font-size: var(--fs-small);
-      color: var(--color-gold);
-      margin-bottom: 8px;
-    }
-    .product-card__rating span {
-      color: var(--color-text-secondary);
-      margin-left: 4px;
-    }
-    .product-card__price {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .product-card__price-original {
-      font-size: var(--fs-small);
-      color: var(--color-text-secondary);
-      text-decoration: line-through;
-    }
-    .product-card__price-sale {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-primary);
-    }
-    .product-card__stock {
-      font-size: var(--fs-xs);
-      color: var(--color-urgency);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .product-card__actions {
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .product-card__qty {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      border: 1px solid var(--color-border);
-      border-radius: var(--btn-radius);
-      overflow: hidden;
-    }
-    .product-card__qty-btn {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--color-primary);
-      background: var(--bg-page);
-      transition: background 0.15s;
-    }
-    .product-card__qty-btn:hover {
-      background: var(--color-border);
-    }
-    .product-card__qty-count {
-      width: 48px;
-      text-align: center;
-      font-size: var(--fs-body);
-      font-weight: 700;
-      color: var(--color-text);
-    }
-    .product-card__add-btn {
-      background: var(--color-primary);
-      color: var(--color-white);
-      font-size: var(--fs-small);
-      font-weight: 700;
-      padding: 12px;
-      border-radius: var(--btn-radius);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .product-card__add-btn:hover {
-      background: var(--color-primary-light);
-      transform: scale(1.02);
-    }
-
-    /* ===== TIER DISCOUNT ===== */
-    .tiers {
-      padding: var(--section-pad) 20px;
-      background: var(--bg-card);
-    }
-    .tiers__grid {
-      max-width: 800px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .tier-card {
-      position: relative;
-      border: 2px solid var(--color-border);
-      border-radius: var(--card-radius);
-      padding: 24px 16px;
-      text-align: center;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .tier-card--active {
-      border-color: var(--color-primary);
-      box-shadow: 0 4px 20px rgba(61, 52, 139, 0.15);
-    }
-    .tier-card__best-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
-      color: var(--color-text);
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 20px;
-      white-space: nowrap;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .tier-card__qty {
-      font-size: var(--fs-heading);
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 4px;
+    .header-bar__sub {
+      font-size: 14px;
+      color: #6B6B6B;
     }
-    .tier-card__discount {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 8px;
-    }
-    .tier-card__price {
-      font-size: var(--fs-small);
-      color: var(--color-text-secondary);
-    }
-
-    /* ===== GIFT LADDER ===== */
-    .gifts {
-      padding: var(--section-pad) 20px;
-    }
-    .gifts__grid {
-      max-width: 700px;
-      margin: 0 auto;
+    .header-bar__timer-wrap {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      gap: 2px;
     }
-    .gift-card {
+    .header-bar__timer {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid #E0DDD8;
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .header-bar__timer-block {
+      background: #3D348B;
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      min-width: 36px;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .header-bar__timer-sep {
+      color: #3D348B;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 0 1px;
+    }
+    .header-bar__timer-labels {
+      display: flex;
+      gap: 3px;
+      padding: 0 10px;
+    }
+    .header-bar__timer-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: #6B6B6B;
+      text-align: center;
+      min-width: 36px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    .main-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ===== LEFT: MARKETING COLUMN ===== */
+    .marketing {
+      padding-top: 8px;
+    }
+    .marketing__headline {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #2A2552;
+      margin-bottom: 10px;
+    }
+    .marketing__sub {
+      font-size: 17px;
+      color: #6B6B6B;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .marketing__benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .marketing__benefit {
       display: flex;
       align-items: center;
-      gap: 16px;
-      background: var(--bg-card);
-      border: 2px solid var(--color-border);
-      border-radius: var(--card-radius);
-      padding: 20px 24px;
-      transition: border-color 0.3s, opacity 0.3s;
-      opacity: 0.5;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid #E0DDD8;
+      border-radius: 8px;
+      padding: 11px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
     }
-    .gift-card--unlocked {
-      border-color: var(--color-success);
-      opacity: 1;
+    .marketing__benefit-icon {
+      font-size: 17px;
+      flex-shrink: 0;
     }
-    .gift-card__check {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 2px solid var(--color-border);
+    .marketing__hero-image {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      aspect-ratio: 3/4;
+      background: #F0ECE6;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.3s, border-color 0.3s;
+      color: #6B6B6B;
+      font-size: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
     }
-    .gift-card--unlocked .gift-card__check {
-      background: var(--color-success);
-      border-color: var(--color-success);
+    .marketing__testimonial {
+      background: #FFFFFF;
+      border: 1px solid #E0DDD8;
+      border-radius: 12px;
+      padding: 20px;
     }
-    .gift-card__check-icon {
-      color: var(--color-white);
-      font-size: 18px;
+    .marketing__testimonial-stars {
+      color: #D4A024;
+      font-size: 15px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .marketing__testimonial-label {
+      font-size: 12px;
       font-weight: 700;
-      opacity: 0;
-      transition: opacity 0.3s;
+      margin-bottom: 8px;
+      color: #1A1A1A;
     }
-    .gift-card--unlocked .gift-card__check-icon {
-      opacity: 1;
+    .marketing__testimonial-quote {
+      font-size: 14px;
+      color: #6B6B6B;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 12px;
     }
-    .gift-card__info {
-      flex: 1;
+    .marketing__testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .gift-card__title {
+    .marketing__testimonial-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #E0DDD8;
+      flex-shrink: 0;
+    }
+    .marketing__testimonial-name {
+      font-size: 12px;
       font-weight: 600;
-      font-size: var(--fs-body);
+      color: #1A1A1A;
+    }
+    .marketing__testimonial-verified {
+      font-size: 10px;
+      color: #2D8F2D;
+    }
+
+    /* ===== RIGHT: SHOPPING COLUMN ===== */
+    .shopping {
+      background: #FFFFFF;
+      border-radius: 12px;
+      border: 1px solid #E0DDD8;
+      overflow: hidden;
+    }
+
+    /* Trust row */
+    .trust-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid #E0DDD8;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .trust-row__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+    }
+    .trust-row__stars {
+      color: #D4A024;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    .trust-row__label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+    .trust-row__sublabel {
+      font-size: 10px;
+      color: #6B6B6B;
+    }
+    .trust-row__sep {
+      width: 1px;
+      height: 28px;
+      background: #E0DDD8;
+      flex-shrink: 0;
+    }
+
+    /* Shopping header */
+    .shopping__header {
+      padding: 20px 24px 10px;
+    }
+    .shopping__headline {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+    }
+    .shopping__headline span {
+      color: #3D348B;
+    }
+
+    /* Discount active label */
+    .discount-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3D348B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .discount-label__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2D8F2D;
+      display: inline-block;
+      animation: pulse-dot 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-section {
+      padding: 0 24px 16px;
+    }
+    .progress-bar {
+      position: relative;
+      height: 10px;
+      background: #EAE8F0;
+      border-radius: 99px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .progress-bar__track {
+      display: flex;
+      height: 100%;
+      gap: 2px;
+    }
+    .progress-bar__segment {
+      flex: 1;
+      background: #EAE8F0;
+      border-radius: 99px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .progress-bar__segment.is-filled {
+      background: #3D348B;
+    }
+    .progress-bar__segment.is-filled::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        rgba(255,255,255,0.18) 4px,
+        rgba(255,255,255,0.18) 8px
+      );
+      animation: stripe-move 1s linear infinite;
+    }
+    @keyframes stripe-move {
+      from { background-position: 0 0; }
+      to { background-position: 16px 0; }
+    }
+    .progress-milestones {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0 4px;
+    }
+    .progress-milestone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      position: relative;
+    }
+    .progress-milestone__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #EAE8F0;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 0 0 1px #CFCFCF;
+      transition: background 0.3s, box-shadow 0.3s;
       margin-bottom: 2px;
     }
-    .gift-card__threshold {
-      font-size: var(--fs-small);
-      color: var(--color-text-secondary);
+    .progress-milestone.is-active .progress-milestone__dot {
+      background: #3D348B;
+      box-shadow: 0 0 0 2px #3D348B, 0 0 0 4px rgba(61,52,139,0.18);
     }
-    .gift-card__value {
-      font-size: var(--fs-small);
-      font-weight: 700;
-      color: var(--color-success);
+    .progress-milestone__label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9997AA;
+      text-align: center;
       white-space: nowrap;
     }
-
-    /* ===== TESTIMONIAL ===== */
-    .testimonial {
-      padding: var(--section-pad) 20px;
-      background: var(--bg-card);
+    .progress-milestone.is-active .progress-milestone__label {
+      color: #3D348B;
     }
-    .testimonial__card {
-      max-width: 700px;
-      margin: 0 auto;
+    .progress-milestone__badge {
+      font-size: 8px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .progress-milestone__badge--popular {
+      background: #3D348B;
+      color: #FFFFFF;
+    }
+    .progress-milestone__badge--best {
+      background: linear-gradient(135deg, #D4A024, #F0C75E);
+      color: #1A1A1A;
+    }
+    .progress-prices {
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0 0;
+    }
+    .progress-price {
+      flex: 1;
       text-align: center;
-      padding: 40px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--card-radius);
-      background: var(--bg-page);
+      font-size: 10px;
+      color: #9997AA;
+      font-weight: 500;
     }
-    .testimonial__stars {
-      color: var(--color-gold);
+    .progress-price.is-active {
+      color: #3D348B;
+      font-weight: 700;
+    }
+    .progress-price__discount {
+      font-size: 9px;
+      color: #2D8F2D;
+      font-weight: 600;
+    }
+
+    /* ===== PRODUCT LIST ===== */
+    .product-list {
+      border-top: 1px solid #E0DDD8;
+    }
+    .product-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border-bottom: 1px solid #E0DDD8;
+      transition: background 0.15s;
+    }
+    .product-row:hover {
+      background: #FAFAF8;
+    }
+    .product-row.is-selected {
+      background: #FFEDD7;
+      box-shadow: 0 0 0 2px #010101 inset;
+    }
+    .product-row__image {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #EAE6DF;
+    }
+    .product-row__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-row__image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #6B6B6B;
+    }
+    .product-row__info {
+      flex: 1;
+      min-width: 0;
+    }
+    .product-row__name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .product-row__desc {
+      font-size: 12px;
+      color: #6B6B6B;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .product-row__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+    .product-row__badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+    .product-row__badge--new {
+      background: #DFE3FF;
+      color: #1C00FF;
+    }
+    .product-row__badge--bestseller {
+      background: #FFF6DC;
+      color: #8A6400;
+    }
+    .product-row__badge--lowstock {
+      background: #FFF0E6;
+      color: #D94F00;
+    }
+    .product-row__badge--backinstock {
+      background: #E8F5E8;
+      color: #2D8F2D;
+    }
+    .product-row__badge--gone {
+      background: #F0F0F0;
+      color: #9997AA;
+    }
+    /* Add + button */
+    .product-row__add-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #3D348B;
+      color: #FFFFFF;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .product-row__add-btn:hover {
+      background: #2A2552;
+    }
+    /* Stepper */
+    .product-row__stepper {
+      display: inline-flex;
+      align-items: center;
+      border: 1.5px solid #3D348B;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .product-row__stepper-btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #3D348B;
+      background: transparent;
+      transition: background 0.12s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .product-row__stepper-btn:hover {
+      background: #EAE8F0;
+    }
+    .product-row__stepper-qty {
+      min-width: 28px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #3D348B;
+      padding: 0 4px;
+      background: #FFFFFF;
+    }
+
+    /* ===== GIFT SECTION ===== */
+    .gift-section {
+      border-top: 1px solid #E0DDD8;
+      padding: 18px 24px 16px;
+    }
+    .gift-section__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .gift-section__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+    .gift-section__badge {
+      background: linear-gradient(135deg, #D4A024, #F0C75E);
+      color: #1A1A1A;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .gift-section__deadline {
+      font-size: 12px;
+      color: #6B6B6B;
+      margin-bottom: 14px;
+    }
+    .gift-section__grid {
+      display: flex;
+      gap: 10px;
+    }
+    .gift-item {
+      flex: 1;
+      text-align: center;
+      transition: opacity 0.3s;
+    }
+    .gift-item__card {
+      aspect-ratio: 1;
+      border: 1px dashed #CFCFCF;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FAFAF8;
+      transition: border-color 0.3s;
+    }
+    .gift-item.is-unlocked .gift-item__card {
+      border-color: #3D348B;
+      border-style: solid;
+    }
+    /* Gold gradient overlay on unlocked gifts */
+    .gift-item.is-unlocked .gift-item__card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #FFDE99, #FFC966);
+      opacity: 0.22;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .gift-item__inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+    }
+    /* Lock icon shown when locked */
+    .gift-item__lock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .gift-item.is-unlocked .gift-item__lock {
+      display: none;
+    }
+    .gift-item__lock-text {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9997AA;
+    }
+    /* Content shown when unlocked */
+    .gift-item__content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    .gift-item.is-unlocked .gift-item__content {
+      display: flex;
+    }
+    .gift-item__content img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .gift-item__placeholder-unlocked {
       font-size: 24px;
-      letter-spacing: 4px;
-      margin-bottom: 16px;
+      color: #3D348B;
     }
-    .testimonial__quote {
+    /* FREE badge */
+    .gift-item__free-badge {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2D8F2D;
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    /* Unlock progress text shown when locked */
+    .gift-item__unlock-text {
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 600;
+      color: #9997AA;
+      z-index: 2;
+    }
+    .gift-item.is-unlocked .gift-item__unlock-text {
+      display: none;
+    }
+    .gift-item__name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #1A1A1A;
+      line-height: 1.3;
+    }
+    .gift-item__value {
+      font-size: 10px;
+      color: #6B6B6B;
+      text-decoration: line-through;
+    }
+
+    /* ===== CTA BUTTON ===== */
+    .cta-section {
+      padding: 0 24px 20px;
+    }
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #CECDDA;
+      color: #737097;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 8px;
+      border: none;
+      font-family: inherit;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      cursor: default;
+    }
+    .cta-btn.is-active {
+      background: #3D348B;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    .cta-btn.is-active:hover {
+      background: #2A2552;
+      transform: scale(1.01);
+    }
+    .cta-btn__arrow {
       font-size: 18px;
-      line-height: 1.7;
-      color: var(--color-text);
-      margin-bottom: 20px;
-      font-style: italic;
+      display: none;
+      transition: transform 0.2s;
     }
-    .testimonial__author {
-      font-weight: 600;
-      color: var(--color-text);
+    .cta-btn.is-active .cta-btn__arrow {
+      display: inline;
     }
-    .testimonial__badge {
-      display: inline-block;
-      font-size: var(--fs-xs);
-      color: var(--color-success);
-      font-weight: 600;
-      margin-left: 8px;
+    .cta-btn.is-active:hover .cta-btn__arrow {
+      transform: translateX(4px);
     }
 
     /* ===== GUARANTEE ===== */
     .guarantee {
-      padding: var(--section-pad) 20px;
-      text-align: center;
+      padding: 0 24px 24px;
+    }
+    .guarantee__card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid #E0DDD8;
+      border-radius: 8px;
+      background: #FAF7F2;
     }
     .guarantee__icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 16px;
-      color: var(--color-primary);
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      color: #2D8F2D;
+      margin-top: 1px;
+    }
+    .guarantee__label {
+      font-size: 11px;
+      color: #6B6B6B;
+      margin-bottom: 1px;
     }
     .guarantee__title {
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 8px;
+      color: #1A1A1A;
+      margin-bottom: 3px;
     }
     .guarantee__text {
-      font-size: var(--fs-body);
-      color: var(--color-text-secondary);
-      max-width: 480px;
-      margin: 0 auto;
+      font-size: 12px;
+      color: #6B6B6B;
+      line-height: 1.5;
     }
 
-    /* ===== STICKY FOOTER ===== */
-    .sticky-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--bg-card);
-      border-top: 2px solid var(--color-primary);
-      padding: 12px 20px;
-      z-index: 100;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    /* ===== FOOTER ===== */
+    .page-footer {
+      text-align: center;
+      padding: 24px 20px;
+      color: #6B6B6B;
+      font-size: 12px;
+      border-top: 1px solid #E0DDD8;
+      margin-top: 8px;
     }
-    .sticky-footer--visible {
-      transform: translateY(0);
-    }
-    .sticky-footer__inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .sticky-footer__summary {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .sticky-footer__items {
-      font-weight: 600;
-      color: var(--color-text);
-    }
-    .sticky-footer__pricing {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .sticky-footer__original {
-      font-size: var(--fs-small);
-      color: var(--color-text-secondary);
-      text-decoration: line-through;
-    }
-    .sticky-footer__discounted {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--color-primary);
-    }
-    .sticky-footer__savings {
-      font-size: var(--fs-small);
-      font-weight: 700;
-      color: var(--color-success);
-    }
-    .sticky-footer__tier {
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
-      color: var(--color-text);
-      padding: 4px 10px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-    .sticky-footer__gifts {
-      font-size: var(--fs-xs);
-      color: var(--color-success);
-      font-weight: 600;
-    }
-    .sticky-footer__checkout {
-      background: var(--color-primary);
-      color: var(--color-white);
-      font-size: var(--fs-body);
-      font-weight: 700;
-      padding: 14px 40px;
-      border-radius: var(--btn-radius);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      white-space: nowrap;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .sticky-footer__checkout:hover {
-      background: var(--color-primary-light);
-      transform: scale(1.02);
-    }
-    .body--has-footer { padding-bottom: 80px; }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 991px) {
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 767px) {
-      :root {
-        --fs-hero: 32px;
-        --fs-heading: 22px;
-        --section-pad: 40px;
+      .main-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 16px 12px;
       }
-      .hero__subheadline { font-size: 16px; }
-      .hero__countdown { padding: 12px 16px; gap: 8px; }
-      .hero__countdown-number { font-size: 28px; }
-      .hero__countdown-unit { min-width: 48px; }
-      .hero__cta { padding: 14px 32px; font-size: 16px; }
-      .social-proof__inner { gap: 16px; }
-      .social-proof__item { font-size: var(--fs-xs); }
-      .testimonial__card { padding: 24px; }
-      .testimonial__quote { font-size: var(--fs-body); }
-      .sticky-footer__inner { flex-direction: column; gap: 8px; }
-      .sticky-footer__summary { justify-content: center; gap: 12px; }
-      .sticky-footer__checkout { width: 100%; text-align: center; }
+      .marketing {
+        display: none;
+      }
+      .shopping__headline { font-size: 19px; }
+      .header-bar { gap: 10px; }
+      .product-row { padding: 10px 16px; }
+      .gift-section { padding: 14px 16px; }
+      .cta-section { padding: 0 16px 16px; }
+      .guarantee { padding: 0 16px 16px; }
+      .shopping__header { padding: 16px 16px 8px; }
+      .progress-section { padding: 0 16px 12px; }
+      .trust-row { padding: 10px 16px; }
+      .trust-row__sep { display: none; }
+      .progress-milestone__label { font-size: 9px; }
     }
-    @media (max-width: 479px) {
-      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .product-card { padding: 12px; }
-      .product-card__qty-btn { width: 36px; height: 36px; }
-      .tiers__grid { grid-template-columns: 1fr; max-width: 320px; }
-      .gift-card { padding: 16px; }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .main-layout { gap: 28px; }
+      .marketing__headline { font-size: 30px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. Announcement Bar -->
-  <div class="announcement-bar">
-    <div class="announcement-bar__track">
-      <span class="announcement-bar__text">SUMMER SALE — UP TO 40% OFF + FREE GIFTS</span>
-      <span class="announcement-bar__text">FREE SHAKER CUP ON 3+ TUBS</span>
-      <span class="announcement-bar__text">SUMMER SALE — UP TO 40% OFF + FREE GIFTS</span>
-      <span class="announcement-bar__text">FREE SHAKER CUP ON 3+ TUBS</span>
-      <span class="announcement-bar__text">SUMMER SALE — UP TO 40% OFF + FREE GIFTS</span>
-      <span class="announcement-bar__text">FREE SHAKER CUP ON 3+ TUBS</span>
-      <span class="announcement-bar__text">SUMMER SALE — UP TO 40% OFF + FREE GIFTS</span>
-      <span class="announcement-bar__text">FREE SHAKER CUP ON 3+ TUBS</span>
-    </div>
+  <!-- Top Banner -->
+  <div class="top-banner">
+    {{ section.settings.banner_text | default: 'SUMMER SALE — UP TO 40% OFF + FREE GIFTS' }}
   </div>
 
-  <!-- 2. Hero -->
-  <section class="hero" id="hero">
-    <div class="hero__badge">SUMMER DISCOUNT ACTIVE</div>
-    <h1 class="hero__headline">FUEL YOUR SUMMER</h1>
-    <p class="hero__subheadline">UP TO 40% OFF WITH FREE GIFTS</p>
-    <div class="hero__countdown" id="countdown">
-      <div class="hero__countdown-unit">
-        <span class="hero__countdown-number" id="countdown-days">00</span>
-        <span class="hero__countdown-label">Days</span>
+  <!-- Header Bar with countdown -->
+  <div class="header-bar">
+    <span class="header-bar__badge">&#9889; SUMMER SPECIAL</span>
+    <span class="header-bar__sub">UP TO 40% OFF WITH FREE GIFTS</span>
+    <div class="header-bar__timer-wrap">
+      <div class="header-bar__timer">
+        <span class="header-bar__timer-block" id="countdown-days">00</span>
+        <span class="header-bar__timer-sep">:</span>
+        <span class="header-bar__timer-block" id="countdown-hours">00</span>
+        <span class="header-bar__timer-sep">:</span>
+        <span class="header-bar__timer-block" id="countdown-minutes">00</span>
+        <span class="header-bar__timer-sep">:</span>
+        <span class="header-bar__timer-block" id="countdown-seconds">00</span>
       </div>
-      <span class="hero__countdown-sep">:</span>
-      <div class="hero__countdown-unit">
-        <span class="hero__countdown-number" id="countdown-hours">00</span>
-        <span class="hero__countdown-label">Hours</span>
-      </div>
-      <span class="hero__countdown-sep">:</span>
-      <div class="hero__countdown-unit">
-        <span class="hero__countdown-number" id="countdown-minutes">00</span>
-        <span class="hero__countdown-label">Minutes</span>
-      </div>
-      <span class="hero__countdown-sep">:</span>
-      <div class="hero__countdown-unit">
-        <span class="hero__countdown-number" id="countdown-seconds">00</span>
-        <span class="hero__countdown-label">Seconds</span>
-      </div>
-    </div>
-    <br>
-    <a href="#products" class="hero__cta">Shop Now</a>
-  </section>
-
-  <!-- 3. Social Proof Bar -->
-  <div class="social-proof">
-    <div class="social-proof__inner">
-      <div class="social-proof__item">
-        <span class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="social-proof__rating">4.8/5</span>
-        <span>from 12,000+ reviews</span>
-      </div>
-      <div class="social-proof__item">
-        <svg class="social-proof__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>30-Day Money-Back Guarantee</span>
-      </div>
-      <div class="social-proof__item">
-        <svg class="social-proof__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <span>Free Shipping on 2+ Tubs</span>
+      <div class="header-bar__timer-labels">
+        <span class="header-bar__timer-label">Days</span>
+        <span class="header-bar__timer-label">Hrs</span>
+        <span class="header-bar__timer-label">Min</span>
+        <span class="header-bar__timer-label">Sec</span>
       </div>
     </div>
   </div>
 
-  <!-- 4. Product Grid -->
-  <section class="products" id="products">
-    <h2 class="section-heading">Build Your Bundle</h2>
-    <div class="product-grid" id="product-grid">
-      <!-- Product cards rendered by gfuel-lander.js -->
-    </div>
-  </section>
+  <!-- Main Layout: Two Columns -->
+  <div class="main-layout">
 
-  <!-- 5. Tier Discount -->
-  <section class="tiers" id="tiers">
-    <h2 class="section-heading">More Tubs = Bigger Savings</h2>
-    <div class="tiers__grid">
-      <div class="tier-card" data-tier-min="2">
-        <div class="tier-card__qty">2 Tubs</div>
-        <div class="tier-card__discount">30% OFF</div>
-        <div class="tier-card__price">$25.19/tub</div>
-      </div>
-      <div class="tier-card" data-tier-min="3">
-        <div class="tier-card__qty">3 Tubs</div>
-        <div class="tier-card__discount">35% OFF</div>
-        <div class="tier-card__price">$23.39/tub</div>
-      </div>
-      <div class="tier-card" data-tier-min="4">
-        <span class="tier-card__best-badge">Best Deal</span>
-        <div class="tier-card__qty">4+ Tubs</div>
-        <div class="tier-card__discount">40% OFF</div>
-        <div class="tier-card__price">$21.59/tub</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Free Gift Ladder -->
-  <section class="gifts" id="gifts">
-    <h2 class="section-heading">Unlock Free Gifts</h2>
-    <div class="gifts__grid">
-      <div class="gift-card" id="gift-0" data-gift-min="2">
-        <div class="gift-card__check">
-          <span class="gift-card__check-icon">&#10003;</span>
+    <!-- Left: Marketing Column (hidden on mobile) -->
+    <div class="marketing">
+      <h1 class="marketing__headline">{{ section.settings.headline | default: 'ENERGY THAT FUELS YOUR GAME' }}</h1>
+      <p class="marketing__sub">{{ section.settings.subheadline | default: 'Sugar-Free &bull; 300mg Caffeine &bull; Focus + Energy Complex' }}</p>
+      <div class="marketing__benefits">
+        <div class="marketing__benefit">
+          <span class="marketing__benefit-icon">&#9889;</span>
+          Long-Lasting Energy, Zero Crash
         </div>
-        <div class="gift-card__info">
-          <div class="gift-card__title">4x Mystery Sampler Sticks</div>
-          <div class="gift-card__threshold">Add 2+ tubs to unlock</div>
+        <div class="marketing__benefit">
+          <span class="marketing__benefit-icon">&#127775;</span>
+          40 Servings Per Tub
         </div>
-        <div class="gift-card__value">$9.95 value</div>
+        <div class="marketing__benefit">
+          <span class="marketing__benefit-icon">&#128170;</span>
+          Focus &amp; Endurance Complex
+        </div>
+        <div class="marketing__benefit">
+          <span class="marketing__benefit-icon">&#127807;</span>
+          No Artificial Colors or Dyes
+        </div>
       </div>
-      <div class="gift-card" id="gift-1" data-gift-min="3">
-        <div class="gift-card__check">
-          <span class="gift-card__check-icon">&#10003;</span>
+      <div class="marketing__hero-image">
+        {% if section.settings.hero_image %}
+          <img src="{{ section.settings.hero_image | image_url: width: 800 }}" alt="G FUEL" style="width:100%;height:100%;object-fit:contain;">
+        {% else %}
+          [Hero Product Image]
+        {% endif %}
+      </div>
+      <div class="marketing__testimonial">
+        <div class="marketing__testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="marketing__testimonial-label">Obsessed</div>
+        <p class="marketing__testimonial-quote">"I've tried every energy drink out there and nothing comes close. The flavors are incredible, no crash, and the tubs last forever. Already on my third order!"</p>
+        <div class="marketing__testimonial-author">
+          <div class="marketing__testimonial-avatar"></div>
+          <div>
+            <div class="marketing__testimonial-name">Alex M.</div>
+            <div class="marketing__testimonial-verified">&#10003; Verified Buyer</div>
+          </div>
         </div>
-        <div class="gift-card__info">
-          <div class="gift-card__title">Free 24oz Shaker Cup</div>
-          <div class="gift-card__threshold">Add 3+ tubs to unlock</div>
-        </div>
-        <div class="gift-card__value">$14.95 value</div>
       </div>
     </div>
-  </section>
 
-  <!-- 7. Testimonial -->
-  <section class="testimonial">
-    <h2 class="section-heading">What Fans Are Saying</h2>
-    <div class="testimonial__card">
-      <div class="testimonial__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="testimonial__quote">"I've tried every energy drink out there and nothing comes close. The flavors are incredible, no crash, and the tubs last forever. Already on my third order!"</p>
-      <div>
-        <span class="testimonial__author">Alex M.</span>
-        <span class="testimonial__badge">&#10003; Verified Buyer</span>
+    <!-- Right: Shopping Column -->
+    <div class="shopping" id="shopping">
+
+      <!-- Trust Row -->
+      <div class="trust-row">
+        <div class="trust-row__item">
+          <span class="trust-row__label">No Subscription</span>
+          <span class="trust-row__sublabel">Same great price</span>
+        </div>
+        <div class="trust-row__sep"></div>
+        <div class="trust-row__item">
+          <div class="trust-row__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <span class="trust-row__label">&ldquo;Excellent&rdquo;</span>
+          <span class="trust-row__sublabel">12,000+ reviews</span>
+        </div>
+        <div class="trust-row__sep"></div>
+        <div class="trust-row__item">
+          <span class="trust-row__label">Crave-Worthy</span>
+          <span class="trust-row__sublabel">Flavor you&rsquo;ll want again</span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 8. Guarantee -->
-  <section class="guarantee">
-    <svg class="guarantee__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      <path d="M9 12l2 2 4-4"/>
-    </svg>
-    <h2 class="guarantee__title">30-Day Money-Back Guarantee</h2>
-    <p class="guarantee__text">If for any reason you don't love your G FUEL, return it for a full refund. No questions asked.</p>
-  </section>
+      <!-- Shopping Header -->
+      <div class="shopping__header">
+        <h2 class="shopping__headline">Save Up To <span>40%</span> Today With <span>FREE</span> Gifts</h2>
+        <div class="discount-label">
+          <span class="discount-label__dot"></span>
+          SUMMER DISCOUNT ACTIVE
+        </div>
+      </div>
 
-  <!-- 9. Footer -->
-  <footer style="text-align: center; padding: 24px 20px; color: var(--color-text-secondary); font-size: var(--fs-xs);">
+      <!-- Progress Bar -->
+      <div class="progress-section">
+        <!-- Milestone dots -->
+        <div class="progress-milestones">
+          <div class="progress-milestone" data-milestone="1">
+            <div class="progress-milestone__dot"></div>
+          </div>
+          <div class="progress-milestone" data-milestone="2">
+            <div class="progress-milestone__dot"></div>
+            <span class="progress-milestone__badge progress-milestone__badge--popular">Popular</span>
+          </div>
+          <div class="progress-milestone" data-milestone="3">
+            <div class="progress-milestone__dot"></div>
+          </div>
+          <div class="progress-milestone" data-milestone="4">
+            <div class="progress-milestone__dot"></div>
+            <span class="progress-milestone__badge progress-milestone__badge--best">Best Deal</span>
+          </div>
+        </div>
+        <!-- Fill bar -->
+        <div class="progress-bar">
+          <div class="progress-bar__track">
+            <div class="progress-bar__segment" data-meter="1"></div>
+            <div class="progress-bar__segment" data-meter="2"></div>
+            <div class="progress-bar__segment" data-meter="3"></div>
+            <div class="progress-bar__segment" data-meter="4"></div>
+          </div>
+        </div>
+        <!-- Prices below -->
+        <div class="progress-prices">
+          <div class="progress-price" data-price-tier="1" id="price-tier-1">
+            <div>$35.99/ea</div>
+          </div>
+          <div class="progress-price" data-price-tier="2" id="price-tier-2">
+            <div>$25.19/ea</div>
+            <div class="progress-price__discount">30% off</div>
+          </div>
+          <div class="progress-price" data-price-tier="3" id="price-tier-3">
+            <div>$23.39/ea</div>
+            <div class="progress-price__discount">35% off</div>
+          </div>
+          <div class="progress-price" data-price-tier="4" id="price-tier-4">
+            <div>$21.59/ea</div>
+            <div class="progress-price__discount">40% off</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product List -->
+      <div class="product-list" id="product-list">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Gift Section -->
+      <div class="gift-section">
+        <div class="gift-section__header">
+          <span class="gift-section__title">FREE Gifts with Your Order</span>
+          <span class="gift-section__badge">SUMMER SPECIAL</span>
+        </div>
+        <div class="gift-section__deadline">Exclusive gifts on orders placed by May 1st</div>
+        <div class="gift-section__grid" id="gift-grid">
+
+          <!-- Gift 0: Sampler Sticks (unlocks at 2) -->
+          <div class="gift-item" id="gift-0" data-gift-min="2">
+            <div class="gift-item__card">
+              <span class="gift-item__free-badge">FREE $9.95</span>
+              <div class="gift-item__inner">
+                <div class="gift-item__lock">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CFCFCF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                  <span class="gift-item__lock-text">2+ Tubs</span>
+                </div>
+                <div class="gift-item__content">
+                  {% if section.settings.gift_1_image %}
+                    <img src="{{ section.settings.gift_1_image | image_url: width: 200 }}" alt="Sampler Sticks">
+                  {% else %}
+                    <span class="gift-item__placeholder-unlocked">&#127867;</span>
+                  {% endif %}
+                </div>
+              </div>
+              <span class="gift-item__unlock-text">Add 2+ tubs</span>
+            </div>
+            <div class="gift-item__name">Sampler Sticks</div>
+            <div class="gift-item__value">$9.95 value</div>
+          </div>
+
+          <!-- Gift 1: Shaker Cup (unlocks at 3) -->
+          <div class="gift-item" id="gift-1" data-gift-min="3">
+            <div class="gift-item__card">
+              <span class="gift-item__free-badge">FREE $14.95</span>
+              <div class="gift-item__inner">
+                <div class="gift-item__lock">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CFCFCF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                  <span class="gift-item__lock-text">3+ Tubs</span>
+                </div>
+                <div class="gift-item__content">
+                  {% if section.settings.gift_2_image %}
+                    <img src="{{ section.settings.gift_2_image | image_url: width: 200 }}" alt="Shaker Cup">
+                  {% else %}
+                    <span class="gift-item__placeholder-unlocked">&#127863;</span>
+                  {% endif %}
+                </div>
+              </div>
+              <span class="gift-item__unlock-text">Add 3+ tubs</span>
+            </div>
+            <div class="gift-item__name">Shaker Cup</div>
+            <div class="gift-item__value">$14.95 value</div>
+          </div>
+
+          <!-- Gift 2: Free Shipping (unlocks at 2) -->
+          <div class="gift-item" id="gift-2" data-gift-min="2">
+            <div class="gift-item__card">
+              <span class="gift-item__free-badge">FREE $5.95</span>
+              <div class="gift-item__inner">
+                <div class="gift-item__lock">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CFCFCF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                  <span class="gift-item__lock-text">2+ Tubs</span>
+                </div>
+                <div class="gift-item__content">
+                  {% if section.settings.gift_3_image %}
+                    <img src="{{ section.settings.gift_3_image | image_url: width: 200 }}" alt="Free Shipping">
+                  {% else %}
+                    <span class="gift-item__placeholder-unlocked">&#128666;</span>
+                  {% endif %}
+                </div>
+              </div>
+              <span class="gift-item__unlock-text">Add 2+ tubs</span>
+            </div>
+            <div class="gift-item__name">Free Shipping</div>
+            <div class="gift-item__value">$5.95 value</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="cta-section">
+        <button class="cta-btn" id="cta-btn" disabled>
+          <span id="cta-text">Select at least 1 tub</span>
+          <span class="cta-btn__arrow">&#8594;</span>
+        </button>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee">
+        <div class="guarantee__card">
+          <svg class="guarantee__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          <div>
+            <div class="guarantee__label">Your order is protected by</div>
+            <div class="guarantee__title">30-Day Money-Back Guarantee</div>
+            <div class="guarantee__text">If for any reason you don&rsquo;t love your G FUEL, you can return it for a full refund. No questions asked.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /shopping -->
+  </div><!-- /main-layout -->
+
+  <!-- Footer -->
+  <footer class="page-footer">
     &copy; 2026 G FUEL. All rights reserved.
   </footer>
 
-  <!-- 10. Sticky Footer -->
-  <div class="sticky-footer" id="sticky-footer">
-    <div class="sticky-footer__inner">
-      <div class="sticky-footer__summary">
-        <span class="sticky-footer__items" id="footer-items">0 items</span>
-        <div class="sticky-footer__pricing">
-          <span class="sticky-footer__original" id="footer-original">$0.00</span>
-          <span class="sticky-footer__discounted" id="footer-discounted">$0.00</span>
-        </div>
-        <span class="sticky-footer__savings" id="footer-savings"></span>
-        <span class="sticky-footer__tier" id="footer-tier" style="display:none;"></span>
-        <span class="sticky-footer__gifts" id="footer-gifts"></span>
-      </div>
-      <!-- TODO: Wire to Shopify cart API (/cart/add.js) -->
-      <button class="sticky-footer__checkout" id="footer-checkout">Checkout</button>
-    </div>
-  </div>
-
-  <script src="gfuel-lander.js"></script>
+  <script>
+    window.GFUEL_SALE_END = {{ section.settings.sale_end_date | default: '2026-05-01T23:59:59' | json }};
+    window.GFUEL_BASE_PRICE = {{ section.settings.base_price | default: '35.99' | times: 1.0 }};
+    window.GFUEL_PRODUCTS = [
+      {% for product in section.settings.collection.products %}
+      {
+        id: {{ product.id }},
+        title: {{ product.title | json }},
+        desc: {{ product.description | strip_html | truncate: 80 | json }},
+        image: {{ product.featured_image | image_url: width: 200 | json }},
+        badge: '{% if product.tags contains "new" %}new{% elsif product.tags contains "best-seller" %}bestseller{% elsif product.tags contains "back-in-stock" %}backinstock{% elsif product.tags contains "gone-forever" %}gone{% elsif product.variants.first.inventory_quantity <= 5 and product.variants.first.inventory_quantity > 0 %}lowstock{% endif %}',
+        price: {{ product.price | times: 1.0 | divided_by: 100.0 }},
+        rating: 4.8,
+        stock: {{ product.variants.first.inventory_quantity | default: 99 }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+  </script>
+  {{ 'gfuel-lander.js' | asset_url | script_tag }}
 </body>
 </html>
+
+{% schema %}
+{
+  "name": "BMSM Lander",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Product Collection",
+      "info": "Choose which collection of products to display in the lander"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Product Image",
+      "info": "Main product image shown in the left marketing column"
+    },
+    {
+      "type": "image_picker",
+      "id": "gift_1_image",
+      "label": "Gift 1 Image (Sampler Sticks)",
+      "info": "Image for the mystery sampler sticks gift"
+    },
+    {
+      "type": "image_picker",
+      "id": "gift_2_image",
+      "label": "Gift 2 Image (Shaker Cup)",
+      "info": "Image for the shaker cup gift"
+    },
+    {
+      "type": "image_picker",
+      "id": "gift_3_image",
+      "label": "Gift 3 Image (Free Shipping)",
+      "info": "Image for the free shipping gift"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Hero Headline",
+      "default": "ENERGY THAT FUELS YOUR GAME"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Hero Subheadline",
+      "default": "Sugar-Free • 300mg Caffeine • Focus + Energy"
+    },
+    {
+      "type": "text",
+      "id": "sale_end_date",
+      "label": "Sale End Date",
+      "default": "2026-05-01T23:59:59",
+      "info": "Format: YYYY-MM-DDTHH:MM:SS"
+    },
+    {
+      "type": "text",
+      "id": "base_price",
+      "label": "Base Price Per Tub ($)",
+      "default": "35.99"
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Top Banner Text",
+      "default": "SUMMER SALE — UP TO 40% OFF + FREE GIFTS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BMSM Lander"
+    }
+  ]
+}
+{% endschema %}
