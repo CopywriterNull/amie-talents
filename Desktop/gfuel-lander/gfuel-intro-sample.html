@@ -108,26 +108,53 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .tcard__who{margin-top:auto;font-size:12px;color:var(--muted);font-weight:700;}
 .tcard__who .vb{color:var(--green);}
 
-/* what's in the box cards */
-.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.wcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;}
-.wcard__img{aspect-ratio:4/3;background:radial-gradient(120% 120% at 50% 30%,#faf7ff,#eee7fb);display:flex;align-items:center;justify-content:center;position:relative;}
-.wcard__img img{max-height:78%;max-width:64%;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(70,26,162,.2));}
-.wcard__tag{position:absolute;top:12px;left:12px;background:#fff;border:1px solid var(--line);color:var(--primary);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:var(--r-pill);}
-.wcard__b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1;}
-.wcard h3{font-size:16px;}
-.wcard p{font-size:13px;color:var(--muted);line-height:1.5;}
-.wcard .p{margin-top:auto;padding-top:10px;font-weight:800;font-size:14px;color:var(--green);}
-.wcard .p s{color:var(--muted);font-weight:600;margin-right:7px;}
-/* value bar */
-.vbar{margin-top:22px;background:var(--deep);color:#fff;border-radius:var(--r-lg);padding:20px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;box-shadow:0 20px 50px -24px rgba(36,1,100,.6);}
-.vbar__math{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:-.02em;flex-wrap:wrap;}
-.vbar__math s{color:rgba(255,255,255,.5);font-weight:700;}
-.vbar__math .ic{width:20px;height:20px;color:var(--accent);}
-.vbar__math .fr{color:var(--stars);}
-.vbar__math em{font-style:normal;font-size:12px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.06em;align-self:center;}
-.vbar .btn{background:var(--accent);color:var(--deep);padding:14px 28px;font-size:15px;}
-.vbar .btn:hover{background:#fff;box-shadow:0 14px 30px -12px rgba(59,191,239,.6);}
+/* what's in your box */
+.wib__head{text-align:center;max-width:720px;margin:0 auto 38px;position:relative;}
+.wib__eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--primary);}
+.wib__eyebrow .ic{width:19px;height:19px;}
+.wib__head h2{font-size:clamp(32px,5vw,54px);margin-top:12px;letter-spacing:-.03em;}
+.wib__head h2 .grad{background:linear-gradient(96deg,#461aa2,#8b45f6);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.wib__spark{position:absolute;color:var(--primary);}
+.wib__spark svg{width:34px;height:44px;}
+.wib__spark--l{left:-7%;top:44px;}
+.wib__spark--r{right:-7%;top:22px;color:#8b45f6;transform:scaleX(-1);}
+.wib__sub{color:var(--muted);margin-top:14px;font-size:15.5px;line-height:1.6;}
+.wib__sub .hl{display:block;color:var(--primary);font-weight:800;margin-top:4px;}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.wcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+.wcard__chip{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);box-shadow:0 2px 8px rgba(36,1,100,.07);color:var(--primary);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:7px 13px;border-radius:var(--r-pill);}
+.wcard__chip .ic{width:13px;height:13px;}
+.wcard__img{height:232px;display:flex;align-items:center;justify-content:center;margin:4px 0 10px;}
+.wcard__img img{max-height:96%;max-width:82%;object-fit:contain;filter:drop-shadow(0 16px 20px rgba(70,26,162,.18));}
+.wcard__title{display:flex;align-items:center;gap:11px;margin-bottom:8px;}
+.wcard__dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex:none;}
+.wcard__dot .ic{width:19px;height:19px;}
+.wcard__dot--purple{background:linear-gradient(135deg,#5907C4,#461aa2);}
+.wcard__dot--pink{background:linear-gradient(135deg,#ff5c9a,#ec1c7d);color:var(--stars);}
+.wcard__dot--blue{background:linear-gradient(135deg,#6fd4fa,#3bbfef);}
+.wcard h3{font-size:17px;}
+.wcard p{font-size:13.5px;color:var(--muted);line-height:1.55;}
+.wcard .p{margin-top:auto;padding-top:12px;font-weight:800;font-size:15px;color:var(--green);}
+.wcard .p s{color:var(--muted);font-weight:600;margin-right:9px;}
+/* offer bar */
+.obar{margin-top:26px;border-radius:20px;padding:22px 28px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;border:2px solid transparent;background-image:linear-gradient(#fdfcff,#fdfcff),linear-gradient(110deg,#8b45f6,#3bbfef);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 20px 50px -28px rgba(36,1,100,.35);}
+.obar__gift{width:52px;height:52px;border-radius:50%;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center;flex:none;}
+.obar__gift .ic{width:24px;height:24px;}
+.obar__stat{text-align:center;}
+.obar__stat .lb{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--text);}
+.obar__stat .v{display:block;font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.15;color:var(--text);}
+.obar__stat .v.pu{color:var(--primary);}
+.obar__stat .sm{display:block;font-size:13px;font-weight:700;color:var(--text);}
+.obar__sep{width:1px;align-self:stretch;background:var(--line);}
+.obar__list{display:flex;flex-direction:column;gap:9px;font-size:13.5px;font-weight:700;}
+.obar__list .it{display:flex;align-items:center;gap:9px;}
+.obar__list .ic{width:17px;height:17px;color:var(--primary);}
+.obar__cta{margin-left:auto;text-align:center;}
+.btn--glow{display:inline-flex;align-items:center;justify-content:center;gap:11px;background:linear-gradient(96deg,#ff9a1f,#ec1c7d);color:#fff;font-weight:800;font-size:17.5px;padding:18px 32px;border:none;border-radius:16px;text-decoration:none;box-shadow:0 16px 34px -12px rgb(236,28,125);transition:.22s cubic-bezier(.2,.7,.2,1);}
+.btn--glow:hover{transform:translateY(-2px);box-shadow:0 20px 40px -12px rgb(236,28,125);filter:brightness(1.05);}
+.btn--glow .ic{width:19px;height:19px;}
+.obar__secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;font-size:12px;color:var(--muted);font-weight:600;}
+.obar__secure .ic{width:13px;height:13px;}
 
 /* math strip — receipt style */
 .math__h{text-align:center;max-width:860px;margin:0 auto 26px;}
@@ -240,7 +267,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   .steps{grid-template-columns:1fr;max-width:440px;margin:0 auto;}
   .band{grid-template-columns:1fr;gap:26px;}
   .band__score{max-width:360px;margin:0 auto;}
-  .vbar{justify-content:center;text-align:center;}
+  .obar{justify-content:center;text-align:center;}
+  .obar__cta{margin:6px auto 0;width:100%;}
+  .obar__cta .btn--glow{width:100%;max-width:420px;}
+  .wib__spark{display:none;}
 }
 @media(max-width:600px){
   .sec{padding:44px 0;}
@@ -249,7 +279,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   .box__grid{grid-template-columns:1fr 1fr;}
   .bitem img{height:72px;}
   .pricestack .free{font-size:36px;}
-  .vbar__math{font-size:18px;}
+  .obar{padding:20px 18px;gap:18px;}
+  .obar__sep{display:none;}
+  .obar__stat{flex:1;min-width:90px;}
+  .obar__stat .v{font-size:24px;}
   .math__row{gap:11px;padding:14px 10px;}
   .math__row .mic{width:38px;height:38px;border-radius:10px;}
   .math__row .mic .ic{width:18px;height:18px;}
@@ -277,6 +310,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 <symbol id="i-ban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4 6l16 12M20 6 4 18M12 2l-2.5 2.5M12 2l2.5 2.5M12 22l-2.5-2.5M12 22l2.5-2.5M4 6l3.4.6M4 6l.6 3.4M20 18l-3.4-.6M20 18l-.6-3.4M20 6l-3.4.6M20 6l-.6 3.4M4 18l3.4-.6M4 18l.6-3.4"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v4H3zM5 11v9h14v-9M12 7v13M9.5 4.5 12 7l2.5-2.5"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 30" fill="currentColor"><path d="M8 0l1.8 5.6L15 7.5l-5.2 1.9L8 15l-1.8-5.6L1 7.5l5.2-1.9zM17 18l1.1 3.4 3.2 1.1-3.2 1.2L17 27l-1.1-3.3-3.2-1.2 3.2-1.1z"/></symbol>
+<symbol id="i-stick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="19" rx="2" transform="rotate(18 12 12)"/><path d="M8.8 8.3l6.6 2.1" transform="rotate(0)"/></symbol>
 <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v8h14v-8M12 8v12M12 8s-1.5-5-4.5-5C5 3 4.5 8 8 8zM12 8s1.5-5 4.5-5C19 3 19.5 8 16 8z"/></symbol>
 <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3M21 3v6h-6"/></symbol>
 <symbol id="i-palm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9c-1 4-2 8-1.5 12M12 9C10.5 6.5 8 5.5 5 6c1.5 1.5 3.5 2.5 7 3zM12 9c-.5-3 .5-5.5 3-7 .5 2-.5 4.5-3 7zM12 9c2.5-1.5 5-1.5 7.5 0-2 1.5-4.5 1.5-7.5 0z"/></symbol>
@@ -378,25 +415,54 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 
 <!-- what's in your box -->
 <section class="sec" id="claim-box"><div class="shell">
-  <div class="sec__head"><span class="eyebrow">What's In Your Box</span><h2>Three things, zero dollars</h2>
-    <p>Six single-serve sticks across two of our most-loved flavors, plus a real shaker so you can mix anywhere. All free — you only cover shipping.</p></div>
+  <div class="wib__head">
+    <span class="wib__spark wib__spark--l"><svg viewBox="0 0 24 30"><use href="#i-spark"/></svg></span>
+    <span class="wib__spark wib__spark--r"><svg viewBox="0 0 24 30"><use href="#i-spark"/></svg></span>
+    <span class="wib__eyebrow"><svg class="ic"><use href="#i-box"/></svg> What's In Your Box</span>
+    <h2>Three things, <span class="grad">zero dollars</span></h2>
+    <p class="wib__sub">Six single-serve sticks across two of our most-loved flavors,<br>plus a real shaker so you can mix anywhere.
+      <span class="hl">All free — you only cover shipping.</span></p>
+  </div>
   <div class="wgrid">
     <div class="wcard">
-      <div class="wcard__img"><span class="wcard__tag">3-Pack · 3 Sticks</span><img src="images/miami-nights-2-0.png" alt="Miami Nights 2.0"></div>
-      <div class="wcard__b"><h3>Miami Nights 2.0</h3><p>A Miami-Vice-inspired, juicy mix of strawberry, coconut, and pineapple.</p><div class="p"><s>$4.99</s>FREE</div></div>
+      <span class="wcard__chip"><svg class="ic"><use href="#i-stick"/></svg> 3-Pack · 3 Sticks</span>
+      <div class="wcard__img"><img src="images/miami-nights-2-0.png" alt="Miami Nights 2.0"></div>
+      <div class="wcard__title"><span class="wcard__dot wcard__dot--purple"><svg class="ic"><use href="#i-palm"/></svg></span><h3>Miami Nights 2.0</h3></div>
+      <p>A Miami-Vice-inspired, juicy mix of strawberry, coconut, and pineapple.</p>
+      <div class="p"><s>$4.99</s>FREE</div>
     </div>
     <div class="wcard">
-      <div class="wcard__img"><span class="wcard__tag">3-Pack · 3 Sticks</span><img src="images/hype-sauce-2-0.png" alt="Hype Sauce 2.0"></div>
-      <div class="wcard__b"><h3>Hype Sauce 2.0</h3><p>A mind-bending Raspberry + Lemonade flavor. It gets the people going.</p><div class="p"><s>$4.99</s>FREE</div></div>
+      <span class="wcard__chip"><svg class="ic"><use href="#i-stick"/></svg> 3-Pack · 3 Sticks</span>
+      <div class="wcard__img"><img src="images/hype-sauce-2-0.png" alt="Hype Sauce 2.0"></div>
+      <div class="wcard__title"><span class="wcard__dot wcard__dot--pink"><svg class="ic"><use href="#i-bolt"/></svg></span><h3>Hype Sauce 2.0</h3></div>
+      <p>A mind-bending Raspberry + Lemonade flavor. It gets the people going.</p>
+      <div class="p"><s>$4.99</s>FREE</div>
     </div>
     <div class="wcard">
-      <div class="wcard__img"><span class="wcard__tag">Full-Size 20oz</span><img src="images/free-shaker.png" alt="Winter White Shaker"></div>
-      <div class="wcard__b"><h3>Winter White Shaker</h3><p>A full-size 20oz shaker cup so you can mix and sip on the go.</p><div class="p"><s>$9.99</s>FREE</div></div>
+      <span class="wcard__chip"><svg class="ic"><use href="#i-cup"/></svg> Full-Size 20oz</span>
+      <div class="wcard__img"><img src="images/free-shaker.png" alt="Winter White Shaker"></div>
+      <div class="wcard__title"><span class="wcard__dot wcard__dot--blue"><svg class="ic"><use href="#i-snow"/></svg></span><h3>Winter White Shaker</h3></div>
+      <p>A full-size 20oz shaker cup so you can mix and sip on the go.</p>
+      <div class="p"><s>$9.99</s>FREE</div>
     </div>
   </div>
-  <div class="vbar">
-    <div class="vbar__math"><s>$19.97 value</s> <svg class="ic"><use href="#i-arrow"/></svg> <span class="fr">FREE</span> <em>Just $8.49 ship</em></div>
-    <a class="btn" href="#claim">Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
+  <div class="obar">
+    <div class="obar__gift"><svg class="ic"><use href="#i-gift"/></svg></div>
+    <div class="obar__stat"><span class="lb">Total Value</span><span class="v">$19.97</span><span class="sm">value</span></div>
+    <div class="obar__sep"></div>
+    <div class="obar__stat"><span class="lb">Yours For</span><span class="v pu">FREE</span></div>
+    <div class="obar__sep"></div>
+    <div class="obar__stat"><span class="lb">You Only Pay</span><span class="v">$8.49</span><span class="sm">shipping</span></div>
+    <div class="obar__sep"></div>
+    <div class="obar__list">
+      <span class="it"><svg class="ic"><use href="#i-ban"/></svg> No subscription</span>
+      <span class="it"><svg class="ic"><use href="#i-shield"/></svg> One-time offer</span>
+      <span class="it"><svg class="ic"><use href="#i-truck"/></svg> Just pay shipping</span>
+    </div>
+    <div class="obar__cta">
+      <a class="btn--glow" href="#claim"><svg class="ic"><use href="#i-gift"/></svg> Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <div class="obar__secure"><svg class="ic"><use href="#i-lock"/></svg> Secure checkout · Takes 30 seconds</div>
+    </div>
   </div>
 </div></section>
 
