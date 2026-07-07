@@ -89,6 +89,13 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .trustrow{display:flex;align-items:center;gap:18px;margin-top:14px;font-size:12.5px;color:var(--muted);font-weight:600;flex-wrap:wrap;}
 .trustrow .it{display:flex;align-items:center;gap:6px;}
 .trustrow .ic{width:15px;height:15px;color:var(--green);}
+.hero__cta2{display:none;}
+@media(max-width:960px){
+  .hero__cta2{display:block;text-align:center;margin-top:24px;}
+  .hero__cta2 .btn--glow{width:100%;max-width:440px;}
+  .hero__cta2 .sub{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--muted);}
+  .hero__cta2 .sub .ic{width:14px;height:14px;color:var(--green);}
+}
 
 /* hero offer card */
 .box{position:relative;background:linear-gradient(160deg,#f7f3ff,#ece3fb);border:1px solid var(--line);border-radius:20px;padding:52px 18px 18px;box-shadow:0 24px 60px -30px rgba(36,1,100,.35);}
@@ -241,6 +248,9 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 @media(max-width:700px){.hiw__note{border-radius:18px;text-align:center;flex-direction:column;}}
 .hiw__note .ic{width:20px;height:20px;color:#8b45f6;}
 .hiw__note b{color:#fff;}
+.hiw__cta{text-align:center;margin-top:30px;}
+.hiw__cta .sub{margin-top:12px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);}
+@media(max-width:640px){.hiw__cta .btn--glow{width:100%;max-width:420px;}}
 
 /* loved by thousands */
 .lband__head{text-align:center;margin-bottom:32px;}
@@ -352,9 +362,11 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   .hstep{max-width:440px;}
   .lband__bar{justify-content:center;text-align:center;}
   .btn--red{margin-left:0;width:100%;max-width:420px;}
-  .review__main{padding-right:0;}
-  .review__stars{position:static;order:-1;margin-left:auto;}
-  .review{flex-wrap:wrap;}
+  .review{flex-wrap:wrap;align-items:center;}
+  .review__ic{width:46px;height:46px;}
+  .review__ic .ic{width:20px;height:20px;}
+  .review__stars{position:static;margin-left:auto;}
+  .review__main{flex:1 1 100%;padding-right:0;margin-top:2px;order:2;}
   .band{grid-template-columns:1fr;gap:26px;}
   .band__score{max-width:360px;margin:0 auto;}
   .obar{justify-content:center;text-align:center;}
@@ -497,7 +509,12 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
       <em>Just $8.49 flat shipping</em>
     </div>
   </div>
-</div></div></section>
+</div>
+<div class="hero__cta2">
+  <a class="btn--glow" href="#claim-box"><svg class="ic"><use href="#i-gift"/></svg> Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
+  <div class="sub"><svg class="ic"><use href="#i-lock"/></svg> Secure checkout · $19.97 value, free — just $8.49 shipping</div>
+</div>
+</div></section>
 
 <!-- ticker -->
 <div class="ticker"><div class="ticker__in">
@@ -512,25 +529,6 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   <span class="it"><svg class="ic"><use href="#i-us"/></svg> Ships from the USA in 24h</span>
   <span class="it"><svg class="ic"><use href="#i-ban"/></svg> No subscription, ever</span>
 </div></div>
-
-<!-- social proof -->
-<section class="sec sec--tint"><div class="shell">
-  <div class="sec__head"><span class="eyebrow">First-Timers</span><h2>They started with this exact box</h2></div>
-  <div class="tgrid">
-    <div class="tcard"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span class="tcard__tag">Skeptic → Fan</span>
-      <p>"Figured $8.49 was a cheap way to call their bluff. Three weeks later I own a full tub of Miami Nights."</p>
-      <span class="tcard__who">Derek O. · <span class="vb">✓ Verified Buyer</span></span></div>
-    <div class="tcard"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span class="tcard__tag">Taste</span>
-      <p>"Hype Sauce tastes like raspberry lemonade from a boardwalk stand. Hard to believe it's zero sugar."</p>
-      <span class="tcard__who">Alexis M. · <span class="vb">✓ Verified Buyer</span></span></div>
-    <div class="tcard"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span class="tcard__tag">No Crash</span>
-      <p>"Smooth energy for a full afternoon of ranked. No jitters, no 2pm faceplant like the cans give me."</p>
-      <span class="tcard__who">Jordan K. · <span class="vb">✓ Verified Buyer</span></span></div>
-    <div class="tcard"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span class="tcard__tag">The Shaker</span>
-      <p>"Real 20oz shaker, not a flimsy freebie. Mixes clean with no clumps — I use it for everything now."</p>
-      <span class="tcard__who">Sana R. · <span class="vb">✓ Verified Buyer</span></span></div>
-  </div>
-</div></section>
 
 <!-- what's in your box -->
 <section class="sec" id="claim-box"><div class="shell">
@@ -667,6 +665,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
     </div>
   </div>
   <div class="hiw__note"><svg class="ic"><use href="#i-shield"/></svg> <span><b>No subscription. No hidden charges.</b> One-time order — we don't save your card or ask for anything you didn't ask for.</span></div>
+  <div class="hiw__cta">
+    <a class="btn--glow" href="#claim"><svg class="ic"><use href="#i-gift"/></svg> Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
+    <div class="sub">$19.97 of product, free — just $8.49 flat shipping</div>
+  </div>
 </div></section>
 
 <!-- loved by thousands -->
