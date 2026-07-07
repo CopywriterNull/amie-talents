@@ -197,30 +197,64 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .bcard p{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:6px;}
 
 /* how it works */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:step;}
-.step{position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:26px 22px 24px;}
-.step__n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--deep);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.step h3{font-size:16px;color:#fff;}
-.step p{font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;line-height:1.55;}
-.steps__note{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:22px;font-size:13px;font-weight:600;color:rgba(255,255,255,.8);text-align:center;flex-wrap:wrap;}
-.steps__note .ic{width:16px;height:16px;color:var(--accent);}
+.hiw{position:relative;background:linear-gradient(128deg,#1c0a40 0%,#2c0f63 48%,#1a093c 100%);color:#fff;overflow:hidden;}
+.hiw::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(115deg,transparent 2%,rgba(255,255,255,.05) 9%,transparent 16%),
+  linear-gradient(115deg,transparent 68%,rgba(255,255,255,.045) 80%,transparent 90%),
+  linear-gradient(115deg,transparent 30%,rgba(139,69,246,.10) 40%,transparent 52%);pointer-events:none;}
+.hiw>.shell{position:relative;z-index:1;}
+.hiw__head{text-align:center;margin-bottom:48px;}
+.hiw__badge{display:inline-block;background:#5907C4;color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:9px 20px;border-radius:var(--r-pill);box-shadow:0 8px 22px -8px rgba(89,7,196,.8);}
+.hiw__head h2{font-size:clamp(42px,6.4vw,74px);line-height:1.03;margin-top:20px;letter-spacing:-.035em;}
+.hiw__sw{display:inline-block;position:relative;}
+.hiw__sw .under{position:absolute;left:4%;bottom:-15px;width:92%;height:13px;color:#5907C4;}
+.hiw__steps{display:flex;align-items:flex-start;justify-content:center;gap:20px;}
+.hstep{display:flex;align-items:flex-start;gap:14px;max-width:330px;}
+.hstep__n{width:36px;height:36px;border-radius:50%;background:#5907C4;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 8px 20px -6px rgba(89,7,196,.8);}
+.hstep__icon{width:62px;height:62px;color:#fff;flex:none;margin-top:6px;}
+.hstep__icon svg{width:100%;height:100%;}
+.hstep__t{padding-top:2px;}
+.hstep__t h3{font-size:18px;color:#fff;}
+.hstep__t p{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:7px;line-height:1.55;}
+.hiw__arrow{color:#8b45f6;flex:none;align-self:center;margin-top:-8px;}
+.hiw__arrow svg{width:30px;height:30px;}
+.hiw__note{max-width:920px;margin:44px auto 0;display:flex;align-items:center;justify-content:center;gap:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:var(--r-pill);padding:14px 28px;font-size:13.5px;color:rgba(255,255,255,.82);text-align:left;}
+.hiw__note span{min-width:0;}
+@media(max-width:700px){.hiw__note{border-radius:18px;text-align:center;flex-direction:column;}}
+.hiw__note .ic{width:20px;height:20px;color:#8b45f6;}
+.hiw__note b{color:#fff;}
 
-/* big rating band */
-.band{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;}
-.band__score{text-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px 28px;box-shadow:var(--shadow);}
-.band__score .n{font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--primary);}
-.band__score .n em{font-style:normal;font-size:22px;color:var(--muted);font-weight:700;}
-.band__score .stars{margin:10px 0 6px;}
-.band__score .stars .ic{width:22px;height:22px;}
-.band__score p{font-size:13px;color:var(--muted);font-weight:600;}
+/* loved by thousands */
+.lband__head{text-align:center;margin-bottom:32px;}
+.eyebrow2{display:inline-flex;align-items:center;gap:12px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--primary);}
+.eyebrow2::before,.eyebrow2::after{content:"";width:28px;height:3px;border-radius:99px;background:var(--primary);}
+.band{display:grid;grid-template-columns:.86fr 1.14fr;gap:34px;align-items:center;}
+.band__score{text-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:44px 28px;box-shadow:var(--shadow);}
+.band__score .n{font-size:78px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--primary);}
+.band__score .n em{font-style:normal;font-size:26px;color:var(--muted);font-weight:700;}
+.band__score .stars{margin:14px 0 12px;}
+.band__score .stars .ic{width:26px;height:26px;}
+.band__score p{font-size:14.5px;color:var(--text);font-weight:600;line-height:1.5;}
 .rlist{display:flex;flex-direction:column;gap:12px;}
-.review{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 18px;box-shadow:var(--shadow);}
-.review .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;}
-.review .stars .ic{width:13px;height:13px;}
-.review h3{font-size:14px;}
-.review p{font-size:13px;color:var(--text);line-height:1.5;}
-.review .who{margin-top:8px;font-size:11.5px;color:var(--muted);font-weight:700;}
-.review .who .vb{color:var(--green);font-weight:800;}
+.review{position:relative;display:flex;align-items:flex-start;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);}
+.review__ic{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#5907C4,#461aa2);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;}
+.review__ic .ic{width:23px;height:23px;}
+.review__main{flex:1;min-width:0;padding-right:104px;}
+.review h3{font-size:15px;}
+.review p{font-size:13px;color:var(--text);line-height:1.5;margin-top:4px;}
+.review .who{display:flex;align-items:center;gap:6px;margin-top:9px;font-size:12px;color:var(--muted);font-weight:700;}
+.review .who .ic{width:15px;height:15px;color:var(--primary);}
+.review__stars{position:absolute;top:20px;right:20px;}
+.review__stars .ic{width:15px;height:15px;}
+/* value footer bar */
+.lband__bar{margin-top:22px;background:#1d0b42;color:#fff;border-radius:18px;padding:18px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 22px 55px -28px rgba(29,11,66,.75);}
+.lband__bar s{color:rgba(255,255,255,.5);font-size:19px;font-weight:700;}
+.lband__bar .sep{width:1px;height:30px;background:rgba(255,255,255,.16);}
+.lband__bar .fr{color:#2ede77;font-weight:800;font-size:25px;letter-spacing:.01em;}
+.lband__bar .ship{font-weight:800;font-size:15.5px;letter-spacing:.04em;text-transform:uppercase;}
+.btn--red{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(96deg,#ff2e51,#f2135f);color:#fff;font-weight:800;font-size:16.5px;padding:16px 30px;border:none;border-radius:14px;text-decoration:none;box-shadow:0 14px 32px -10px rgba(242,19,95,.6);transition:.22s cubic-bezier(.2,.7,.2,1);}
+.btn--red:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 18px 38px -10px rgba(242,19,95,.7);}
+.btn--red .ic{width:18px;height:18px;}
 
 /* faq */
 .faq{max-width:720px;margin:0 auto;}
@@ -264,7 +298,14 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   .tgrid{grid-template-columns:1fr 1fr;}
   .wgrid{grid-template-columns:1fr;max-width:440px;margin:0 auto;}
   .bgrid{grid-template-columns:1fr 1fr;}
-  .steps{grid-template-columns:1fr;max-width:440px;margin:0 auto;}
+  .hiw__steps{flex-direction:column;align-items:center;gap:26px;}
+  .hiw__arrow{display:none;}
+  .hstep{max-width:440px;}
+  .lband__bar{justify-content:center;text-align:center;}
+  .btn--red{margin-left:0;width:100%;max-width:420px;}
+  .review__main{padding-right:0;}
+  .review__stars{position:static;order:-1;margin-left:auto;}
+  .review{flex-wrap:wrap;}
   .band{grid-template-columns:1fr;gap:26px;}
   .band__score{max-width:360px;margin:0 auto;}
   .obar{justify-content:center;text-align:center;}
@@ -310,6 +351,12 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 <symbol id="i-ban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-box3d" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20l12-6 12 6-12 6z"/><path d="M12 20v12l12 6 12-6V20M24 26v12"/><path d="M12 20l-5-3 12-6 5 3zM36 20l5-3-12-6-5 3"/><path d="M9 8l.9 2.6L12.5 12l-2.6.9L9 15.5l-.9-2.6L5.5 12l2.6-1.4zM15 3l.6 1.7 1.7.6-1.7.7-.6 1.7-.6-1.7-1.7-.7 1.7-.6z"/></symbol>
+<symbol id="i-truck-b" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="24" height="18" rx="2"/><path d="M28 20h8l7 7v5h-15z"/><circle cx="13" cy="35.5" r="3.6"/><circle cx="36" cy="35.5" r="3.6"/><path d="M4 20h10M4 25h6"/></symbol>
+<symbol id="i-shakeg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14h14l-1.6 26H16.6zM13.5 20.5h17M17 9.5h10l1 4.5H16zM20 5h4"/><path d="M35 16c3 0 5 2.2 5 5s-2 5-5 5M35 16v10" opacity=".0"/><path d="M26 30.5a4.2 4.2 0 1 0-1.8 3.4l.3-.3M26 30.5v2.6" stroke-width="2.2"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-smile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.3 1.8 3.5 1.8 3.5-1.8 3.5-1.8"/><path d="M9 9.5h.01M15 9.5h.01" stroke-width="2.6"/></symbol>
+<symbol id="i-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.3a2 2 0 0 0 2-1.7l1.4-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></symbol>
 <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4 6l16 12M20 6 4 18M12 2l-2.5 2.5M12 2l2.5 2.5M12 22l-2.5-2.5M12 22l2.5-2.5M4 6l3.4.6M4 6l.6 3.4M20 18l-3.4-.6M20 18l-.6-3.4M20 6l-3.4.6M20 6l-.6 3.4M4 18l3.4-.6M4 18l.6-3.4"/></symbol>
 <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v4H3zM5 11v9h14v-9M12 7v13M9.5 4.5 12 7l2.5-2.5"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 30" fill="currentColor"><path d="M8 0l1.8 5.6L15 7.5l-5.2 1.9L8 15l-1.8-5.6L1 7.5l5.2-1.9zM17 18l1.1 3.4 3.2 1.1-3.2 1.2L17 27l-1.1-3.3-3.2-1.2 3.2-1.1z"/></symbol>
@@ -523,35 +570,78 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 </div></section>
 
 <!-- how it works -->
-<section class="sec sec--deep"><div class="shell">
-  <div class="sec__head"><span class="eyebrow" style="color:var(--accent)">How It Works</span><h2>Free to try. That simple.</h2></div>
-  <div class="steps">
-    <div class="step"><div class="step__n">1</div><h3>Claim your box</h3><p>Grab the two 3-packs + shaker. Product's free — you just pay shipping.</p></div>
-    <div class="step"><div class="step__n">2</div><h3>We ship it fast</h3><p>Ships from our US warehouse in 24 hours, arrives in a few days.</p></div>
-    <div class="step"><div class="step__n">3</div><h3>Mix, sip, decide</h3><p>Try both flavors. Love it? Come back for a full tub — no pressure, no auto-anything.</p></div>
+<section class="sec hiw"><div class="shell">
+  <div class="hiw__head">
+    <span class="hiw__badge">How It Works</span>
+    <h2>Free to try.<br><span class="hiw__sw">That simple.<svg class="under" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M4 8 Q 100 2 196 7"/></svg></span></h2>
   </div>
-  <div class="steps__note"><svg class="ic"><use href="#i-shield"/></svg> No subscription, no hidden charges. One-time order — we don't save your card for anything you didn't ask for.</div>
+  <div class="hiw__steps">
+    <div class="hstep">
+      <div class="hstep__n">1</div>
+      <div class="hstep__icon"><svg viewBox="0 0 48 48"><use href="#i-box3d"/></svg></div>
+      <div class="hstep__t"><h3>Claim your box</h3><p>Grab the two 3-packs + shaker. Products are free — you just pay shipping.</p></div>
+    </div>
+    <div class="hiw__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="hstep">
+      <div class="hstep__n">2</div>
+      <div class="hstep__icon"><svg viewBox="0 0 48 48"><use href="#i-truck-b"/></svg></div>
+      <div class="hstep__t"><h3>We ship it fast</h3><p>Ships from our US warehouses in 24 hours, arrives in a few days.</p></div>
+    </div>
+    <div class="hiw__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="hstep">
+      <div class="hstep__n">3</div>
+      <div class="hstep__icon"><svg viewBox="0 0 48 48"><use href="#i-shakeg"/></svg></div>
+      <div class="hstep__t"><h3>Mix, sip, decide</h3><p>Try both flavors. Love it? Come back for a full tub — no pressure, no auto-anything.</p></div>
+    </div>
+  </div>
+  <div class="hiw__note"><svg class="ic"><use href="#i-shield"/></svg> <span><b>No subscription. No hidden charges.</b> One-time order — we don't save your card or ask for anything you didn't ask for.</span></div>
 </div></section>
 
-<!-- rating band + reviews -->
+<!-- loved by thousands -->
 <section class="sec sec--tint"><div class="shell">
+  <div class="lband__head"><span class="eyebrow2">Loved by Thousands</span></div>
   <div class="band">
     <div class="band__score">
       <div class="n">4.9<em>/5</em></div>
       <div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div>
-      <p>368,000+ five-star reviews across G FUEL</p>
+      <p>368,000+ five-star reviews<br>across G FUEL</p>
     </div>
     <div class="rlist">
-      <div class="review"><div class="top"><h3>The free box got me. The flavor kept me.</h3><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></div>
-        <p>I only ordered because it was free. Now Miami Nights is my daily driver and the cans in my fridge are collecting dust.</p>
-        <span class="who"><span class="vb">✓</span> Chris L. · Verified Buyer</span></div>
-      <div class="review"><div class="top"><h3>Actually zero catch</h3><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></div>
-        <p>Paid $8.49, got exactly what was promised, nobody billed me later. Refreshing honesty — and the shaker is legit.</p>
-        <span class="who"><span class="vb">✓</span> Monica V. · Verified Buyer</span></div>
-      <div class="review"><div class="top"><h3>Perfect way to test flavors</h3><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span></div>
-        <p>Tubs are 40 servings, so trying sticks first is the smart move. Both flavors hit — went with Hype Sauce for my first full tub.</p>
-        <span class="who"><span class="vb">✓</span> Isaiah D. · Verified Buyer</span></div>
+      <div class="review">
+        <div class="review__ic"><svg class="ic"><use href="#i-chat"/></svg></div>
+        <div class="review__main">
+          <h3>The free box got me. The flavor kept me.</h3>
+          <p>I only ordered because it was free. Now Miami Nights is my daily driver and the cans in my fridge are collecting dust.</p>
+          <span class="who"><svg class="ic"><use href="#i-check-c"/></svg> Chris L. · Verified Buyer</span>
+        </div>
+        <span class="stars review__stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+      </div>
+      <div class="review">
+        <div class="review__ic"><svg class="ic"><use href="#i-smile"/></svg></div>
+        <div class="review__main">
+          <h3>Actually zero catch</h3>
+          <p>Paid $8.49, got exactly what was promised, nobody billed me later. Refreshing honesty — and the shaker is legit.</p>
+          <span class="who"><svg class="ic"><use href="#i-check-c"/></svg> Monica V. · Verified Buyer</span>
+        </div>
+        <span class="stars review__stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+      </div>
+      <div class="review">
+        <div class="review__ic"><svg class="ic"><use href="#i-thumb"/></svg></div>
+        <div class="review__main">
+          <h3>Perfect way to test flavors</h3>
+          <p>Tubs are 40 servings, so trying sticks first is the smart move. Both flavors hit — went with Hype Sauce for my first full tub.</p>
+          <span class="who"><svg class="ic"><use href="#i-check-c"/></svg> Isaiah D. · Verified Buyer</span>
+        </div>
+        <span class="stars review__stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+      </div>
     </div>
+  </div>
+  <div class="lband__bar">
+    <s>$19.97 value</s>
+    <span class="sep"></span>
+    <span class="fr">FREE</span>
+    <span class="ship">Just $8.49 Ship</span>
+    <a class="btn--red" href="#claim">Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
   </div>
 </div></section>
 
