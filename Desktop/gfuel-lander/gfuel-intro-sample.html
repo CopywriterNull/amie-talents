@@ -6,7 +6,7 @@
 <title>Try G FUEL Free — Just Cover Shipping | $19.97 Value</title>
 <meta name="description" content="Your first G FUEL is on us. Two fan-favorite flavors + a full-size shaker, free — just cover $8.49 flat shipping. No subscription. No catch.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap');
 /* Grüns-level rebuild of gfuel.com/pages/intro-sample — same offer, elevated funnel + full G FUEL skin. */
 :root{
   --primary:#461aa2;--deep:#240164;--accent:#3bbfef;--stars:#f5b800;
@@ -67,7 +67,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .pricestack .chip{background:rgba(26,163,90,.11);color:var(--green);border:1px solid rgba(26,163,90,.3);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:6px 12px;border-radius:var(--r-pill);}
 .hero__ship{font-size:14px;color:var(--muted);margin-bottom:22px;}
 .hero__ship b{color:var(--text);}
-.hero__cta .btn{width:100%;max-width:420px;font-size:17px;}
+.hero__cta .btn--glow{width:100%;max-width:440px;font-size:17.5px;}
 .trustrow{display:flex;align-items:center;gap:18px;margin-top:14px;font-size:12.5px;color:var(--muted);font-weight:600;flex-wrap:wrap;}
 .trustrow .it{display:flex;align-items:center;gap:6px;}
 .trustrow .ic{width:15px;height:15px;color:var(--green);}
@@ -185,7 +185,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .math__foot .ic{width:17px;height:17px;color:var(--text);}
 .math__foot b{color:var(--text);}
 .math__cta{text-align:center;margin-top:22px;}
-.math__cta .btn{font-size:16.5px;padding:16px 44px;}
+.math__cta .btn--glow{font-size:16.5px;padding:17px 44px;}
 
 /* why gfuel */
 .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
@@ -256,27 +256,58 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .btn--red:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 18px 38px -10px rgba(242,19,95,.7);}
 .btn--red .ic{width:18px;height:18px;}
 
-/* faq */
-.faq{max-width:720px;margin:0 auto;}
-.faq__item{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow);}
-.faq__q{width:100%;background:none;border:none;text-align:left;padding:17px 20px;font-weight:700;font-size:14.5px;display:flex;justify-content:space-between;align-items:center;gap:14px;}
-.faq__q .ic{width:18px;height:18px;color:var(--primary);transition:.2s;}
-.faq__item.open .faq__q .ic{transform:rotate(45deg);}
-.faq__a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
-.faq__a p{padding:0 20px 17px;font-size:13.5px;color:var(--muted);line-height:1.6;}
+/* faq grid */
+.faqg__head{text-align:center;margin-bottom:36px;}
+.faqg__eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:13.5px;color:var(--text);}
+.faqg__eyebrow .ic{width:20px;height:20px;color:var(--primary);}
+.faqg__head h2{font-size:clamp(32px,5vw,54px);margin-top:14px;letter-spacing:-.03em;}
+.faqg__head .sw{position:relative;display:inline-block;background:linear-gradient(96deg,#461aa2,#8b45f6);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.faqg__head .sw .under{position:absolute;left:2%;bottom:-9px;width:96%;height:11px;color:#5907C4;}
+.faqg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fq{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px 20px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:flex-start;cursor:pointer;text-align:left;width:100%;}
+.fq__ic{width:54px;height:54px;border-radius:14px;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center;flex:none;}
+.fq__ic .ic{width:25px;height:25px;}
+.fq__main{display:block;flex:1;min-width:0;}
+.fq__main h3{font-size:15.5px;line-height:1.3;}
+.fq__main .short{display:block;font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.5;}
+.fq__more{display:block;max-height:0;overflow:hidden;transition:max-height .25s ease;}
+.fq__more p{font-size:13px;color:var(--muted);padding-top:9px;line-height:1.6;}
+.fq__plus{flex:none;color:var(--primary);margin-top:6px;transition:.2s;background:none;border:none;}
+.fq__plus svg{width:19px;height:19px;}
+.fq.open .fq__plus{transform:rotate(45deg);}
 
-/* final cta */
-.final{text-align:center;position:relative;overflow:hidden;}
-.final h2{font-size:clamp(28px,4vw,42px);}
-.final .sub{color:rgba(255,255,255,.78);margin:14px auto 8px;max-width:520px;}
-.final .pricestack{justify-content:center;margin:18px 0 4px;}
-.final .pricestack .free{color:var(--stars);font-size:40px;}
-.final .pricestack s{color:rgba(255,255,255,.5);}
-.final .btn{background:var(--accent);color:var(--deep);margin-top:14px;font-size:17px;}
-.final .btn:hover{background:#fff;box-shadow:0 14px 30px -12px rgba(59,191,239,.6);}
-.final__fine{margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.55);}
-.final .trustrow{justify-content:center;margin-top:18px;color:rgba(255,255,255,.65);}
-.final .trustrow .ic{color:var(--accent);}
+/* final cta banner */
+.fcta-wrap{padding:16px 0 78px;}
+.fcta{position:relative;background:radial-gradient(130% 170% at 18% 24%,#3c157c 0%,#250a52 48%,#190740 100%);color:#fff;border-radius:28px;padding:46px 50px 26px;overflow:hidden;box-shadow:0 34px 80px -34px rgba(29,11,66,.75);}
+.fcta::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(46% 60% at 12% 78%,rgba(139,69,246,.3),transparent 70%),
+  linear-gradient(115deg,transparent 60%,rgba(255,255,255,.045) 74%,transparent 86%);pointer-events:none;}
+.fcta__grid{position:relative;display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:center;}
+.fcta__vis{position:relative;height:350px;}
+.fcta__vis img{position:absolute;object-fit:contain;}
+.fcta__vis .shaker{left:-6%;bottom:0;height:90%;z-index:1;filter:drop-shadow(0 26px 32px rgba(0,0,0,.5));}
+.fcta__vis .packA{left:24%;top:3%;height:60%;transform:rotate(-7deg);z-index:2;filter:drop-shadow(0 20px 28px rgba(0,0,0,.55));}
+.fcta__vis .packB{left:37%;top:37%;height:58%;transform:rotate(6deg);z-index:3;filter:drop-shadow(0 20px 28px rgba(0,0,0,.55));}
+.fcta__badge{position:absolute;right:0;top:2%;width:106px;height:106px;border-radius:50%;background:#2b0e63;border:2px solid #8b45f6;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:4;box-shadow:0 14px 34px rgba(0,0,0,.45);text-align:center;}
+.fcta__badge b{font-size:21px;font-weight:800;letter-spacing:-.02em;}
+.fcta__badge span{font-size:10.5px;font-weight:800;letter-spacing:.1em;margin-top:1px;}
+.fcta__t h2{font-size:clamp(34px,4.8vw,56px);letter-spacing:-.03em;line-height:1.04;}
+.fcta__onus{color:#ff2e6e;position:relative;display:inline-block;}
+.fcta__onus .under{position:absolute;left:2%;bottom:-12px;width:96%;height:11px;color:#ff2e6e;}
+.fcta__sub{color:rgba(255,255,255,.82);margin-top:18px;font-size:16.5px;max-width:580px;line-height:1.55;}
+.fcta__offer{display:flex;align-items:flex-start;gap:36px;margin-top:26px;flex-wrap:wrap;}
+.fcta__price .big{font-size:56px;font-weight:800;color:var(--stars);letter-spacing:-.02em;line-height:1;}
+.fcta__price s{color:rgba(255,255,255,.45);font-size:17px;font-weight:700;margin-left:12px;}
+.fcta__hand{display:flex;align-items:flex-start;gap:7px;margin-top:12px;font-family:"Caveat",cursive;font-size:24px;font-weight:600;line-height:1.12;color:#fff;}
+.fcta__hand .arr{flex:none;width:30px;height:26px;color:#fff;margin-top:4px;}
+.fcta__hand .pk{color:#ff2e6e;}
+.btn--neon{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(96deg,#ff2e51,#f2135f);border:2px solid rgba(255,122,168,.85);color:#fff;font-weight:800;font-size:19px;padding:20px 42px;border-radius:18px;text-decoration:none;box-shadow:0 0 0 5px rgba(242,19,95,.22),0 20px 44px -12px rgba(242,19,95,.75);transition:.22s cubic-bezier(.2,.7,.2,1);align-self:center;}
+.btn--neon:hover{transform:translateY(-2px);filter:brightness(1.07);}
+.btn--neon .ic{width:20px;height:20px;}
+.fcta__foot{position:relative;display:flex;align-items:center;justify-content:center;margin-top:34px;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;flex-wrap:wrap;gap:10px 0;}
+.fcta__foot .it{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:700;padding:0 28px;}
+.fcta__foot .it .ic{width:18px;height:18px;color:#c9b3ff;}
+.fcta__foot .div{width:1px;height:22px;background:rgba(255,255,255,.16);}
 
 /* footer */
 .ft{background:#fff;border-top:1px solid var(--line);padding:28px 0;}
@@ -291,7 +322,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .mcta__price{flex:none;text-align:left;}
 .mcta__price b{display:block;font-size:16px;color:var(--primary);}
 .mcta__price s{font-size:11.5px;color:var(--muted);}
-.mcta .btn{flex:1;padding:13px 18px;font-size:14.5px;}
+.mcta .btn--glow{flex:1;padding:14px 18px;font-size:14.5px;border-radius:14px;}
 
 @media(max-width:960px){
   .hero__grid{grid-template-columns:1fr;gap:34px;}
@@ -312,6 +343,16 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   .obar__cta{margin:6px auto 0;width:100%;}
   .obar__cta .btn--glow{width:100%;max-width:420px;}
   .wib__spark{display:none;}
+  .faqg{grid-template-columns:1fr;}
+  .fcta{padding:34px 26px 20px;}
+  .fcta__grid{grid-template-columns:1fr;gap:30px;}
+  .fcta__vis{height:300px;max-width:440px;margin:0 auto;width:100%;}
+  .fcta__t{text-align:center;}
+  .fcta__sub{margin-left:auto;margin-right:auto;}
+  .fcta__offer{justify-content:center;}
+  .fcta__price{text-align:left;}
+  .btn--neon{width:100%;max-width:440px;}
+  .fcta__foot .it{padding:0 14px;}
 }
 @media(max-width:600px){
   .sec{padding:44px 0;}
@@ -365,6 +406,8 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3M21 3v6h-6"/></symbol>
 <symbol id="i-palm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9c-1 4-2 8-1.5 12M12 9C10.5 6.5 8 5.5 5 6c1.5 1.5 3.5 2.5 7 3zM12 9c-.5-3 .5-5.5 3-7 .5 2-.5 4.5-3 7zM12 9c2.5-1.5 5-1.5 7.5 0-2 1.5-4.5 1.5-7.5 0z"/></symbol>
 <symbol id="i-us" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20M6 15h4"/></symbol>
+<symbol id="i-qchat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9.6 8.2a2.6 2.6 0 0 1 4.9 1c0 1.6-2.3 2-2.3 3.2M12.1 15h.01" stroke-width="1.8"/></symbol>
 </defs></svg>
 
 <!-- announcement bar -->
@@ -388,7 +431,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
       <span class="chip">You pay $0 for the product</span>
     </div>
     <p class="hero__ship">Just a flat <b>$8.49 shipping</b> — that's the whole cost. <b>No subscription. No catch.</b></p>
-    <div class="hero__cta"><a class="btn" href="#claim-box">Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+    <div class="hero__cta"><a class="btn--glow" href="#claim-box"><svg class="ic"><use href="#i-gift"/></svg> Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a></div>
     <div class="trustrow">
       <span class="it"><svg class="ic"><use href="#i-lock"/></svg> Secure checkout</span>
       <span class="it"><svg class="ic"><use href="#i-us"/></svg> Ships from the USA</span>
@@ -400,13 +443,13 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
     <span class="box__badge">Free · You Cover Shipping</span>
     <div class="box__grid">
       <div class="bitem">
-        <img src="images/miami-nights-2-0.png" alt="Miami Nights 2.0 sample 3-pack">
+        <img src="images/miami-nights-3pack.png" alt="Miami Nights 2.0 sample 3-pack">
         <b>Miami Nights 2.0</b>
         <span>Strawberry · Coconut · Pineapple</span>
         <div class="p"><s>$4.99</s>FREE</div>
       </div>
       <div class="bitem">
-        <img src="images/hype-sauce-2-0.png" alt="Hype Sauce 2.0 sample 3-pack">
+        <img src="images/hype-sauce-3pack.png" alt="Hype Sauce 2.0 sample 3-pack">
         <b>Hype Sauce 2.0</b>
         <span>Raspberry Lemonade</span>
         <div class="p"><s>$4.99</s>FREE</div>
@@ -473,14 +516,14 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   <div class="wgrid">
     <div class="wcard">
       <span class="wcard__chip"><svg class="ic"><use href="#i-stick"/></svg> 3-Pack · 3 Sticks</span>
-      <div class="wcard__img"><img src="images/miami-nights-2-0.png" alt="Miami Nights 2.0"></div>
+      <div class="wcard__img"><img src="images/miami-nights-3pack.png" alt="Miami Nights 2.0 3-pack"></div>
       <div class="wcard__title"><span class="wcard__dot wcard__dot--purple"><svg class="ic"><use href="#i-palm"/></svg></span><h3>Miami Nights 2.0</h3></div>
       <p>A Miami-Vice-inspired, juicy mix of strawberry, coconut, and pineapple.</p>
       <div class="p"><s>$4.99</s>FREE</div>
     </div>
     <div class="wcard">
       <span class="wcard__chip"><svg class="ic"><use href="#i-stick"/></svg> 3-Pack · 3 Sticks</span>
-      <div class="wcard__img"><img src="images/hype-sauce-2-0.png" alt="Hype Sauce 2.0"></div>
+      <div class="wcard__img"><img src="images/hype-sauce-3pack.png" alt="Hype Sauce 2.0 3-pack"></div>
       <div class="wcard__title"><span class="wcard__dot wcard__dot--pink"><svg class="ic"><use href="#i-bolt"/></svg></span><h3>Hype Sauce 2.0</h3></div>
       <p>A mind-bending Raspberry + Lemonade flavor. It gets the people going.</p>
       <div class="p"><s>$4.99</s>FREE</div>
@@ -555,7 +598,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
     </div>
   </div>
   <p class="math__foot"><svg class="ic"><use href="#i-shield"/></svg><span>6 canned energy drinks cost about <b>$20.94</b> — and they don't include a shaker or give you crash-free energy.</span></p>
-  <div class="math__cta"><a class="btn" href="#claim">Claim Your Sample <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+  <div class="math__cta"><a class="btn--glow" href="#claim"><svg class="ic"><use href="#i-gift"/></svg> Claim Your Sample <svg class="ic"><use href="#i-arrow"/></svg></a></div>
 </div></section>
 
 <!-- why gfuel -->
@@ -647,39 +690,96 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 
 <!-- faq -->
 <section class="sec"><div class="shell">
-  <div class="sec__head"><span class="eyebrow">Questions</span><h2>The honest answers</h2></div>
-  <div class="faq">
-    <div class="faq__item"><button class="faq__q">Is it really free?<svg class="ic"><use href="#i-plus"/></svg></button>
-      <div class="faq__a"><p>Yes — the two 3-packs and the shaker ($19.97 of product) are free. You only pay a flat $8.49 shipping to get it to your door. That's the entire cost, shown before checkout.</p></div></div>
-    <div class="faq__item"><button class="faq__q">Is this a subscription or free trial that bills me later?<svg class="ic"><use href="#i-plus"/></svg></button>
-      <div class="faq__a"><p>No. It's a one-time order — you pay $8.49 once and that's it. There's no subscription attached, no trial that converts, and we don't store your card for future charges you didn't ask for.</p></div></div>
-    <div class="faq__item"><button class="faq__q">What flavors do I get?<svg class="ic"><use href="#i-plus"/></svg></button>
-      <div class="faq__a"><p>Miami Nights 2.0 (strawberry, coconut, pineapple) and Hype Sauce 2.0 (raspberry lemonade) — three single-serve sticks of each. They're two of our highest-rated flavors, so your first sip is our best foot forward.</p></div></div>
-    <div class="faq__item"><button class="faq__q">What's the catch?<svg class="ic"><use href="#i-plus"/></svg></button>
-      <div class="faq__a"><p>Honestly? We're betting you'll love it. Samples are the cheapest marketing we do — most people who try G FUEL come back for a full 40-serving tub on their own. If you don't, you're out $8.49 and you keep the shaker. Limit one box per customer.</p></div></div>
-    <div class="faq__item"><button class="faq__q">How fast does it ship?<svg class="ic"><use href="#i-plus"/></svg></button>
-      <div class="faq__a"><p>Orders ship from our US warehouse within 24 hours on business days and typically arrive within 3–5 days in the continental US.</p></div></div>
-    <div class="faq__item"><button class="faq__q">How much caffeine is in each stick?<svg class="ic"><use href="#i-plus"/></svg></button>
-      <div class="faq__a"><p>140mg per serving — about one strong cup of coffee — plus the Formula 2.0 focus complex, vitamins, and antioxidants. Zero sugar, so there's no crash on the other side.</p></div></div>
+  <div class="faqg__head">
+    <span class="faqg__eyebrow"><svg class="ic"><use href="#i-qchat"/></svg> Questions? We Got You.</span>
+    <h2>The <span class="sw">honest<svg class="under" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M4 8 Q 100 2 196 7"/></svg></span> answers.</h2>
+  </div>
+  <div class="faqg">
+    <button class="fq">
+      <span class="fq__ic"><svg class="ic"><use href="#i-shield"/></svg></span>
+      <span class="fq__main"><h3>Is it really free?</h3>
+        <span class="short">Yes. The product is 100% free.</span>
+        <span class="fq__more"><p>The two 3-packs and the shaker ($19.97 of product) cost you $0. The flat $8.49 covers shipping and handling — the entire cost, shown before checkout.</p></span>
+      </span>
+      <span class="fq__plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+    </button>
+    <button class="fq">
+      <span class="fq__ic"><svg class="ic"><use href="#i-gift"/></svg></span>
+      <span class="fq__main"><h3>What's the catch?</h3>
+        <span class="short">There's no catch. You just pay $8.49 shipping.</span>
+        <span class="fq__more"><p>We're betting you'll love it — samples are the cheapest marketing we do. If you don't come back for a full tub, you're out $8.49 and you keep the shaker. Limit one box per customer.</p></span>
+      </span>
+      <span class="fq__plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+    </button>
+    <button class="fq">
+      <span class="fq__ic"><svg class="ic"><use href="#i-card"/></svg></span>
+      <span class="fq__main"><h3>Is this a subscription or free trial that bills me later?</h3>
+        <span class="short">Nope. One-time order. No subscription. No surprise charges.</span>
+        <span class="fq__more"><p>You pay $8.49 once and that's it. There's no trial that converts and we don't store your card for future charges you didn't ask for.</p></span>
+      </span>
+      <span class="fq__plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+    </button>
+    <button class="fq">
+      <span class="fq__ic"><svg class="ic"><use href="#i-truck"/></svg></span>
+      <span class="fq__main"><h3>How fast does it ship?</h3>
+        <span class="short">Ships from our US warehouse. Arrives in 2–5 days.</span>
+        <span class="fq__more"><p>Orders ship within 24 hours on business days and typically arrive within 3–5 days in the continental US.</p></span>
+      </span>
+      <span class="fq__plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+    </button>
+    <button class="fq">
+      <span class="fq__ic"><svg class="ic"><use href="#i-leaf"/></svg></span>
+      <span class="fq__main"><h3>What flavors do I get?</h3>
+        <span class="short">You'll get Miami Nights 2.0 and Hype Sauce 2.0.</span>
+        <span class="fq__more"><p>Three single-serve sticks each of Miami Nights 2.0 (strawberry, coconut, pineapple) and Hype Sauce 2.0 (raspberry lemonade) — two of our highest-rated flavors.</p></span>
+      </span>
+      <span class="fq__plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+    </button>
+    <button class="fq">
+      <span class="fq__ic"><svg class="ic"><use href="#i-bolt"/></svg></span>
+      <span class="fq__main"><h3>How much caffeine is in each stick?</h3>
+        <span class="short">Each stick has 140mg of clean caffeine + no crash.</span>
+        <span class="fq__more"><p>About one strong cup of coffee, plus the Formula 2.0 focus complex, vitamins, and antioxidants. Zero sugar, so there's no crash on the other side.</p></span>
+      </span>
+      <span class="fq__plus"><svg viewBox="0 0 24 24"><use href="#i-plus"/></svg></span>
+    </button>
   </div>
 </div></section>
 
-<!-- final cta -->
-<section class="sec sec--deep final"><div class="shell">
-  <h2>Your first G FUEL is on us.</h2>
-  <p class="sub">Two flavors + a shaker, free. Just cover the flat $8.49 shipping — no subscription, no catch.</p>
-  <div class="pricestack">
-    <span class="free">FREE</span>
-    <s>$19.97 value</s>
+<!-- final cta banner -->
+<div class="fcta-wrap"><div class="shell">
+  <div class="fcta">
+    <div class="fcta__grid">
+      <div class="fcta__vis">
+        <img class="shaker" src="images/free-shaker-cutout.png" alt="Winter White Shaker">
+        <img class="packA" src="images/miami-nights-3pack.png" alt="Miami Nights 2.0 3-pack">
+        <img class="packB" src="images/hype-sauce-3pack.png" alt="Hype Sauce 2.0 3-pack">
+        <div class="fcta__badge"><b>$19.97</b><span>VALUE</span></div>
+      </div>
+      <div class="fcta__t">
+        <h2>Your first G FUEL is <span class="fcta__onus">on us.<svg class="under" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M4 8 Q 100 2 196 7"/></svg></span></h2>
+        <p class="fcta__sub">Two flavors + a shaker, free. Just cover the flat $8.49 shipping — no subscription, no catch.</p>
+        <div class="fcta__offer">
+          <div class="fcta__price">
+            <span class="big">FREE</span><s>$19.97 value</s>
+            <div class="fcta__hand">
+              <svg class="arr" viewBox="0 0 30 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4c2 9 8 14 20 15M23 19l-4.5 1.5M23 19l-2-4"/></svg>
+              <span>You pay <span class="pk">$0</span> for the product.<br>Just <span class="pk">$8.49</span> shipping.</span>
+            </div>
+          </div>
+          <a class="btn--neon" href="#claim">Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="fcta__foot">
+      <span class="it"><svg class="ic"><use href="#i-lock"/></svg> Secure checkout</span>
+      <span class="div"></span>
+      <span class="it">🇺🇸 Ships from the USA</span>
+      <span class="div"></span>
+      <span class="it"><svg class="ic"><use href="#i-ban"/></svg> One-time · no subscription</span>
+    </div>
   </div>
-  <a class="btn" href="#claim">Claim my free G FUEL <svg class="ic"><use href="#i-arrow"/></svg></a>
-  <div class="final__fine">$19.97 value · you pay $0 for the product · limit one per customer</div>
-  <div class="trustrow">
-    <span class="it"><svg class="ic"><use href="#i-lock"/></svg> Secure checkout</span>
-    <span class="it"><svg class="ic"><use href="#i-us"/></svg> Ships from the USA</span>
-    <span class="it"><svg class="ic"><use href="#i-ban"/></svg> One-time · no subscription</span>
-  </div>
-</div></section>
+</div></div>
 
 <!-- footer -->
 <footer class="ft"><div class="shell">
@@ -692,7 +792,7 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 <div class="mcta" id="mcta">
   <div class="mcta__row">
     <div class="mcta__price"><b>FREE</b><s>$19.97</s></div>
-    <a class="btn" href="#claim">Claim my free G FUEL</a>
+    <a class="btn--glow" href="#claim">Claim my free G FUEL</a>
   </div>
 </div>
 
@@ -700,12 +800,12 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-// faq accordion
-$$('.faq__item').forEach(item => {
-  const q = $('.faq__q', item), a = $('.faq__a', item);
-  q.addEventListener('click', () => {
-    const open = item.classList.toggle('open');
-    a.style.maxHeight = open ? a.scrollHeight + 'px' : '0';
+// faq cards — expand long answer
+$$('.fq').forEach(card => {
+  const more = $('.fq__more', card);
+  card.addEventListener('click', () => {
+    const open = card.classList.toggle('open');
+    more.style.maxHeight = open ? more.scrollHeight + 'px' : '0';
   });
 });
 
