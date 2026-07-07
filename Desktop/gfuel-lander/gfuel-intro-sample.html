@@ -121,16 +121,16 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 /* claim modal */
 .claimod{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(18,7,42,.62);backdrop-filter:blur(5px);}
 .claimod.on{display:flex;}
-.claimod__card{background:#fff;border-radius:22px;padding:34px 34px 28px;text-align:center;max-width:350px;width:100%;box-shadow:0 40px 90px -30px rgba(18,7,42,.8);animation:cmpop .32s cubic-bezier(.2,.9,.3,1.2);}
+.claimod__card{background:#fff;border-radius:18px;padding:20px 22px 18px;text-align:left;max-width:320px;width:100%;box-shadow:0 40px 90px -30px rgba(18,7,42,.8);animation:cmpop .32s cubic-bezier(.2,.9,.3,1.2);}
 @keyframes cmpop{from{transform:scale(.82);opacity:0;}}
-.claimod__check{width:64px;height:64px;border-radius:50%;background:rgba(26,163,90,.12);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;animation:cmpop .4s .05s cubic-bezier(.2,.9,.3,1.3) backwards;}
-.claimod__check .ic{width:32px;height:32px;}
-.claimod__card h3{font-size:22px;letter-spacing:-.02em;}
-.claimod__card p{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
-.claimod__bar{margin-top:18px;height:7px;border-radius:99px;background:var(--tint);overflow:hidden;}
+.claimod__row{display:flex;align-items:center;gap:12px;}
+.claimod__check{width:40px;height:40px;border-radius:50%;background:rgba(26,163,90,.12);color:var(--green);display:flex;align-items:center;justify-content:center;flex:none;animation:cmpop .4s .05s cubic-bezier(.2,.9,.3,1.3) backwards;}
+.claimod__check .ic{width:21px;height:21px;}
+.claimod__card h3{font-size:17px;letter-spacing:-.01em;line-height:1.1;}
+.claimod__card p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.35;}
+.claimod__bar{margin-top:14px;height:6px;border-radius:99px;background:var(--tint);overflow:hidden;}
 .claimod__bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(96deg,#ff9a1f,#ec1c7d);animation:cmfill 1.5s ease forwards;}
 @keyframes cmfill{to{width:100%;}}
-.claimod__urg{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;font-size:12px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.04em;}
 
 /* ticker */
 .ticker{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;overflow:hidden;}
@@ -844,11 +844,11 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 <!-- claim modal -->
 <div class="claimod" id="claimod" role="status" aria-live="polite">
   <div class="claimod__card">
-    <div class="claimod__check"><svg class="ic"><use href="#i-check-c"/></svg></div>
-    <h3>CLAIMED!</h3>
-    <p>Your free box is reserved — sending you to secure checkout…</p>
+    <div class="claimod__row">
+      <div class="claimod__check"><svg class="ic"><use href="#i-check-c"/></svg></div>
+      <div><h3>CLAIMED!</h3><p>Sending you to secure checkout…</p></div>
+    </div>
     <div class="claimod__bar"><i></i></div>
-    <div class="claimod__urg">⚡ Only 27% of this week's boxes left</div>
   </div>
 </div>
 
