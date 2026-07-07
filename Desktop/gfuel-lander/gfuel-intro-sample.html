@@ -41,10 +41,28 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .sec__head p{color:var(--muted);margin-top:10px;}
 .sec--deep .sec__head p{color:rgba(255,255,255,.75);}
 
-/* announcement bar */
-.abar{position:sticky;top:0;z-index:60;background:var(--deep);color:#fff;text-align:center;padding:10px 16px;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;}
-.abar .y{color:var(--stars);font-weight:800;}
-.abar a{color:var(--accent);font-weight:800;text-decoration:underline;text-underline-offset:2px;}
+/* announcement bar — Bundle & Save band style */
+.abar{position:sticky;top:0;z-index:60;width:100%;height:64px;overflow:hidden;background:#efeafb;border-bottom:1px solid #e4dcf4;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:0 clamp(20px,4vw,48px);}
+.abar__imgs{position:relative;display:flex;align-items:center;height:64px;flex:none;justify-self:start;z-index:2;}
+.abar__imgs img{height:88px;width:auto;object-fit:contain;margin:0 -13px;position:relative;z-index:1;filter:drop-shadow(0 7px 10px rgba(0,0,0,.22));}
+.abar__imgs .mid{height:104px;z-index:3;filter:drop-shadow(0 11px 15px rgba(0,0,0,.35));}
+.abar__copy{text-align:center;line-height:1.05;justify-self:center;z-index:2;}
+.abar__name{font-weight:800;font-size:clamp(15px,1.8vw,20px);color:var(--primary);text-transform:uppercase;letter-spacing:.01em;}
+.abar__name .fr{color:#ec1c7d;}
+.abar__line{font-size:clamp(10px,1.1vw,12.5px);color:#6a5aa0;font-weight:600;margin-top:2px;}
+.abar__btn{justify-self:end;z-index:2;display:inline-flex;align-items:center;gap:7px;background:var(--deep);color:#fff;font-weight:700;font-size:clamp(12px,1.2vw,13.5px);letter-spacing:.05em;text-transform:uppercase;padding:9px 20px;border-radius:999px;white-space:nowrap;text-decoration:none;box-shadow:0 4px 12px -5px rgba(0,0,0,.5);transition:.18s;}
+.abar__btn:hover{background:var(--primary);}
+.abar__btn .arw{transition:transform .2s;display:inline-block;}
+.abar__btn:hover .arw{transform:translateX(3px);}
+@media(max-width:640px){
+  .abar{height:54px;gap:8px;padding:0 14px;}
+  .abar__imgs{height:54px;}
+  .abar__imgs img{height:58px;margin:0 -9px;}
+  .abar__imgs .mid{height:68px;}
+  .abar__name{font-size:13px;}
+  .abar__line{display:none;}
+  .abar__btn{font-size:10.5px;padding:7px 13px;}
+}
 
 /* header */
 .hd{border-bottom:1px solid var(--line);background:#fff;}
@@ -410,8 +428,19 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 <symbol id="i-qchat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9.6 8.2a2.6 2.6 0 0 1 4.9 1c0 1.6-2.3 2-2.3 3.2M12.1 15h.01" stroke-width="1.8"/></symbol>
 </defs></svg>
 
-<!-- announcement bar -->
-<div class="abar">🎁 <span>New customer offer — your first G FUEL is <span class="y">on us</span>. Just cover shipping.</span> <a href="#claim">Claim it</a></div>
+<!-- announcement bar — Bundle & Save band style -->
+<div class="abar">
+  <span class="abar__imgs">
+    <img src="images/miami-nights-3pack.png" style="transform:translateY(5px) rotate(-14deg)" alt="">
+    <img class="mid" src="images/winter-white-shaker.png" style="transform:translateY(14px)" alt="">
+    <img src="images/hype-sauce-3pack.png" style="transform:translateY(5px) rotate(14deg)" alt="">
+  </span>
+  <div class="abar__copy">
+    <div class="abar__name">Your First G&nbsp;FUEL Is&nbsp;<span class="fr">Free</span></div>
+    <div class="abar__line">Two flavors + a full-size shaker &middot; Just cover $8.49 shipping</div>
+  </div>
+  <a class="abar__btn" href="#claim">Claim It <span class="arw">&rarr;</span></a>
+</div>
 
 <!-- header -->
 <header class="hd"><div class="shell"><img src="images/gfuel-logo.png" alt="G FUEL"></div></header>
