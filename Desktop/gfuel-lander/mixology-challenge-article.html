@@ -4,17 +4,36 @@
 .mxgw{--primary:#461aa2;--deep:#240164;--accent:#3bbfef;--stars:#f5b800;--tint:#f5f1fc;--green:#1aa35a;--red:#c52b54;--text:#1c1726;--muted:#6b6577;--line:#e7e3f0;--display:'Barlow Semi Condensed',Sora,sans-serif;--body:'Sora',system-ui,sans-serif;font-family:var(--body);font-size:16px;line-height:1.55;color:var(--text);}
 .mxgw *{box-sizing:border-box;}
 .mxgw img{max-width:100%;display:block;}
-.mxgw .mx-hero{position:relative;background:radial-gradient(130% 170% at 18% 24%,#3c157c 0%,#250a52 48%,#190740 100%);color:#fff;border-radius:22px;padding:44px 34px;text-align:center;overflow:hidden;margin-bottom:28px;}
-.mxgw .mx-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(46% 60% at 12% 78%,rgba(139,69,246,.3),transparent 70%),linear-gradient(115deg,transparent 60%,rgba(255,255,255,.05) 74%,transparent 86%);pointer-events:none;}
+.mxgw .mx-hero{position:relative;background:radial-gradient(120% 180% at 78% 18%,#3c157c 0%,#250a52 52%,#170635 100%);color:#fff;border-radius:24px;padding:38px 42px 26px;overflow:hidden;margin-bottom:28px;}
+.mxgw .mx-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 55% at 82% 30%,rgba(139,69,246,.35),transparent 70%),radial-gradient(35% 50% at 10% 85%,rgba(89,7,196,.25),transparent 70%);pointer-events:none;}
 .mxgw .mx-hero>*{position:relative;}
-.mxgw .mx-pill{display:inline-block;font-family:var(--display);background:#5907C4;color:#fff;font-size:13.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border-radius:999px;box-shadow:0 8px 22px -8px rgba(89,7,196,.8);}
-.mxgw .mx-hero h2{font-family:var(--display);font-style:italic;text-transform:uppercase;font-size:clamp(38px,6vw,60px);font-weight:800;letter-spacing:.005em;line-height:.98;margin:16px 0 0;}
+.mxgw .mx-hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center;}
+.mxgw .mx-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);background:#5907C4;color:#fff;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:9px 20px;border-radius:999px;box-shadow:0 8px 22px -8px rgba(89,7,196,.8);}
+.mxgw .mx-hero h2{font-family:var(--display);font-style:italic;text-transform:uppercase;font-size:clamp(36px,5.2vw,58px);font-weight:800;letter-spacing:.005em;line-height:.99;margin:20px 0 0;}
 .mxgw .mx-hero h2 .pk{color:#ff2e6e;}
-.mxgw .mx-hero p{color:rgba(255,255,255,.82);max-width:560px;margin:14px auto 0;font-size:16.5px;}
-.mxgw .mx-dates{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px;}
-.mxgw .mx-date{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;}
-.mxgw .mx-hero .mx-tag-note{font-family:'Caveat',cursive;font-size:21px;color:var(--stars);margin-top:16px;display:block;transform:rotate(-1.5deg);}
-.mxgw .mx-date b{color:var(--stars);}
+.mxgw .mx-hero p{color:rgba(255,255,255,.85);max-width:540px;margin:16px 0 0;font-size:16.5px;line-height:1.5;}
+.mxgw .mx-hero p .yr{color:var(--stars);font-weight:700;}
+.mxgw .mx-dates{display:flex;align-items:center;background:rgba(9,3,28,.5);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:13px 6px;margin-top:26px;max-width:620px;}
+.mxgw .mx-date{display:flex;align-items:center;gap:10px;padding:0 16px;flex:1;min-width:0;}
+.mxgw .mx-date+.mx-date{border-left:1px solid rgba(255,255,255,.12);}
+.mxgw .mx-date .icb{width:38px;height:38px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none;background:rgba(255,255,255,.05);}
+.mxgw .mx-date .lb{display:block;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.mxgw .mx-date .vl{display:block;font-size:12.5px;font-weight:700;margin-top:1px;white-space:nowrap;}
+.mxgw .mx-date .vl b{font-weight:800;}
+.mxgw .mx-date--open .icb{border-color:#8b45f6;}
+.mxgw .mx-date--open .vl b{color:var(--stars);}
+.mxgw .mx-date--dead .icb{border-color:#ec1c7d;}
+.mxgw .mx-date--dead .vl b{color:#ff2e6e;}
+.mxgw .mx-date--win .icb{border-color:var(--stars);}
+.mxgw .mx-date--win .vl b{color:var(--stars);}
+.mxgw .mx-hero__vis{position:relative;height:290px;}
+.mxgw .mx-hero__vis img{position:absolute;object-fit:contain;margin:0;}
+.mxgw .mx-hero__vis .pkA{left:-2%;top:10%;height:72%;transform:rotate(-8deg);z-index:1;filter:drop-shadow(0 18px 26px rgba(0,0,0,.5));}
+.mxgw .mx-hero__vis .shk{left:50%;top:0;height:100%;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 22px 30px rgba(0,0,0,.55));}
+.mxgw .mx-hero__vis .pkB{right:-2%;top:12%;height:70%;transform:rotate(8deg);z-index:2;filter:drop-shadow(0 18px 26px rgba(0,0,0,.5));}
+.mxgw .mx-hero__btn{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;font-family:var(--display);background:linear-gradient(96deg,#ff2e51,#f2135f);border:2px solid rgba(255,122,168,.7);color:#fff;font-weight:800;font-style:italic;text-transform:uppercase;font-size:20px;letter-spacing:.03em;padding:16px 20px;border-radius:14px;text-decoration:none;box-shadow:0 0 0 4px rgba(242,19,95,.2),0 18px 40px -12px rgba(242,19,95,.7);transition:.2s;}
+.mxgw .mx-hero__btn:hover{transform:translateY(-2px);filter:brightness(1.06);color:#fff;}
+.mxgw .mx-hero .mx-tag-note{font-family:'Caveat',cursive;font-size:22px;color:var(--stars);margin-top:20px;display:block;text-align:center;transform:rotate(-1deg);}
 .mxgw h3.mx-h{font-family:var(--display);font-style:italic;text-transform:uppercase;font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:.005em;text-align:center;margin:38px 0 6px;}
 .mxgw h3.mx-h .pu{color:var(--primary);}
 .mxgw p.mx-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 22px;}
@@ -42,6 +61,13 @@
 .mxgw .mx-fine{text-align:center;font-size:12px;color:var(--muted);margin-top:26px;line-height:1.6;}
 .mxgw .mx-fine a{color:var(--primary);}
 @media(max-width:760px){
+  .mxgw .mx-hero{padding:28px 20px 22px;}
+  .mxgw .mx-hero__grid{grid-template-columns:1fr;gap:22px;}
+  .mxgw .mx-hero h2{font-size:clamp(34px,9vw,44px);}
+  .mxgw .mx-dates{flex-direction:column;align-items:stretch;padding:6px 14px;max-width:none;}
+  .mxgw .mx-date{padding:10px 2px;}
+  .mxgw .mx-date+.mx-date{border-left:none;border-top:1px solid rgba(255,255,255,.12);}
+  .mxgw .mx-hero__vis{height:230px;}
   .mxgw .mx-ideas{grid-template-columns:1fr 1fr;}
   .mxgw .mx-prizes{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
   .mxgw .mx-prize.gp{order:-1;}
@@ -53,13 +79,25 @@
 
   <!-- hero -->
   <div class="mx-hero">
-    <span class="mx-pill">Creator Challenge · Official Giveaway</span>
-    <h2>G FUEL Mixology<br>Creator <span class="pk">Challenge</span></h2>
-    <p>Think you've got the most creative G FUEL mix? Now's your chance to prove it — and win a year of G FUEL doing it.</p>
-    <div class="mx-dates">
-      <span class="mx-date">🗓️ Opens <b>July 20 · 9AM EST</b></span>
-      <span class="mx-date">⏰ Deadline <b>Aug 3 · 11:59PM EST</b></span>
-      <span class="mx-date">🏆 Winners <b>Aug 7</b></span>
+    <div class="mx-hero__grid">
+      <div>
+        <span class="mx-pill">✦ Creator Challenge · Official Giveaway</span>
+        <h2>G FUEL Mixology<br>Creator <span class="pk">Challenge</span></h2>
+        <p>Think you've got the most creative G FUEL mix?<br>Now's your chance to prove it — and win <span class="yr">a year of G FUEL</span> doing it.</p>
+        <div class="mx-dates">
+          <div class="mx-date mx-date--open"><span class="icb">📅</span><span><span class="lb">Opens</span><span class="vl"><b>July 20</b> · 9AM EST</span></span></div>
+          <div class="mx-date mx-date--dead"><span class="icb">🕰️</span><span><span class="lb">Deadline</span><span class="vl"><b>Aug 3</b> · 11:59PM EST</span></span></div>
+          <div class="mx-date mx-date--win"><span class="icb">🏆</span><span><span class="lb">Winners</span><span class="vl"><b>Aug 7</b></span></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="mx-hero__vis">
+          <img class="pkA" src="https://cdn.shopify.com/s/files/1/0223/3113/files/miami_nights_3_pack_1.png?v=1783448282" alt="Miami Nights 2.0 3-pack">
+          <img class="shk" src="https://cdn.shopify.com/s/files/1/0223/3113/files/winter-white-20-shaker-cup-shaker-cup-tik-tok-shop-gamer-drink-599458_1.png?v=1783448283" alt="Winter White Shaker">
+          <img class="pkB" src="https://cdn.shopify.com/s/files/1/0223/3113/files/hypesauce_3_pack_1.png?v=1783448283" alt="Hype Sauce 2.0 3-pack">
+        </div>
+        <a class="mx-hero__btn" href="#mx-viralsweep">Learn More &amp; Enter <span>→</span></a>
+      </div>
     </div>
     <span class="mx-tag-note">✦ grand prize: a whole year of G FUEL ✦</span>
   </div>
