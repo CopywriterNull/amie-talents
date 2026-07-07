@@ -116,6 +116,26 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
 .box__total s{color:rgba(255,255,255,.55);}
 .box__total .fr{color:var(--stars);font-weight:800;font-size:17px;}
 .box__total em{font-style:normal;font-size:11.5px;color:rgba(255,255,255,.7);font-weight:600;}
+.box__stock{margin-top:12px;background:#fff;border:1px solid #f3d9e3;border-radius:var(--r-lg);padding:11px 14px;}
+.box__stock .row{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:800;}
+.box__stock .row .l{color:var(--red);text-transform:uppercase;letter-spacing:.04em;display:inline-flex;align-items:center;gap:5px;}
+.box__stock .row .r{color:var(--muted);font-weight:700;}
+.box__stock .meter{margin-top:7px;height:7px;border-radius:99px;background:#f3edfb;overflow:hidden;}
+.box__stock .meter i{display:block;height:100%;width:27%;border-radius:99px;background:linear-gradient(90deg,#ff5c7a,#c52b54);}
+
+/* claim modal */
+.claimod{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(18,7,42,.62);backdrop-filter:blur(5px);}
+.claimod.on{display:flex;}
+.claimod__card{background:#fff;border-radius:22px;padding:34px 34px 28px;text-align:center;max-width:350px;width:100%;box-shadow:0 40px 90px -30px rgba(18,7,42,.8);animation:cmpop .32s cubic-bezier(.2,.9,.3,1.2);}
+@keyframes cmpop{from{transform:scale(.82);opacity:0;}}
+.claimod__check{width:64px;height:64px;border-radius:50%;background:rgba(26,163,90,.12);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;animation:cmpop .4s .05s cubic-bezier(.2,.9,.3,1.3) backwards;}
+.claimod__check .ic{width:32px;height:32px;}
+.claimod__card h3{font-size:22px;letter-spacing:-.02em;}
+.claimod__card p{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+.claimod__bar{margin-top:18px;height:7px;border-radius:99px;background:var(--tint);overflow:hidden;}
+.claimod__bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(96deg,#ff9a1f,#ec1c7d);animation:cmfill 1.5s ease forwards;}
+@keyframes cmfill{to{width:100%;}}
+.claimod__urg{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;font-size:12px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.04em;}
 
 /* ticker */
 .ticker{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;overflow:hidden;}
@@ -508,6 +528,10 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
       <span><s>$19.97 value</s> → <span class="fr">FREE</span></span>
       <em>Just $8.49 flat shipping</em>
     </div>
+    <div class="box__stock">
+      <div class="row"><span class="l">🔥 Going fast</span><span class="r"><b style="color:var(--red)">27%</b> of this week's boxes left</span></div>
+      <div class="meter"><i></i></div>
+    </div>
   </div>
 </div>
 <div class="hero__cta2">
@@ -827,6 +851,17 @@ h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
   </div>
 </div>
 
+<!-- claim modal -->
+<div class="claimod" id="claimod" role="status" aria-live="polite">
+  <div class="claimod__card">
+    <div class="claimod__check"><svg class="ic"><use href="#i-check-c"/></svg></div>
+    <h3>CLAIMED!</h3>
+    <p>Your free box is reserved — sending you to secure checkout…</p>
+    <div class="claimod__bar"><i></i></div>
+    <div class="claimod__urg">⚡ Only 27% of this week's boxes left</div>
+  </div>
+</div>
+
 <script>
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -839,6 +874,17 @@ $$('.fq').forEach(card => {
     more.style.maxHeight = open ? more.scrollHeight + 'px' : '0';
   });
 });
+
+// claim modal: intercept cart CTAs, flash confirmation, then redirect
+const claimod = $('#claimod');
+$$('a[href^="https://gfuel.com/cart"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    claimod.classList.add('on');
+    setTimeout(() => { window.location.href = a.href; }, 1600);
+  });
+});
+window.addEventListener('pageshow', () => claimod.classList.remove('on'));
 
 // mobile sticky CTA: show after scrolling past the hero
 const hero = $('#claim'), mcta = $('#mcta');
