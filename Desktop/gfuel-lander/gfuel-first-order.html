@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your First Order — Up to 50% Off G FUEL + Free Gifts</title>
+<meta name="description" content="Get up to 50% off your first G FUEL order plus free gifts. Zero sugar, 140mg clean caffeine, 40 servings per tub. Subscribe & save or buy one time.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+/* Layout skeleton cloned from gruns.co/pages/first-order — skin is 100% G FUEL tokens. */
+:root{
+  --primary:#461aa2;--deep:#240164;--accent:#3bbfef;--stars:#f5b800;
+  --canvas:#fffdfb;--tint:#f5f1fc;--warm:#fdf4d6;--green:#1aa35a;--red:#c52b54;
+  --text:#1c1726;--muted:#6b6577;--line:#e7e3f0;
+  --r-sm:4px;--r:8px;--r-lg:15px;--r-pill:200px;
+  --shadow:0 4px 12px rgba(0,0,0,.06);
+  --body:"Sora",system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);color:var(--text);background:var(--canvas);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;}
+.shell{max-width:1100px;margin:0 auto;padding:0 22px;}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;}
+.eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--primary);}
+.ic{width:1em;height:1em;display:inline-block;vertical-align:-.13em;flex:none;}
+.stars{color:var(--stars);display:inline-flex;gap:2px;}
+.stars .ic{width:16px;height:16px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--primary);color:#fff;font-weight:700;font-size:16px;padding:15px 34px;border:none;border-radius:var(--r-pill);text-decoration:none;transition:.22s cubic-bezier(.2,.7,.2,1);}
+.btn:hover{background:var(--deep);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(70,26,162,.55);}
+.btn .ic{width:18px;height:18px;}
+.sec{padding:64px 0;}
+.sec--tint{background:var(--tint);}
+.sec--deep{background:var(--deep);color:#fff;}
+.sec__head{text-align:center;max-width:640px;margin:0 auto 36px;}
+.sec__head h2{font-size:clamp(24px,3.4vw,36px);}
+.sec__head p{color:var(--muted);margin-top:10px;}
+.sec--deep .sec__head p{color:rgba(255,255,255,.75);}
+
+/* announcement bar */
+.abar{position:sticky;top:0;z-index:60;background:var(--deep);color:#fff;text-align:center;padding:10px 16px;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;}
+.abar .y{color:var(--stars);font-weight:800;}
+.abar a{color:var(--accent);font-weight:800;text-decoration:underline;text-underline-offset:2px;}
+
+/* header */
+.hd{border-bottom:1px solid var(--line);background:#fff;}
+.hd .shell{display:flex;justify-content:center;padding:14px 22px;}
+.hd img{height:28px;}
+
+/* trust strip */
+.trust{border-bottom:1px solid var(--line);background:#fff;}
+.trust .shell{display:flex;align-items:center;justify-content:center;gap:10px 22px;flex-wrap:wrap;padding:11px 22px;font-size:13px;font-weight:600;color:var(--muted);}
+.trust b{color:var(--text);}
+.trust .dot{width:4px;height:4px;border-radius:50%;background:var(--line);}
+.trust .shout{color:var(--primary);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:12px;}
+
+/* hero / value prop */
+.hero{padding:52px 0 60px;}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+.hero h1{font-size:clamp(30px,4.4vw,48px);letter-spacing:-.03em;}
+.hero h1 span{color:var(--primary);}
+.hero__sub{margin-top:14px;font-size:17px;color:var(--muted);font-weight:600;}
+.checks{margin:22px 0 6px;display:flex;flex-direction:column;gap:12px;}
+.check{display:flex;align-items:flex-start;gap:11px;font-weight:600;font-size:15.5px;}
+.check .ic{width:21px;height:21px;color:var(--green);margin-top:1px;}
+.hero__cta{margin-top:26px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.hero__note{font-size:12.5px;color:var(--muted);}
+.hero__note b{color:var(--green);}
+.hero__img{border-radius:var(--r-lg);overflow:hidden;background:radial-gradient(120% 120% at 50% 28%,#faf7ff,#eae2f6);border:1px solid var(--line);aspect-ratio:4/4.4;display:flex;align-items:center;justify-content:center;}
+.hero__img img{width:100%;height:100%;object-fit:cover;}
+.hero__rating{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-bottom:12px;font-weight:600;}
+.hero__rating b{color:var(--text);}
+
+/* testimonial cards */
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);}
+.tcard__tag{align-self:flex-start;background:var(--tint);color:var(--primary);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:var(--r-pill);}
+.tcard p{font-size:13.5px;line-height:1.5;}
+.tcard__who{margin-top:auto;font-size:12px;color:var(--muted);font-weight:700;}
+.tcard__who .vb{color:var(--green);}
+
+/* logo strip */
+.logos{margin-top:34px;text-align:center;}
+.logos__h{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px;}
+.logos__row{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;}
+.logo-slot{width:118px;height:44px;border:1.5px dashed var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);background:#fff;}
+
+/* problem stats */
+.pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:940px;margin:0 auto;}
+.pstat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:26px 22px;text-align:center;}
+.pstat b{display:block;font-size:clamp(30px,4vw,42px);font-weight:800;color:var(--accent);letter-spacing:-.02em;}
+.pstat span{display:block;margin-top:8px;font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.45;}
+.pstats__src{text-align:center;margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.45);}
+
+/* benefits */
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.bcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 20px;text-align:center;box-shadow:var(--shadow);}
+.bcard .bic{width:52px;height:52px;border-radius:50%;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 13px;}
+.bcard .bic .ic{width:25px;height:25px;}
+.bcard h3{font-size:16px;margin-bottom:7px;}
+.bcard p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* ============ OFFERS / BUY BOX ============ */
+.offers{padding:64px 0;}
+.offers__grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:start;}
+.gallery{position:sticky;top:64px;}
+.gallery__main{aspect-ratio:1/1;border-radius:var(--r-lg);background:radial-gradient(120% 120% at 50% 28%,#faf7ff,#eae2f6);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.gallery__main::after{content:"";position:absolute;bottom:11%;width:44%;height:20px;background:radial-gradient(ellipse,rgba(70,26,162,.22),transparent 72%);filter:blur(4px);}
+.gallery__main img{position:relative;max-height:74%;max-width:62%;object-fit:contain;filter:drop-shadow(0 22px 28px rgba(70,26,162,.22));transition:.2s;}
+.gallery__badge{position:absolute;top:14px;left:14px;background:var(--primary);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:5px 12px;border-radius:var(--r-pill);z-index:2;}
+.gallery__guar{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:13px;font-weight:700;color:var(--muted);}
+.gallery__guar .ic{width:17px;height:17px;color:var(--green);}
+
+.buy__rating{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:600;}
+.buy__rating b{color:var(--text);}
+.buy h2{font-size:clamp(24px,3vw,32px);margin:10px 0 6px;letter-spacing:-.03em;}
+.buy h2 span{color:var(--primary);}
+.buy__sub{color:var(--muted);font-size:14.5px;}
+.buy__label{font-size:13px;font-weight:800;margin:22px 0 10px;display:flex;justify-content:space-between;align-items:baseline;}
+.buy__label em{font-style:normal;font-size:12px;color:var(--muted);font-weight:600;}
+
+/* flavor tiles */
+.flavors{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.flavor{position:relative;border:2px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:12px 10px 11px;text-align:center;transition:.16s;}
+.flavor:hover{border-color:#c9b9ee;}
+.flavor.on{border-color:var(--primary);background:var(--tint);box-shadow:0 8px 22px -14px rgba(70,26,162,.5);}
+.flavor img{height:74px;width:auto;margin:0 auto 8px;object-fit:contain;}
+.flavor b{display:block;font-size:12.5px;line-height:1.2;}
+.flavor .fbadge{position:absolute;top:-9px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:var(--r-pill);color:#fff;}
+.flavor .fbadge.best{background:var(--primary);}
+.flavor .fbadge.ltd{background:var(--red);}
+.flavor .stock{display:block;margin-top:5px;font-size:10px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.03em;}
+.flavor .stockbar{display:block;margin-top:4px;height:4px;border-radius:99px;background:#f0e9fb;overflow:hidden;}
+.flavor .stockbar i{display:block;height:100%;width:27%;background:var(--red);border-radius:99px;}
+
+/* formula toggle */
+.formula{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.fopt{border:2px solid var(--line);border-radius:var(--r);background:#fff;padding:11px 14px;text-align:left;transition:.16s;}
+.fopt:hover{border-color:#c9b9ee;}
+.fopt.on{border-color:var(--primary);background:var(--tint);}
+.fopt b{display:block;font-size:13.5px;}
+.fopt span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px;}
+
+/* plan cards */
+.plans{display:flex;flex-direction:column;gap:11px;}
+.plan{position:relative;border:2px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:16px;text-align:left;transition:.18s;display:block;width:100%;}
+.plan:hover{border-color:#c9b9ee;}
+.plan.on{border-color:var(--primary);background:var(--tint);box-shadow:0 10px 26px -16px rgba(70,26,162,.5);}
+.plan__badge{position:absolute;top:-11px;left:16px;background:var(--primary);color:#fff;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 11px;border-radius:var(--r-pill);}
+.plan__badge.green{background:var(--green);}
+.plan__row{display:flex;align-items:flex-start;gap:12px;}
+.plan__radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex:none;margin-top:2px;position:relative;transition:.15s;}
+.plan.on .plan__radio{border-color:var(--primary);}
+.plan.on .plan__radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--primary);}
+.plan__main{flex:1;min-width:0;}
+.plan__name{font-weight:800;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.plan__off{background:var(--warm);color:#8a6d00;font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.03em;}
+.plan__qty{font-size:12.5px;color:var(--muted);margin-top:2px;font-weight:600;}
+.plan__perks{margin-top:9px;display:flex;flex-direction:column;gap:5px;}
+.plan__perk{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--text);}
+.plan__perk .ic{width:14px;height:14px;color:var(--green);}
+.plan__price{text-align:right;flex:none;}
+.plan__price b{display:block;font-size:19px;color:var(--primary);letter-spacing:-.02em;}
+.plan__price s{display:block;color:var(--muted);font-size:12.5px;}
+.plan__price .per{display:block;font-size:11px;color:var(--muted);margin-top:3px;font-weight:600;}
+
+/* first-order discount callout */
+.fdisc{display:flex;align-items:center;gap:11px;background:rgba(26,163,90,.09);border:1.5px dashed var(--green);border-radius:var(--r);padding:11px 14px;margin-top:14px;font-size:13px;font-weight:700;}
+.fdisc .ic{width:19px;height:19px;color:var(--green);}
+.fdisc b{color:var(--green);}
+.fdisc span{font-weight:600;color:var(--muted);font-size:12px;display:block;}
+
+/* gifts */
+.gifts{margin-top:14px;border:1px solid var(--line);border-radius:var(--r-lg);background:#fdfcff;padding:13px 14px;}
+.gifts__h{font-size:12px;font-weight:800;display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
+.gifts__h em{font-style:normal;color:var(--green);font-size:11px;font-weight:800;text-transform:uppercase;}
+.gifts__row{display:flex;gap:8px;}
+.gift{flex:1;border:1px dashed #d3c6f1;border-radius:var(--r);background:var(--tint);padding:9px 4px 7px;text-align:center;min-width:0;}
+.gift img{height:34px;width:auto;max-width:88%;margin:0 auto 4px;object-fit:contain;}
+.gift span{font-size:9.5px;font-weight:700;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 3px;}
+.gift.locked{background:#f4f3f7;border-color:#e3deed;}
+.gift.locked img{opacity:.2;filter:grayscale(1);}
+.gift.locked span{color:var(--muted);}
+
+/* buy cta */
+.buy__cta{margin-top:16px;}
+.buy__btn{width:100%;background:var(--primary);color:#fff;border:none;font-weight:800;font-size:16.5px;padding:17px;border-radius:var(--r-pill);display:flex;align-items:center;justify-content:center;gap:10px;transition:.2s;}
+.buy__btn:hover{background:var(--deep);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(70,26,162,.55);}
+.buy__btn .ic{width:18px;height:18px;}
+.buy__fine{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px;font-size:12px;color:var(--muted);font-weight:600;flex-wrap:wrap;}
+.buy__fine .it{display:flex;align-items:center;gap:6px;}
+.buy__fine .ic{width:15px;height:15px;color:var(--green);}
+
+/* guarantee trio */
+.ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.gcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 22px;text-align:center;box-shadow:var(--shadow);}
+.gcard .bic{width:50px;height:50px;border-radius:50%;background:rgba(26,163,90,.1);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 13px;}
+.gcard .bic .ic{width:24px;height:24px;}
+.gcard h3{font-size:15.5px;margin-bottom:6px;}
+.gcard p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+/* whats inside */
+.inside__grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.inside__img{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:radial-gradient(120% 120% at 50% 28%,#faf7ff,#eae2f6);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
+.inside__img img{width:100%;height:100%;object-fit:cover;}
+.ing{display:flex;flex-direction:column;gap:0;}
+.ing__row{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);}
+.ing__row:last-child{border-bottom:none;}
+.ing__row .bic{width:42px;height:42px;border-radius:12px;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center;flex:none;}
+.ing__row .bic .ic{width:20px;height:20px;}
+.ing__row b{display:block;font-size:14.5px;}
+.ing__row p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.45;}
+.diet{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.diet span{background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:6px 13px;font-size:11.5px;font-weight:700;color:var(--text);}
+
+/* tested */
+.tested__grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.tested__list{display:flex;flex-direction:column;gap:11px;margin-top:18px;}
+.tested__list .check{color:#fff;font-size:14px;}
+.tested__list .check .ic{color:var(--accent);}
+.tested__img{border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(255,255,255,.14);aspect-ratio:4/3.4;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;}
+.tested__img img{width:100%;height:100%;object-fit:cover;}
+
+/* survey stats */
+.sstats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:44px;}
+.sstat{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 18px;text-align:center;box-shadow:var(--shadow);}
+.sstat b{display:block;font-size:32px;font-weight:800;color:var(--primary);letter-spacing:-.02em;}
+.sstat span{display:block;margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.45;}
+
+/* reviews wall */
+.rwall{columns:3;column-gap:14px;}
+.review{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-bottom:14px;box-shadow:var(--shadow);}
+.review .stars{margin-bottom:8px;}
+.review .stars .ic{width:14px;height:14px;}
+.review h3{font-size:14px;margin-bottom:5px;}
+.review p{font-size:13px;color:var(--text);line-height:1.5;}
+.review .who{margin-top:10px;font-size:11.5px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px;}
+.review .who .vb{color:var(--green);font-weight:800;}
+
+/* comparison table */
+.cmp{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;box-shadow:var(--shadow);}
+.cmp table{width:100%;border-collapse:collapse;min-width:660px;}
+.cmp th,.cmp td{padding:14px 16px;text-align:center;font-size:13px;border-bottom:1px solid var(--line);}
+.cmp tr:last-child td{border-bottom:none;}
+.cmp th{font-size:12px;font-weight:800;}
+.cmp th:first-child,.cmp td:first-child{text-align:left;font-weight:700;}
+.cmp thead th{border-bottom:2px solid var(--line);}
+.cmp .me{background:var(--tint);font-weight:800;color:var(--primary);}
+.cmp thead .me{border-radius:0;}
+.cmp .brand{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.cmp .brand img{height:20px;width:auto;max-width:84px;object-fit:contain;}
+.cmp .yes{color:var(--green);font-weight:800;}
+.cmp .no{color:var(--red);font-weight:800;}
+
+/* urgency */
+.urg{background:var(--warm);border-top:1px solid #f0e2b0;border-bottom:1px solid #f0e2b0;padding:44px 0;}
+.urg__in{max-width:760px;margin:0 auto;text-align:center;}
+.urg h2{font-size:clamp(22px,3vw,30px);}
+.urg p{color:#6b5b23;margin-top:10px;font-weight:600;font-size:14.5px;}
+.urg__row{display:flex;background:#fff;border:1px solid #f0e2b0;border-radius:var(--r-lg);padding:14px 20px;justify-content:center;gap:28px;align-items:center;margin-top:20px;flex-wrap:wrap;}
+.urg__row .it{text-align:center;}
+.urg__row span{display:block;font-size:11.5px;color:var(--muted);}
+.urg__row b{font-weight:800;font-size:14.5px;}
+.urg__row b.red{color:var(--red);}
+.urg__row .sep{width:1px;height:32px;background:#f0e2b0;}
+
+/* faq */
+.faq{max-width:720px;margin:0 auto;}
+.faq__item{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;margin-bottom:10px;overflow:hidden;}
+.faq__q{width:100%;background:none;border:none;text-align:left;padding:17px 20px;font-weight:700;font-size:14.5px;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.faq__q .ic{width:18px;height:18px;color:var(--primary);transition:.2s;}
+.faq__item.open .faq__q .ic{transform:rotate(45deg);}
+.faq__a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+.faq__a p{padding:0 20px 17px;font-size:13.5px;color:var(--muted);line-height:1.55;}
+
+/* final cta */
+.final{text-align:center;}
+.final h2{font-size:clamp(26px,3.6vw,38px);}
+.final p{color:rgba(255,255,255,.78);margin:12px auto 24px;max-width:480px;}
+.final .btn{background:var(--accent);color:var(--deep);font-weight:800;}
+.final .btn:hover{background:#fff;box-shadow:0 14px 30px -12px rgba(59,191,239,.6);}
+.final__fine{margin-top:14px;font-size:12.5px;color:rgba(255,255,255,.55);}
+
+/* footer */
+.ft{background:#fff;border-top:1px solid var(--line);padding:28px 0;}
+.ft .shell{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+.ft img{height:22px;opacity:.85;}
+.ft p{font-size:11.5px;color:var(--muted);max-width:560px;line-height:1.5;}
+
+/* mobile sticky cta */
+.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(36,1,100,.12);padding:10px 16px calc(10px + env(safe-area-inset-bottom));}
+.mcta.show{display:block;}
+.mcta__row{display:flex;align-items:center;gap:12px;max-width:560px;margin:0 auto;}
+.mcta__price{flex:none;}
+.mcta__price b{display:block;font-size:16px;color:var(--primary);}
+.mcta__price s{font-size:11.5px;color:var(--muted);}
+.mcta .btn{flex:1;padding:13px 18px;font-size:14.5px;}
+
+@media(max-width:960px){
+  .hero__grid{grid-template-columns:1fr;gap:28px;}
+  .hero__img{order:-1;aspect-ratio:4/3;}
+  .tgrid{grid-template-columns:1fr 1fr;}
+  .bgrid{grid-template-columns:1fr 1fr;}
+  .offers__grid{grid-template-columns:1fr;gap:26px;}
+  .gallery{position:static;}
+  .pstats{grid-template-columns:1fr;max-width:440px;}
+  .inside__grid,.tested__grid{grid-template-columns:1fr;gap:26px;}
+  .sstats{grid-template-columns:1fr 1fr;}
+  .rwall{columns:2;}
+  .ggrid{grid-template-columns:1fr;max-width:440px;margin:0 auto;}
+}
+@media(max-width:600px){
+  .sec{padding:44px 0;}
+  .offers{padding:44px 0;}
+  .tgrid{grid-template-columns:1fr;}
+  .rwall{columns:1;}
+  .flavors{grid-template-columns:repeat(3,1fr);gap:7px;}
+  .flavor img{height:56px;}
+  .plan__price b{font-size:17px;}
+  .sstats{grid-template-columns:1fr 1fr;gap:10px;}
+  body.mcta-on{padding-bottom:84px;}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.3 6.1 20.3l1.2-6.6L2.5 9l6.6-.9z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-check-c" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></symbol>
+<symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3A3.5 3.5 0 0 0 6 6.5c-1.7.4-3 1.9-3 3.7 0 1 .4 1.9 1 2.6-.6.7-1 1.6-1 2.6A3.6 3.6 0 0 0 6.6 19 3.5 3.5 0 0 0 10 21.5c1.3 0 2-.6 2-2v-13c0-2-.8-3.5-2.5-3.5z"/><path d="M14.5 3A3.5 3.5 0 0 1 18 6.5c1.7.4 3 1.9 3 3.7 0 1-.4 1.9-1 2.6.6.7 1 1.6 1 2.6a3.6 3.6 0 0 1-3.6 3.6A3.5 3.5 0 0 1 14 21.5c-1.3 0-2-.6-2-2v-13c0-2 .8-3.5 2.5-3.5z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-4 16-9 16z"/><path d="M4 21c4-6 8-9 12-11"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.6"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13v11H1zM14 9h4l4 4v3h-8z"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="18" cy="18.5" r="1.8"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v8h14v-8M12 8v12M12 8s-1.5-5-4.5-5C5 3 4.5 8 8 8zM12 8s1.5-5 4.5-5C19 3 19.5 8 16 8z"/></symbol>
+<symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v6L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M8 3h8M7.5 15h9"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-fire" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c4.4 0 7.5-2.9 7.5-7.2 0-3.4-2.2-5.6-3.8-7.5C14.2 5.6 13.4 4 13.5 2c-3.2 1.4-4.7 4-4.4 6.8-.9-.3-1.6-1-2-2.2C5.3 8.2 4.5 10.6 4.5 13c0 5.3 3.1 9 7.5 9z"/></symbol>
+</defs></svg>
+
+<!-- announcement bar -->
+<div class="abar">🔥 <span>Red Rush is Back! Get up to <span class="y">50% Off</span> with Free Gifts —</span> <a href="#offers">Claim Your Offer</a></div>
+
+<!-- header -->
+<header class="hd"><div class="shell"><img src="images/gfuel-logo.png" alt="G FUEL"></div></header>
+
+<!-- trust strip -->
+<div class="trust"><div class="shell">
+  <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+  <span><b>4.9</b> · 32,000+ reviews</span><span class="dot"></span>
+  <span><b>2M+</b> customers</span><span class="dot"></span>
+  <span class="shout">500 Million+ Servings Poured</span>
+</div></div>
+
+<!-- hero / value prop -->
+<section class="hero"><div class="shell"><div class="hero__grid">
+  <div>
+    <div class="hero__rating">
+      <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+      Rated <b>4.9/5</b> by 32,000+ gamers, creators &amp; grinders
+    </div>
+    <h1>Your energy drink is <span>robbing you</span> — of money and momentum.</h1>
+    <p class="hero__sub">No Cans. No Sugar. No Crash. Just clean, focused energy — for under $1 a serving.</p>
+    <div class="checks">
+      <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>140mg clean caffeine + a focus complex your canned drink doesn't have</span></div>
+      <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>Zero sugar, ~15 calories — vs. up to 54g of sugar in a can</span></div>
+      <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>40 servings per tub — from $0.75/serving vs. $3.49 per can</span></div>
+    </div>
+    <div class="hero__cta">
+      <a class="btn" href="#offers">Claim Up To 50% Off <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <span class="hero__note"><b>$10 off</b> your first order auto-applied · 30-day money-back guarantee</span>
+    </div>
+  </div>
+  <div class="hero__img"><img src="images/gen-hero-graded.jpg" alt="G FUEL Energy Formula tub and shaker"></div>
+</div></div></section>
+
+<!-- social proof -->
+<section class="sec sec--tint"><div class="shell">
+  <div class="sec__head"><h2>2 million+ made the switch. Here's why they stayed.</h2></div>
+  <div class="tgrid">
+    <div class="tcard"><span class="tcard__tag">Energy</span>
+      <p>"I used to drink two cans a day. One scoop of G FUEL carries me through an 8-hour grind — no 2pm wall."</p>
+      <span class="tcard__who">Marcus T. · <span class="vb">✓ Verified Buyer</span></span></div>
+    <div class="tcard"><span class="tcard__tag">Focus</span>
+      <p>"The focus is the difference. Coffee wakes me up; this locks me in. I ranked up two divisions since switching."</p>
+      <span class="tcard__who">Dani R. · <span class="vb">✓ Verified Buyer</span></span></div>
+    <div class="tcard"><span class="tcard__tag">No Crash</span>
+      <p>"Zero sugar means zero crash. I finish my sessions with the same energy I started with. Cans never did that."</p>
+      <span class="tcard__who">Jae P. · <span class="vb">✓ Verified Buyer</span></span></div>
+    <div class="tcard"><span class="tcard__tag">Value</span>
+      <p>"Did the math: my Monster habit was $210/month. One tub on subscription is $29.99. It's not even close."</p>
+      <span class="tcard__who">Colin W. · <span class="vb">✓ Verified Buyer</span></span></div>
+  </div>
+  <div class="logos">
+    <div class="logos__h">Fueling the biggest names in gaming &amp; esports</div>
+    <div class="logos__row">
+      <!-- TODO: replace slots with partner/creator logos -->
+      <div class="logo-slot">LOGO</div><div class="logo-slot">LOGO</div><div class="logo-slot">LOGO</div><div class="logo-slot">LOGO</div><div class="logo-slot">LOGO</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- problem stats -->
+<section class="sec sec--deep"><div class="shell">
+  <div class="sec__head"><h2>The canned energy habit is broken</h2><p>You're paying premium prices for sugar water and a crash.</p></div>
+  <div class="pstats">
+    <div class="pstat"><b>54g</b><span>of sugar in a single 16oz can of leading energy drinks — more than a candy bar</span></div>
+    <div class="pstat"><b>$2,548</b><span>what a two-can-a-day habit costs per year at $3.49 a can</span></div>
+    <div class="pstat"><b>~2 hrs</b><span>until the sugar crash hits — right in the middle of your session</span></div>
+  </div>
+  <div class="pstats__src">Based on average retail pricing and published nutrition labels of leading 16oz canned energy drinks.</div>
+</div></section>
+
+<!-- benefits framework -->
+<section class="sec"><div class="shell">
+  <div class="sec__head"><h2>One scoop. Four upgrades.</h2></div>
+  <div class="bgrid">
+    <div class="bcard"><div class="bic"><svg class="ic"><use href="#i-bolt"/></svg></div><h3>Sustained Energy</h3><p>140mg of clean caffeine released without the spike-and-crash of sugar.</p></div>
+    <div class="bcard"><div class="bic"><svg class="ic"><use href="#i-brain"/></svg></div><h3>Sharp Focus</h3><p>A focus complex with L-tyrosine and choline to lock in when it matters.</p></div>
+    <div class="bcard"><div class="bic"><svg class="ic"><use href="#i-leaf"/></svg></div><h3>Zero Sugar</h3><p>Zero sugar, ~15 calories, and antioxidants from 18 fruit extracts.</p></div>
+    <div class="bcard"><div class="bic"><svg class="ic"><use href="#i-tag"/></svg></div><h3>Costs Way Less</h3><p>From $0.75 per serving on subscription — cans cost 4x more.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ OFFERS ============ -->
+<section class="offers" id="offers"><div class="shell"><div class="offers__grid">
+
+  <div class="gallery">
+    <div class="gallery__main">
+      <span class="gallery__badge" id="galBadge">Best Seller</span>
+      <img id="galImg" src="images/flavors/blue-ice-2-0.png" alt="G FUEL tub">
+    </div>
+    <div class="gallery__guar"><svg class="ic"><use href="#i-shield"/></svg> 30-Day Money-Back Guarantee — even on empty tubs</div>
+  </div>
+
+  <div class="buy">
+    <div class="buy__rating">
+      <span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+      <b>4.9</b> · 32,000+ reviews
+    </div>
+    <h2>Claim your first tub — <span>up to 50% off</span></h2>
+    <p class="buy__sub">40 servings of clean, focused energy. Pick a flavor, pick a plan, and we'll handle the rest.</p>
+
+    <div class="buy__label">1. Choose your flavor <em id="flavorName">Blue Ice</em></div>
+    <div class="flavors" role="radiogroup" aria-label="Flavor">
+      <button class="flavor on" data-flavor="blue-ice" data-name="Blue Ice" data-img="images/flavors/blue-ice-2-0.png" data-badge="Best Seller">
+        <span class="fbadge best">Best Seller</span>
+        <img src="images/flavors/blue-ice-2-0.png" alt="Blue Ice"><b>Blue Ice</b>
+      </button>
+      <button class="flavor" data-flavor="snow-cone" data-name="Snow Cone" data-img="images/flavors/snow-cone-2-0.png" data-badge="Fan Favorite">
+        <img src="images/flavors/snow-cone-2-0.png" alt="Snow Cone"><b>Snow Cone</b>
+      </button>
+      <button class="flavor" data-flavor="red-rush" data-name="Red Rush" data-img="images/flavors/red-rush.png" data-badge="Limited Time">
+        <span class="fbadge ltd">Almost Gone</span>
+        <img src="images/flavors/red-rush.png" alt="Red Rush"><b>Red Rush</b>
+        <span class="stock">27% left in stock</span>
+        <span class="stockbar"><i></i></span>
+      </button>
+    </div>
+
+    <div class="buy__label">2. Choose your formula</div>
+    <div class="formula" role="radiogroup" aria-label="Formula">
+      <button class="fopt on" data-formula="energy"><b>Energy Formula</b><span>140mg caffeine + focus complex</span></button>
+      <button class="fopt" data-formula="hydration"><b>Hydration Formula</b><span>Caffeine-free · electrolytes + focus</span></button>
+    </div>
+
+    <div class="buy__label">3. Choose your plan <em>Cancel or skip anytime</em></div>
+    <div class="plans" role="radiogroup" aria-label="Plan">
+
+      <button class="plan on" data-plan="monthly">
+        <span class="plan__badge">Most Popular</span>
+        <div class="plan__row">
+          <span class="plan__radio"></span>
+          <div class="plan__main">
+            <div class="plan__name">Subscribe &amp; Save — Monthly <span class="plan__off">25% Off Every Order</span></div>
+            <div class="plan__qty">1 tub / month · 40 servings</div>
+            <div class="plan__perks">
+              <span class="plan__perk"><svg class="ic"><use href="#i-check"/></svg> Free shipping, every order</span>
+              <span class="plan__perk"><svg class="ic"><use href="#i-gift"/></svg> Free shaker cup with your first order</span>
+            </div>
+          </div>
+          <div class="plan__price"><b data-price>$29.99</b><s data-compare>$39.99</s><span class="per" data-per>$0.75/serving</span></div>
+        </div>
+      </button>
+
+      <button class="plan" data-plan="quarterly">
+        <span class="plan__badge green">Best Deal</span>
+        <div class="plan__row">
+          <span class="plan__radio"></span>
+          <div class="plan__main">
+            <div class="plan__name">Subscribe &amp; Save — Quarterly <span class="plan__off">30% Off Every Order</span></div>
+            <div class="plan__qty">3 tubs every 3 months · 120 servings</div>
+            <div class="plan__perks">
+              <span class="plan__perk"><svg class="ic"><use href="#i-check"/></svg> Free shipping, every order</span>
+              <span class="plan__perk"><svg class="ic"><use href="#i-gift"/></svg> Free shaker + mystery flavor with your first order</span>
+            </div>
+          </div>
+          <div class="plan__price"><b data-price>$83.97</b><s data-compare>$119.97</s><span class="per" data-per>$0.70/serving</span></div>
+        </div>
+      </button>
+
+      <button class="plan" data-plan="onetime">
+        <div class="plan__row">
+          <span class="plan__radio"></span>
+          <div class="plan__main">
+            <div class="plan__name">One-Time Purchase</div>
+            <div class="plan__qty">1 tub · 40 servings</div>
+            <div class="plan__perks">
+              <span class="plan__perk" style="color:var(--muted)">No free shipping · no ongoing discount · no free gifts</span>
+            </div>
+          </div>
+          <div class="plan__price"><b data-price>$39.99</b><span class="per" data-per>$1.00/serving</span></div>
+        </div>
+      </button>
+
+    </div>
+
+    <div class="fdisc" id="fdisc">
+      <svg class="ic"><use href="#i-tag"/></svg>
+      <div><b>Extra $10 off your first order</b> — discount auto-applied at checkout.
+      <span>One per order. Applies to subscription plans.</span></div>
+    </div>
+
+    <div class="gifts">
+      <div class="gifts__h">Free gifts with your order <em id="giftState">2 of 3 unlocked</em></div>
+      <div class="gifts__row">
+        <div class="gift" id="giftShip"><img src="images/free-shipping.png" alt=""><span>Free Shipping</span></div>
+        <div class="gift" id="giftShaker"><img src="images/free-shaker.png" alt=""><span>Free Shaker Cup</span></div>
+        <div class="gift locked" id="giftMystery"><img src="images/free-mystery.png" alt=""><span>Mystery Flavor</span></div>
+      </div>
+    </div>
+
+    <div class="buy__cta">
+      <button class="buy__btn" id="buyBtn">Claim My Offer — <span id="btnPrice">$19.99</span> First Order <svg class="ic"><use href="#i-arrow"/></svg></button>
+      <div class="buy__fine">
+        <span class="it"><svg class="ic"><use href="#i-shield"/></svg> 30-day guarantee</span>
+        <span class="it"><svg class="ic"><use href="#i-truck"/></svg> Ships within 24 hours</span>
+        <span class="it"><svg class="ic"><use href="#i-lock"/></svg> Cancel anytime</span>
+      </div>
+    </div>
+  </div>
+
+</div></div></section>
+
+<!-- guarantee trio -->
+<section class="sec sec--tint"><div class="shell">
+  <div class="ggrid">
+    <div class="gcard"><div class="bic"><svg class="ic"><use href="#i-shield"/></svg></div><h3>30-Day Money-Back Guarantee</h3><p>Don't love it? Full refund within 30 days of your first order — even if the tub is empty. Fewer than 1% of customers ever use it.</p></div>
+    <div class="gcard"><div class="bic"><svg class="ic"><use href="#i-flask"/></svg></div><h3>Third-Party Tested</h3><p>Every production lot is independently tested for label accuracy, heavy metals, and banned substances.</p></div>
+    <div class="gcard"><div class="bic"><svg class="ic"><use href="#i-check-c"/></svg></div><h3>Made in the USA</h3><p>Blended and packed in GMP-certified, FDA-registered facilities in the United States.</p></div>
+  </div>
+</div></section>
+
+<!-- what's inside -->
+<section class="sec"><div class="shell">
+  <div class="sec__head"><h2>What's actually in the tub</h2><p>Everything your can has that works — none of what doesn't.</p></div>
+  <div class="inside__grid">
+    <div class="inside__img"><img src="images/gen-focus-graded.jpg" alt="G FUEL formula ingredients"></div>
+    <div>
+      <div class="ing">
+        <div class="ing__row"><div class="bic"><svg class="ic"><use href="#i-bolt"/></svg></div><div><b>140mg Clean Caffeine</b><p>About 1.5 cups of coffee — enough to lift you, dosed to not wreck you.</p></div></div>
+        <div class="ing__row"><div class="bic"><svg class="ic"><use href="#i-brain"/></svg></div><div><b>Focus Amino Complex</b><p>L-tyrosine and choline support reaction time and concentration under pressure.</p></div></div>
+        <div class="ing__row"><div class="bic"><svg class="ic"><use href="#i-leaf"/></svg></div><div><b>Antioxidant Blend</b><p>Extracts from 18 fruits — because your energy source shouldn't be a liability.</p></div></div>
+        <div class="ing__row"><div class="bic"><svg class="ic"><use href="#i-check-c"/></svg></div><div><b>Vitamins C, E, B6 &amp; B12</b><p>Daily micronutrient support built into every serving.</p></div></div>
+      </div>
+      <div class="diet"><span>Zero Sugar</span><span>~15 Calories</span><span>Gluten-Free</span><span>Keto-Friendly</span><span>No Artificial Dyes*</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- tested -->
+<section class="sec sec--deep"><div class="shell">
+  <div class="tested__grid">
+    <div>
+      <span class="eyebrow" style="color:var(--accent)">Quality You Can Verify</span>
+      <h2 style="margin-top:10px;font-size:clamp(24px,3.2vw,34px)">Tested like your performance depends on it</h2>
+      <div class="tested__list">
+        <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>Label-claim accuracy verified on every nutrient, every lot</span></div>
+        <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>Screened for 4 types of heavy metals</span></div>
+        <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>Independently tested for banned substances</span></div>
+        <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>Microbial and contaminant panels on every batch</span></div>
+        <div class="check"><svg class="ic"><use href="#i-check-c"/></svg><span>Made in GMP-certified, FDA-registered US facilities</span></div>
+      </div>
+    </div>
+    <div class="tested__img"><img src="images/gen-no-crash-graded.jpg" alt="G FUEL quality testing"></div>
+  </div>
+</div></section>
+
+<!-- survey + reviews -->
+<section class="sec sec--tint"><div class="shell">
+  <div class="sec__head"><h2>We surveyed 3,000+ daily drinkers</h2><p>Here's what happened after they switched from cans.</p></div>
+  <div class="sstats">
+    <div class="sstat"><b>92%</b><span>drink G FUEL at least 4–6x per week</span></div>
+    <div class="sstat"><b>78%</b><span>report steadier energy with no afternoon crash</span></div>
+    <div class="sstat"><b>71%</b><span>say focus during work or play improved</span></div>
+    <div class="sstat"><b>$120+</b><span>average reported monthly savings vs. canned drinks</span></div>
+  </div>
+  <div class="rwall">
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Replaced my 2-can habit</h3><p>Two weeks in and I haven't touched a can. Energy is smoother and my wallet noticed before I did.</p><span class="who"><span class="vb">✓</span> Tyler B. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Blue Ice is elite</h3><p>Tastes like a blue slushie without the 50g of sugar. I look forward to it every morning.</p><span class="who"><span class="vb">✓</span> Priya K. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>No crash. Finally.</h3><p>Every energy drink gave me a 2pm faceplant. This doesn't. I'm locked in through the whole workday.</p><span class="who"><span class="vb">✓</span> Sam D. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Subscription is a no-brainer</h3><p>One tub lasts me the whole month and shows up before I run out. Set it and forget it.</p><span class="who"><span class="vb">✓</span> Renee L. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Focus for ranked grinding</h3><p>The difference between this and coffee is the focus complex. Reaction time feels noticeably sharper.</p><span class="who"><span class="vb">✓</span> Andre M. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Hydration formula for nights</h3><p>Energy in the morning, caffeine-free Hydration at night. Same flavors, zero sleep impact.</p><span class="who"><span class="vb">✓</span> Gabby N. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Did the math, made the switch</h3><p>$3.49 a can vs. 75 cents a scoop. Over a year that paid for a new GPU. Not kidding.</p><span class="who"><span class="vb">✓</span> Owen F. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Red Rush needs to stay</h3><p>Grabbed it before it sells out again. Easily top 3 flavor they've ever made — stock up while you can.</p><span class="who"><span class="vb">✓</span> Kayla S. · Verified Buyer</span></div>
+    <div class="review"><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><h3>Guarantee made it risk-free</h3><p>I was skeptical, but the 30-day guarantee got me to try. Kept the subscription ever since.</p><span class="who"><span class="vb">✓</span> Victor H. · Verified Buyer</span></div>
+  </div>
+</div></section>
+
+<!-- comparison -->
+<section class="sec"><div class="shell">
+  <div class="sec__head"><h2>Run the numbers yourself</h2><p>Per serving, per gram of sugar, per crash — it's not close.</p></div>
+  <div class="cmp"><table>
+    <thead><tr>
+      <th></th>
+      <th class="me"><div class="brand"><img src="images/gfuel-logo.png" alt="G FUEL"></div></th>
+      <th><div class="brand"><img src="images/brands/redbull.png" alt="Red Bull"></div></th>
+      <th><div class="brand"><img src="images/brands/monster.webp" alt="Monster"></div></th>
+      <th><div class="brand"><img src="images/brands/celsius.png" alt="Celsius"></div></th>
+      <th><div class="brand"><img src="images/brands/starbucks.png" alt="Starbucks"></div></th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Cost per serving</td><td class="me">From $0.75</td><td>$2.99+</td><td>$3.49+</td><td>$2.79+</td><td>$5.45+</td></tr>
+      <tr><td>Sugar</td><td class="me yes">0g</td><td class="no">27g</td><td class="no">54g</td><td>0g</td><td class="no">Up to 43g</td></tr>
+      <tr><td>Focus complex</td><td class="me yes">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+      <tr><td>Servings per purchase</td><td class="me">40</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+      <tr><td>Flavors to choose from</td><td class="me">40+</td><td>~14</td><td>~20</td><td>~15</td><td>~10</td></tr>
+      <tr><td>Sugar crash</td><td class="me yes">Never</td><td class="no">Yes</td><td class="no">Yes</td><td>No</td><td class="no">Yes</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<!-- urgency -->
+<section class="urg"><div class="shell"><div class="urg__in">
+  <h2>🔥 Don't sleep on Red Rush</h2>
+  <p>Limited-time flavors rotate out when they sell out — and Red Rush is already at 27% stock. You never know what you have until it's gone.</p>
+  <div class="urg__row">
+    <div class="it"><span>Red Rush restocked</span><b>4 days ago</b></div>
+    <div class="sep"></div>
+    <div class="it"><span>Current stock level</span><b class="red">27% remaining</b></div>
+    <div class="sep"></div>
+    <div class="it"><span>Est. sell-out</span><b class="red" id="selloutDate">Jul 19, 2026</b></div>
+  </div>
+</div></div></section>
+
+<!-- faq -->
+<section class="sec"><div class="shell">
+  <div class="sec__head"><h2>Questions, answered</h2></div>
+  <div class="faq">
+    <div class="faq__item"><button class="faq__q">Is Red Rush a limited-time flavor?<svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="faq__a"><p>Yes — Red Rush is a rotating flavor and leaves the lineup once current stock sells out. If it's on your subscription when it retires, we'll swap you to your backup flavor (you can change it anytime from your account).</p></div></div>
+    <div class="faq__item"><button class="faq__q">What happens after my first subscription order?<svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="faq__a"><p>You keep your 25% (monthly) or 30% (quarterly) discount and free shipping on every renewal. The extra $10 first-order discount applies once. You can swap flavors, skip a month, or cancel anytime from your account — no calls, no hoops.</p></div></div>
+    <div class="faq__item"><button class="faq__q">How fast does my order ship?<svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="faq__a"><p>Orders typically ship within 24 hours on business days, and most arrive within 3–5 days in the continental US. Subscription orders ship free.</p></div></div>
+    <div class="faq__item"><button class="faq__q">How much caffeine is in a serving?<svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="faq__a"><p>The Energy Formula has 140mg of caffeine per serving — about a cup and a half of coffee. The Hydration Formula is completely caffeine-free, so you can drink it any time of day.</p></div></div>
+    <div class="faq__item"><button class="faq__q">When will I feel a difference?<svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="faq__a"><p>Energy and focus kick in within about 15 minutes of your first scoop. The bigger difference — no crashes, steadier days, real savings — shows up over your first few weeks of replacing cans.</p></div></div>
+    <div class="faq__item"><button class="faq__q">How does the money-back guarantee work?<svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="faq__a"><p>If you don't love your first order, contact us within 30 days for a full refund — even if the tub is empty. It applies to your first order only, once per customer.</p></div></div>
+  </div>
+</div></section>
+
+<!-- final cta -->
+<section class="sec sec--deep final"><div class="shell">
+  <h2>Your first tub is 50% off. Your move.</h2>
+  <p>40 servings. Zero sugar. Free gifts. Backed by a 30-day guarantee — the only risk is Red Rush selling out first.</p>
+  <a class="btn" href="#offers">Claim Up To 50% Off <svg class="ic"><use href="#i-arrow"/></svg></a>
+  <div class="final__fine">$10 first-order discount auto-applied at checkout · Cancel anytime</div>
+</div></section>
+
+<!-- footer -->
+<footer class="ft"><div class="shell">
+  <img src="images/gfuel-logo.png" alt="G FUEL">
+  <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Competitor pricing and nutrition based on published retail data and may vary.</p>
+  <p>© 2026 Gamma Labs. All rights reserved.</p>
+</div></footer>
+
+<!-- mobile sticky cta -->
+<div class="mcta" id="mcta">
+  <div class="mcta__row">
+    <div class="mcta__price"><b id="mctaPrice">$19.99</b><s id="mctaCompare">$39.99</s></div>
+    <a class="btn" href="#offers">Claim Up To 50% Off</a>
+  </div>
+</div>
+
+<script>
+// ---- pricing model (mirrors Grüns plan math: sub 25%/30% off + $10 first-order on subs) ----
+const PRICING = {
+  energy: {
+    monthly:   { price: 29.99, compare: 39.99,  per: 0.75, servings: 40  },
+    quarterly: { price: 83.97, compare: 119.97, per: 0.70, servings: 120 },
+    onetime:   { price: 39.99, compare: null,   per: 1.00, servings: 40  },
+  },
+  hydration: {
+    monthly:   { price: 26.99, compare: 35.99,  per: 0.67, servings: 40  },
+    quarterly: { price: 75.57, compare: 107.97, per: 0.63, servings: 120 },
+    onetime:   { price: 35.99, compare: null,   per: 0.90, servings: 40  },
+  },
+};
+const FIRST_ORDER_OFF = 10; // subs only, auto-applied
+
+const state = { flavor: 'blue-ice', formula: 'energy', plan: 'monthly' };
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const money = n => '$' + n.toFixed(2);
+
+function render() {
+  const table = PRICING[state.formula];
+  $$('.plan').forEach(card => {
+    const p = table[card.dataset.plan];
+    $('[data-price]', card).textContent = money(p.price);
+    const cmp = $('[data-compare]', card);
+    if (cmp) cmp.textContent = p.compare ? money(p.compare) : '';
+    $('[data-per]', card).textContent = money(p.per) + '/serving';
+  });
+
+  const sel = table[state.plan];
+  const isSub = state.plan !== 'onetime';
+  const first = isSub ? sel.price - FIRST_ORDER_OFF : sel.price;
+
+  $('#btnPrice').textContent = money(first);
+  $('#buyBtn').childNodes[0].textContent = 'Claim My Offer — ';
+  $('#mctaPrice').textContent = money(first);
+  $('#mctaCompare').textContent = sel.compare ? money(sel.compare) : money(sel.price);
+  $('#fdisc').style.display = isSub ? 'flex' : 'none';
+
+  // gifts: shipping + shaker on subs; mystery flavor on quarterly only
+  $('#giftShip').classList.toggle('locked', !isSub);
+  $('#giftShaker').classList.toggle('locked', !isSub);
+  $('#giftMystery').classList.toggle('locked', state.plan !== 'quarterly');
+  const unlocked = [isSub, isSub, state.plan === 'quarterly'].filter(Boolean).length;
+  $('#giftState').textContent = unlocked
+    ? `${unlocked} of 3 unlocked`
+    : 'Subscribe to unlock';
+}
+
+$$('.flavor').forEach(b => b.addEventListener('click', () => {
+  $$('.flavor').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  state.flavor = b.dataset.flavor;
+  $('#flavorName').textContent = b.dataset.name;
+  $('#galImg').src = b.dataset.img;
+  $('#galImg').alt = 'G FUEL ' + b.dataset.name + ' tub';
+  $('#galBadge').textContent = b.dataset.badge;
+}));
+
+$$('.fopt').forEach(b => b.addEventListener('click', () => {
+  $$('.fopt').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  state.formula = b.dataset.formula;
+  render();
+}));
+
+$$('.plan').forEach(b => b.addEventListener('click', () => {
+  $$('.plan').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  state.plan = b.dataset.plan;
+  render();
+}));
+
+// faq accordion
+$$('.faq__item').forEach(item => {
+  const q = $('.faq__q', item), a = $('.faq__a', item);
+  q.addEventListener('click', () => {
+    const open = item.classList.toggle('open');
+    a.style.maxHeight = open ? a.scrollHeight + 'px' : '0';
+  });
+});
+
+// dynamic sell-out date (~13 days out)
+const sellout = new Date(Date.now() + 13 * 864e5);
+$('#selloutDate').textContent = sellout.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+// mobile sticky CTA: show once the offers section has been scrolled past
+const offers = $('#offers'), mcta = $('#mcta');
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(([e]) => {
+    const below = e.boundingClientRect.top < 0 && !e.isIntersecting;
+    mcta.classList.toggle('show', below && window.innerWidth <= 600);
+    document.body.classList.toggle('mcta-on', below && window.innerWidth <= 600);
+  }, { threshold: 0 }).observe(offers);
+}
+
+render();
+</script>
+</body>
+</html>
