@@ -60,6 +60,10 @@
 .mxgw .mx-widget{margin:30px 0;background:var(--tint);border:2px dashed #c9b9ee;border-radius:18px;padding:34px 20px;text-align:center;color:var(--muted);font-weight:600;}
 .mxgw .mx-fine{text-align:center;font-size:12px;color:var(--muted);margin-top:26px;line-height:1.6;}
 .mxgw .mx-fine a{color:var(--primary);}
+/* --- page-scoped theme overrides (only affects this article since this style tag ships in its body) --- */
+[id$="__content_banner_ERFrE3"]{display:none !important;} /* hide title banner (h1 + gray strip) */
+[id$="__main_article_WC3GBk"] section,
+[id$="__main_article_WC3GBk"]{padding-top:0 !important;margin-top:0 !important;}
 @media(max-width:760px){
   .mxgw .mx-hero{padding:28px 20px 22px;}
   .mxgw .mx-hero__grid{grid-template-columns:1fr;gap:22px;}
