@@ -47,5 +47,13 @@ if bullets:
     out.append("<ul>" + "".join(bullets) + "</ul>")
 
 tpl = (HERE / "miami-heists-template.html").read_text()
-(HERE / "miami-heists-giveaway-article.html").write_text(tpl.replace("{{RULES}}", "\n".join(out)))
-print(f"wrote miami-heists-giveaway-article.html ({len(paras)} rule paragraphs)")
+full = tpl.replace("{{RULES}}", "\n".join(out))
+(HERE / "miami-heists-giveaway-article.html").write_text(full)
+
+# Page version: on /pages/ the body renders INSIDE the content_banner section, so the
+# blog-only banner-hiding rules would hide the whole page. Drop them and the header comment.
+page = re.sub(r"^<!--.*?-->\n", "", full, flags=re.S)
+page = re.sub(r"/\* page-scoped theme overrides.*?\n\n", "", page, flags=re.S)
+assert "content_banner" not in page and "<!-- G FUEL" not in page
+(HERE / "miami-heists-giveaway-page.html").write_text(page)
+print(f"wrote article + page versions ({len(paras)} rule paragraphs)")
