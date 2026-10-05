@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lenny.opshub.server</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-c</string>
+    <string>cd __HOME__/ops-hub &amp;&amp; exec __NODEBIN__/npm run start</string>
+  </array>
+
+  <!-- Always up, so http://localhost:4321 works without starting anything. -->
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/ops-hub/data/server.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/ops-hub/data/server.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <!-- nvm's node must come first: launchd otherwise finds the stale
+         /usr/local/bin/node 18, which Next.js 15 refuses to run on. -->
+    <key>PATH</key>
+    <string>__NODEBIN__:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>NODE_ENV</key>
+    <string>production</string>
+  </dict>
+</dict>
+</plist>

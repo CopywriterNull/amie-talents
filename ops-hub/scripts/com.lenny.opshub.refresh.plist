@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lenny.opshub.refresh</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__HOME__/ops-hub/scripts/refresh-ops.sh</string>
+  </array>
+
+  <!-- 7:52am rather than 8:00 so it isn't racing every other cron on the box. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>7</integer>
+    <key>Minute</key><integer>52</integer>
+  </dict>
+
+  <!-- Catch up after the laptop was asleep at 7:52. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/ops-hub/data/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/ops-hub/data/launchd.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__NODEBIN__:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:__HOME__/.local/bin</string>
+    <key>HOME</key>
+    <string>__HOME__</string>
+  </dict>
+</dict>
+</plist>

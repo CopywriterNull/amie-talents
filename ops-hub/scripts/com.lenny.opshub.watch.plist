@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lenny.opshub.watch</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__HOME__/ops-hub/scripts/watch-granola.sh</string>
+  </array>
+
+  <!-- Granola rewrites this directory when a note is captured and synced.
+       launchd runs the script on any change; the script handles settling and
+       the endpoint handles the cooldown. -->
+  <key>WatchPaths</key>
+  <array>
+    <string>__HOME__/Library/Application Support/Granola</string>
+  </array>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <!-- The script sleeps to let notes settle; without this launchd would kill
+       it as an idle job. -->
+  <key>AbandonProcessGroup</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/ops-hub/data/watch.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/ops-hub/data/watch.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__NODEBIN__:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>__HOME__</string>
+  </dict>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+{
+  "name": "ops-hub",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 4321",
+    "build": "next build",
+    "start": "next start -p 4321",
+    "refresh": "bash scripts/refresh-ops.sh",
+    "deploy": "bash scripts/deploy.sh",
+    "owed": "node --experimental-strip-types --no-warnings scripts/owed-local.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "ai": "^7.0.55",
+    "geist": "^1.7.2",
+    "next": "^15.5.23",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv-cli": "^11.0.0",
+    "typescript": "^5"
+  }
+}
