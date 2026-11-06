@@ -1,0 +1,109 @@
+/* G FUEL email design system: tokens + modules, measured from the team's Figma (G-Fuel file,
+   Big Pocket Energy / DBS Reskins / BFCM frames). One 600px canvas, rendered to image slices. */
+@font-face{font-family:'Blunt';src:url(fonts/blunt-reg.woff2) format('woff2');}
+@font-face{font-family:'Blunt SemiCon';src:url(fonts/blunt-semicon.woff2) format('woff2');}
+@font-face{font-family:'Acumin';src:url(fonts/acumin-vf-500.woff2) format('woff2');font-weight:400;}
+@font-face{font-family:'Acumin';src:url(fonts/acumin-vf-700.woff2) format('woff2');font-weight:700;}
+
+:root{
+  /* fixed brand */
+  --pink:#fe2f70;        /* primary CTA, ticker */
+  --pink-deep:#b9043d;   /* sub-pills on pink */
+  --blue-cta:#067ae4;    /* secondary CTA (UGC "Let's get started") */
+  --ink:#303030;         /* headings on white */
+  --ink-2:#1f1f1f;
+  --body:#636363;        /* body on white */
+  --footer:#000000;
+  --footer-line:#b184ff; /* footer pill outline */
+  /* campaign skin: one field colour + its light tint; set per campaign */
+  --field:#0066dd;
+  --field-2:#40c0fe;
+  --tint:#8bdeff;        /* eyebrow on the field */
+  --gutter:38px;         /* content is 524 wide */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:600px;background:#fff;}
+body{font-family:'Acumin',sans-serif;-webkit-font-smoothing:antialiased;}
+img{display:block;}
+.m{position:relative;width:600px;overflow:hidden;}          /* one module = one slice */
+.c{text-align:center;}
+
+/* type scale (px / line-height), all caps except body */
+.eyebrow{font:700 28px/27px 'Acumin';text-transform:uppercase;color:var(--tint);}
+.h1{font:400 80px/67px 'Blunt';text-transform:uppercase;color:#fff;}
+.h1.s{font-size:60px;line-height:55px;}
+.h2{font:400 52px/46px 'Blunt SemiCon';text-transform:uppercase;color:var(--ink);}
+.h2.on{color:#fff;}
+.h3{font:400 48px/40px 'Blunt';text-transform:uppercase;color:#fff;}
+.lead{font:400 20px/26px 'Acumin';color:var(--body);}
+.lead.on{color:#fff;}
+.kicker{font:700 20px/27px 'Acumin';text-transform:uppercase;color:#ebf9ff;}
+
+/* buttons: 418x72 pill, Blunt SemiCon 34, soft drop */
+.btn{display:inline-flex;align-items:center;justify-content:center;width:418px;height:72px;border-radius:36px;background:var(--pink);
+  color:#fff;font:400 34px/1 'Blunt SemiCon';text-transform:uppercase;box-shadow:0 9px 12px rgba(0,0,0,.25);padding-top:3px;}
+.btn.blue{background:var(--blue-cta);font-family:'Blunt';}
+.btn.sm{width:324px;height:64px;font-size:28px;}
+
+/* header + ticker (shell) */
+.hdr{height:156px;background:var(--field);}
+.hdr img{position:absolute;left:210px;top:44px;width:180px;}
+.ticker{height:57px;background:var(--pink);box-shadow:0 4px 8px rgba(0,0,0,.6);z-index:2;}
+.ticker img{width:600px;height:57px;}
+
+/* field = the campaign colour section (hero, flavour bands, how-to) */
+.field{background:radial-gradient(120% 70% at 50% 45%,var(--field-2) 0%,var(--field) 75%);color:#fff;}
+.ripple{background-size:cover;background-position:center;}
+.search{margin:40px auto 0;width:517px;height:72px;border-radius:50px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;gap:18px;font:700 20px/1 'Acumin';text-transform:uppercase;color:#fff;}
+.search img{width:33px;height:33px;}
+
+/* stat circles: 160 pink discs, number Blunt SemiCon 50, label Acumin Bold 20, optional sub-pill */
+.stats{display:flex;justify-content:center;gap:20px;}
+.stat{width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 50% 45%,#ff6f9d 0%,var(--pink) 38%,#ff5b8f 52%,var(--pink) 64%,#e8205f 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.18);}
+.stat b{font:400 50px/50px 'Blunt SemiCon';text-transform:uppercase;color:#fff;padding-top:6px;}
+.stat span{font:700 18px/18px 'Acumin';text-transform:uppercase;color:#fff;}
+.stat i{margin-top:6px;font:400 13px/1 'Acumin';font-style:normal;color:#fff;background:var(--pink-deep);border-radius:51px;padding:4px 12px 3px;}
+
+/* product stage: renders sit on soft blurred floor shadows */
+.stage{position:relative;height:330px;}
+.stage img{position:absolute;filter:drop-shadow(10px 18px 22px rgba(0,0,0,.35));}
+
+/* flavour band: ripple field, render one side, name + line + small CTA other side */
+.band{height:330px;}
+.band .art{position:absolute;top:16px;width:300px;filter:drop-shadow(-14px 6px 22px rgba(0,0,0,.32));}
+.band .txt{position:absolute;top:0;bottom:0;width:260px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;}
+.band .txt p{font:400 18px/21px 'Acumin';color:#fff;}
+.band.l .art{left:24px;} .band.l .txt{right:30px;}
+.band.r .art{right:24px;filter:drop-shadow(14px 6px 22px rgba(0,0,0,.32));} .band.r .txt{left:30px;}
+
+/* photo pair with glass captions */
+.pair{display:flex;gap:12px;justify-content:center;}
+.pair figure{position:relative;width:256px;height:256px;border-radius:23px;overflow:hidden;}
+.pair figure img{width:100%;height:100%;object-fit:cover;}
+.pair figcaption{position:absolute;left:16px;right:16px;bottom:16px;height:43px;border-radius:21.5px;background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(6px);color:#fff;font:400 18px/43px 'Acumin';text-align:center;}
+
+/* how-to card: 524 wide, r53, field + 3 numbered steps split by dashed rules */
+.howto{margin:0 auto;width:524px;border-radius:53px;padding:44px 22px 46px;}
+.steps{display:flex;margin-top:34px;}
+.step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;position:relative;}
+.step+.step{border-left:2px dashed rgba(255,255,255,.55);}
+.step .ico{position:relative;width:88px;height:88px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.step .ico svg{width:46px;height:46px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.step .n{position:absolute;left:-6px;top:-6px;width:28px;height:28px;border-radius:50%;background:var(--pink);font:700 16px/29px 'Acumin';color:#fff;}
+.step b{font:400 20px/21px 'Blunt SemiCon';text-transform:uppercase;color:#fbfafc;}
+.step span{margin-top:6px;font:400 15px/17px 'Acumin';color:#fbfafc;}
+
+/* UGC trio */
+.ugc{display:flex;gap:12px;justify-content:center;}
+.ugc img{width:167px;height:229px;border-radius:9px;object-fit:cover;}
+
+/* app block + footer reuse the team's exports; legal stays live text in Klaviyo */
+.app img{width:600px;}
+.ftr{background:var(--footer);padding:48px 0 40px;}
+.ftr .logo{width:164px;margin:0 auto 34px;}
+.ftr .btns{width:346px;margin:0 auto 40px;}
+.ftr .social{width:296px;margin:0 auto 36px;}
+.ftr p{font:400 16px/21px 'Acumin';color:#fff;width:456px;margin:0 auto 14px;text-align:center;}

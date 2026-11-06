@@ -1,0 +1,98 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+@font-face{font-family:Breit;src:url(../assets/SohneBreitFett.woff2);font-weight:800}
+@font-face{font-family:Breit;src:url(../assets/SohneBreitDreiviertelfett.woff2);font-weight:700}
+@font-face{font-family:Sohne;src:url(../assets/SohneBuch.woff2);font-weight:400}
+@font-face{font-family:Slang;src:url(../assets/GrandSlangItalic.woff2);font-style:italic}
+:root{--y:#FFE900;--ink:#111;--cream:#FBF6EA;--line:rgba(17,17,17,.14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E4D8}
+.e{width:600px;margin:0 auto;background:#fff;color:var(--ink);font:15px/1.55 Sohne,Helvetica,Arial,sans-serif;overflow:hidden}
+.d{font-family:Breit;font-weight:800;text-transform:uppercase;letter-spacing:-.015em;line-height:.9;margin:0}
+.s{font-family:Slang;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;line-height:.9}
+.eb{font-family:Breit;font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin:0}
+p{margin:0}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.btn{display:inline-block;background:var(--ink);color:var(--y);font:700 14px/1 Breit;letter-spacing:.14em;text-transform:uppercase;padding:20px 34px;border-radius:999px;text-decoration:none}
+.btn.y{background:var(--y);color:var(--ink)} .btn.w{background:#fff;color:var(--ink)}
+.btn.full{display:block;text-align:center}
+.link{font:700 12px Breit;letter-spacing:.16em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:3px}
+.hdr{background:var(--ink);padding:18px 28px;text-align:center}
+.hdr img{height:36px;display:inline-block}
+.hdr.y{background:var(--y)}
+.nb{display:flex;background:var(--y);color:var(--ink);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.nb.k{background:var(--ink);color:var(--y);border-color:var(--y)}
+.nb a{flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 6px;font:700 14px/1.15 Breit;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:inherit;text-align:center}
+.nb a+a{border-left:1.5px solid rgba(17,17,17,.25)}.nb.k a+a{border-left-color:rgba(255,233,0,.35)}
+.img{display:block;width:100%;object-fit:cover}
+.tile{border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tile img{width:88%;display:block}
+.stars{color:var(--ink);letter-spacing:3px;font-size:14px}
+.chip{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:7px 13px;font:700 12px Breit;letter-spacing:.14em;text-transform:uppercase;margin:0 6px 8px 0}
+.rule{height:1px;background:var(--line)}
+.ft{background:var(--y);padding:44px 44px 36px;text-align:center}
+.ft .s{font-size:44px}
+.ft nav{display:flex;justify-content:center;gap:22px;margin:22px 0 26px}
+.ft nav a{font:700 12px Breit;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.6;color:rgba(17,17,17,.7)}
+.ft .soc{display:flex;justify-content:center;gap:10px;margin-bottom:22px}
+.ft .soc span{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--y);font:800 12px/36px Breit}
+.wave{display:block;width:100%;height:18px}
+@media (max-width:480px){
+.e{width:100%!important;font-size:16px}
+.pad,.px,.ft{padding-left:20px!important;padding-right:20px!important}
+.e p:not(.eb):not(.d):not(.s):not(.stars):not(.big),.e li{font-size:16px!important}
+.e h1{font-size:40px!important}.e h2{font-size:26px!important}.e h1 .s,.e h2 .s{font-size:1.3em!important}
+.e div.s{font-size:58px!important}.ft div.s{font-size:40px!important}
+.big{font-size:140px!important}
+.btn{display:block!important;text-align:center;min-height:48px;padding:18px 16px!important}
+.st{flex-direction:column!important}.st>*{width:100%!important;flex:none!important;max-width:none!important}
+.st>img{height:240px!important;object-fit:contain}
+.e img{max-width:100%}
+.mw{width:100%!important;max-width:335px}.thumb{width:90px!important;height:90px!important}
+.g1{grid-template-columns:1fr!important}
+.nb a:nth-child(n+4){display:none}.nb a{font-size:14px!important}
+.ft nav{flex-wrap:wrap;gap:14px 20px}
+.hm{display:none!important}
+.btn{letter-spacing:.06em!important}
+.st>div{border-left:0!important}.st>.pin{width:74px!important}
+.stat>div{padding:0 12px!important}
+.ml{width:110px!important;letter-spacing:0!important}
+.ss{font-size:28px!important}
+.sw .d{font-size:34px!important}.sw .s,.e p.s.sm{font-size:42px!important}
+}
+</style></head><body><div class="e" style="background:#fff"><div class="hdr"><img src="../assets/logo_yellow.png" alt="immi"></div><nav class="nb"><a>Toppings</a><a>Ramen</a><a>Cups</a><a>Slurp Society</a></nav>
+<div class="px" style="background:linear-gradient(180deg,#5BB8EA 0,#BFE5F8 100%);padding:50px 44px 0;text-align:center">
+ <p class="eb">New drop &middot; Seafood Topping Mix</p>
+ <div class="s" style="font-size:84px;margin-top:12px">say hello</div>
+ <h1 class="d" style="font-size:56px;margin-top:-6px">to the ocean.</h1>
+ <img src="../assets/seafood-topping-mix_0.png" class="mw" style="width:400px;display:block;margin:20px auto 0;filter:drop-shadow(0 30px 30px rgba(0,60,100,.25))">
+</div>
+<div class="px" style="background:#BFE5F8;padding:30px 44px 44px;text-align:center">
+ <p style="font-size:16.5px;max-width:430px;margin:0 auto">Shrimp, fish cake, imitation crab and crunchy veg.</p>
+ <div style="display:flex;justify-content:center;align-items:baseline;gap:12px;margin:26px 0 22px"><p class="d" style="font-size:40px">$20</p><p class="eb" style="opacity:.6">per bag</p></div>
+ <a class="btn">Get it now &rarr;</a>
+</div>
+<div class="px" style="background:var(--cream);padding:46px 44px">
+ <div class="st" style="display:flex;gap:26px;align-items:center">
+  <img src="../assets/seafood-topping-mix_5.png" style="width:220px;flex:none">
+  <div><h2 class="d" style="font-size:28px;margin:0 0 16px">8 things your <span class="s" style="font-size:36px">bowl was missing</span></h2>
+  <div><span class="chip">Bean curd</span><span class="chip">Corn</span><span class="chip">Cabbage</span><span class="chip">Carrot</span><span class="chip">Green onion</span><span class="chip">Fish cake</span><span class="chip">Shrimp</span><span class="chip">Imitation crab</span></div></div>
+ </div>
+</div>
+<div class="px" style="background:var(--ink);color:#fff;padding:44px 32px">
+ <div class="st" style="display:flex;gap:22px"><div style="flex:1;text-align:center;padding:0 10px;"><p class="s" style="font-size:44px;color:var(--y)">sprinkle</p><p style="font-size:14px;color:#bbb;margin-top:8px;line-height:1.4">A spoonful on top of any immi bowl.</p></div><div style="flex:1;text-align:center;padding:0 10px;border-left:1px solid #333"><p class="s" style="font-size:44px;color:var(--y)">stir</p><p style="font-size:14px;color:#bbb;margin-top:8px;line-height:1.4">Rehydrates in the broth in seconds.</p></div><div style="flex:1;text-align:center;padding:0 10px;border-left:1px solid #333"><p class="s" style="font-size:44px;color:var(--y)">slurp</p><p style="font-size:14px;color:#bbb;margin-top:8px;line-height:1.4">Ramen, soups, stir-fries, rice bowls.</p></div></div>
+</div>
+<img class="img" src="../assets/seafood-topping-mix_4.jpg" style="height:270px;object-position:center 0%">
+<div class="pad" style="padding-top:40px;padding-bottom:46px">
+ <div style="border:1.5px solid var(--ink);border-radius:18px;padding:22px 24px;display:flex;gap:16px">
+  <p style="width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--y);font:800 14px/28px Breit;text-align:center;flex:none">!</p>
+  <div><p class="eb" style="margin-bottom:6px">Heads up: allergens</p><p style="font-size:14px;line-height:1.5"><b>Contains: wheat, soy, fish (cod, pollock), crustacean shellfish (shrimp), sesame.</b></p></div>
+ </div>
+</div><div class="ft"><img src="../assets/logo_black.png" style="height:40px;margin-bottom:14px">
+<div class="s">keep slurping.</div>
+<nav><a>Shop all</a><a>Find a store</a><a>Slurp Society</a><a>FAQ</a></nav>
+<div class="soc"><span>IG</span><span>TT</span></div>
+<small>Questions? Hit reply. A real person on Team immi reads every one.</small>
+<small>immi &middot; 58 West Portal Ave, #623, San Francisco, CA 94127</small>
+<small style="margin-top:8px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small></div></div></body></html>

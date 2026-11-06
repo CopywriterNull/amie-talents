@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Run it monthly</title><style>
+@font-face{font-family:'Hothead';src:url(../assets/fonts/hothead.woff) format('woff')}
+@font-face{font-family:'Archivo';src:url(../assets/fonts/Archivo-Regular.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Archivo';src:url(../assets/fonts/Archivo-Bold.woff2) format('woff2');font-weight:700}
+@font-face{font-family:'Archivo';src:url(../assets/fonts/Archivo-Italic.woff2) format('woff2');font-weight:400;font-style:italic}
+:root{--ink:#1C1C1C;--cream:#F3F1EA;--paper:#FBFAF6;--blue:#3F68B1;--navy:#203F7C;--green:#2E8656;--dgreen:#1F5E3F;
+--mint:#CFE8D9;--teal:#0B7F6F;--sky:#D9E6F5;--gold:#E7B43A;--line:rgba(28,28,28,.14)}
+*{box-sizing:border-box}
+body{margin:0;background:#D9D6CC}
+.e{width:600px;margin:0 auto;background:var(--paper);color:var(--ink);font:16px/1.5 Archivo,Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+.h{font-family:Hothead,Impact,'Arial Black',sans-serif;font-weight:400;text-transform:uppercase;line-height:.98;letter-spacing:.005em}
+.eb{font:700 12px/1.3 Archivo,Arial;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.5}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto}
+.btn{display:inline-block;background:var(--blue);color:#fff;font:400 19px/1 Hothead,Impact,sans-serif;letter-spacing:.02em;text-transform:uppercase;
+ padding:16px 28px 15px;border:2px solid var(--ink);border-radius:4px;text-decoration:none;box-shadow:4px 4px 0 var(--ink)}
+.btn.w{background:#fff;color:var(--ink)} .btn.gr{background:var(--green)} .btn.k{background:var(--ink);color:#fff;box-shadow:4px 4px 0 var(--blue)}
+.link{font:700 13px Archivo,Arial;letter-spacing:.1em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.warn{background:#fff;padding:12px}
+.warn div{border:3px solid #000;padding:18px 18px 17px;text-align:center}
+.warn p{font:700 22px/1.28 Helvetica,Arial,sans-serif;color:#000;letter-spacing:0}
+.age{background:var(--ink);color:#fff;text-align:center;font:700 12px/1 Archivo,Arial;letter-spacing:.14em;text-transform:uppercase;padding:11px 12px}
+.logo{text-align:center;padding:20px 0 16px;background:var(--cream) url(../assets/tex_cream.jpg) center/600px}
+.logo img{height:40px;display:inline-block}
+.nav{display:flex;background:#fff;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.nav a{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;font:400 15px/1.05 Hothead,Impact,sans-serif;text-transform:uppercase;color:var(--ink);
+ min-height:48px;padding:6px 4px;border-left:1px solid var(--line);text-decoration:none}
+.nav a:first-child{border-left:0}
+.pill{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:30px;padding:6px 12px 5px;font:700 12px/1 Archivo,Arial;letter-spacing:.12em;text-transform:uppercase}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block}
+.tx-cream{background:var(--cream) url(../assets/tex_cream.jpg) center top/600px}
+.tx-green{background:var(--dgreen) url(../assets/tex_green.jpg) center top/600px}
+.tx-blue{background:var(--blue) url(../assets/tex_blue.jpg) center top/600px}
+.tx-ink{background:var(--ink) url(../assets/tex_ink.jpg) center top/600px}
+.row{display:flex}
+.g{display:flex;gap:12px}
+.card{background:#fff;border:2px solid var(--ink);border-radius:4px;overflow:hidden}
+.price{font:700 16px Archivo,Arial}
+.strike{text-decoration:line-through;opacity:.55;font-weight:400}
+.chip{display:inline-block;border:2px solid var(--ink);border-radius:4px;padding:7px 10px 6px;font:400 15px/1 Hothead,Impact,sans-serif;margin:0 6px 6px 0;background:#fff}
+.chip.off{border-style:dashed;opacity:.4;background:transparent}
+.ft{background:var(--ink) url(../assets/tex_ink.jpg) center/600px;color:#fff;padding:40px 44px 30px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 18px;margin:20px 0}
+.ft nav a{font:700 12px Archivo,Arial;letter-spacing:.14em;text-transform:uppercase;color:#AFC3EA;text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.6;color:rgba(255,255,255,.66)}
+.ft .legal{border-top:1px solid rgba(255,255,255,.16);margin-top:18px;padding-top:16px;text-align:left}
+.concept{background:#E9E6DC;color:#55524A;text-align:center;font:12px/1.5 Archivo,Arial;padding:12px 20px}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.h):not(.fine):not(.price):not(.nm){font-size:16px!important;line-height:1.45!important}
+ .warn p{font-size:19px!important;line-height:1.3!important}
+ .warn div{padding:14px 12px!important}
+ h1.h{font-size:44px!important} h2.h{font-size:30px!important}
+ .btn{display:block!important;text-align:center!important;padding:16px 14px 15px!important;min-height:52px;font-size:19px!important}
+ .gifw{width:100%!important;height:auto!important;margin-left:0!important;margin-right:0!important}
+ .stack{flex-direction:column!important}
+ .stack>*{width:100%!important;flex:1 1 auto!important}
+ .stack.rev{flex-direction:column-reverse!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important;min-width:0}
+ .g1{flex-direction:column!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important}
+ .nav a{font-size:14px!important}
+ .hcopy{padding:30px 20px 34px!important}
+ .mx td,.mx th{padding-left:2px!important;padding-right:2px!important}
+ .mx .fl{font-size:14px!important}
+ .rk{font-size:56px!important;width:40px!important}
+ .ledger .lbl{font-size:14px!important}
+ .hide-m{display:none!important}
+ .cols{columns:1!important}
+ .cimg{border-right:0!important;border-bottom:2px solid var(--ink)!important;width:100%!important}
+}
+</style></head><body><div class="e" style="background:var(--paper)"><div class="warn"><div><p>WARNING: This product contains nicotine. Nicotine is an addictive chemical.</p></div></div><div class="age">21+ only &middot; Not for sale to minors<span class="hide-m"> &middot; Free shipping $80+</span></div><div class="logo"><img src="../assets/logo_blue.png" alt="ALP"></div><div class="nav"><a href="https://alppouch.com/collections/all">Pouches</a><a href="https://alppouch.com/products/peppermint-nicotine-pouches">Peppermint</a><a href="https://alppouch.com/pages/alp-subscriptions">Subscribe</a><a href="https://alppouch.com/pages/store-locator">Store locator</a></div>
+<div class="tx-blue c" style="color:#fff;padding-top:36px">
+ <div class="pad"><p><span class="pill"><i></i>Subscribe &amp; save</span></p>
+ <h1 class="h" style="font-size:50px;margin-top:16px">Don&rsquo;t buy ALP once.</h1>
+ <p style="font-size:16px;margin:10px 0 0;color:#DCE6F7">Run it monthly. 5% off from order one.</p></div>
+ <img src="../gifs/03_lid.gif" class="img" style="margin-top:18px" width="600" height="400" alt="A Chilled Mint tin twisting open to show 20 pouches, Subscribe and save 5% stamp">
+ <div class="pad" style="padding-top:4px;padding-bottom:38px"><a class="btn w" href="https://alppouch.com/pages/alp-subscriptions">Start my subscription</a></div>
+</div>
+<div class="pad" style="background:#fff;padding-top:36px;padding-bottom:30px;border-top:2px solid var(--ink)">
+ <h2 class="h" style="font-size:30px">Do the math</h2>
+ <p style="font-size:15px;margin:6px 0 12px;opacity:.8">Price per tin on Chilled Mint, any strength. 20 pouches a tin.</p>
+ <div class="ledger"><div style="padding:12px 0;border-top:1px solid var(--line)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px">
+<p class="lbl" style="font:700 15px Archivo,Arial">5 tins <span style="font-weight:400;opacity:.7">&middot; One-time $26.45</span></p>
+<p class="h" style="font-size:24px;color:var(--ink);flex:none">$5.29<span style="font-size:13px">/tin</span></p></div>
+<div style="height:14px;background:rgba(28,28,28,.08);border-radius:2px;overflow:hidden"><div style="width:100.0%;height:100%;background:var(--ink)"></div></div></div><div style="padding:12px 0;border-top:1px solid var(--line)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px">
+<p class="lbl" style="font:700 15px Archivo,Arial">5 tins <span style="font-weight:400;opacity:.7">&middot; Subscribed $25.13</span></p>
+<p class="h" style="font-size:24px;color:var(--blue);flex:none">$5.03<span style="font-size:13px">/tin</span></p></div>
+<div style="height:14px;background:rgba(28,28,28,.08);border-radius:2px;overflow:hidden"><div style="width:95.0%;height:100%;background:var(--blue)"></div></div></div><div style="padding:12px 0;border-top:1px solid var(--line)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px">
+<p class="lbl" style="font:700 15px Archivo,Arial">20 tins <span style="font-weight:400;opacity:.7">&middot; Subscribed $94.96</span></p>
+<p class="h" style="font-size:24px;color:var(--blue);flex:none">$4.75<span style="font-size:13px">/tin</span></p></div>
+<div style="height:14px;background:rgba(28,28,28,.08);border-radius:2px;overflow:hidden"><div style="width:89.8%;height:100%;background:var(--blue)"></div></div></div><div style="padding:12px 0;border-top:1px solid var(--line)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px">
+<p class="lbl" style="font:700 15px Archivo,Arial">50 tins <span style="font-weight:400;opacity:.7">&middot; Subscribed $226.10</span></p>
+<p class="h" style="font-size:24px;color:var(--blue);flex:none">$4.52<span style="font-size:13px">/tin</span></p></div>
+<div style="height:14px;background:rgba(28,28,28,.08);border-radius:2px;overflow:hidden"><div style="width:85.5%;height:100%;background:var(--blue)"></div></div></div><div style="padding:12px 0;border-top:1px solid var(--line)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px">
+<p class="lbl" style="font:700 15px Archivo,Arial">30 Pack Combo <span style="font-weight:400;opacity:.7">&middot; Subscribed $128.14</span></p>
+<p class="h" style="font-size:24px;color:var(--blue);flex:none">$4.27<span style="font-size:13px">/tin</span></p></div>
+<div style="height:14px;background:rgba(28,28,28,.08);border-radius:2px;overflow:hidden"><div style="width:80.7%;height:100%;background:var(--blue)"></div></div></div></div>
+ <div style="display:flex;gap:14px;align-items:center;margin-top:14px;background:var(--sky);border:2px solid var(--ink);border-radius:4px;padding:14px 16px">
+  <p class="h" style="font-size:30px;color:var(--blue);flex:none">19%</p>
+  <p style="font-size:15px;line-height:1.35">less per tin on a subscribed 30 Pack Combo vs. one 5-tin sleeve.</p></div>
+</div>
+<div class="tx-cream pad" style="padding-top:36px;padding-bottom:34px">
+ <h2 class="h" style="font-size:28px">Stay in. Get more.</h2>
+ <p style="font-size:15px;margin:6px 0 16px;opacity:.8">5% off now. Up to 15% off after 10 orders.</p>
+ <div style="display:flex;border-left:2px solid var(--ink)"><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font:400 14px Hothead,Impact">1</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">2</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">3</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">4</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">5</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">6</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">7</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">8</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);font:400 14px Hothead,Impact">9</div><div style="flex:1;height:30px;border:2px solid var(--ink);border-left:0;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font:400 14px Hothead,Impact">10</div></div>
+ <div style="display:flex;justify-content:space-between;margin-top:8px"><p class="eb">Order 1 &middot; 5% off</p><p class="eb" style="color:var(--blue)">Order 10 &middot; up to 15%</p></div>
+ <table style="width:100%;border-collapse:collapse;margin-top:26px;background:#fff;border:2px solid var(--ink)">
+  <tr><th></th><th class="eb" style="padding:12px 6px;width:84px;background:var(--blue);color:#fff">Subs</th><th class="eb" style="padding:12px 6px;width:84px">One time</th></tr>
+  <tr><td style="padding:12px 6px;border-top:1px solid var(--line);font:700 15px Archivo,Arial">Built-in 5% discount</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:var(--blue);font:700 18px Archivo">&#10003;</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:#C2384A;font:700 18px Archivo">&#10005;</td></tr><tr><td style="padding:12px 6px;border-top:1px solid var(--line);font:700 15px Archivo,Arial">Automatic monthly delivery</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:var(--blue);font:700 18px Archivo">&#10003;</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:#C2384A;font:700 18px Archivo">&#10005;</td></tr><tr><td style="padding:12px 6px;border-top:1px solid var(--line);font:700 15px Archivo,Arial">Discount progression</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:var(--blue);font:700 18px Archivo">&#10003;</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:#C2384A;font:700 18px Archivo">&#10005;</td></tr><tr><td style="padding:12px 6px;border-top:1px solid var(--line);font:700 15px Archivo,Arial">Pause, skip, cancel anytime</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:var(--blue);font:700 18px Archivo">&#10003;</td><td style="text-align:center;padding:12px 6px;border-top:1px solid var(--line);color:#C2384A;font:700 18px Archivo">&#10005;</td></tr>
+ </table>
+</div>
+<div class="pad" style="background:#fff;padding-top:34px;padding-bottom:36px;border-top:2px solid var(--ink)">
+ <h2 class="h" style="font-size:28px;margin-bottom:16px">How it works</h2>
+ <div class="g g1"><div style="flex:1;border:2px solid var(--ink);border-radius:4px;background:#fff;padding:16px 14px">
+<p class="h" style="font-size:34px;color:var(--blue)">1</p><p class="h" style="font-size:17px;margin-top:6px">Pick your tins</p><p style="font-size:14px;line-height:1.35;margin-top:4px">Your flavor, your strength.</p></div><div style="flex:1;border:2px solid var(--ink);border-radius:4px;background:#fff;padding:16px 14px">
+<p class="h" style="font-size:34px;color:var(--blue)">2</p><p class="h" style="font-size:17px;margin-top:6px">Select subscription</p><p style="font-size:14px;line-height:1.35;margin-top:4px">Right on the product page.</p></div><div style="flex:1;border:2px solid var(--ink);border-radius:4px;background:#fff;padding:16px 14px">
+<p class="h" style="font-size:34px;color:var(--blue)">3</p><p class="h" style="font-size:17px;margin-top:6px">It lands monthly</p><p style="font-size:14px;line-height:1.35;margin-top:4px">Each order moves you forward.</p></div></div>
+ <div style="margin-top:20px"><div style="background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:4px;padding:18px 18px 15px;break-inside:avoid;margin-bottom:12px">
+<p style="color:var(--gold);font-size:14px;letter-spacing:2px">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+<p style="font-size:16px;line-height:1.4;margin-top:8px">&ldquo;A good value when you bundle.&rdquo;</p>
+<p class="eb" style="margin-top:10px;opacity:.65;letter-spacing:.1em">Joey A. &middot; Chilled Mint 12mg</p></div></div>
+ <div class="c" style="margin-top:14px"><a class="btn " href="https://alppouch.com/pages/alp-subscriptions">Start my subscription</a></div>
+</div><div class="ft"><img src="../assets/logo_white.png" style="height:34px" alt="ALP">
+<p class="h" style="font-size:26px;margin-top:18px">A better time.</p>
+<nav><a>Pouches</a><a>Subscriptions</a><a>Rewards</a><a>Store locator</a><a>FAQ</a></nav>
+<small>Questions? Hit reply, or write howdy@alppouch.com.</small>
+<small style="margin-top:6px">{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:6px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<div class="legal"><small><b style="color:#fff">Must be 21+ to purchase. Not for sale to minors.</b> CONSUMERS 21+ ONLY. Not intended for use by minors, women who are pregnant or breastfeeding, or persons with or at risk of heart disease or high blood pressure. If you have a serious health condition, please consult a healthcare professional before use. KEEP AWAY FROM CHILDREN AND PETS. POUCH AND CONTENTS ARE NOT INTENDED TO BE CONSUMED. DISCARD AFTER USE. SALE ONLY ALLOWED IN THE UNITED STATES.</small></div></div>
+<div class="concept">Concept work by Lenny Huynh. Not affiliated with or endorsed by ALP.</div></div></body></html>

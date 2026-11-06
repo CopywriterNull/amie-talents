@@ -1,0 +1,158 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aesop: One pump, often</title><style>
+@font-face{font-family:'Zapf';src:url(../assets/fonts/Zapf-Humanist.woff2) format('woff2')}
+@font-face{font-family:'Suisse';src:url(../assets/fonts/SuisseIntl-Regular-WebXL.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'SuisseM';src:url(../assets/fonts/SuisseIntl-Medium-WebXL.woff2) format('woff2');font-weight:500}
+:root{--cream:#fffef2;--paper:#f6f5e8;--stone:#ebeade;--ink:#252525;--grey:#6b6b60;--amber:#965d34;--umber:#2a2019;
+--line:rgba(37,37,37,.18);--lineL:rgba(255,254,242,.22)}
+*{box-sizing:border-box}
+body{margin:0;background:#d9d6c8}
+.e{width:600px;margin:0 auto;background:var(--cream) url(../assets/tex_cream.jpg) center top/600px;color:var(--ink);
+ font:16px/1.6 Suisse,'Helvetica Neue',Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.z{font-family:Zapf,'Palatino Linotype',Palatino,Georgia,serif;font-weight:400;letter-spacing:-.005em}
+.m{font-family:SuisseM,Suisse,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:500}
+.eb{font:500 13px/1.3 SuisseM,Suisse,Helvetica,Arial,sans-serif;letter-spacing:.01em}
+.fine{font-size:12px;line-height:1.5;color:var(--grey)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto;border:0}
+.pre{display:none;max-height:0;overflow:hidden;opacity:0}
+.btn{display:inline-block;background:var(--ink);color:var(--cream)!important;font:500 15px/1 SuisseM,Suisse,Helvetica,Arial,sans-serif;letter-spacing:.01em;
+ padding:19px 30px 18px;text-decoration:none;border:1px solid var(--ink)}
+.btn.lt{background:var(--cream);color:var(--ink)!important;border-color:var(--cream)}
+.btn.ol{background:transparent;color:var(--ink)!important}
+.btn .ar{display:inline-block;margin-left:12px}
+.link{font:500 14px SuisseM,Suisse,Helvetica,Arial;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.util{font-size:12px;color:var(--grey);text-align:center;padding:10px 12px 0;letter-spacing:.01em}
+.logo{text-align:center;padding:16px 0 18px}
+.logo img{height:30px;width:auto;display:inline-block}
+.nav{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.nav a{flex:1;text-align:center;font:500 14px/1 SuisseM,Suisse,Helvetica,Arial;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+ padding:16px 0 15px;border-left:1px solid var(--line);text-decoration:none;white-space:nowrap}
+.nav a:first-child{border-left:0}
+.hero{background-color:var(--umber);background-repeat:no-repeat;background-position:center;background-size:cover;color:var(--cream)}
+.hero h1{font-size:46px;line-height:1.06}
+.hsub{font-size:17px;line-height:1.45;margin-top:12px}
+.trust{display:flex;border-bottom:1px solid var(--line)}
+.trust p{flex:1;text-align:center;font-size:13px;color:var(--grey);padding:14px 4px 13px;border-left:1px solid var(--line)}
+.trust p:first-child{border-left:0}
+.rule{height:1px;background:var(--line);margin:0 44px}
+.h2{font-size:32px;line-height:1.12}
+.tile{background:var(--stone) url(../assets/tex_stone.jpg) center/600px}
+.umber{background:var(--umber) url(../assets/tex_umber.jpg) center top/600px;color:var(--cream)}
+.linen{background:var(--paper) url(../assets/tex_linen.jpg) center top/600px}
+.g{display:flex;gap:12px}
+.price{font:500 15px SuisseM,Suisse,Helvetica,Arial}
+.chip{display:inline-block;border:1px solid var(--line);padding:6px 10px 5px;font-size:13px;line-height:1.2;color:var(--ink)}
+.ft{padding:44px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0 20px}
+.ft nav a{font:500 13px SuisseM,Suisse,Arial;color:var(--cream);text-decoration:none;opacity:.9}
+.ft small{display:block;font-size:12px;line-height:1.7;color:rgba(255,254,242,.62)}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .rule{margin:0 20px!important}
+ .e p:not(.eb):not(.fine):not(.price):not(.nb):not(.z){font-size:16px!important;line-height:1.5!important}
+ .hero h1{font-size:38px!important} .h2{font-size:27px!important}
+ .heroc{padding-left:20px!important;padding-right:20px!important}
+ .hero{height:560px!important}
+ .btn{display:block!important;text-align:center!important;padding:17px 16px 16px!important;min-height:50px;font-size:15px!important}
+ .nav a{flex:1 1 auto!important;font-size:14px!important;letter-spacing:0!important;padding-left:5px!important;padding-right:5px!important}
+ .util{font-size:12px!important}
+ .mx{margin-left:20px!important;margin-right:20px!important}
+ .g3{gap:8px!important;flex-wrap:nowrap!important}
+ .g3>*{flex:1 1 0!important}
+ .g3 img{height:150px!important}
+ .cardr{flex-wrap:wrap!important}
+ .cardr .price{width:100%;padding-left:90px}
+ .h01{height:600px!important} .h01 .heroc{padding-top:30px!important} .h01 h1{font-size:36px!important}
+ .h03{background-position:0% 50%!important} .h03 .btn{display:inline-block!important;padding-left:24px!important;padding-right:24px!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important;min-width:0}
+ .g1{flex-direction:column!important;align-items:stretch!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important;max-width:none!important}
+ .trust p{font-size:13px!important;line-height:1.35!important;padding-left:4px!important;padding-right:4px!important}
+ .mob-hide{display:none!important}
+ .reg .nm{font-size:19px!important}
+ .stepimg{width:96px!important;height:140px!important}
+ .stepimg img{max-width:70px!important;max-height:120px!important}
+ .stepn{font-size:28px!important}
+ .note{font-size:15px!important}
+ .gm{padding-left:20px!important;padding-right:20px!important}
+}
+</style></head><body><div class="e"><div class="pre">Resurrection, Reverence, and a $45 refill for the amber bottle.</div><p class="util nb">Complimentary samples &nbsp;&middot;&nbsp; Complimentary gift wrapping</p><div class="logo"><a href="https://www.aesop.com"><img src="../assets/logo.png" alt="Aesop"></a></div><div class="nav"><a href="https://www.aesop.com/gifts/seasonal-gift-kits/">Gifts</a><a href="https://www.aesop.com/skin-care/">Skin Care</a><a href="https://www.aesop.com/hand-body/">Hand &amp; Body</a><a href="https://www.aesop.com/fragrance/">Fragrance</a></div>
+<img src="../gifs/04_pump.gif" class="img" alt="A single pump of Aesop hand wash into an open palm">
+<div class="tile c pad" style="padding-top:34px;padding-bottom:38px">
+ <p class="eb" style="color:var(--amber)">Hand care</p>
+ <h1 class="z" style="font-size:44px;line-height:1.06;margin-top:10px">One pump, often</h1>
+ <p class="hsub" style="color:var(--grey)">Two basin staples, and a $45 refill.</p>
+ <div style="margin-top:22px"><a class="btn " href="https://www.aesop.com/hand-body/hand-washes-balms/">Shop hand care<span class="ar">&rarr;</span></a></div>
+</div>
+<div class="pad" style="padding-top:44px;padding-bottom:42px">
+ <p class="eb" style="color:var(--amber)">Keep the bottle</p>
+ <h2 class="z h2" style="margin-top:8px">Refill the ritual</h2>
+ <div class="g" style="margin-top:24px;gap:0;border:1px solid var(--line)">
+  <div style="flex:1;padding:22px 20px;border-right:1px solid var(--line)">
+   <p class="eb" style="color:var(--grey)">The amber bottle</p>
+   <p class="z" style="font-size:40px;line-height:1;margin-top:10px">$49</p>
+   <p style="font-size:14px;margin-top:8px">500 mL, with its pump.</p>
+  </div>
+  <div style="flex:1;padding:22px 20px;background:var(--ink);color:var(--cream)">
+   <p class="eb" style="opacity:.7">The refill</p>
+   <p class="z" style="font-size:40px;line-height:1;margin-top:10px">$45</p>
+   <p style="font-size:14px;margin-top:8px">500 mL refill.</p>
+  </div>
+ </div>
+ <p class="fine" style="margin-top:12px">Resurrection Aromatique Hand Wash. Prices as listed on aesop.com.</p>
+ <div class="tile" style="margin-top:18px;padding:18px 20px;display:flex;gap:16px;align-items:center">
+  <div style="flex:1"><p class="m" style="font-size:15px">Or set it and forget it</p>
+  <p style="font-size:14px;line-height:1.45;margin-top:4px;color:var(--grey)">Replenishment subscriptions: every one to six months, shipping always complimentary.</p></div>
+  <a class="link" href="https://www.aesop.com/replenishment-subscriptions.html" style="flex:none">Set up</a>
+ </div>
+</div>
+<img src="../assets/cat_hand.jpg" class="img" alt="Hands at a basin with a measure of hand balm">
+<div class="pad" style="padding-top:42px;padding-bottom:42px">
+ <p class="eb" style="color:var(--amber)">Two for the basin</p>
+ <h2 class="z h2" style="margin-top:8px">Citrus, or woods</h2>
+ <p style="color:var(--grey);margin:8px 0 24px">Same single pump. Different temperament.</p>
+ <div class="g">
+  <a href="https://www.aesop.com/hand-body/hand-washes-balms/resurrection-aromatique-hand-wash/BT13.html" style="flex:1;text-decoration:none;color:inherit;display:block">
+<div class="tile" style="height:250px;display:flex;align-items:center;justify-content:center"><img src="../assets/resur_front.png" alt="Resurrection" style="max-height:220px;max-width:80%"></div>
+<p class="z" style="font-size:22px;line-height:1.15;margin-top:14px">Resurrection</p>
+<p class="fine" style="font-size:14px;margin-top:6px">Citrus, woody, herbaceous</p>
+<p style="font-size:14px;line-height:1.45;margin-top:8px">Low-foaming gel. Leaves hands refreshed.</p>
+<p class="fine" style="font-size:13px;margin-top:6px">Mandarin Rind, Rosemary Leaf, Cedar Atlas</p>
+<p class="price" style="margin-top:10px">500 mL &middot; $49</p></a>
+  <a href="https://www.aesop.com/hand-body/hand-washes-balms/reverence-aromatique-hand-wash/BT17.html" style="flex:1;text-decoration:none;color:inherit;display:block">
+<div class="tile" style="height:250px;display:flex;align-items:center;justify-content:center"><img src="../assets/rever_front.png" alt="Reverence" style="max-height:220px;max-width:80%"></div>
+<p class="z" style="font-size:22px;line-height:1.15;margin-top:14px">Reverence</p>
+<p class="fine" style="font-size:14px;margin-top:6px">Woody, earthy, smoky</p>
+<p style="font-size:14px;line-height:1.45;margin-top:8px">Fine-grain gel. Gently exfoliates.</p>
+<p class="fine" style="font-size:13px;margin-top:6px">Vetiver Root, Petitgrain, Bergamot Rind</p>
+<p class="price" style="margin-top:10px">500 mL &middot; $49</p></a>
+ </div>
+</div>
+<div class="umber">
+ <div class="g1" style="display:flex">
+  <div class="gm" style="width:52%;padding:40px 24px 40px 44px;display:flex;flex-direction:column;justify-content:center">
+   <p class="eb" style="opacity:.7">Follow with hydration</p>
+   <h2 class="z" style="font-size:25px;line-height:1.15;margin-top:8px">Resurrection Aromatique Hand Balm</h2>
+   <p style="opacity:.82;font-size:15px;margin-top:10px">Half a teaspoon. Mind the cuticles.</p>
+   <p class="price" style="margin:14px 0 20px">75 mL &middot; $37</p>
+   <div><a class="btn lt" href="https://www.aesop.com/hand-body/hand-washes-balms/resurrection-aromatique-hand-balm/BM06.html">Add the balm<span class="ar">&rarr;</span></a></div>
+  </div>
+  <img src="../assets/resbalm_app.jpg" alt="Resurrection Aromatique Hand Balm on an open palm" style="width:48%;height:auto;display:block;object-fit:cover">
+ </div>
+</div>
+<div class="umber ft">
+<p class="z nb" style="font-size:22px;line-height:1.35;max-width:440px;margin:0 auto">&lsquo;Your best and wisest refuge from all troubles is in your science.&rsquo;</p>
+<p class="eb" style="margin-top:12px;opacity:.7">Ada Lovelace</p>
+<div style="height:1px;background:var(--lineL);margin:34px 0 30px"></div>
+<img src="../assets/logo_white.png" alt="Aesop" style="height:28px;width:auto">
+<nav><a href="https://www.aesop.com/stores">Find a store</a><a href="https://www.aesop.com/gift-finder/">Gift Finder</a><a href="https://www.aesop.com/replenishment-subscriptions.html">Replenishment subscriptions</a><a href="https://www.aesop.com/customer-service/contact-us.html">Contact us</a></nav>
+<small>All Aesop products are vegan. Leaping Bunny approved &middot; Certified B Corporation.</small>
+<small>Reply to this email and a member of our team will read it.</small>
+<small style="margin-top:10px">{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:4px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small style="margin-top:14px;opacity:.8">Concept work by Lenny Huynh. Not affiliated with or endorsed by Aesop.</small></div></div></body></html>

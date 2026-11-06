@@ -1,0 +1,186 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Same ritual. Less caffeine.</title><style>
+@font-face{font-family:'Bask';src:url(../assets/fonts/LibreBaskerville-Regular.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Bask';src:url(../assets/fonts/LibreBaskerville-Italic.woff2) format('woff2');font-style:italic;font-weight:400}
+@font-face{font-family:'Chivo';src:url(../assets/fonts/Chivo-400.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Chivo';src:url(../assets/fonts/Chivo-700.woff2) format('woff2');font-weight:700}
+@font-face{font-family:'VCR';src:url(../assets/fonts/VCR_OSD_MONO.woff2) format('woff2')}
+:root{--ink:#151515;--black:#000;--lime:#D7FD35;--card:#1F1F1F;--white:#fff;--mute:rgba(255,255,255,.72);
+--line:rgba(255,255,255,.14);--orange:#EC641E;--rust:#98361A;--deep:#5E2410;--peach:#F87E3F;--paper:#F2EDE4}
+*{box-sizing:border-box}
+body{margin:0;background:#2A2A2A}
+.e{width:600px;margin:0 auto;background:var(--ink) url(../assets/tex_ink.jpg) center top/600px;color:var(--white);font:17px/1.5 Chivo,'Helvetica Neue',Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+.h{font-family:Bask,Georgia,'Times New Roman',serif;font-weight:400;line-height:1.12;letter-spacing:-.01em}
+.i{font-family:Bask,Georgia,serif;font-style:italic}
+.eb{font:700 13px/1.3 Chivo,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.vcr{font-family:VCR,'Courier New',monospace;letter-spacing:.02em}
+.fine{font-size:13px;line-height:1.55}
+.mute{color:var(--mute)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%}
+.lime{color:var(--lime)}
+.btn{display:inline-block;background:var(--lime);color:#111;font:700 17px/1 Chivo,Arial,sans-serif;letter-spacing:.01em;
+ padding:17px 32px 16px;border-radius:8px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.35),inset 0 -2px 0 rgba(0,0,0,.12)}
+.btn.w{background:#fff}
+.btn.o{background:var(--peach);color:#1A0B04}
+.link{font:700 13px Chivo,Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+.hdr{text-align:center;padding:20px 0 16px;background:#000}
+.hdr img{height:24px;display:inline-block}
+.nav{display:flex;background:#000;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nav a{flex:1;text-align:center;font:700 14px/1 Chivo,Arial;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+ padding:16px 0 15px;border-left:1px solid var(--line);text-decoration:none}
+.nav a:first-child{border-left:0} .nav a.on{color:var(--lime)}
+.tx-black{background:#000 url(../assets/tex_black.jpg) center top/600px}
+.tx-card{background:var(--card) url(../assets/tex_card.jpg) center top/600px}
+.tx-psl{background:var(--rust) url(../assets/tex_psl.jpg) center top/600px}
+.tx-rust{background:var(--deep) url(../assets/tex_rust.jpg) center top/600px}
+.tx-paper{background:var(--paper) url(../assets/tex_paper.jpg) center top/600px;color:#151515}
+.frame{border:2px solid var(--lime)}
+/* hero: GIF (clear band) over a static 2x band, copy set ON the photo over a textured scrim */
+.hero{position:relative;height:580px;overflow:hidden;background:#000}
+.hero .ht,.hero .hb{position:absolute;left:0;width:100%;object-fit:cover;display:block}
+.hero .ht{top:0;height:57%;object-position:var(--mx,50%) 100%}
+.hero .hb{top:57%;height:43%;object-position:var(--mx,50%) 0}
+.hc{position:absolute;left:0;right:0;bottom:0;z-index:2;isolation:isolate;padding:128px 44px 36px;text-align:center;color:#fff;min-height:392px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+/* min-height: the scrim is solid by the GIF/JPEG split line (57%), so the moving band never shows a seam */
+.hc:before{content:"";position:absolute;inset:0;z-index:-1;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 116px,#000 150px);mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 116px,#000 150px)}
+.hc.dark:before{background:#050505 url(../assets/tex_black.jpg) center bottom/600px}
+.hc.rust:before{background:var(--deep) url(../assets/tex_rust.jpg) center bottom/600px}
+.hc .hd{font-size:44px} .hc .hsub{font-size:18px;margin:10px 0 20px;color:rgba(255,255,255,.86)}
+.tag{position:absolute;z-index:3;top:20px;left:20px;background:rgba(0,0,0,.62);color:#fff;font:15px/1 VCR,monospace;letter-spacing:.04em;padding:9px 12px 8px;border:1px solid rgba(255,255,255,.35)}
+.stamp{position:absolute;z-index:3;top:22px;right:22px;width:118px;height:118px;border-radius:50%;border:2px solid var(--lime);background:rgba(0,0,0,.55);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--lime);transform:rotate(-10deg)}
+.stamp:before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(215,253,53,.6)}
+.ticker{background:#000;color:var(--lime);white-space:nowrap;overflow:hidden;font:15px/1 VCR,monospace;letter-spacing:.06em;padding:13px 0 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ticker span{padding:0 14px;opacity:.95}
+.stats{display:flex;text-align:center}
+.stats>div{flex:1;padding:22px 6px 20px;border-left:1px solid var(--line)}
+.stats>div:first-child{border-left:0}
+.stats .n{font:400 34px/1 Bask,Georgia,serif;color:var(--lime)}
+.stats .l{font:700 12px/1.35 Chivo,Arial;letter-spacing:.12em;text-transform:uppercase;margin-top:8px;color:var(--mute)}
+.rv{background:var(--card) url(../assets/tex_card.jpg) center/600px;border:1px solid var(--line);border-radius:8px;padding:18px 18px 16px;flex:1;min-width:0}
+.rv .q{font:400 18px/1.4 Bask,Georgia,serif}
+.rv .who{font:700 12px/1.3 Chivo,Arial;letter-spacing:.12em;text-transform:uppercase;margin-top:12px;color:var(--mute)}
+.chip{display:inline-block;font:700 12px/1 Chivo,Arial;letter-spacing:.1em;text-transform:uppercase;color:#111;background:var(--lime);border-radius:999px;padding:6px 10px 5px}
+.g2{display:flex;gap:12px}
+.pol{background:#fff;padding:10px 10px 34px;box-shadow:0 14px 26px rgba(0,0,0,.45);position:relative}
+.pol:before,.pol:after{content:"";position:absolute;top:-10px;width:64px;height:22px;background:rgba(236,232,220,.82);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.pol:before{left:-14px;transform:rotate(-28deg)} .pol:after{right:-14px;transform:rotate(28deg)}
+.pol img{display:block;width:100%}
+.pol p{position:absolute;left:0;right:0;bottom:9px;text-align:center;font:15px/1 VCR,monospace;color:#222}
+.ft{background:#000;color:#fff;padding:40px 44px 32px;text-align:center;border-top:1px solid var(--line)}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 20px;margin:20px 0}
+.ft nav a{font:700 13px Chivo,Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.65;color:rgba(255,255,255,.6)}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.h):not(.fine):not(.stars):not(.n):not(.l):not(.q):not(.vcr):not(.who){font-size:16px!important;line-height:1.45!important}
+ .hdr{padding:14px 0 11px!important} .hdr img{height:20px!important}
+ .nav a{font-size:14px!important;letter-spacing:.06em!important;padding:15px 0 14px!important}
+ .hero{height:450px!important}
+ .hc{padding:94px 20px 22px!important;min-height:318px!important;align-items:stretch!important}
+ .hc:before{-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 84px,#000 120px)!important;mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 84px,#000 120px)!important}
+ .hc .hd{font-size:33px!important} .hc .hsub{font-size:16px!important;margin:8px 0 16px!important}
+ .hide-m,.stamp,.tag{display:none!important}
+ h2.h{font-size:28px!important}
+ .btn{display:block!important;text-align:center!important;padding:16px 14px 15px!important;min-height:50px;font-size:17px!important}
+ .g2{flex-direction:column!important}
+ .g2>*{width:100%!important;flex:1 1 auto!important}
+ .m-col{flex-direction:column!important;align-items:stretch!important}
+ .m-col>*{width:100%!important;max-width:100%!important}
+ .m-center{align-self:center!important}
+ .stats{flex-wrap:wrap}
+ .stats>div{flex:1 1 50%!important;border-top:1px solid var(--line)}
+ .stats .n{font-size:28px!important}
+ .bar-lab{width:96px!important;font-size:14px!important}
+ .bar-mg{font-size:14px!important}
+ .ing{width:100%!important}
+ .ing img{height:150px!important}
+ .rcpt{padding:24px 18px 22px!important}
+ .rcpt .row{font-size:15px!important}
+ .tin img{width:96px!important}
+ .ugc .pol{width:44%!important}
+ .ugc .pol:nth-child(3){display:none!important}
+ .stampsrow img{width:56px!important;height:56px!important}
+ .prow{gap:14px!important;align-items:flex-start!important}
+ .ptin{padding:8px 10px!important} .ptin img{width:56px!important}
+ .m-col>.m-60{width:62%!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden">Same morning ritual. A fraction of the caffeine. Call 1-844-FIXURFIX.</div><div class="e"><div class="hdr"><img src="../assets/logo_white.png" alt="MUD\WTR"></div><div class="nav"><a class="on" href="https://mudwtr.com/collections/shop#your-morning-ritual">Morning</a><a class="" href="https://mudwtr.com/collections/shop#your-calming-ritual">Calm</a><a class="" href="https://mudwtr.com/products/psl-bag">PSL</a><a class="" href="https://mudwtr.com/products/all-reviews">Reviews</a></div><div class="hero" style="--mx:50%"><img class="ht" src="../gifs/02_sip.gif" alt=""><img class="hb" src="../assets/02_sip_bottom.jpg" alt=""><div class="tag">A PUBLIC SERVICE ANNOUNCEMENT</div><div class="hc dark">
+ <h1 class="h hd">Same ritual. <span class="i">Less caffeine.</span></h1>
+ <p class="hsub">Original: 35mg. A 12oz Pike Place: ~235mg.*</p>
+ <a class="btn " href="https://mudwtr.com/products/30-servings-tin">Fix your fix &middot; 43% off</a></div></div><div class="ticker vcr"><span>&#9742; CALL 1-844-FIXURFIX</span><span>THE RIGHT SUPPLY</span><span>EVERYTHING ORGANIC</span><span>CALIFORNIA GROWN MUSHROOMS</span><span>NO FILLERS</span><span>&#9742; CALL 1-844-FIXURFIX</span><span>THE RIGHT SUPPLY</span><span>EVERYTHING ORGANIC</span><span>CALIFORNIA GROWN MUSHROOMS</span><span>NO FILLERS</span></div>
+<div class="pad" style="padding-top:42px;padding-bottom:34px">
+ <p class="eb c lime" style="margin-bottom:10px">Caffeine per serving</p><h2 class="h c" style="font-size:34px;color:var(--white);margin-bottom:20px">Pick your <span class="i">dose</span></h2>
+ <a href="https://mudwtr.com/products/30-serving-balance-turmeric" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">Turmeric</p><p class="fine mute" style="font-size:12px">Zero caffeine</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:22px;border:2px solid var(--lime);border-radius:50%"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--lime)">0mg</p></a>
+ <a href="https://mudwtr.com/products/30-serving-rest" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">Rest</p><p class="fine mute" style="font-size:12px">Zero caffeine</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:22px;border:2px solid var(--lime);border-radius:50%"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--lime)">0mg</p></a>
+ <a href="https://mudwtr.com/products/psl-bag" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">PSL</p><p class="fine mute" style="font-size:12px">Limited time</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:22px;border:2px solid var(--lime);border-radius:50%"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--lime)">0mg</p></a>
+ <a href="https://mudwtr.com/products/30-serving-tin" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">Original</p><p class="fine mute" style="font-size:12px">Cacao + chai</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:14.9%;background:var(--lime);border-radius:3px;min-width:4px"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--lime)">35mg</p></a>
+ <a href="https://mudwtr.com/products/coffee-30-serving" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">Coffee</p><p class="fine mute" style="font-size:12px">Arabica</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:19.1%;background:var(--lime);border-radius:3px;min-width:4px"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--lime)">45mg</p></a>
+ <a href="https://mudwtr.com/products/30-serving-rise-matcha" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">Matcha</p><p class="fine mute" style="font-size:12px">Japanese matcha</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:23.4%;background:var(--lime);border-radius:3px;min-width:4px"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--lime)">55mg</p></a>
+ <a href="https://mudwtr.com/collections/shop#your-morning-ritual" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:#fff">
+<div class="bar-lab" style="width:132px;flex:none"><p style="font:700 15px/1.2 Chivo,Arial">Pike Place*</p><p class="fine mute" style="font-size:12px">12oz Starbucks</p></div>
+<div style="flex:1;min-width:0"><div style="height:22px;width:100.0%;background:#5A5A5A;border-radius:3px;min-width:4px"></div></div>
+<p class="bar-mg" style="flex:none;width:64px;text-align:right;font:700 17px/1 Chivo,Arial;color:var(--mute)">235mg</p></a>
+ <p class="fine mute" style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px">*Based on a 12oz Starbucks Pike Place, as cited by MUD\WTR. Blend numbers are per serving, from each product page.</p>
+</div>
+<div class="tx-black stats" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+ <div><p class="n">4x+</p><p class="l">less than a Pike Place,<br>even in Matcha</p></div>
+ <div><p class="n">6x+</p><p class="l">less in<br>Original</p></div>
+ <div><p class="n">0mg</p><p class="l">Turmeric, Rest<br>&amp; PSL</p></div>
+</div>
+<div class="pad" style="padding-top:44px;padding-bottom:40px">
+ <div class="frame m-col" style="display:flex;gap:24px;align-items:center;padding:26px 24px;background:#000">
+  <div class="pol m-center" style="width:210px;flex:none;transform:rotate(-3deg);padding:0;background:none;box-shadow:none"><img src="../assets/pol_bean.png" alt="Fix Your Fix PSA still"></div>
+  <div style="flex:1"><p class="vcr lime" style="font-size:16px">CAFFEINE ABUSE HOTLINE</p>
+  <p class="vcr" style="font-size:25px;line-height:1.1;margin:8px 0 12px;color:#F2C94C;white-space:nowrap">1-844-FIXURFIX</p>
+  <p style="font-size:16px;color:var(--mute);margin-bottom:16px">A &rsquo;90s anti-drug throwback, remade for the drug everyone&rsquo;s already on.</p>
+  <a class="link" href="https://mudwtr.com/pages/fix-2">Watch the PSAs &rarr;</a></div>
+ </div>
+</div>
+<div class="tx-card pad" style="padding-top:40px;padding-bottom:42px">
+ <h2 class="h c" style="font-size:30px;color:var(--white);margin-bottom:24px">Match it <span class="i">to the hour</span></h2>
+ <div class="g2" style="gap:10px">
+  <div style="flex:1;background:#000;border:1px solid var(--line);border-radius:8px;padding:18px 14px 16px;text-align:center">
+<p class="eb lime">Morning</p><div class="tin" style="margin:12px 0 10px"><img src="../assets/tin_og.jpg" style="width:40px;margin:0 2px" alt="Original"><img src="../assets/tin_coffee.jpg" style="width:40px;margin:0 2px" alt="Coffee"><img src="../assets/tin_matcha.jpg" style="width:40px;margin:0 2px" alt="Matcha"></div><p style="font-size:15px;color:var(--mute)">Original, Coffee or Matcha.</p></div>
+  <div style="flex:1;background:#000;border:1px solid var(--line);border-radius:8px;padding:18px 14px 16px;text-align:center">
+<p class="eb lime">Anytime</p><div class="tin" style="margin:12px 0 10px"><img src="../assets/tin_turmeric.jpg" style="width:62px;margin:0 2px" alt="Turmeric"></div><p style="font-size:15px;color:var(--mute)">Turmeric. Zero caffeine.</p></div>
+  <div style="flex:1;background:#000;border:1px solid var(--line);border-radius:8px;padding:18px 14px 16px;text-align:center">
+<p class="eb lime">Evening</p><div class="tin" style="margin:12px 0 10px"><img src="../assets/tin_rest.jpg" style="width:62px;margin:0 2px" alt="Rest"></div><p style="font-size:15px;color:var(--mute)">Rest, to wind down.</p></div>
+ </div>
+ <p class="c fine mute" style="margin-top:14px">Every 30-serving tin: $50, or $40 with subscription.</p>
+</div>
+<div class="tx-black pad c" style="padding-top:40px;padding-bottom:44px">
+ <p class="eb lime" style="margin-bottom:10px">Original Starter Kit</p>
+ <p class="h" style="font-size:44px">$34 <span style="font-size:24px;opacity:.5;text-decoration:line-through">$60</span></p>
+ <p style="font-size:16px;color:var(--mute);margin:8px 0 22px">With subscription. Free frother, free shipping, free PSL bag.</p>
+ <a class="btn " href="https://mudwtr.com/products/30-servings-tin">Fix your fix &middot; 43% off</a>
+ <p class="fine mute" style="margin-top:14px">30-day money back guarantee. Cancel anytime.</p>
+</div><div class="ft"><img src="../assets/logo_white.png" style="height:26px" alt="MUD\WTR">
+<p class="h" style="font-size:22px;margin-top:18px;line-height:1.3">Drink different. <span class="i lime">You might just start thinking different too.</span></p>
+<nav><a href="https://mudwtr.com/collections/shop#your-morning-ritual">Morning</a><a href="https://mudwtr.com/collections/shop#your-calming-ritual">Calm</a><a href="https://mudwtr.com/products/psl-bag">PSL</a><a href="https://mudwtr.com/pages/hotline">Hotline</a></nav>
+<p style="font-size:15px;color:var(--mute);margin-bottom:18px">Questions? Reply to this email. Real humans, ready to help.</p>
+<small>Instagram &middot; YouTube &middot; LinkedIn &middot; X</small>
+<small style="margin-top:12px">&dagger;These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Information is not meant to substitute for advice from your physician.</small>
+<small style="margin-top:10px">Copyright MUD\WTR. All rights reserved.</small>
+<small style="margin-top:6px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small></div></div></body></html>

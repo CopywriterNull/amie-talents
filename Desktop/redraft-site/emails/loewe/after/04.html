@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The scent of tomato vines</title><style>
+@font-face{font-family:'LoeweSerif';src:url(../assets/fonts/Loewe.woff2) format('woff2')}
+@font-face{font-family:'Avus';src:url(../assets/fonts/AvusPro.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Avus';src:url(../assets/fonts/AvusProMedium.woff2) format('woff2');font-weight:500}
+:root{--ink:#000;--paper:#fff;--grey:#F2F2F2;--mute:#5E5E5E;--line:rgba(0,0,0,.14);
+--cyan:#00AFF0;--clay:#835C40;--yellow:#F2CA56;--tomato:#A3262A;--terra:#B04232}
+*{box-sizing:border-box}
+body{margin:0;background:#E7E5E1}
+.e{width:600px;margin:0 auto;background:#fff;color:var(--ink);font:15px/1.55 Avus,'Helvetica Neue',Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.d{font-family:LoeweSerif,'Times New Roman',Georgia,serif;font-weight:400;letter-spacing:-.005em;line-height:1.04}
+.eb{font:500 12px/1.3 Avus,Helvetica,Arial;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.55;color:var(--mute)}
+.pad{padding-left:44px;padding-right:44px}
+.sec{padding-top:56px;padding-bottom:56px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto}
+.btn{display:inline-block;background:#000;color:#fff;font:500 13px/1 Avus,Helvetica,Arial;letter-spacing:.14em;text-transform:uppercase;
+ padding:18px 26px 17px;text-decoration:none;white-space:nowrap;text-align:center}
+.btn.w{background:#fff;color:#000}
+.btn.o{background:transparent;color:#000;box-shadow:inset 0 0 0 1px #000}
+.link{font:500 12px Avus,Helvetica,Arial;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.hd{text-align:center;padding:26px 0 22px;background:#fff}
+.hd img{width:128px;display:inline-block}
+.nav{display:flex;border-top:1px solid #000;border-bottom:1px solid #000;background:#fff}
+.nav a{flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;padding:6px 4px;text-align:center;font:500 14px/1.15 Avus,Helvetica,Arial;
+ letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#000;border-left:1px solid var(--line)}
+.nav a:first-child{border-left:0}
+.hero{position:relative;background:#111}
+.hero>img{display:block;width:600px;height:auto}
+.hc{position:absolute}
+.hc .eb{margin-bottom:12px}
+.hc h1{font-size:40px;margin-bottom:22px}
+.tx-paper{background:#F6F4F0 url(../assets/tex_paper.jpg) center top/600px}
+.tx-stone{background:#ECEBE8 url(../assets/tex_stone.jpg) center top/600px}
+.tx-ink{background:#141414 url(../assets/tex_ink.jpg) center top/600px;color:#fff}
+.tx-cyan{background:var(--cyan) url(../assets/tex_cyan.jpg) center top/600px}
+.tx-clay{background:var(--clay) url(../assets/tex_clay.jpg) center top/600px;color:#fff}
+.tx-yellow{background:var(--yellow) url(../assets/tex_yellow.jpg) center top/600px}
+.tx-terra{background:var(--terra) url(../assets/tex_terra.jpg) center top/600px;color:#fff}
+.g{display:flex;gap:12px}
+.g>*{flex:1;min-width:0}
+.lab{display:block;text-decoration:none;color:#000}
+.lab .ph{background:var(--grey);aspect-ratio:1/1;overflow:hidden}
+.lab .ph img{display:block;width:100%;height:100%;object-fit:cover}
+.lab .tt{border-top:1px solid #000;margin-top:12px;padding-top:10px}
+.lt{font:500 14px/1.3 Avus,Helvetica,Arial}
+.lm{font-size:14px;line-height:1.35;color:var(--mute)}
+.ld{font-size:12px;line-height:1.45;color:var(--mute);margin-top:6px}
+.lp{font:500 14px/1.3 Avus,Helvetica,Arial;margin-top:8px}
+.h2{font-size:32px}
+.g3 .lt{font-size:13px}
+.g6{display:flex;flex-wrap:wrap;gap:26px 12px}
+.g6>*{flex:0 0 calc((100% - 24px) / 3);min-width:0}
+.intro{font-size:16px;line-height:1.55;max-width:470px}
+.svc{display:flex;border-top:1px solid var(--line)}
+.svc div{flex:1;padding:18px 10px 17px;text-align:center;border-left:1px solid var(--line)}
+.svc div:first-child{border-left:0}
+.svc p{font-size:12px;line-height:1.45;color:var(--mute)}
+.svc b{display:block;font:500 12px/1.3 Avus;letter-spacing:.12em;text-transform:uppercase;color:#000;margin-bottom:4px}
+.ft{padding:44px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0 20px}
+.ft nav a{font:500 12px Avus;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.7;color:var(--mute)}
+.concept{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.dots{letter-spacing:3px;font-size:12px}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad{padding-left:20px!important;padding-right:20px!important}
+ .sec{padding-top:44px!important;padding-bottom:44px!important}
+ .e p:not(.eb):not(.fine):not(.lt):not(.lm):not(.ld):not(.lp):not(.dots):not(.big){font-size:16px!important;line-height:1.5!important}
+ .hd{padding:22px 0 18px!important} .hd img{width:116px!important}
+ .nav a{font-size:12.5px!important;letter-spacing:.06em!important;min-height:54px!important}
+ .hero>img{width:100%!important}
+ .hc{position:static!important;width:auto!important;max-width:none!important;padding:24px 20px 28px!important;background:#141414 url(../assets/tex_ink.jpg) center top/600px;color:#fff!important;text-align:left!important}
+ .hc h1{font-size:34px!important;margin-bottom:20px!important}
+ .hc .btn{background:#fff!important;color:#000!important}
+ .btn{display:block!important;width:100%!important;padding:18px 12px 17px!important;min-height:50px;font-size:14px!important}
+ .h2{font-size:28px!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important}
+ .g1{flex-direction:column!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important}
+ .g3>*{flex:1 1 calc(33% - 12px)!important}
+ .g6>*{flex:0 0 calc((100% - 12px) / 2)!important}
+ .lt,.lp{font-size:14px!important} .lm{font-size:13px!important}
+ .svc{flex-direction:column!important} .svc div{border-left:0!important;border-top:1px solid var(--line)}
+ .svc div:first-child{border-top:0}
+ .ft{padding:36px 20px 28px!important}
+ .big{font-size:64px!important}
+ .m-hide{display:none!important}
+ .m-full{width:100%!important;height:auto!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">Tomato Leaves and the LOEWE Home Scents candles, from $130. Made in Spain.</div><div class="e"><div class="hd"><a href="https://www.loewe.com/usa/en/home"><img src="../assets/logo_black.svg" alt="LOEWE"></a></div><div class="nav"><a href="https://www.loewe.com/usa/en/women">Women</a><a href="https://www.loewe.com/usa/en/men">Men</a><a href="https://www.loewe.com/usa/en/gifts">Gifts</a><a href="https://www.loewe.com/usa/en/art-and-craft">Art &amp; Craft</a></div><div class="hero"><img src="../gifs/04_scents.gif" width="600" height="750" alt="Tomato Leaves candles in red ceramic on a wooden table, with a taper candle"><div class="hc" style="left:24px;top:76px;width:200px;color:#000"><p class="eb">Home Scents</p><h1 class="d">Tomato Leaves</h1><a class="btn " href="https://www.loewe.com/usa/en/women/home/home-scents">Discover Home Scents</a></div></div>
+<div class="pad sec c">
+ <p class="d" style="font-size:27px;line-height:1.2;max-width:450px;margin:0 auto">The verdant aroma of tomato vines just before they burst into fruit.</p>
+ <p class="eb" style="margin-top:18px;color:var(--mute);letter-spacing:.12em">Fir balsam &middot; Oak moss &middot; Blackcurrant</p>
+</div>
+<div class="tx-paper sec">
+ <div class="pad">
+  <div class=""><p class="eb" style="margin-bottom:12px;">Three sizes</p><h2 class="d h2">Choose your hours</h2></div>
+  <div style="background:var(--grey);margin:26px 0 20px"><img src="../assets/p/c_tomato_trio.jpg" class="img" style="aspect-ratio:16/9;object-fit:cover" alt="Tomato Leaves candle in Large, Medium and Small"></div>
+  <a href="https://www.loewe.com/usa/en/women/home/scented-candles/large-tomato-leaves-candle/P000250X41-7100.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#000;padding:13px 0;border-top:1px solid var(--line)">
+<p class="lt" style="width:64px;flex:none">Large</p>
+<div style="flex:1;min-width:0"><div style="height:8px;background:rgba(0,0,0,.07)"><div style="height:8px;width:100%;background:var(--terra)"></div></div>
+<p class="ld" style="margin-top:6px">2,120g of wax &middot; approx. 80 hours</p></div>
+<p class="lp" style="margin:0;width:54px;text-align:right;flex:none">$520</p></a><a href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-tomato-leaves-candle/P000250X30-7100.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#000;padding:13px 0;border-top:1px solid var(--line)">
+<p class="lt" style="width:64px;flex:none">Medium</p>
+<div style="flex:1;min-width:0"><div style="height:8px;background:rgba(0,0,0,.07)"><div style="height:8px;width:62%;background:var(--terra)"></div></div>
+<p class="ld" style="margin-top:6px">610g of wax &middot; approx. 50 hours</p></div>
+<p class="lp" style="margin:0;width:54px;text-align:right;flex:none">$265</p></a><a href="https://www.loewe.com/usa/en/women/home/scented-candles/small-tomato-leaves-candle/P000250X19-7100.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#000;padding:13px 0;border-top:1px solid var(--line)">
+<p class="lt" style="width:64px;flex:none">Small</p>
+<div style="flex:1;min-width:0"><div style="height:8px;background:rgba(0,0,0,.07)"><div style="height:8px;width:38%;background:var(--terra)"></div></div>
+<p class="ld" style="margin-top:6px">170g of wax &middot; approx. 30 hours</p></div>
+<p class="lp" style="margin:0;width:54px;text-align:right;flex:none">$130</p></a>
+  <p class="fine" style="border-top:1px solid var(--line);padding-top:12px">Ceramic vessel. Due to their handcrafted nature, no two items are exactly the same.</p>
+ </div>
+</div>
+<div class="pad sec">
+ <div class=""><p class="eb" style="margin-bottom:12px;">The scent library</p><h2 class="d h2">Six medium candles, $265</h2></div>
+ <div class="g6" style="margin-top:28px"><a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-tomato-leaves-candle/P000250X30-7100.html"><div class="ph"><img src="../assets/p/c_tomato_m.jpg" alt="Medium Tomato Leaves candle"></div>
+<div class="tt"><p class="lt">Tomato Leaves</p><p class="lm">Green</p><p class="ld">Fir balsam, oak moss, blackcurrant</p>
+<p class="ld" style="color:#000;margin-top:6px">Intensity <span class="dots" style="color:var(--terra)">&#9679;&#9679;&#9679;&#9679;&#9679;</span></p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-oregano-candle/P000250X32-2100.html"><div class="ph"><img src="../assets/p/c_oregano.jpg" alt="Medium Oregano candle"></div>
+<div class="tt"><p class="lt">Oregano</p><p class="lm">Aromatic</p><p class="ld">Woody, amber</p>
+<p class="ld" style="color:#000;margin-top:6px">Intensity <span class="dots" style="color:var(--terra)">&#9679;&#9679;&#9679;</span></p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-ivy-candle/P000250X29-7200.html"><div class="ph"><img src="../assets/p/c_ivy.jpg" alt="Medium Ivy candle"></div>
+<div class="tt"><p class="lt">Ivy</p><p class="lm">Floral</p>
+<p class="ld" style="color:#000;margin-top:6px">Intensity <span class="dots" style="color:var(--terra)">&#9679;&#9679;&#9679;</span></p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-cypress-balls-candle/P000250X35-6410.html"><div class="ph"><img src="../assets/p/c_cypress.jpg" alt="Medium Cypress Balls candle"></div>
+<div class="tt"><p class="lt">Cypress Balls</p><p class="lm">Aromatic</p><p class="ld">Woody</p>
+<p class="ld" style="color:#000;margin-top:6px">Intensity <span class="dots" style="color:var(--terra)">&#9679;&#9679;&#9679;</span></p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-orange-blossom-candle/P731J80X05-8692.html"><div class="ph"><img src="../assets/p/c_orange.jpg" alt="Medium Orange Blossom candle"></div>
+<div class="tt"><p class="lt">Orange Blossom</p><p class="lm">Fruity</p><p class="ld">Sweet</p>
+<p class="ld" style="color:#000;margin-top:6px">Intensity <span class="dots" style="color:var(--terra)">&#9679;&#9679;&#9679;</span></p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-honeysuckle-candle/P000250X27-8100.html"><div class="ph"><img src="../assets/p/c_honey.jpg" alt="Medium Honeysuckle candle"></div>
+<div class="tt"><p class="lt">Honeysuckle</p><p class="lm">Floral</p>
+<p class="ld" style="color:#000;margin-top:6px">Intensity <span class="dots" style="color:var(--terra)">&#9679;&#9679;</span></p></div></a></div>
+</div>
+<img src="../assets/e04_midi.jpg" class="img" alt="LOEWE scented candle in a bronze glazed ribbed vessel on green">
+<div class="tx-terra pad sec">
+ <div class=""><p class="eb" style="margin-bottom:12px;color:#fff;">New in</p><h2 class="d h2">The Midi candles</h2><p class="intro" style="margin-top:12px;color:#fff;">280g of wax, in ceramic.</p></div>
+ <div class="g" style="margin-top:26px">
+  <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/midi-banoffee-candle/VCANJ83X01-3240.html" style="color:#fff"><div class="ph"><img src="../assets/p/c_banoffee.jpg" alt="Midi Banoffee candle"></div><div class="tt" style="border-color:#fff">
+  <p class="lt">Midi Banoffee candle</p><p class="lm" style="color:rgba(255,255,255,.8)">Gourmand &middot; approx. 50 hours</p><p class="lp">$290</p></div></a>
+  <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/midi-earl-grey-scented-candle/V000J83X01-8130.html" style="color:#fff"><div class="ph"><img src="../assets/p/c_earlgrey.jpg" alt="Midi Earl Grey scented candle"></div><div class="tt" style="border-color:#fff">
+  <p class="lt">Midi Earl Grey scented candle</p><p class="lm" style="color:rgba(255,255,255,.8)">Bright citrus, fresh tea leaves &middot; approx. 45 hours</p><p class="lp">$290</p></div></a>
+ </div>
+</div>
+<div class="pad sec">
+ <div class=""><p class="eb" style="margin-bottom:12px;">The ritual</p><h2 class="d h2">Trim, snuff, cover</h2></div>
+ <div class="g g3" style="margin-top:28px"><a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-wax-candleholders/candle-snuffer/V000999X02-3380.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/c_snuffer.jpg" alt="Candle snuffer "></div><div class="tt"><p class="lt">Candle snuffer</p><p class=ld>Terracotta ceramic, leather strap</p><p class="lp">$295</p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/wick-trimmer/P731J80X10-2530.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/c_trimmer.jpg" alt="Wick trimmer "></div><div class="tt"><p class="lt">Wick trimmer</p><p class=ld>Brass, tan leather binding</p><p class="lp">$595</p></div></a>
+ <a class="lab" href="https://www.loewe.com/usa/en/women/home/scented-candles/medium-candle-lid/P000999X05-3380.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/c_lid.jpg" alt="Medium candle lid "></div><div class="tt"><p class="lt">Medium candle lid</p><p class=ld>Terracotta, doubles as a base</p><p class="lp">$95</p></div></a></div>
+ <p class="fine" style="margin-top:18px">Home scents arrive in signature boxes and bags. Made in Spain.</p>
+ <div class="c" style="margin-top:30px"><a class="btn " href="https://www.loewe.com/usa/en/women/home/home-scents">Discover Home Scents</a></div>
+</div><div class="svc tx-paper"><div><b>Complimentary shipping</b><p>Within 2&ndash;7 business days</p></div><div><b>Free online returns</b><p>Within 14 days of delivery</p></div><div><b><a href="https://www.loewe.com/usa/en/services/book-an-appointment.html" style="text-decoration:none">Book an appointment</a></b><p>With your Client Advisor</p></div></div><div class="ft tx-stone"><img src="../assets/anagram_black.svg" alt="" style="width:54px;display:inline-block">
+<p style="font-size:14px;margin-top:18px">Client Services &middot; +1 888 710 0009 &middot; clientservices_us@loewe.com</p>
+<nav><a href="https://www.loewe.com/usa/en/contactus">Client Services</a><a href="https://www.loewe.com/usa/en/storeLocator">Store Finder</a><a href="https://www.loewe.com/usa/en/services/book-an-appointment.html">Book an appointment</a><a href="https://www.loewe.com/usa/en/help/care-guide.html">Care guide</a></nav>
+<small>Instagram &middot; TikTok &middot; YouTube &middot; Pinterest</small>
+<small>{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small class="concept">Concept email by Lenny Huynh. Not affiliated with or sent by LOEWE.</small></div></div></body></html>

@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Better together</title><style>
+@font-face{font-family:'Silvana';src:url(../assets/fonts/SilvanaText-Regular.woff) format('woff');font-weight:400}
+@font-face{font-family:'Silvana';src:url(../assets/fonts/SilvanaText-Light.woff) format('woff');font-weight:300}
+@font-face{font-family:'Silvana';src:url(../assets/fonts/SilvanaText-LightItalic.woff2) format('woff2');font-weight:300;font-style:italic}
+@font-face{font-family:'Scto';src:url(../assets/fonts/SctoGroteskA-Regular.woff) format('woff');font-weight:400}
+@font-face{font-family:'Scto';src:url(../assets/fonts/SctoGroteskA-Medium.woff2) format('woff2');font-weight:500}
+:root{--ink:#1B1916;--paper:#F7F6F1;--greige:#DFD9CD;--sand:#D2C7B4;--card:#F6F6F6;--espresso:#3B2F28;--muted:#6E655C;
+--line:rgba(27,25,22,.14);--pline:rgba(247,246,241,.22)}
+*{box-sizing:border-box}
+body{margin:0;background:#E7E3DA}
+.e{width:600px;margin:0 auto;background:var(--paper);color:var(--ink);font:16px/1.55 Scto,'Helvetica Neue',Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+.h{font-family:Silvana,Georgia,'Times New Roman',serif;font-weight:400;line-height:1.08;letter-spacing:-.005em}
+.i{font-family:Silvana,Georgia,serif;font-style:italic;font-weight:300}
+.eb{font:500 12px/1.3 Scto,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.55;color:var(--muted)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);font:500 14px/1 Scto,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+ padding:19px 36px 18px;border-radius:0;text-decoration:none;min-width:236px;text-align:center}
+.btn.lt{background:var(--paper);color:var(--ink)}
+.link{font:500 13px Scto,Arial;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.hdr{text-align:center;padding:22px 0 18px;background:var(--greige) url(../assets/tex_greige.jpg) center/600px}
+.hdr img{height:24px;display:inline-block}
+.nav{display:flex;background:var(--greige) url(../assets/tex_greige.jpg) center/600px;border-top:1px solid var(--line)}
+.nav a{flex:1;text-align:center;font:500 14px/1 Scto,Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+ padding:17px 0 16px;border-left:1px solid var(--line);text-decoration:none}
+.nav a:first-child{border-left:0} .nav a.on{text-decoration:underline;text-underline-offset:5px}
+.tx-paper{background:var(--paper) url(../assets/tex_paper.jpg) center top/600px}
+.tx-greige{background:var(--greige) url(../assets/tex_greige.jpg) center top/600px}
+.tx-sand{background:var(--sand) url(../assets/tex_sand.jpg) center top/600px}
+.tx-esp{background:var(--espresso) url(../assets/tex_espresso.jpg) center top/600px;color:var(--paper)}
+.stars{letter-spacing:3px;font-size:15px}
+.g2{display:flex;gap:12px}
+/* split hero (the homepage banner device): GIF left, lifestyle photo right; copy ON the photos over a textured scrim */
+.hero{position:relative;height:580px;overflow:hidden;background:var(--espresso)}
+.hero .m{position:absolute;top:0;height:392px;object-fit:cover;display:block}
+.hero .g{left:0;width:50%;object-position:var(--gx,50%) 0}
+.hero .ph{left:50%;width:50%;object-position:var(--px,50%) var(--py,20%)}
+.hc{position:absolute;left:0;right:0;bottom:0;z-index:2;isolation:isolate;padding:118px 44px 38px;text-align:center}
+.hc:before{content:"";position:absolute;inset:0;z-index:-1;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 96px,#000 128px);mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 96px,#000 128px)}
+.hc.dark:before{background:var(--espresso) url(../assets/tex_espresso.jpg) center bottom/600px}
+.hc.cream:before{background:var(--paper) url(../assets/tex_paper.jpg) center bottom/600px}
+.hc.greige:before{background:var(--greige) url(../assets/tex_greige.jpg) center bottom/600px}
+.hc.dark{color:var(--paper)}
+.hc .hd{font-size:46px} .hc .hsub{font-size:17px;margin:12px 0 22px;opacity:.88}
+.proof{display:flex;background:var(--paper);border-top:1px solid var(--line)}
+.proof div{flex:1;text-align:center;padding:16px 6px 15px;border-left:1px solid var(--line)}
+.proof div:first-child{border-left:0}
+.card{background:var(--card);text-align:center;text-decoration:none;color:var(--ink);display:block}
+.card img{display:block;width:100%;background:var(--card)}
+.rv{background:#fff;border:1px solid var(--line);padding:20px 20px 18px;flex:1;min-width:0}
+.tag{display:inline-block;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:6px 8px 5px}
+.dot{display:inline-block;width:18px;height:18px;border-radius:50%;vertical-align:middle;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.dot.g{background-image:linear-gradient(135deg,transparent 50%,#C6A869 50%)}
+.press{display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap;padding:22px 30px;color:var(--ink)}
+.press span{font-family:Silvana,Georgia,serif;font-size:19px;letter-spacing:.04em;opacity:.8}
+.ft{background:var(--espresso) url(../assets/tex_espresso.jpg) center/600px;color:var(--paper);padding:42px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0}
+.ft nav a{font:500 13px Scto,Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);text-decoration:none}
+.ft small{display:block;font-size:13px;line-height:1.7;color:rgba(247,246,241,.66)}
+.bar{height:12px;background:rgba(27,25,22,.08)} .bar i{display:block;height:100%}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.h):not(.fine):not(.stars):not(.price):not(.qt):not(.big){font-size:16px!important;line-height:1.5!important}
+ .hdr{padding:15px 0 13px!important} .hdr img{height:20px!important}
+ .nav a{font-size:14px!important;letter-spacing:.08em!important;padding:16px 0 15px!important}
+ .hero{height:448px!important}
+ .hero .m{height:300px!important}
+ .hero .g{width:100%!important;object-position:var(--gxm,50%) var(--gym,0)!important}
+ .hero .ph{display:none!important}
+ .hc{padding:80px 20px 24px!important}
+ .hc:before{-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 64px,#000 90px)!important;mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 64px,#000 90px)!important}
+ .hc .hd{font-size:34px!important} .hc .hsub{font-size:16px!important;margin:8px 0 16px!important}
+ .hide-m{display:none!important}
+ h2.h{font-size:29px!important}
+ .btn{display:block!important;min-width:0!important;padding:17px 12px 16px!important;min-height:50px}
+ .g2{flex-direction:column!important}
+ .g2>*{width:100%!important;flex:1 1 auto!important}
+ .wrap-m{flex-wrap:wrap!important}
+ .wrap-m>*{flex:1 1 calc(50% - 12px)!important}
+ .m-col{flex-direction:column!important;align-items:stretch!important}
+ .m-col>*{width:100%!important;max-width:100%!important}
+ .m-img{height:300px!important}
+ .proof{flex-wrap:wrap}
+ .proof div{flex:1 1 50%!important;border-top:1px solid var(--line)}
+ .press{gap:12px 20px!important;padding:20px!important} .press span{font-size:17px!important}
+ .ladder a{flex:1 1 calc(33% - 8px)!important}
+ .nest{transform:scale(.86);transform-origin:50% 100%}
+ .rb{flex-direction:column!important;gap:18px!important;padding:30px 20px!important}
+ .rbr{border-left:0!important;padding-left:0!important;width:100%!important;text-align:center}
+ .ledger{padding:22px 16px 20px!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">One bag, two accessories, and the BAIE Clip Pouch is on us.</div><div class="e"><div class="hdr"><a href="https://minabaie.com"><img src="../assets/logo_ink.png" alt="MINA BAIE"></a></div><div class="nav"><a class="" href="https://minabaie.com/collections/bags">Bags</a><a class="" href="https://minabaie.com/collections/new-arrivals">New</a><a class="on" href="https://minabaie.com/pages/create-your-set">Sets</a><a class="" href="https://minabaie.com/collections/gift-guide">Gifts</a></div><div class="hero" style="--gx:50%;--px:50%;--py:18%;--gxm:40%;--gym:0%"><img class="m g" src="../gifs/04_clip.gif" alt=""><img class="m ph" src="../assets/stroller_look.jpg" alt=""><div class="hc dark">
+ <h1 class="h hd">Better <span class="i">together.</span></h1>
+ <p class="hsub">A bag and two accessories: 10% off, plus a free gift.</p>
+ <a class="btn lt" href="https://minabaie.com/pages/create-your-set">Create your set</a></div></div>
+<div class="tx-paper pad c" style="padding-top:40px;padding-bottom:34px">
+ <p class="eb" style="opacity:.6;margin-bottom:18px">Create your set</p>
+ <div style="display:flex"><div style="flex:1;padding:4px 8px;"><p class="h big" style="font-size:36px;opacity:.35">01</p><p class="h" style="font-size:19px;margin-top:6px;line-height:1.2">Select your bag</p></div><div style="flex:1;padding:4px 8px;border-left:1px solid var(--line)"><p class="h big" style="font-size:36px;opacity:.35">02</p><p class="h" style="font-size:19px;margin-top:6px;line-height:1.2">Add your accessories</p></div><div style="flex:1;padding:4px 8px;border-left:1px solid var(--line)"><p class="h big" style="font-size:36px;opacity:.35">03</p><p class="h" style="font-size:19px;margin-top:6px;line-height:1.2">Claim your gift</p></div></div>
+</div>
+<div style="background:var(--sand) url(../assets/sw_vegan.jpg) center/cover;padding:40px 44px" class="pad">
+ <div class="ledger" style="background:var(--paper) url(../assets/tex_paper.jpg) center/600px;padding:28px 28px 26px;box-shadow:0 18px 40px rgba(40,28,18,.18)">
+  <p class="eb c" style="opacity:.6">Do the math</p>
+  <h2 class="h c" style="font-size:28px;margin:8px 0 18px">One example set</h2>
+  <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)">
+<img src="../assets/p_emmy-vegan_t.jpg" style="width:66px;height:66px;flex:none;background:var(--card)" alt="">
+<div style="flex:1;min-width:0"><p class="eb" style="font-size:12px;opacity:.55">Your bag</p><p class="h" style="font-size:19px;margin-top:3px">Emmy Vegan Full</p></div>
+<p class="h" style="font-size:20px;text-align:right">$199.00</p></div>
+  <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)">
+<img src="../assets/p_stroller-caddy-vegan_t.jpg" style="width:66px;height:66px;flex:none;background:var(--card)" alt="">
+<div style="flex:1;min-width:0"><p class="eb" style="font-size:12px;opacity:.55">Accessory 1</p><p class="h" style="font-size:19px;margin-top:3px">Stroller Caddy Vegan</p></div>
+<p class="h" style="font-size:20px;text-align:right">$89.00</p></div>
+  <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)">
+<img src="../assets/p_mina-changing-kit-vegan_t.jpg" style="width:66px;height:66px;flex:none;background:var(--card)" alt="">
+<div style="flex:1;min-width:0"><p class="eb" style="font-size:12px;opacity:.55">Accessory 2</p><p class="h" style="font-size:19px;margin-top:3px">MINA Changing Kit Vegan</p></div>
+<p class="h" style="font-size:20px;text-align:right">$59.00</p></div>
+  <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)">
+<img src="../assets/p_baie-clip-pouch-vegan_t.jpg" style="width:66px;height:66px;flex:none;background:var(--card)" alt="">
+<div style="flex:1;min-width:0"><p class="eb" style="font-size:12px;opacity:.55">Free gift</p><p class="h" style="font-size:19px;margin-top:3px">BAIE Clip Pouch Vegan</p></div>
+<p class="h" style="font-size:20px;text-align:right"><span style="text-decoration:line-through;opacity:.45;font-size:16px">$24.00</span><br>Free</p></div>
+  <div style="border-top:1.5px solid var(--ink);margin-top:6px;padding-top:14px">
+   <div style="display:flex;justify-content:space-between;font-size:15px"><span>Subtotal</span><span>$347.00</span></div>
+   <div style="display:flex;justify-content:space-between;font-size:15px;margin-top:4px"><span>Set savings, 10%</span><span>&minus;$34.70</span></div>
+   <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px"><span class="h" style="font-size:22px">Your set</span><span class="h big" style="font-size:34px">$312.30</span></div>
+  </div>
+  <div class="c" style="margin-top:22px"><a class="btn " href="https://minabaie.com/pages/create-your-set">Build yours</a></div>
+  <p class="fine c" style="margin-top:12px">Priced in the Create Your Set builder on minabaie.com, Nov 5, 2026.</p>
+ </div>
+</div>
+<div class="tx-greige pad" style="padding-top:38px;padding-bottom:38px">
+ <h2 class="h c" style="font-size:30px;margin-bottom:6px">Pick <span class="i">your two</span></h2>
+ <p class="c" style="font-size:15px;color:var(--muted);margin-bottom:22px">A few of the accessories in the builder.</p>
+ <div class="wrap-m" style="display:flex;flex-wrap:wrap;gap:10px">
+  <a href="https://minabaie.com/pages/create-your-set" style="flex:1 1 30%;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:var(--card)"><img src="../assets/p_stroller-caddy-vegan_t.jpg" style="display:block;width:100%;height:auto" alt=""><div style="padding:8px 6px 14px;background:#fff"><p class="h" style="font-size:16px;line-height:1.2">Stroller Caddy</p><p style="font-size:14px;margin-top:2px">$89</p></div></a><a href="https://minabaie.com/pages/create-your-set" style="flex:1 1 30%;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:var(--card)"><img src="../assets/p_mina-changing-kit-vegan_t.jpg" style="display:block;width:100%;height:auto" alt=""><div style="padding:8px 6px 14px;background:#fff"><p class="h" style="font-size:16px;line-height:1.2">Changing Kit</p><p style="font-size:14px;margin-top:2px">$59</p></div></a><a href="https://minabaie.com/pages/create-your-set" style="flex:1 1 30%;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:var(--card)"><img src="../assets/p_mina-car-bag-vegan_t.jpg" style="display:block;width:100%;height:auto" alt=""><div style="padding:8px 6px 14px;background:#fff"><p class="h" style="font-size:16px;line-height:1.2">Car Bag</p><p style="font-size:14px;margin-top:2px">$69</p></div></a>
+  <a href="https://minabaie.com/pages/create-your-set" style="flex:1 1 30%;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:var(--card)"><img src="../assets/p_vegan-leather-stroller-hooks_t.jpg" style="display:block;width:100%;height:auto" alt=""><div style="padding:8px 6px 14px;background:#fff"><p class="h" style="font-size:16px;line-height:1.2">Stroller Hooks</p><p style="font-size:14px;margin-top:2px">$24</p></div></a><a href="https://minabaie.com/pages/create-your-set" style="flex:1 1 30%;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:var(--card)"><img src="../assets/p_rita-pouch-set-vegan_t.jpg" style="display:block;width:100%;height:auto" alt=""><div style="padding:8px 6px 14px;background:#fff"><p class="h" style="font-size:16px;line-height:1.2">Rita Pouch Set</p><p style="font-size:14px;margin-top:2px">$44</p></div></a><a href="https://minabaie.com/pages/create-your-set" style="flex:1 1 30%;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:var(--card)"><img src="../assets/p_bebe-bottle-bag-vegan_t.jpg" style="display:block;width:100%;height:auto" alt=""><div style="padding:8px 6px 14px;background:#fff"><p class="h" style="font-size:16px;line-height:1.2">Bebe Bottle Bag</p><p style="font-size:14px;margin-top:2px">$34</p></div></a>
+ </div>
+</div>
+<div class="tx-paper" style="display:flex;align-items:stretch">
+ <img class="hide-m" src="../assets/clip_on.jpg" style="width:260px;flex:none;object-fit:cover;display:block" alt="BAIE Clip Pouch on a bag">
+ <div style="flex:1;padding:40px 34px 36px" class="pad">
+  <p class="eb" style="opacity:.6;margin-bottom:10px">The gift</p>
+  <h2 class="h" style="font-size:30px;margin-bottom:12px">BAIE Clip <span class="i">Pouch.</span></h2>
+  <p style="font-size:15px;color:var(--muted)">For the thing you keep reaching for. The pacifier, or the credit card.</p>
+  <p class="h" style="font-size:20px;margin-top:14px"><span style="text-decoration:line-through;opacity:.45">$24</span> &nbsp;Free with your set</p>
+ </div>
+</div>
+<div class="tx-esp pad c" style="padding-top:40px;padding-bottom:42px">
+ <p class="eb" style="opacity:.7;margin-bottom:10px">Shopping for someone?</p>
+ <h2 class="h" style="font-size:30px;margin-bottom:12px">Drop <span class="i">a hint.</span></h2>
+ <p style="font-size:15px;opacity:.8;margin-bottom:22px">Every product page lets you share it with someone who&rsquo;ll want to know.</p>
+ <div class="g2" style="gap:12px;text-align:left">
+  <div style="flex:1;border:1px solid var(--pline);padding:18px"><p class="stars" style="font-size:13px">&#9733;&#9733;&#9733;&#9733;&#9733;</p><p style="font-size:15px;margin-top:8px">&ldquo;I bought this bag as a baby shower gift for my friend and she loves it.&rdquo;</p><p class="eb" style="font-size:12px;opacity:.6;margin-top:10px">Cassandra E. P. &middot; Emmy Vegan Full</p></div>
+  <div style="flex:1;border:1px solid var(--pline);padding:18px"><p class="h" style="font-size:22px">Gift cards, $25 to $500</p><p style="font-size:15px;opacity:.8;margin-top:6px">Delivered by email. No processing fees.</p><p style="margin-top:12px"><a class="link" href="https://minabaie.com/products/gift-card">Send a gift card</a></p></div>
+ </div>
+ <div style="margin-top:26px"><a class="btn lt" href="https://minabaie.com/collections/gift-guide">Shop the Gift Guide</a></div>
+</div><div class="proof"><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">Free shipping over $100<br>continental US</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">Pay in 4<br>interest-free</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">30-day<br>returns</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">Made for mamas<br>by mamas</p></div></div><div class="tx-sand"><p class="eb c" style="padding-top:20px;opacity:.65">As featured in</p><div class="press" style="padding-top:12px"><span>Harper&rsquo;s Bazaar</span><span>Vogue</span><span>Popsugar</span><span>The New York Times</span></div></div><div class="ft"><img src="../assets/logo_paper.png" style="height:24px" alt="MINA BAIE">
+<p class="h" style="font-size:24px;line-height:1.3;margin-top:22px">Because you&rsquo;re doing it all, <span class="i">and your diaper bag should too.</span></p>
+<nav><a href="https://minabaie.com/collections/bags">All Bags</a><a href="https://minabaie.com/collections/most-popular">Bestsellers</a><a href="https://minabaie.com/collections/gift-guide">Gift Guide</a><a href="https://minabaie.com/pages/help-center">Help Center</a></nav>
+<p style="font-size:15px;opacity:.85;margin-bottom:18px">Questions about sizing or materials? Just reply to this email.</p>
+<small>Instagram @minabaie &middot; TikTok &middot; YouTube</small>
+<small>MINA BAIE&reg; &middot; Orders ship from Los Angeles, CA</small>
+<small style="margin-top:6px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small></div></div></body></html>

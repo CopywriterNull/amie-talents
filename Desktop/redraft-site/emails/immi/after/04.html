@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+@font-face{font-family:Breit;src:url(../assets/SohneBreitFett.woff2);font-weight:800}
+@font-face{font-family:Breit;src:url(../assets/SohneBreitDreiviertelfett.woff2);font-weight:700}
+@font-face{font-family:Sohne;src:url(../assets/SohneBuch.woff2);font-weight:400}
+@font-face{font-family:Slang;src:url(../assets/GrandSlangItalic.woff2);font-style:italic}
+:root{--y:#FFE900;--ink:#111;--cream:#FBF6EA;--line:rgba(17,17,17,.14)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E4D8}
+.e{width:600px;margin:0 auto;background:#fff;color:var(--ink);font:15px/1.55 Sohne,Helvetica,Arial,sans-serif;overflow:hidden}
+.d{font-family:Breit;font-weight:800;text-transform:uppercase;letter-spacing:-.015em;line-height:.9;margin:0}
+.s{font-family:Slang;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;line-height:.9}
+.eb{font-family:Breit;font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin:0}
+p{margin:0}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.btn{display:inline-block;background:var(--ink);color:var(--y);font:700 14px/1 Breit;letter-spacing:.14em;text-transform:uppercase;padding:20px 34px;border-radius:999px;text-decoration:none}
+.btn.y{background:var(--y);color:var(--ink)} .btn.w{background:#fff;color:var(--ink)}
+.btn.full{display:block;text-align:center}
+.link{font:700 12px Breit;letter-spacing:.16em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:3px}
+.hdr{background:var(--ink);padding:18px 28px;text-align:center}
+.hdr img{height:36px;display:inline-block}
+.hdr.y{background:var(--y)}
+.nb{display:flex;background:var(--y);color:var(--ink);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.nb.k{background:var(--ink);color:var(--y);border-color:var(--y)}
+.nb a{flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 6px;font:700 14px/1.15 Breit;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:inherit;text-align:center}
+.nb a+a{border-left:1.5px solid rgba(17,17,17,.25)}.nb.k a+a{border-left-color:rgba(255,233,0,.35)}
+.img{display:block;width:100%;object-fit:cover}
+.tile{border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tile img{width:88%;display:block}
+.stars{color:var(--ink);letter-spacing:3px;font-size:14px}
+.chip{display:inline-block;border:1.5px solid currentColor;border-radius:999px;padding:7px 13px;font:700 12px Breit;letter-spacing:.14em;text-transform:uppercase;margin:0 6px 8px 0}
+.rule{height:1px;background:var(--line)}
+.ft{background:var(--y);padding:44px 44px 36px;text-align:center}
+.ft .s{font-size:44px}
+.ft nav{display:flex;justify-content:center;gap:22px;margin:22px 0 26px}
+.ft nav a{font:700 12px Breit;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.6;color:rgba(17,17,17,.7)}
+.ft .soc{display:flex;justify-content:center;gap:10px;margin-bottom:22px}
+.ft .soc span{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--y);font:800 12px/36px Breit}
+.wave{display:block;width:100%;height:18px}
+@media (max-width:480px){
+.e{width:100%!important;font-size:16px}
+.pad,.px,.ft{padding-left:20px!important;padding-right:20px!important}
+.e p:not(.eb):not(.d):not(.s):not(.stars):not(.big),.e li{font-size:16px!important}
+.e h1{font-size:40px!important}.e h2{font-size:26px!important}.e h1 .s,.e h2 .s{font-size:1.3em!important}
+.e div.s{font-size:58px!important}.ft div.s{font-size:40px!important}
+.big{font-size:140px!important}
+.btn{display:block!important;text-align:center;min-height:48px;padding:18px 16px!important}
+.st{flex-direction:column!important}.st>*{width:100%!important;flex:none!important;max-width:none!important}
+.st>img{height:240px!important;object-fit:contain}
+.e img{max-width:100%}
+.mw{width:100%!important;max-width:335px}.thumb{width:90px!important;height:90px!important}
+.g1{grid-template-columns:1fr!important}
+.nb a:nth-child(n+4){display:none}.nb a{font-size:14px!important}
+.ft nav{flex-wrap:wrap;gap:14px 20px}
+.hm{display:none!important}
+.btn{letter-spacing:.06em!important}
+.st>div{border-left:0!important}.st>.pin{width:74px!important}
+.stat>div{padding:0 12px!important}
+.ml{width:110px!important;letter-spacing:0!important}
+.ss{font-size:28px!important}
+.sw .d{font-size:34px!important}.sw .s,.e p.s.sm{font-size:42px!important}
+}
+</style></head><body><div class="e" style="background:var(--cream)"><div class="hdr"><img src="../assets/logo_yellow.png" alt="immi"></div><nav class="nb"><a>Ramen</a><a>Cups</a><a>Toppings</a><a>Slurp Society</a></nav>
+<div class="pad" style="padding-top:52px;padding-bottom:40px">
+ <p class="eb"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#E0302A;margin-right:8px;vertical-align:1px"></span>Subscription update</p>
+ <h1 class="d" style="font-size:40px;margin:18px 0 18px">Spicy Red Miso Cups: <span class="s" style="font-size:52px">short break.</span></h1>
+ <p style="font-size:16px;margin-bottom:26px">Hi Alex, the restock lands by end of November.</p>
+ <a class="btn">Manage my subscription &rarr;</a>
+</div>
+<div class="pad"><div style="background:#fff;border:1.5px solid var(--ink);border-radius:22px;padding:30px 20px 26px">
+ <p class="eb c" style="margin-bottom:24px">What happens now</p>
+ <div class="st" style="display:flex;gap:18px"><div style="flex:1;text-align:center">
+<div style="width:34px;height:34px;border-radius:50%;margin:0 auto 12px;background:var(--ink);border:1.5px solid var(--ink);color:var(--y);font:800 14px/31px Breit">&#10003;</div>
+<p class="eb" style="font-size:12px;opacity:.6">Oct 29</p><p style="font:700 14px/1.25 Breit;text-transform:uppercase;margin:6px 0 4px">Billing paused</p><p style="font-size:14px;line-height:1.4;opacity:.75">Delayed 1 month. No charge, nothing ships.</p></div><div style="flex:1;text-align:center">
+<div style="width:34px;height:34px;border-radius:50%;margin:0 auto 12px;background:#fff;border:1.5px solid var(--ink);color:var(--ink);font:800 14px/31px Breit">2</div>
+<p class="eb" style="font-size:12px;opacity:.6">Late Nov</p><p style="font:700 14px/1.25 Breit;text-transform:uppercase;margin:6px 0 4px">Cups restock</p><p style="font-size:14px;line-height:1.4;opacity:.75">Back by end of month.</p></div><div style="flex:1;text-align:center">
+<div style="width:34px;height:34px;border-radius:50%;margin:0 auto 12px;background:#fff;border:1.5px solid var(--ink);color:var(--ink);font:800 14px/31px Breit">3</div>
+<p class="eb" style="font-size:12px;opacity:.6">Then</p><p style="font:700 14px/1.25 Breit;text-transform:uppercase;margin:6px 0 4px">Order ships</p><p style="font-size:14px;line-height:1.4;opacity:.75">Everything arrives together.</p></div></div>
+</div></div>
+<div class="pad" style="padding-top:44px">
+ <p class="eb" style="margin-bottom:16px">You've got two options</p>
+ <div class="st" style="display:flex;gap:14px">
+  <div style="flex:1;background:var(--y);border-radius:22px;padding:26px 22px">
+   <p class="chip" style="margin-bottom:14px">No action needed</p>
+   <p class="d" style="font-size:22px;margin-bottom:10px">Sit tight</p>
+   <p style="font-size:14px;line-height:1.5">We'll ship your full order once they're back.</p></div>
+  <div style="flex:1;background:var(--ink);color:#fff;border-radius:22px;padding:26px 22px">
+   <p class="chip" style="color:var(--y);margin-bottom:14px">2 minutes</p>
+   <p class="d" style="font-size:22px;margin-bottom:10px;color:var(--y)">Ship the rest now</p>
+   <p style="font-size:14px;line-height:1.6">1. Log in to your portal<br>2. Remove the Spicy Red Miso Cups<br>3. Tap <b>Get Now</b> (top right)</p></div>
+ </div>
+ <div style="margin-top:22px"><a class="btn full">Manage my subscription &rarr;</a></div>
+</div>
+<div class="pad" style="padding-top:52px;padding-bottom:48px">
+ <div class="rule" style="margin-bottom:36px"></div>
+ <h2 class="d" style="font-size:24px">Need a cup fix <span class="s" style="font-size:32px">in the meantime?</span></h2>
+ <p style="font-size:14px;margin:10px 0 22px;opacity:.75">In stock. Swap one into your subscription.</p>
+ <div class="st" style="display:flex;gap:14px"><div style="flex:1"><div class="tile" style="background:#FFE900;height:200px"><img src="../assets/creamy-chicken-cup-ramen_0.png" style="width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply"></div>
+<p style="font:700 12px/1.3 Breit;text-transform:uppercase;margin:12px 0 2px">Creamy &ldquo;Chicken&rdquo; Cup</p><p style="font-size:14px;opacity:.7">6 cups &middot; $39</p></div><div style="flex:1"><div class="tile" style="background:#F2EEE6;height:200px"><img src="../assets/roasted-pork-tonkotsu-cup-ramen_0.png" style="width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply"></div>
+<p style="font:700 12px/1.3 Breit;text-transform:uppercase;margin:12px 0 2px">Roasted &ldquo;Pork&rdquo; Tonkotsu Cup</p><p style="font-size:14px;opacity:.7">6 cups &middot; $39</p></div></div>
+ <div style="margin-top:22px"><a class="link">Swap my flavor &rarr;</a></div>
+</div>
+<div class="px" style="background:#fff;padding:40px 44px;display:flex;gap:22px;align-items:center;border-top:1px solid var(--line)">
+ <div style="width:64px;height:64px;border-radius:50%;background:var(--y);flex:none;display:flex;align-items:center;justify-content:center"><img src="../assets/logo_black.png" style="height:30px"></div>
+ <div><p style="font-size:14.5px">Questions? Reply or write <u>fam@immieats.com</u>.</p>
+ <p class="s" style="font-size:30px;margin-top:8px">Team immi</p></div>
+</div><div class="ft"><img src="../assets/logo_black.png" style="height:40px;margin-bottom:14px">
+<div class="s">keep slurping.</div>
+<nav><a>Shop all</a><a>Find a store</a><a>Slurp Society</a><a>FAQ</a></nav>
+<div class="soc"><span>IG</span><span>TT</span></div>
+<small>Questions? Hit reply. A real person on Team immi reads every one.</small>
+<small>immi &middot; 58 West Portal Ave, #623, San Francisco, CA 94127</small>
+<small style="margin-top:8px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small></div></div></body></html>

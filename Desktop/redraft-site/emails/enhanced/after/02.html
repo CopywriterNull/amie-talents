@@ -1,0 +1,155 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>@font-face{font-family:'GTA';src:url(../assets/fonts/gt-light.woff2) format('woff2');font-weight:300}@font-face{font-family:'GTA';src:url(../assets/fonts/gt-regular.woff2) format('woff2');font-weight:400}@font-face{font-family:'GTA';src:url(../assets/fonts/gt-medium.woff2) format('woff2');font-weight:500}@font-face{font-family:'GTA';src:url(../assets/fonts/gt-bold.woff2) format('woff2');font-weight:700}@font-face{font-family:'GTA';src:url(../assets/fonts/gt-black.woff2) format('woff2');font-weight:900}@font-face{font-family:'GTX';src:url(../assets/fonts/gt-ext-bold.woff2) format('woff2');font-weight:700}@font-face{font-family:'SM';src:url(../assets/fonts/spacemono-400.woff2) format('woff2');font-weight:400}@font-face{font-family:'SM';src:url(../assets/fonts/spacemono-700.woff2) format('woff2');font-weight:700}
+:root{--blue:#1A04FF;--ink:#000;--mint:#14ECC3;--cream:#F0E8E2;--ice:#E9EDF8;--line:rgba(0,0,0,.12);--wl:rgba(255,255,255,.2)}
+*{box-sizing:border-box}
+body{margin:0;background:#D9DCE3;-webkit-text-size-adjust:100%}
+.e{width:600px;max-width:100%;margin:0 auto;background:#fff;color:#000;font:400 15px/1.5 GTA,Helvetica,Arial,sans-serif;overflow:hidden;letter-spacing:-.01em}
+p{margin:0}
+img{max-width:100%}
+.d{font-family:GTA,Helvetica,Arial,sans-serif;font-weight:900;line-height:.9;text-transform:uppercase;letter-spacing:-.035em;word-spacing:.08em;margin:0}
+.hx{font-size:60px}.hl{font-size:40px}.hm{font-size:30px}.hs{font-size:22px}.hxs{font-size:18px}
+.x{font:700 12px/1.2 GTX,Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin:0}
+.m{font:400 12px/1.45 SM,'Courier New',monospace;text-transform:uppercase;letter-spacing:.02em;margin:0}
+.lead{font:300 19px/1.4 GTA,Helvetica,Arial}
+.t{font-size:15px;line-height:1.5}
+.ts{font-size:14px;line-height:1.45}
+.f{font-size:12px;line-height:1.5}
+.b{color:var(--blue)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;object-fit:cover}
+.grain{background-image:url(../assets/grain.png)}
+.row{display:flex}
+.btn{display:inline-block;background:var(--blue);color:#fff;font:500 16px/1 GTA,Helvetica,Arial;letter-spacing:-.01em;padding:18px 30px;min-height:52px;border-radius:6px;text-decoration:none;text-align:center;white-space:nowrap}
+.btn.w{background:#fff;color:#000} .btn.full{display:block}
+.link{font:700 12px GTX;letter-spacing:.08em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.tag{display:inline-block;font:400 12px/1 SM,monospace;text-transform:uppercase;padding:7px 8px 6px;color:var(--mint);background:rgba(20,236,195,.12)}
+.tag.b{color:#fff;background:var(--blue)} .tag.k{color:#fff;background:rgba(255,255,255,.16)} .tag.l{color:var(--blue);background:rgba(26,4,255,.08)}
+.ann{background:var(--blue);color:#fff;text-align:center;font:500 12px/1.3 GTA;letter-spacing:.05em;text-transform:uppercase;padding:11px 16px}
+.ann b{font-weight:700}
+.logo{background:#000;text-align:center;padding:22px 20px 20px}
+.logo img{height:20px;display:inline-block}
+.nav{display:flex;background:#0B0B10;border-top:1px solid var(--wl);border-bottom:1px solid var(--wl)}
+.nav a{flex:1;display:block;text-align:center;color:#fff;font:700 14px/50px GTA,Helvetica,Arial;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-left:1px solid var(--wl);min-height:50px}
+.nav a:first-child{border-left:0}
+.rxn{display:flex;flex-wrap:wrap;gap:8px 16px}
+.rxn span{display:flex;align-items:center;gap:7px;font:400 11px/1.35 SM,monospace;text-transform:uppercase}
+.rxn i{display:inline-block;width:11px;height:11px;border:1.3px solid currentColor;position:relative;flex:none}
+.rxn i:after{content:"";position:absolute;left:2.5px;top:4px;width:4px;height:1.3px;background:currentColor}
+.proof{display:flex;flex-wrap:wrap;background:#000;color:#fff}
+.proof div{flex:1;padding:15px 8px;text-align:center;border-left:1px solid var(--wl)}
+.proof div:first-child{border-left:0}
+.proof .m{font-size:12px;line-height:1.4}
+.ft{background:#000;color:#fff;padding:44px 44px 34px}
+.ft .fnav{display:flex;flex-wrap:wrap;gap:10px 22px;margin:28px 0 22px}
+.ft .fnav a{font:500 14px GTA;color:#fff;text-decoration:none}
+.ft .legal{font:400 11px/1.6 SM,monospace;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:12px}
+.ft small{display:block;font-size:14px;line-height:1.6;color:rgba(255,255,255,.75)}
+.cmp{display:flex;border-top:1px solid var(--line)}
+.cmp .k{width:110px;flex:none;padding:13px 10px 13px 0}
+.cmp .a,.cmp .z{flex:1;padding:13px 12px}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad{padding-left:20px!important;padding-right:20px!important}
+ .ft{padding:36px 20px 28px!important}
+ .hx{font-size:42px!important}.hl{font-size:31px!important}.hm{font-size:25px!important}.hs{font-size:20px!important}
+ .lead{font-size:18px!important}
+ .t,.ts{font-size:16px!important}
+ .btn{display:block!important;width:100%!important;min-height:52px!important;padding:18px 20px!important}
+ .row.st{flex-direction:column!important;align-items:stretch!important}
+ .row.st>*{width:100%!important;flex:none!important}
+ .g3>*{width:calc(50% - 5px)!important}
+ .g4>*{flex:0 0 calc(50% - 7px)!important}
+ .proof div{flex:0 0 50%!important;border-top:1px solid var(--wl)}
+ .proof div:nth-child(odd){border-left:0!important}
+ .nav a{font-size:14px!important;letter-spacing:.03em!important}
+ .cmp{flex-wrap:wrap}
+ .cmp .k{width:100%!important;padding:12px 0 0!important}
+ .cmp .a{padding-left:0!important}
+ .hero5 .hx{font-size:38px!important}
+ .row.st>.tag{width:auto!important;align-self:flex-start}
+ .it{flex-wrap:wrap}
+ .it .pr{order:3;width:100%;padding-left:60px;text-align:left!important;margin-top:-4px}
+ .cnt{display:none!important}
+ .col3 .d{font-size:20px!important}
+ .hero5{height:740px!important;background-size:cover!important;background-position:center -60px!important}
+ .tile5{display:flex!important;align-items:stretch}
+ .tile5 img{width:128px!important;height:auto!important;flex:none}
+}
+</style></head><body><div class="e" style="background:#fff"><div class="ann"><b>Peptides have arrived:</b> free shipping on all orders</div><div class="logo"><img src="../assets/logo_white.svg" alt="Enhanced"></div><div class="nav"><a href="https://www.enhanced.com/live-enhanced">Shop</a><a href="https://www.enhanced.com/science-for-everyone">Science</a><a href="https://www.enhanced.com/the-inaugural-enhanced-games">Games</a><a href="https://www.enhanced.com/company">About</a></div>
+<div class="grain" style="background-color:var(--blue);color:#fff;padding-top:40px">
+ <div class="pad"><p class="m" style="margin-bottom:14px;color:var(--mint)">Thor&rsquo;s Protocol</p>
+ <h1 class="d hx">Built to<br>Thor&rsquo;s standard.</h1></div>
+ <img src="../gifs/02_hero.gif" class="img" style="height:auto;margin-top:26px" alt="Thor Bjornsson under blue light with a lab readout: baseline labs, clinician review, ongoing monitoring">
+ <div class="pad" style="padding-top:24px;padding-bottom:38px">
+  <p class="lead" style="margin-bottom:22px">Dosed to you, not the average man.</p>
+  <div class="row st" style="align-items:center;gap:14px 16px"><a class="btn w" href="https://www.enhanced.com/live-enhanced/products/thors-protocol">Check your eligibility</a><span class="tag" style="color:#fff;background:rgba(0,0,0,.25)">From $391/mo</span></div>
+  <div style="margin-top:20px"><div class="rxn" style="color:rgba(255,255,255,.88)"><span><i></i>Prescription only if clinically appropriate</span><span><i></i>Not all patients qualify</span><span><i></i>Compounded medications are not FDA-approved</span></div></div>
+ </div>
+</div>
+<div class="pad" style="padding-top:48px;padding-bottom:38px">
+ <h2 class="d hl">Three products.<br><span style="color:var(--blue)">One routine.</span></h2>
+ <p class="t" style="color:rgba(0,0,0,.7);margin:12px 0 24px">Each item is prescribed individually.</p>
+ <div style="display:flex;background:#000;color:#fff;border-radius:4px;overflow:hidden;margin-bottom:10px">
+<img src="../assets/rx_trt.jpg" style="width:136px;height:180px;object-fit:cover;flex:none" alt="Testosterone<br>injections">
+<div style="padding:22px 20px 18px 6px"><span class="tag b">Energy</span>
+<p class="d hs" style="margin:12px 0 8px;letter-spacing:-.02em">Testosterone<br>injections</p>
+<p class="ts" style="color:rgba(255,255,255,.75)">Labs, consult, and medication included.</p></div></div>
+ <div style="display:flex;background:#000;color:#fff;border-radius:4px;overflow:hidden;margin-bottom:10px">
+<img src="../assets/rx_nad.jpg" style="width:136px;height:180px;object-fit:cover;flex:none" alt="NAD+">
+<div style="padding:22px 20px 18px 6px"><span class="tag b">Energy</span>
+<p class="d hs" style="margin:12px 0 8px;letter-spacing:-.02em">NAD+</p>
+<p class="ts" style="color:rgba(255,255,255,.75)">Supports energy and healthy aging.</p></div></div>
+ <div style="display:flex;background:#000;color:#fff;border-radius:4px;overflow:hidden;margin-bottom:10px">
+<img src="../assets/rx_tadalafil.jpg" style="width:136px;height:180px;object-fit:cover;flex:none" alt="Low-dose<br>tadalafil">
+<div style="padding:22px 20px 18px 6px"><span class="tag b">Blood flow</span>
+<p class="d hs" style="margin:12px 0 8px;letter-spacing:-.02em">Low-dose<br>tadalafil</p>
+<p class="ts" style="color:rgba(255,255,255,.75)">Healthy blood flow support.</p></div></div>
+</div>
+<div class="pad grain" style="background-color:var(--ice);padding-top:44px;padding-bottom:42px">
+ <p class="d hm">Pick your plan.</p>
+ <div class="row st" style="gap:9px;margin-top:22px"><div style="flex:1;background:#fff;color:#000;padding:18px 14px;border-radius:4px;position:relative;border:1px solid var(--line)">
+
+<p class="d" style="font-size:48px;letter-spacing:-.04em">1</p><p class="x" style="margin-top:6px">Month supply</p>
+<p style="font:700 22px/1 GTA;margin-top:18px">$447<span style="font-size:14px;font-weight:400">/mo</span></p>
+<p class="f" style="margin-top:6px;opacity:.7"><s>$582/mo</s> &middot; Save 23%</p></div><div style="flex:1;background:#fff;color:#000;padding:18px 14px;border-radius:4px;position:relative;border:1px solid var(--line)">
+
+<p class="d" style="font-size:48px;letter-spacing:-.04em">3</p><p class="x" style="margin-top:6px">Month supply</p>
+<p style="font:700 22px/1 GTA;margin-top:18px">$417<span style="font-size:14px;font-weight:400">/mo</span></p>
+<p class="f" style="margin-top:6px;opacity:.7"><s>$582/mo</s> &middot; Save 28%</p></div><div style="flex:1;background:var(--blue);color:#fff;padding:18px 14px;border-radius:4px;position:relative;border:1px solid var(--blue)">
+<span class="tag" style="position:absolute;right:10px;top:10px;color:#000;background:var(--mint)">Best value</span>
+<p class="d" style="font-size:48px;letter-spacing:-.04em">6</p><p class="x" style="margin-top:6px">Month supply</p>
+<p style="font:700 22px/1 GTA;margin-top:18px">$391<span style="font-size:14px;font-weight:400">/mo</span></p>
+<p class="f" style="margin-top:6px;opacity:.7"><s>$582/mo</s> &middot; Save 33%</p></div></div>
+ <p class="f" style="color:rgba(0,0,0,.62);margin-top:14px">Auto-refills until you cancel. 6-month plans ship in 3-month supplies.</p>
+ <div style="margin-top:22px"><a class="btn " href="https://www.enhanced.com/live-enhanced/products/thors-protocol">Check your eligibility</a></div>
+ <div style="margin-top:16px"><div class="rxn" style="color:rgba(0,0,0,.65)"><span><i></i>Prescription only if clinically appropriate</span><span><i></i>Not all patients qualify</span><span><i></i>Compounded medications are not FDA-approved</span></div></div>
+</div>
+<div class="grain" style="background-color:#000;color:#fff">
+ <div class="pad" style="padding-top:44px;padding-bottom:40px">
+  <p class="m" style="color:var(--mint);margin-bottom:16px">From intake to your door</p>
+  <div class="row st" style="gap:18px">
+   <div style="flex:1;border-top:2px solid #fff;padding-top:14px"><p class="m" style="opacity:.7">Step 1</p>
+<p class="x" style="font-size:13px;margin:8px 0 6px">Complete checkout</p><p class="ts" style="opacity:.82">Plus a short health questionnaire.</p></div>
+   <div style="flex:1;border-top:2px solid #fff;padding-top:14px"><p class="m" style="opacity:.7">Step 2</p>
+<p class="x" style="font-size:13px;margin:8px 0 6px">Clinician review</p><p class="ts" style="opacity:.82">Reviews your bloodwork.</p></div>
+   <div style="flex:1;border-top:2px solid #fff;padding-top:14px"><p class="m" style="opacity:.7">Step 3</p>
+<p class="x" style="font-size:13px;margin:8px 0 6px">Begin your protocol</p><p class="ts" style="opacity:.82">If prescribed.</p></div>
+  </div>
+ </div>
+ <div class="row st" style="border-top:1px solid var(--wl)">
+  <img src="../assets/thor_trio.jpg" style="width:250px;height:250px;object-fit:cover;flex:none" alt="Thor's Protocol: NAD+, low-dose tadalafil and testosterone cypionate">
+  <div class="pad" style="padding-top:30px;padding-bottom:28px;padding-left:26px;align-self:center"><p style="font:400 24px/1.25 GTA;letter-spacing:-.02em">&ldquo;Every protocol starts with your bloodwork.&rdquo;</p>
+  <p class="x" style="margin-top:16px">Dr. Jonathan Kuo, MD</p><p class="m" style="opacity:.62;margin-top:4px">Extension Health &middot; Independent medical board</p></div>
+ </div>
+</div>
+<div class="pad" style="padding-top:40px;padding-bottom:38px">
+ <p class="d hm" style="margin-bottom:20px">One size<br><span class="b">fits none.</span></p>
+ <a class="btn full" href="https://www.enhanced.com/live-enhanced/products/thors-protocol">Shop Thor&rsquo;s Protocol</a>
+ <div style="margin-top:16px"><div class="rxn" style="color:rgba(0,0,0,.65)"><span><i></i>Prescription only if clinically appropriate</span><span><i></i>Not all patients qualify</span><span><i></i>Compounded medications are not FDA-approved</span></div></div>
+</div><div class="proof"><div><p class="m">Licensed clinician<br>review</p></div><div><p class="m">State-licensed<br>U.S. pharmacies</p></div><div><p class="m">Lab-<br>monitored</p></div><div><p class="m">Free shipping<br>on all orders</p></div></div><div class="ft"><img src="../assets/logo_white.svg" style="width:100%;display:block" alt="Enhanced">
+<div class="fnav"><a href="https://www.enhanced.com/live-enhanced">Products</a><a href="https://www.enhanced.com/science-for-everyone">Science</a><a href="https://www.enhanced.com/the-inaugural-enhanced-games">Games</a><a href="https://www.enhanced.com/company">Company</a></div>
+<small>Questions: <u>action@enhanced.com</u> &middot; <u>care.enhanced.com</u></small>
+<div style="margin-top:22px;border-top:1px solid var(--wl);padding-top:12px"><p class="legal">Advisors advise on protocol design, safety, and clinical standards. They do not provide individual medical care. Your licensed clinician determines whether treatment is appropriate for you.</p><p class="legal">Clinical services are provided by independent, licensed healthcare providers through our telehealth partners. Enhanced does not practice medicine or prescribe medication.</p><p class="legal">This medication has been compounded by a licensed 503A/503B pharmacy. Compounded medications are not FDA-approved and have not been evaluated by the FDA for safety, efficacy, or quality.</p><p class="legal">If clinically appropriate, a licensed provider may prescribe a compounded medication tailored to your individual needs.</p><p class="legal">Results vary by individual. Eligibility for prescription treatments is determined by a licensed clinician based on medical history, laboratory testing, and clinical judgment. Not all patients qualify for treatment.</p><p class="legal">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p></div>
+<p class="legal" style="margin-top:18px;color:rgba(255,255,255,.45)">&copy; 2026 Enhanced. &ldquo;Enhanced&rdquo; and &ldquo;Enhanced Games&rdquo; are registered trademarks of Enhanced Group, Inc.</p>
+<small style="margin-top:14px">{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:6px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u> &nbsp;&middot;&nbsp; <u>Privacy Policy</u></small></div></div></body></html>

@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mini, Midi or Full?</title><style>
+@font-face{font-family:'Silvana';src:url(../assets/fonts/SilvanaText-Regular.woff) format('woff');font-weight:400}
+@font-face{font-family:'Silvana';src:url(../assets/fonts/SilvanaText-Light.woff) format('woff');font-weight:300}
+@font-face{font-family:'Silvana';src:url(../assets/fonts/SilvanaText-LightItalic.woff2) format('woff2');font-weight:300;font-style:italic}
+@font-face{font-family:'Scto';src:url(../assets/fonts/SctoGroteskA-Regular.woff) format('woff');font-weight:400}
+@font-face{font-family:'Scto';src:url(../assets/fonts/SctoGroteskA-Medium.woff2) format('woff2');font-weight:500}
+:root{--ink:#1B1916;--paper:#F7F6F1;--greige:#DFD9CD;--sand:#D2C7B4;--card:#F6F6F6;--espresso:#3B2F28;--muted:#6E655C;
+--line:rgba(27,25,22,.14);--pline:rgba(247,246,241,.22)}
+*{box-sizing:border-box}
+body{margin:0;background:#E7E3DA}
+.e{width:600px;margin:0 auto;background:var(--paper);color:var(--ink);font:16px/1.55 Scto,'Helvetica Neue',Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+.h{font-family:Silvana,Georgia,'Times New Roman',serif;font-weight:400;line-height:1.08;letter-spacing:-.005em}
+.i{font-family:Silvana,Georgia,serif;font-style:italic;font-weight:300}
+.eb{font:500 12px/1.3 Scto,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.55;color:var(--muted)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);font:500 14px/1 Scto,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+ padding:19px 36px 18px;border-radius:0;text-decoration:none;min-width:236px;text-align:center}
+.btn.lt{background:var(--paper);color:var(--ink)}
+.link{font:500 13px Scto,Arial;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.hdr{text-align:center;padding:22px 0 18px;background:var(--greige) url(../assets/tex_greige.jpg) center/600px}
+.hdr img{height:24px;display:inline-block}
+.nav{display:flex;background:var(--greige) url(../assets/tex_greige.jpg) center/600px;border-top:1px solid var(--line)}
+.nav a{flex:1;text-align:center;font:500 14px/1 Scto,Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+ padding:17px 0 16px;border-left:1px solid var(--line);text-decoration:none}
+.nav a:first-child{border-left:0} .nav a.on{text-decoration:underline;text-underline-offset:5px}
+.tx-paper{background:var(--paper) url(../assets/tex_paper.jpg) center top/600px}
+.tx-greige{background:var(--greige) url(../assets/tex_greige.jpg) center top/600px}
+.tx-sand{background:var(--sand) url(../assets/tex_sand.jpg) center top/600px}
+.tx-esp{background:var(--espresso) url(../assets/tex_espresso.jpg) center top/600px;color:var(--paper)}
+.stars{letter-spacing:3px;font-size:15px}
+.g2{display:flex;gap:12px}
+/* split hero (the homepage banner device): GIF left, lifestyle photo right; copy ON the photos over a textured scrim */
+.hero{position:relative;height:580px;overflow:hidden;background:var(--espresso)}
+.hero .m{position:absolute;top:0;height:392px;object-fit:cover;display:block}
+.hero .g{left:0;width:50%;object-position:var(--gx,50%) 0}
+.hero .ph{left:50%;width:50%;object-position:var(--px,50%) var(--py,20%)}
+.hc{position:absolute;left:0;right:0;bottom:0;z-index:2;isolation:isolate;padding:118px 44px 38px;text-align:center}
+.hc:before{content:"";position:absolute;inset:0;z-index:-1;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 96px,#000 128px);mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 96px,#000 128px)}
+.hc.dark:before{background:var(--espresso) url(../assets/tex_espresso.jpg) center bottom/600px}
+.hc.cream:before{background:var(--paper) url(../assets/tex_paper.jpg) center bottom/600px}
+.hc.greige:before{background:var(--greige) url(../assets/tex_greige.jpg) center bottom/600px}
+.hc.dark{color:var(--paper)}
+.hc .hd{font-size:46px} .hc .hsub{font-size:17px;margin:12px 0 22px;opacity:.88}
+.proof{display:flex;background:var(--paper);border-top:1px solid var(--line)}
+.proof div{flex:1;text-align:center;padding:16px 6px 15px;border-left:1px solid var(--line)}
+.proof div:first-child{border-left:0}
+.card{background:var(--card);text-align:center;text-decoration:none;color:var(--ink);display:block}
+.card img{display:block;width:100%;background:var(--card)}
+.rv{background:#fff;border:1px solid var(--line);padding:20px 20px 18px;flex:1;min-width:0}
+.tag{display:inline-block;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:6px 8px 5px}
+.dot{display:inline-block;width:18px;height:18px;border-radius:50%;vertical-align:middle;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.dot.g{background-image:linear-gradient(135deg,transparent 50%,#C6A869 50%)}
+.press{display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap;padding:22px 30px;color:var(--ink)}
+.press span{font-family:Silvana,Georgia,serif;font-size:19px;letter-spacing:.04em;opacity:.8}
+.ft{background:var(--espresso) url(../assets/tex_espresso.jpg) center/600px;color:var(--paper);padding:42px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0}
+.ft nav a{font:500 13px Scto,Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);text-decoration:none}
+.ft small{display:block;font-size:13px;line-height:1.7;color:rgba(247,246,241,.66)}
+.bar{height:12px;background:rgba(27,25,22,.08)} .bar i{display:block;height:100%}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.h):not(.fine):not(.stars):not(.price):not(.qt):not(.big){font-size:16px!important;line-height:1.5!important}
+ .hdr{padding:15px 0 13px!important} .hdr img{height:20px!important}
+ .nav a{font-size:14px!important;letter-spacing:.08em!important;padding:16px 0 15px!important}
+ .hero{height:448px!important}
+ .hero .m{height:300px!important}
+ .hero .g{width:100%!important;object-position:var(--gxm,50%) var(--gym,0)!important}
+ .hero .ph{display:none!important}
+ .hc{padding:80px 20px 24px!important}
+ .hc:before{-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 64px,#000 90px)!important;mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.95) 64px,#000 90px)!important}
+ .hc .hd{font-size:34px!important} .hc .hsub{font-size:16px!important;margin:8px 0 16px!important}
+ .hide-m{display:none!important}
+ h2.h{font-size:29px!important}
+ .btn{display:block!important;min-width:0!important;padding:17px 12px 16px!important;min-height:50px}
+ .g2{flex-direction:column!important}
+ .g2>*{width:100%!important;flex:1 1 auto!important}
+ .wrap-m{flex-wrap:wrap!important}
+ .wrap-m>*{flex:1 1 calc(50% - 12px)!important}
+ .m-col{flex-direction:column!important;align-items:stretch!important}
+ .m-col>*{width:100%!important;max-width:100%!important}
+ .m-img{height:300px!important}
+ .proof{flex-wrap:wrap}
+ .proof div{flex:1 1 50%!important;border-top:1px solid var(--line)}
+ .press{gap:12px 20px!important;padding:20px!important} .press span{font-size:17px!important}
+ .ladder a{flex:1 1 calc(33% - 8px)!important}
+ .nest{transform:scale(.86);transform-origin:50% 100%}
+ .rb{flex-direction:column!important;gap:18px!important;padding:30px 20px!important}
+ .rbr{border-left:0!important;padding-left:0!important;width:100%!important;text-align:center}
+ .ledger{padding:22px 16px 20px!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">The Sienna side by side: size, weight, pockets and what fits.</div><div class="e"><div class="hdr"><a href="https://minabaie.com"><img src="../assets/logo_ink.png" alt="MINA BAIE"></a></div><div class="nav"><a class="on" href="https://minabaie.com/collections/bags">Bags</a><a class="" href="https://minabaie.com/collections/new-arrivals">New</a><a class="" href="https://minabaie.com/pages/create-your-set">Sets</a><a class="" href="https://minabaie.com/collections/gift-guide">Gifts</a></div><div class="hero" style="--gx:50%;--px:50%;--py:22%;--gxm:50%;--gym:10%"><img class="m g" src="../gifs/03_sienna.gif" alt=""><img class="m ph" src="../assets/sienna_life.jpg" alt=""><div class="hc greige">
+ <h1 class="h hd">Mini, Midi <span class="i">or Full?</span></h1>
+ <p class="hsub">One Sienna, three sizes. From $149.</p>
+ <a class="btn " href="https://minabaie.com/collections/sienna">Find your size</a></div></div>
+<div class="tx-paper pad" style="padding-top:42px;padding-bottom:30px">
+ <p class="eb c" style="opacity:.6;margin-bottom:10px">Sienna Vegan, side by side</p>
+ <h2 class="h c" style="font-size:32px;margin-bottom:24px">Same structure. <span class="i">Different day.</span></h2>
+ <div style="padding:16px 0 12px;border-top:1px solid var(--line)"><p class="h" style="font-size:20px;margin-bottom:6px">Width</p><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Mini</span><div class="bar" style="flex:1"><i style="width:81.8%;background:var(--sand)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">13.5&Prime;</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Midi</span><div class="bar" style="flex:1"><i style="width:90.9%;background:#8C7E70"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">15&Prime;</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Full</span><div class="bar" style="flex:1"><i style="width:100.0%;background:var(--espresso)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">16.5&Prime;</span></div></div><div style="padding:16px 0 12px;border-top:1px solid var(--line)"><p class="h" style="font-size:20px;margin-bottom:6px">Height</p><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Mini</span><div class="bar" style="flex:1"><i style="width:75.0%;background:var(--sand)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">9.75&Prime;</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Midi</span><div class="bar" style="flex:1"><i style="width:92.3%;background:#8C7E70"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">12&Prime;</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Full</span><div class="bar" style="flex:1"><i style="width:100.0%;background:var(--espresso)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">13&Prime;</span></div></div><div style="padding:16px 0 12px;border-top:1px solid var(--line)"><p class="h" style="font-size:20px;margin-bottom:6px">Weight</p><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Mini</span><div class="bar" style="flex:1"><i style="width:60.0%;background:var(--sand)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">1.5 lb</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Midi</span><div class="bar" style="flex:1"><i style="width:82.4%;background:#8C7E70"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">2.06 lb</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Full</span><div class="bar" style="flex:1"><i style="width:100.0%;background:var(--espresso)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">2.5 lb</span></div></div><div style="padding:16px 0 12px;border-top:1px solid var(--line)"><p class="h" style="font-size:20px;margin-bottom:6px">Interior pockets</p><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Mini</span><div class="bar" style="flex:1"><i style="width:55.6%;background:var(--sand)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">5</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Midi</span><div class="bar" style="flex:1"><i style="width:100.0%;background:#8C7E70"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">9</span></div><div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span class="eb" style="width:44px;flex:none;letter-spacing:.08em">Full</span><div class="bar" style="flex:1"><i style="width:100.0%;background:var(--espresso)"></i></div><span style="width:62px;flex:none;text-align:right;font-size:15px">9</span></div></div>
+ <p class="fine c" style="margin-top:10px">All three are 6&Prime; deep.</p>
+</div>
+<div class="tx-esp c" style="padding:30px 0 30px">
+ <p class="eb" style="opacity:.7;margin-bottom:16px">What fits inside</p>
+ <div style="display:flex"><div style="flex:1;padding:0 6px;"><p class="eb" style="opacity:.7">Mini</p><p class="h" style="font-size:22px;margin-top:6px">iPad mini</p></div><div style="flex:1;padding:0 6px;border-left:1px solid var(--pline)"><p class="eb" style="opacity:.7">Midi</p><p class="h" style="font-size:22px;margin-top:6px">13&Prime; laptop</p></div><div style="flex:1;padding:0 6px;border-left:1px solid var(--pline)"><p class="eb" style="opacity:.7">Full</p><p class="h" style="font-size:22px;margin-top:6px">16&Prime; laptop</p></div></div>
+ <p class="fine" style="color:rgba(247,246,241,.66);margin-top:14px">No dedicated laptop sleeve.</p>
+</div>
+<div class="tx-greige pad" style="padding-top:36px;padding-bottom:36px">
+ <div class="g2" style="gap:10px"><a href="https://minabaie.com/products/sienna-vegan-mini" style="flex:1;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:#fff">
+<img src="../assets/p_sienna-vegan-mini.jpg" style="display:block;width:100%;height:200px;object-fit:cover;background:var(--card)" alt="Sienna Vegan Mini">
+<div style="padding:14px 8px 18px"><p class="h" style="font-size:20px">Sienna Mini</p><p style="font-size:15px;margin:2px 0 4px">$149</p>
+<p class="fine">4.8 &#9733; (13 reviews)</p></div></a><a href="https://minabaie.com/products/sienna-vegan-midi" style="flex:1;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:#fff">
+<img src="../assets/p_sienna-vegan-midi.jpg" style="display:block;width:100%;height:200px;object-fit:cover;background:var(--card)" alt="Sienna Vegan Midi">
+<div style="padding:14px 8px 18px"><p class="h" style="font-size:20px">Sienna Midi</p><p style="font-size:15px;margin:2px 0 4px">$189</p>
+<p class="fine">4.9 &#9733; (15 reviews)</p></div></a><a href="https://minabaie.com/products/sienna-vegan-full" style="flex:1;min-width:0;text-decoration:none;color:var(--ink);text-align:center;background:#fff">
+<img src="../assets/p_sienna-vegan-full.jpg" style="display:block;width:100%;height:200px;object-fit:cover;background:var(--card)" alt="Sienna Vegan Full">
+<div style="padding:14px 8px 18px"><p class="h" style="font-size:20px">Sienna Full</p><p style="font-size:15px;margin:2px 0 4px">$199</p>
+<p class="fine">5.0 &#9733; (6 reviews)</p></div></a></div>
+ <div class="c" style="margin-top:24px"><span style="display:inline-block;border:1px solid var(--ink);padding:9px 12px 8px;margin:4px;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase">Water-resistant lining</span><span style="display:inline-block;border:1px solid var(--ink);padding:9px 12px 8px;margin:4px;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase">Zip closure</span><span style="display:inline-block;border:1px solid var(--ink);padding:9px 12px 8px;margin:4px;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase">Key leash</span><span style="display:inline-block;border:1px solid var(--ink);padding:9px 12px 8px;margin:4px;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase">Crossbody strap</span><span style="display:inline-block;border:1px solid var(--ink);padding:9px 12px 8px;margin:4px;font:500 12px/1 Scto,Arial;letter-spacing:.12em;text-transform:uppercase">Dust bag</span></div>
+</div>
+<div class="tx-paper" style="display:flex;align-items:stretch">
+ <div style="flex:1;padding:40px 34px 36px" class="pad">
+  <p class="eb" style="opacity:.6;margin-bottom:10px">How it packs</p>
+  <h2 class="h" style="font-size:30px;margin-bottom:12px">Wide base. <span class="i">Room for it all.</span></h2>
+  <p style="font-size:15px;color:var(--muted);margin-bottom:18px">Nappa leather&ndash;trimmed pockets hold diapers, wipes, bottles and more.</p>
+  <a class="btn " href="https://minabaie.com/collections/sienna">Shop the Sienna</a>
+ </div>
+ <img class="hide-m" src="../assets/sienna_inside.jpg" style="width:260px;flex:none;object-fit:cover;display:block" alt="Sienna open, packed">
+</div>
+<div class="tx-sand pad" style="padding-top:38px;padding-bottom:40px">
+ <h2 class="h c" style="font-size:28px;margin-bottom:6px">Vegan leather <span class="i">or nylon?</span></h2>
+ <p class="c" style="font-size:15px;color:var(--muted);margin-bottom:22px">Both are water resistant.</p>
+ <div class="g2" style="gap:12px">
+  <a href="https://minabaie.com/collections/sienna" style="flex:1;min-width:0;text-decoration:none;color:var(--ink);background:#fff;display:block">
+<img src="../assets/sw_vegan.jpg" style="display:block;width:100%;height:150px;object-fit:cover" alt="">
+<div style="padding:16px 16px 18px"><p class="h" style="font-size:21px">Microfiber vegan leather</p><p style="font-size:15px;color:var(--muted);margin:4px 0 8px">Easiest to clean. Use baby wipes.</p>
+<p class="eb" style="font-size:12px">From $149 &rarr;</p></div></a>
+  <a href="https://minabaie.com/products/sienna-nylon-mini" style="flex:1;min-width:0;text-decoration:none;color:var(--ink);background:#fff;display:block">
+<img src="../assets/sw_nylon.jpg" style="display:block;width:100%;height:150px;object-fit:cover" alt="">
+<div style="padding:16px 16px 18px"><p class="h" style="font-size:21px">Nylon</p><p style="font-size:15px;color:var(--muted);margin:4px 0 8px">Durable. Dish soap and warm water for spills.</p>
+<p class="eb" style="font-size:12px">From $169 &rarr;</p></div></a>
+ </div>
+</div>
+<div class="tx-paper pad c" style="padding-top:36px;padding-bottom:40px">
+ <p class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+ <p class="h qt" style="font-size:28px;margin-top:12px">&ldquo;Always come back <span class="i">for more!&rdquo;</span></p>
+ <p class="eb" style="margin-top:14px;opacity:.6">Yasoda P. &middot; Sienna Vegan Full</p>
+</div><div class="proof"><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">Free shipping over $100<br>continental US</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">Pay in 4<br>interest-free</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">30-day<br>returns</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.1em;line-height:1.5">Made for mamas<br>by mamas</p></div></div><div class="tx-sand"><p class="eb c" style="padding-top:20px;opacity:.65">As featured in</p><div class="press" style="padding-top:12px"><span>Harper&rsquo;s Bazaar</span><span>Vogue</span><span>Popsugar</span><span>The New York Times</span></div></div><div class="ft"><img src="../assets/logo_paper.png" style="height:24px" alt="MINA BAIE">
+<p class="h" style="font-size:24px;line-height:1.3;margin-top:22px">Because you&rsquo;re doing it all, <span class="i">and your diaper bag should too.</span></p>
+<nav><a href="https://minabaie.com/collections/bags">All Bags</a><a href="https://minabaie.com/collections/most-popular">Bestsellers</a><a href="https://minabaie.com/collections/gift-guide">Gift Guide</a><a href="https://minabaie.com/pages/help-center">Help Center</a></nav>
+<p style="font-size:15px;opacity:.85;margin-bottom:18px">Questions about sizing or materials? Just reply to this email.</p>
+<small>Instagram @minabaie &middot; TikTok &middot; YouTube</small>
+<small>MINA BAIE&reg; &middot; Orders ship from Los Angeles, CA</small>
+<small style="margin-top:6px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small></div></div></body></html>

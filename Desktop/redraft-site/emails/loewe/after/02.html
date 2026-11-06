@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Puzzle Edge, in three sizes</title><style>
+@font-face{font-family:'LoeweSerif';src:url(../assets/fonts/Loewe.woff2) format('woff2')}
+@font-face{font-family:'Avus';src:url(../assets/fonts/AvusPro.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Avus';src:url(../assets/fonts/AvusProMedium.woff2) format('woff2');font-weight:500}
+:root{--ink:#000;--paper:#fff;--grey:#F2F2F2;--mute:#5E5E5E;--line:rgba(0,0,0,.14);
+--cyan:#00AFF0;--clay:#835C40;--yellow:#F2CA56;--tomato:#A3262A;--terra:#B04232}
+*{box-sizing:border-box}
+body{margin:0;background:#E7E5E1}
+.e{width:600px;margin:0 auto;background:#fff;color:var(--ink);font:15px/1.55 Avus,'Helvetica Neue',Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.d{font-family:LoeweSerif,'Times New Roman',Georgia,serif;font-weight:400;letter-spacing:-.005em;line-height:1.04}
+.eb{font:500 12px/1.3 Avus,Helvetica,Arial;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.55;color:var(--mute)}
+.pad{padding-left:44px;padding-right:44px}
+.sec{padding-top:56px;padding-bottom:56px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto}
+.btn{display:inline-block;background:#000;color:#fff;font:500 13px/1 Avus,Helvetica,Arial;letter-spacing:.14em;text-transform:uppercase;
+ padding:18px 26px 17px;text-decoration:none;white-space:nowrap;text-align:center}
+.btn.w{background:#fff;color:#000}
+.btn.o{background:transparent;color:#000;box-shadow:inset 0 0 0 1px #000}
+.link{font:500 12px Avus,Helvetica,Arial;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.hd{text-align:center;padding:26px 0 22px;background:#fff}
+.hd img{width:128px;display:inline-block}
+.nav{display:flex;border-top:1px solid #000;border-bottom:1px solid #000;background:#fff}
+.nav a{flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;padding:6px 4px;text-align:center;font:500 14px/1.15 Avus,Helvetica,Arial;
+ letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#000;border-left:1px solid var(--line)}
+.nav a:first-child{border-left:0}
+.hero{position:relative;background:#111}
+.hero>img{display:block;width:600px;height:auto}
+.hc{position:absolute}
+.hc .eb{margin-bottom:12px}
+.hc h1{font-size:40px;margin-bottom:22px}
+.tx-paper{background:#F6F4F0 url(../assets/tex_paper.jpg) center top/600px}
+.tx-stone{background:#ECEBE8 url(../assets/tex_stone.jpg) center top/600px}
+.tx-ink{background:#141414 url(../assets/tex_ink.jpg) center top/600px;color:#fff}
+.tx-cyan{background:var(--cyan) url(../assets/tex_cyan.jpg) center top/600px}
+.tx-clay{background:var(--clay) url(../assets/tex_clay.jpg) center top/600px;color:#fff}
+.tx-yellow{background:var(--yellow) url(../assets/tex_yellow.jpg) center top/600px}
+.tx-terra{background:var(--terra) url(../assets/tex_terra.jpg) center top/600px;color:#fff}
+.g{display:flex;gap:12px}
+.g>*{flex:1;min-width:0}
+.lab{display:block;text-decoration:none;color:#000}
+.lab .ph{background:var(--grey);aspect-ratio:1/1;overflow:hidden}
+.lab .ph img{display:block;width:100%;height:100%;object-fit:cover}
+.lab .tt{border-top:1px solid #000;margin-top:12px;padding-top:10px}
+.lt{font:500 14px/1.3 Avus,Helvetica,Arial}
+.lm{font-size:14px;line-height:1.35;color:var(--mute)}
+.ld{font-size:12px;line-height:1.45;color:var(--mute);margin-top:6px}
+.lp{font:500 14px/1.3 Avus,Helvetica,Arial;margin-top:8px}
+.h2{font-size:32px}
+.g3 .lt{font-size:13px}
+.g6{display:flex;flex-wrap:wrap;gap:26px 12px}
+.g6>*{flex:0 0 calc((100% - 24px) / 3);min-width:0}
+.intro{font-size:16px;line-height:1.55;max-width:470px}
+.svc{display:flex;border-top:1px solid var(--line)}
+.svc div{flex:1;padding:18px 10px 17px;text-align:center;border-left:1px solid var(--line)}
+.svc div:first-child{border-left:0}
+.svc p{font-size:12px;line-height:1.45;color:var(--mute)}
+.svc b{display:block;font:500 12px/1.3 Avus;letter-spacing:.12em;text-transform:uppercase;color:#000;margin-bottom:4px}
+.ft{padding:44px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0 20px}
+.ft nav a{font:500 12px Avus;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.7;color:var(--mute)}
+.concept{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.dots{letter-spacing:3px;font-size:12px}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad{padding-left:20px!important;padding-right:20px!important}
+ .sec{padding-top:44px!important;padding-bottom:44px!important}
+ .e p:not(.eb):not(.fine):not(.lt):not(.lm):not(.ld):not(.lp):not(.dots):not(.big){font-size:16px!important;line-height:1.5!important}
+ .hd{padding:22px 0 18px!important} .hd img{width:116px!important}
+ .nav a{font-size:12.5px!important;letter-spacing:.06em!important;min-height:54px!important}
+ .hero>img{width:100%!important}
+ .hc{position:static!important;width:auto!important;max-width:none!important;padding:24px 20px 28px!important;background:#141414 url(../assets/tex_ink.jpg) center top/600px;color:#fff!important;text-align:left!important}
+ .hc h1{font-size:34px!important;margin-bottom:20px!important}
+ .hc .btn{background:#fff!important;color:#000!important}
+ .btn{display:block!important;width:100%!important;padding:18px 12px 17px!important;min-height:50px;font-size:14px!important}
+ .h2{font-size:28px!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important}
+ .g1{flex-direction:column!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important}
+ .g3>*{flex:1 1 calc(33% - 12px)!important}
+ .g6>*{flex:0 0 calc((100% - 12px) / 2)!important}
+ .lt,.lp{font-size:14px!important} .lm{font-size:13px!important}
+ .svc{flex-direction:column!important} .svc div{border-left:0!important;border-top:1px solid var(--line)}
+ .svc div:first-child{border-top:0}
+ .ft{padding:36px 20px 28px!important}
+ .big{font-size:64px!important}
+ .m-hide{display:none!important}
+ .m-full{width:100%!important;height:auto!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">Overlapped panels, single stitch lines. Mini, Small and Medium, from $2,850. Made in Spain.</div><div class="e"><div class="hd"><a href="https://www.loewe.com/usa/en/home"><img src="../assets/logo_black.svg" alt="LOEWE"></a></div><div class="nav"><a href="https://www.loewe.com/usa/en/women">Women</a><a href="https://www.loewe.com/usa/en/men">Men</a><a href="https://www.loewe.com/usa/en/gifts">Gifts</a><a href="https://www.loewe.com/usa/en/art-and-craft">Art &amp; Craft</a></div><div class="hero"><img src="../gifs/02_puzzle.gif" width="600" height="750" alt="A model kneels on red tarpaulin in the snow with a check intarsio Puzzle bag, LOEWE FW26 campaign"><div class="hc" style="left:24px;top:78px;width:220px;color:#000"><p class="eb">Puzzle</p><h1 class="d">Defined by<br>geometry</h1><a class="btn " href="https://www.loewe.com/usa/en/women/bags/puzzle">Discover Puzzle</a></div></div>
+<div class="pad sec c">
+ <p class="d" style="font-size:27px;line-height:1.2;max-width:470px;margin:0 auto">Overlapped panels with single stitch lines, around a cuboid form.</p>
+ <p class="eb" style="margin-top:18px;color:var(--mute);letter-spacing:.12em">The Puzzle Edge &middot; Soft grained calfskin &middot; Made in Spain</p>
+</div>
+<div class="tx-paper sec">
+ <div class="pad">
+  <div class=""><p class="eb" style="margin-bottom:12px;">Three sizes</p><h2 class="d h2">Drawn to scale</h2></div>
+  <div style="margin:30px 0 30px"><svg viewBox="0 0 512 200" width="512" style="display:block;width:100%;height:auto" role="img" aria-label="Puzzle Edge front elevations to scale: Mini 18 cm, Small 24 cm, Medium 29 cm wide"><rect x="30.0" y="85.0" width="93.6" height="65.0" fill="none" stroke="#000" stroke-width="1.2"/><path d="M30.0 109.7 L82.4 99.3 L123.6 117.5 M82.4 99.3 L69.3 150.0" fill="none" stroke="#000" stroke-width=".8"/><path d="M58.1 85.0 C60.0 69.0 93.6 69.0 95.5 85.0" fill="none" stroke="#000" stroke-width="1.2"/><path d="M30.0 164 H123.6 M30.0 159 V169 M123.6 159 V169" stroke="#835C40" stroke-width="1"/><text x="76.8" y="190" text-anchor="middle" font-family="Avus" font-size="17" fill="#000">18 cm</text><rect x="169.6" y="64.2" width="124.8" height="85.8" fill="none" stroke="#000" stroke-width="1.2"/><path d="M169.6 96.8 L239.5 83.1 L294.4 107.1 M239.5 83.1 L222.0 150.0" fill="none" stroke="#000" stroke-width=".8"/><path d="M207.0 64.2 C209.5 48.2 254.5 48.2 257.0 64.2" fill="none" stroke="#000" stroke-width="1.2"/><path d="M169.6 164 H294.4 M169.6 159 V169 M294.4 159 V169" stroke="#835C40" stroke-width="1"/><text x="232.0" y="190" text-anchor="middle" font-family="Avus" font-size="17" fill="#000">24 cm</text><rect x="340.4" y="48.6" width="150.8" height="101.4" fill="none" stroke="#000" stroke-width="1.2"/><path d="M340.4 87.1 L424.8 70.9 L491.2 99.3 M424.8 70.9 L403.7 150.0" fill="none" stroke="#000" stroke-width=".8"/><path d="M385.6 48.6 C388.7 32.6 442.9 32.6 446.0 48.6" fill="none" stroke="#000" stroke-width="1.2"/><path d="M340.4 164 H491.2 M340.4 159 V169 M491.2 159 V169" stroke="#835C40" stroke-width="1"/><text x="415.8" y="190" text-anchor="middle" font-family="Avus" font-size="17" fill="#000">29 cm</text></svg></div>
+  <div class="g g3"><a class="lab" href="https://www.loewe.com/usa/en/women/bags/puzzle/mini-puzzle-edge-bag-in-soft-grained-calfskin/A510P88X60-5541.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/pz_mini.jpg" alt="Mini Puzzle Edge bag in soft grained calfskin"></div><div class="tt"><p class="lt">Mini Puzzle Edge bag</p><p class=lm>in soft grained calfskin</p><p class=ld>H 12.5 &times; W 18 &times; D 8 cm</p><p class="lp">$2,850</p></div></a><a class="lab" href="https://www.loewe.com/usa/en/women/bags/puzzle/small-puzzle-edge-bag-in-soft-grained-calfskin/A510P60XAW-5541.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/pz_small.jpg" alt="Small Puzzle Edge bag in soft grained calfskin"></div><div class="tt"><p class="lt">Small Puzzle Edge bag</p><p class=lm>in soft grained calfskin</p><p class=ld>H 16.5 &times; W 24 &times; D 10.5 cm</p><p class="lp">$3,850</p></div></a><a class="lab" href="https://www.loewe.com/usa/en/women/bags/puzzle/medium-puzzle-edge-bag-in-soft-grained-calfskin/A510P49X26-5541.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/pz_med.jpg" alt="Medium Puzzle Edge bag in soft grained calfskin"></div><div class="tt"><p class="lt">Medium Puzzle Edge bag</p><p class=lm>in soft grained calfskin</p><p class=ld>H 19.5 &times; W 29 &times; D 14 cm</p><p class="lp">$4,100</p></div></a></div>
+ </div>
+</div>
+<div class="pad sec">
+ <div class=""><p class="eb" style="margin-bottom:12px;">The details</p><h2 class="d h2">Crafted by hand</h2></div>
+ <div class="g" style="margin-top:28px;gap:14px"><div><img src="../assets/p/pz_small_anagram.jpg" class="img" alt="Embossed Anagram"><p class="eb" style="margin-top:10px"><span style="color:var(--clay)">01</span> &nbsp;Embossed Anagram</p></div><div><img src="../assets/p/pz_small_open.jpg" class="img" alt="Herringbone canvas lining"><p class="eb" style="margin-top:10px"><span style="color:var(--clay)">02</span> &nbsp;Herringbone canvas lining</p></div></div>
+ <div class="g" style="margin-top:18px;gap:14px"><div><img src="../assets/p/pz_small_back.jpg" class="img" alt="Zip rear pocket"><p class="eb" style="margin-top:10px"><span style="color:var(--clay)">03</span> &nbsp;Zip rear pocket</p></div><div><img src="../assets/p/pz_small_strap.jpg" class="img" alt="Adjustable strap"><p class="eb" style="margin-top:10px"><span style="color:var(--clay)">04</span> &nbsp;Adjustable strap</p></div></div>
+ <p class="fine" style="margin-top:16px">Shoulder, crossbody or hand carry. Zip closure with calfskin pull.</p>
+</div>
+<div class="tx-clay pad sec c">
+ <img src="../assets/anagram_white.svg" alt="" style="width:44px;display:inline-block">
+ <p class="d" style="font-size:27px;line-height:1.2;margin:20px auto 0;max-width:460px">Founded in 1846 by a collective of leather artisans in Madrid.</p>
+ <p style="margin-top:22px"><a class="link" href="https://www.loewe.com/usa/en/craft/craft-commitment.html" style="color:#fff">Our commitment to craft</a></p>
+</div>
+<div class="pad sec">
+ <div class=""><p class="eb" style="margin-bottom:12px;">Small Puzzle Edge</p><h2 class="d h2">Six colours, one shape</h2><p class="intro" style="margin-top:12px;">Clay, Black, Taupe and Light Ghost. Also in Deep Navy and Dark Chestnut.</p></div>
+ <div class="g" style="margin-top:26px;gap:10px"><div class="c"><div style="background:var(--grey)"><img src="../assets/p/pz_small.jpg" class="img" alt="Small Puzzle Edge bag in Clay"></div><p class="lm" style="margin-top:8px;color:#000">Clay</p></div><div class="c"><div style="background:var(--grey)"><img src="../assets/p/pz_small_black.jpg" class="img" alt="Small Puzzle Edge bag in Black"></div><p class="lm" style="margin-top:8px;color:#000">Black</p></div><div class="c"><div style="background:var(--grey)"><img src="../assets/p/pz_small_taupe.jpg" class="img" alt="Small Puzzle Edge bag in Taupe"></div><p class="lm" style="margin-top:8px;color:#000">Taupe</p></div><div class="c"><div style="background:var(--grey)"><img src="../assets/p/pz_small_white.jpg" class="img" alt="Small Puzzle Edge bag in Light Ghost"></div><p class="lm" style="margin-top:8px;color:#000">Light Ghost</p></div></div>
+ <div class="c" style="margin-top:30px"><a class="btn " href="https://www.loewe.com/usa/en/women/bags/puzzle/small-puzzle-edge-bag-in-soft-grained-calfskin/A510P60XAW-5541.html">Shop the Small &middot; $3,850</a></div>
+</div>
+<div class="tx-paper">
+ <div class="g g1" style="gap:0;align-items:stretch">
+  <img src="../assets/p/pz_check_model.jpg" class="m-full" style="width:280px;height:340px;object-fit:cover;display:block;flex:none" alt="Small Puzzle bag in check intarsio, worn">
+  <div class="pad" style="padding-top:34px;padding-bottom:30px;padding-left:28px">
+   <p class="eb" style="margin-bottom:10px">In the campaign</p>
+   <p class="lt" style="font-size:16px">Small Puzzle bag in check intarsio</p>
+   <p class="lm" style="margin-top:6px">Leather and suede in two diverse check patterns. LOEWE x Cosima Von Bonin.</p>
+   <p class="lp" style="margin:12px 0 18px">$6,200</p>
+   <a class="link" href="https://www.loewe.com/usa/en/women/bags/puzzle/small-puzzle-bag-in-check-intarsio/A510S21XE2-0952.html">Discover</a>
+  </div>
+ </div>
+</div>
+<div class="pad sec c">
+ <p class="d" style="font-size:25px">See it in person</p>
+ <p style="margin:10px 0 24px;color:var(--mute)">Find &amp; reserve in store, or book an appointment.</p>
+ <div class="g g1" style="gap:10px;justify-content:center"><a class="btn " href="https://www.loewe.com/usa/en/storeLocator">Find &amp; reserve</a><a class="btn o" href="https://www.loewe.com/usa/en/services/book-an-appointment.html">Book an appointment</a></div>
+</div><div class="svc tx-paper"><div><b>Complimentary shipping</b><p>Within 2&ndash;7 business days</p></div><div><b>Free online returns</b><p>Within 14 days of delivery</p></div><div><b><a href="https://www.loewe.com/usa/en/services/book-an-appointment.html" style="text-decoration:none">Book an appointment</a></b><p>With your Client Advisor</p></div></div><div class="ft tx-stone"><img src="../assets/anagram_black.svg" alt="" style="width:54px;display:inline-block">
+<p style="font-size:14px;margin-top:18px">Client Services &middot; +1 888 710 0009 &middot; clientservices_us@loewe.com</p>
+<nav><a href="https://www.loewe.com/usa/en/contactus">Client Services</a><a href="https://www.loewe.com/usa/en/storeLocator">Store Finder</a><a href="https://www.loewe.com/usa/en/services/book-an-appointment.html">Book an appointment</a><a href="https://www.loewe.com/usa/en/help/care-guide.html">Care guide</a></nav>
+<small>Instagram &middot; TikTok &middot; YouTube &middot; Pinterest</small>
+<small>{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small class="concept">Concept email by Lenny Huynh. Not affiliated with or sent by LOEWE.</small></div></div></body></html>

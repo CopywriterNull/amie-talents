@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Winter Classics</title><style>
+@font-face{font-family:'Oracle';src:url(../assets/fonts/MadhappyOracle-Regular.woff) format('woff');font-weight:400}
+@font-face{font-family:'OracleMed';src:url(../assets/fonts/MadhappyOracle-Medium.woff) format('woff');font-weight:400}
+@font-face{font-family:'OracleBold';src:url(../assets/fonts/MadhappyOracle-Bold.ttf) format('woff2');font-weight:400}
+:root{--ink:#000;--paper:#fff;--grey:#EAEAEA;--flat:#E6E6E8;--mute:#737376;--yellow:#FBF21E;--box:#95BBD7;--line:rgba(0,0,0,.14)}
+*{box-sizing:border-box}
+body{margin:0;background:#D9D9D9}
+.e{width:600px;margin:0 auto;background:var(--paper);color:var(--ink);font:16px/1.5 Oracle,Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.h{font-family:OracleMed,Helvetica,Arial,sans-serif;letter-spacing:-.035em;line-height:1}
+.b{font-family:OracleBold,OracleMed,Helvetica,Arial,sans-serif;letter-spacing:-.04em;line-height:.92}
+.m{font-family:OracleMed,Helvetica,Arial,sans-serif}
+.eb{font:13px/1.2 OracleMed,Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.45}
+.mute{color:var(--mute)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto}
+.btn{display:inline-block;background:#000;color:#fff;font:16px/1 OracleMed,Helvetica,Arial;letter-spacing:.01em;padding:18px 30px 17px;text-decoration:none;border:1px solid #000}
+.btn.y{background:var(--yellow);color:#000;border-color:var(--yellow)} .btn.w{background:#fff;color:#000;border-color:#fff}
+.btn.o{background:transparent;color:inherit;border-color:currentColor}
+.link{font:14px OracleMed,Helvetica,Arial;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+.ann{background:#000;color:#fff;text-align:center;font:12px/1 OracleMed,Helvetica,Arial;letter-spacing:.08em;text-transform:uppercase;padding:11px 12px}
+.logo{text-align:center;padding:24px 0 22px;background:#fff}
+.logo img{height:20px;display:inline-block}
+.nav{display:flex;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nav a{flex:1;text-align:center;font:14px/1 OracleMed,Helvetica,Arial;letter-spacing:.08em;text-transform:uppercase;color:#000;
+ padding:16px 0 15px;border-left:1px solid var(--line);text-decoration:none;min-height:46px}
+.nav a:first-child{border-left:0}
+.tx-grey{background:var(--grey) url(../assets/tex_grey.jpg) center top/300px}
+.tx-black{background:#0E0E0E url(../assets/tex_black.jpg) center top/300px;color:#fff}
+.g{display:flex;gap:6px}
+.card{flex:1;min-width:0;text-decoration:none;color:inherit;display:block}
+.card .im{background:var(--flat);aspect-ratio:4/5;overflow:hidden}
+.card .im img{width:100%;height:100%;object-fit:cover;display:block}
+.card .tx{padding:10px 2px 0}
+.nm{font:15px/1.25 OracleMed,Helvetica,Arial;letter-spacing:-.005em}
+.pr{font:15px/1.25 Oracle,Helvetica,Arial}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.22);vertical-align:-2px}
+.dots{display:flex;gap:6px;margin-top:8px}
+.rule{height:1px;background:var(--line)}
+.ft{padding:40px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin:20px 0}
+.ft nav a{font:13px OracleMed,Helvetica,Arial;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.65;color:var(--mute)}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.fine):not(.nm):not(.pr):not(.h):not(.b):not(.k){font-size:16px!important;line-height:1.45!important}
+ h1.h{font-size:38px!important} h2.h{font-size:27px!important} .b.xl{font-size:120px!important}
+ .btn{display:block!important;text-align:center!important;padding:16px 14px 15px!important;min-height:50px}
+ .nav a{font-size:13px!important;letter-spacing:.05em!important}
+ .g4{flex-wrap:wrap!important;row-gap:18px!important}
+ .g4>*{flex:1 1 calc(50% - 3px)!important}
+ .g3{flex-direction:column!important;gap:14px!important}
+ .g3>.card{display:flex!important;gap:14px;align-items:center}
+ .g3>.card .im{width:42%!important;flex:none}
+ .g3>.card .tx{padding:0!important}
+ .g1{flex-direction:column!important}
+ .g1>*{width:100%!important;flex:1 1 auto!important}
+ .sz td{padding:9px 0!important;font-size:12px!important}
+ .sz td.cn{width:96px!important}
+ .sz td.pz{display:none!important}
+ .parts{columns:1!important}
+ .spec>div{flex:1 1 50%!important;border-top:1px solid var(--line)}
+ .spec{flex-wrap:wrap!important}
+ .gc{aspect-ratio:16/10!important;transform:scale(1.35)!important} .gb{aspect-ratio:16/10!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">Cabernet, Lilac Mist, Galaxy and Barestone. Heavyweight fleece from $175.</div><div class="e"><div class="ann">Los Angeles, California</div><div class="logo"><img src="../assets/logo_black.svg" alt="madhappy"></div><div class="nav"><a href="https://www.madhappy.com/collections/all">Women</a><a href="https://www.madhappy.com/collections/mens-all">Men</a><a href="https://www.madhappy.com/collections/classics">Classics</a><a href="https://www.madhappy.com/collections/gift-guide">Gifts</a></div><div class="pad " style="padding-top:40px;padding-bottom:30px">
+ <p class="eb" style="">Winter Classics 2026</p>
+ <h1 class="h" style="font-size:48px;margin:12px 0 12px">Our winter palette<br>is here.</h1>
+ <p style="font-size:17px;margin-bottom:22px">Heavyweight fleece and jersey. Hoodies from $175.</p>
+ <a class="btn " href="https://www.madhappy.com/collections/winter-classics">Shop Winter Classics</a>
+</div>
+<img src="../gifs/01_lookbook.gif" class="img" alt="Winter Classics 2026 lookbook, four looks">
+<div class="pad" style="padding-top:44px;padding-bottom:40px">
+ <h2 class="h" style="font-size:32px">One hoodie, four colorways</h2><p class="mute" style="font-size:15px;margin-top:8px">The Classics Fleece Hoodie in the winter palette.</p>
+ <div class="g g4" style="margin-top:22px;gap:6px"><a class="card" href="https://www.madhappy.com/products/classics-fleece-hoodie-cabernet"><div class="im"><img src="../assets/p/classics-fleece-hoodie-cabernet.jpg" alt="Classics Fleece Hoodie in Cabernet"></div>
+<div class="tx" style="display:flex;gap:10px;align-items:flex-start"><span class="dot" style="background:#832f42;width:18px;height:18px;flex:none;margin-top:1px"></span>
+<div style="flex:1;min-width:0"><p class="nm">Cabernet</p><p class="fine mute" style="font-size:13px;margin-top:2px">Also: Shrunken Tee $65</p></div><p class="pr">$175</p></div></a><a class="card" href="https://www.madhappy.com/products/classics-fleece-hoodie-lilac-mist"><div class="im"><img src="../assets/p/classics-fleece-hoodie-lilac-mist.jpg" alt="Classics Fleece Hoodie in Lilac Mist"></div>
+<div class="tx" style="display:flex;gap:10px;align-items:flex-start"><span class="dot" style="background:#e6d5dd;width:18px;height:18px;flex:none;margin-top:1px"></span>
+<div style="flex:1;min-width:0"><p class="nm">Lilac Mist</p><p class="fine mute" style="font-size:13px;margin-top:2px">Also: Straight Sweatpant $165</p></div><p class="pr">$175</p></div></a></div>
+ <div class="g g4" style="margin-top:22px;gap:6px"><a class="card" href="https://www.madhappy.com/products/classics-fleece-hoodie-galaxy"><div class="im"><img src="../assets/p/classics-fleece-hoodie-galaxy.jpg" alt="Classics Fleece Hoodie in Galaxy"></div>
+<div class="tx" style="display:flex;gap:10px;align-items:flex-start"><span class="dot" style="background:#34408A;width:18px;height:18px;flex:none;margin-top:1px"></span>
+<div style="flex:1;min-width:0"><p class="nm">Galaxy</p><p class="fine mute" style="font-size:13px;margin-top:2px">Also: Sweatpant $165</p></div><p class="pr">$175</p></div></a><a class="card" href="https://www.madhappy.com/products/classics-fleece-hoodie-barestone"><div class="im"><img src="../assets/p/classics-fleece-hoodie-barestone.jpg" alt="Classics Fleece Hoodie in Barestone"></div>
+<div class="tx" style="display:flex;gap:10px;align-items:flex-start"><span class="dot" style="background:#a69990;width:18px;height:18px;flex:none;margin-top:1px"></span>
+<div style="flex:1;min-width:0"><p class="nm">Barestone</p><p class="fine mute" style="font-size:13px;margin-top:2px">100% cotton, made in LA</p></div><p class="pr">$175</p></div></a></div>
+</div>
+<div class="tx-grey pad" style="padding-top:32px;padding-bottom:30px">
+ <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:12px">
+  <p class="nm" style="font-size:18px">Classics Fleece Zip Up</p><p class="pr" style="font-size:18px">$185</p></div>
+ <div class="g" style="gap:6px"><a href="https://www.madhappy.com/products/classics-fleece-zip-up-hazelnut-winter" style="flex:1;text-decoration:none;color:#000">
+<div style="background:var(--flat)"><img src="../assets/p/classics-fleece-zip-up-hazelnut-winter.jpg" class="img" alt="Classics Fleece Zip Up in Hazelnut"></div>
+<p class="nm" style="margin-top:8px;display:flex;align-items:center;gap:8px"><span class="dot" style="background:#382526"></span>Hazelnut</p></a><a href="https://www.madhappy.com/products/classics-fleece-zip-up-cardinal" style="flex:1;text-decoration:none;color:#000">
+<div style="background:var(--flat)"><img src="../assets/p/classics-fleece-zip-up-cardinal.jpg" class="img" alt="Classics Fleece Zip Up in Cardinal"></div>
+<p class="nm" style="margin-top:8px;display:flex;align-items:center;gap:8px"><span class="dot" style="background:#c63e4a"></span>Cardinal</p></a><a href="https://www.madhappy.com/products/classics-fleece-zip-up-coconut-cream" style="flex:1;text-decoration:none;color:#000">
+<div style="background:var(--flat)"><img src="../assets/p/classics-fleece-zip-up-coconut-cream.jpg" class="img" alt="Classics Fleece Zip Up in Coconut Cream"></div>
+<p class="nm" style="margin-top:8px;display:flex;align-items:center;gap:8px"><span class="dot" style="background:#eee0ae"></span>Coconut Cream</p></a></div>
+</div>
+<div style="padding:6px 0 0;background:#fff">
+ <div class="g" style="gap:6px"><img src="../assets/wc_02.jpg" style="flex:1;width:50%;min-width:0;display:block;aspect-ratio:4/5;object-fit:cover" alt="Look in Galaxy">
+ <img src="../assets/wc_08.jpg" style="flex:1;width:50%;min-width:0;display:block;aspect-ratio:4/5;object-fit:cover" alt="Look with yellow scarf"></div>
+ <img src="../assets/wc_07.jpg" class="img" style="margin-top:6px;aspect-ratio:2/1;object-fit:cover;object-position:50% 100%" alt="Winter Classics campaign">
+ <p class="fine mute pad" style="padding-top:12px;padding-bottom:4px">Photographed by Victor Brun. Featuring Manu Rios.</p>
+</div>
+<div class="pad" style="padding-top:38px;padding-bottom:44px">
+ <h2 class="h" style="font-size:32px">New knits and stripes</h2>
+ <div class="g g3" style="margin-top:22px;gap:6px">
+  <a class="card" href="https://www.madhappy.com/products/v-neck-striped-cardigan-brown-multi-stripe"><div class="im"><img src="../assets/p/v-neck-striped-cardigan-brown-multi-stripe.jpg" alt="V-Neck Striped Cardigan"></div>
+<div class="tx"><p class="nm">V-Neck Striped Cardigan</p><p class="fine mute" style="margin-top:3px;font-size:13px">100% merino, Brown Multi Stripe</p>
+<p class="pr" style="margin-top:5px">$275</p></div></a>
+  <a class="card" href="https://www.madhappy.com/products/sweater-full-zip-hoodie-heather-navy"><div class="im"><img src="../assets/p/sweater-full-zip-hoodie-heather-navy.jpg" alt="Sweater Full Zip Hoodie"></div>
+<div class="tx"><p class="nm">Sweater Full Zip Hoodie</p><p class="fine mute" style="margin-top:3px;font-size:13px">100% merino, two colorways</p>
+<p class="pr" style="margin-top:5px">$275</p><div class="dots"><span class="dot" style="background:#3c4865" title="Heather Navy"></span><span class="dot" style="background:#5f4d45" title="Cold Brew"></span></div></div></a>
+  <a class="card" href="https://www.madhappy.com/products/striped-midweight-fleece-zip-up-fudge-stripe"><div class="im"><img src="../assets/p/striped-midweight-fleece-zip-up-fudge-stripe.jpg" alt="Striped Midweight Fleece Zip Up"></div>
+<div class="tx"><p class="nm">Striped Midweight Fleece Zip Up</p><p class="fine mute" style="margin-top:3px;font-size:13px">Yarn dyed stripe, midweight fleece</p>
+<p class="pr" style="margin-top:5px">$195</p><div class="dots"><span class="dot" style="background:repeating-linear-gradient(90deg,#3B2A28 0 3px,#E9E1D6 3px 6px)" title="Fudge Stripe"></span><span class="dot" style="background:repeating-linear-gradient(90deg,#B9B6B2 0 3px,#F2EFEA 3px 6px)" title="Cream Stripe"></span></div></div></a>
+ </div>
+</div>
+<div class="tx-black pad c" style="padding-top:42px;padding-bottom:46px">
+ <p class="eb" style="color:var(--yellow)">Winter Classics</p>
+ <h2 class="h" style="font-size:34px;margin:10px 0 22px">Signature silhouettes,<br>winter palette.</h2>
+ <a class="btn y" href="https://www.madhappy.com/collections/winter-classics">Shop Winter Classics</a>
+</div><div class="ft tx-grey"><img src="../assets/logo_black.svg" style="height:18px" alt="madhappy">
+<p class="m" style="font-size:17px;margin-top:16px;letter-spacing:-.01em">Clothing for a Community of Optimists</p>
+<nav><a href="https://www.madhappy.com/pages/stores">Stores</a><a href="https://www.madhappy.com/blogs/news/local-optimist-issue-04">Local Optimist</a><a href="https://www.madhappy.com/pages/madhappy-foundation">Foundation</a><a href="https://www.madhappy.com/pages/faq">FAQ</a></nav>
+<p style="font-size:14px;margin-bottom:14px">Questions? Reply to this email or write Support@Madhappy.com.</p>
+<small>@madhappy &middot; {{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:4px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small style="margin-top:14px">Concept email by Lenny Huynh. Not affiliated with or sent by Madhappy.</small></div></div></body></html>

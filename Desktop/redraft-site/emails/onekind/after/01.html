@@ -1,0 +1,166 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Onekind 01: My holiday gift list</title><style>@font-face{font-family:'Plantin';src:url(../assets/fonts/plantin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal}@font-face{font-family:'Plantin';src:url(../assets/fonts/plantin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic}@font-face{font-family:'Plantin';src:url(../assets/fonts/plantin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal}@font-face{font-family:'Plantin';src:url(../assets/fonts/plantin-700-italic.woff2) format('woff2');font-weight:700;font-style:italic}@font-face{font-family:'DM Sans';src:url(../assets/fonts/DMSans-400-normal.woff2) format('woff2');font-weight:400;font-style:normal}@font-face{font-family:'DM Sans';src:url(../assets/fonts/DMSans-500-normal.woff2) format('woff2');font-weight:500;font-style:normal}@font-face{font-family:'DM Sans';src:url(../assets/fonts/DMSans-600-normal.woff2) format('woff2');font-weight:600;font-style:normal}@font-face{font-family:'DM Sans';src:url(../assets/fonts/DMSans-700-normal.woff2) format('woff2');font-weight:700;font-style:normal}@font-face{font-family:'Lora';src:url(../assets/fonts/Lora-400-italic.woff2) format('woff2');font-weight:400;font-style:italic}@font-face{font-family:'Lora';src:url(../assets/fonts/Lora-500-italic.woff2) format('woff2');font-weight:500;font-style:italic}
+:root{--cream:#FCFBFA;--paper:#FAF9F5;--linen:#F3EEE5;--ink:#181B1E;--navy:#121C30;--red:#A73131;--tan:#DEA36D;--mute:#6E6A64;--line:rgba(24,27,30,.13)}
+*{box-sizing:border-box}
+body{margin:0;background:#E9E5DE}
+.e{width:600px;margin:0 auto;background:var(--paper);color:var(--ink);font:400 17px/1.55 'DM Sans',Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+.h{font-family:Plantin,Georgia,'Times New Roman',serif;font-weight:400;line-height:1.04;letter-spacing:-.012em}
+.h i,.it{font-family:Plantin,Georgia,serif;font-style:italic}
+.lora{font-family:Lora,Georgia,serif;font-style:italic}
+.eb{font:600 13px/1.3 'DM Sans',Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:13px;line-height:1.55}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.tx-cream{background:var(--paper) url(../assets/tex_cream.jpg) center top/600px}
+.tx-linen{background:var(--linen) url(../assets/tex_linen.jpg) center top/600px}
+.tx-navy{background:var(--navy) url(../assets/tex_navy.jpg) center top/600px;color:var(--paper)}
+.tx-red{background:var(--red) url(../assets/tex_red.jpg) center top/600px;color:var(--paper)}
+.btn{display:inline-block;background:var(--red);color:var(--paper);font:600 15px/1 'DM Sans',Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+ padding:19px 36px 18px;border-radius:2px;text-decoration:none;box-shadow:0 8px 18px rgba(80,10,12,.22)}
+.btn.ink{background:var(--ink)} .btn.cr{background:var(--paper);color:var(--ink);box-shadow:none}
+.lk{font:600 13px/1 'DM Sans',Arial;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.hdr{text-align:center;padding:22px 0 18px}
+.hdr img{height:34px;display:inline-block}
+.nav{display:flex;background:var(--ink)}
+.nav a{flex:1;text-align:center;font:600 14px/1 'DM Sans',Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);
+ padding:17px 0 16px;border-left:1px solid rgba(250,249,245,.16);text-decoration:none}
+.nav a:first-child{border-left:0} .nav a.on{color:var(--tan)}
+.pr{font:500 17px/1.2 'DM Sans',Arial} .pr s{color:var(--mute);font-weight:400;margin-right:6px}
+.pr b{font-weight:700;color:var(--red)}
+.chip{display:inline-block;font:700 12px/1 'DM Sans',Arial;letter-spacing:.12em;text-transform:uppercase;background:var(--red);color:var(--paper);padding:6px 8px 5px;border-radius:2px}
+.chip.lt{background:#F3E2DC;color:var(--red)}
+.stars{color:#C9963F;letter-spacing:2px}
+/* heroes: the snow GIF is the whole photo; copy sits on the photo's sky (or snow) over a scrim */
+.hero{position:relative;overflow:hidden}
+.hero>img{display:block;width:100%}
+.hc{position:absolute;left:0;right:0;z-index:2;text-align:center;padding:40px 48px 0}
+.hc.top{top:0;padding-bottom:110px}
+.hc.top.navy{color:var(--paper);background:linear-gradient(to bottom,rgba(14,22,40,.82),rgba(14,22,40,.55) 62%,rgba(14,22,40,0))}
+.hc.top.cream{color:var(--ink);background:linear-gradient(to bottom,var(--paper),rgba(250,249,245,.96) 55%,rgba(250,249,245,.6) 78%,rgba(250,249,245,0))}
+.hc.top.snow{color:var(--navy);background:linear-gradient(to bottom,rgba(236,240,245,.92),rgba(236,240,245,.7) 62%,rgba(236,240,245,0))}
+.hc .hd{font-size:56px} .hc .hsub{font-size:19px;margin:12px 0 24px;opacity:.92}
+.split{display:flex;height:600px}
+.split .sc{width:276px;flex:none;padding:0 30px 0 40px;display:flex;flex-direction:column;justify-content:center}
+.split .si{flex:1;position:relative;overflow:hidden}
+.split .si img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:48% 30%}
+.from{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.from img{width:46px;height:46px;border-radius:50%;display:block}
+.proof{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{flex:1;text-align:center;padding:15px 6px 14px;border-left:1px solid var(--line)}
+.proof div:first-child{border-left:0}
+.ship{display:flex;align-items:center;justify-content:center;gap:14px;padding:20px 30px}
+.ticket{border:1.5px dashed rgba(24,27,30,.38);border-radius:3px;padding:16px 20px;display:flex;align-items:center;gap:16px;text-align:left}
+.reply{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px 22px}
+.reply img{width:64px;height:64px;border-radius:50%;flex:none}
+.ft{padding:42px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:20px 0 18px}
+.ft nav a{font:600 13px 'DM Sans',Arial;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.ft small{display:block;font-size:13px;line-height:1.75;color:var(--mute)}
+/* V1 numbered list */
+.li{display:flex;gap:24px;align-items:center;padding:30px 0;border-top:1px solid var(--line)}
+.li .n{font:400 64px/1 Plantin,Georgia,serif;color:var(--tan);width:58px;flex:none;align-self:flex-start;margin-top:-4px}
+.li img{width:168px;height:168px;object-fit:cover;flex:none;border-radius:3px}
+/* V2 gift tags */
+.tags{display:flex;flex-wrap:wrap;gap:20px}
+.tag{position:relative;width:calc(50% - 10px);background:#fff;padding:46px 20px 22px;
+ clip-path:polygon(16% 0,84% 0,100% 7%,100% 100%,0 100%,0 7%);box-shadow:0 1px 0 var(--line)}
+.tag:before{content:"";position:absolute;top:15px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--linen);box-shadow:inset 0 0 0 2px rgba(167,49,49,.55)}
+.tag .to{font:400 25px/1.1 Plantin,Georgia,serif;margin-bottom:14px}
+.tag img{width:100%;height:190px;object-fit:cover;display:block;margin-bottom:14px}
+/* V3 ladder */
+.tier{display:flex;align-items:stretch}
+.tier .pc{width:150px;flex:none;padding-left:10px!important;padding-right:10px!important;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 0}
+.tier .pc .big{font:400 72px/0.9 Plantin,Georgia,serif;letter-spacing:-.03em}
+.tier .cards{flex:1;display:flex;gap:14px;padding:22px 24px 22px 0}
+.card{flex:1;background:#fff;color:var(--ink);border-radius:3px;overflow:hidden;min-width:0}
+.card img{width:100%;height:170px;object-fit:cover;display:block}
+.card .cb{padding:14px 16px 16px}
+.math{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.math .it{font-size:15px}
+.math .op{font:400 26px Plantin,Georgia,serif;color:var(--tan)}
+/* V4 reviews */
+.rate{display:flex;align-items:center;justify-content:center;gap:18px}
+.rv{background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px 20px 18px;flex:1;min-width:0}
+.g3{display:flex;gap:12px}
+.ladder{display:flex;gap:12px}
+.ladder div{flex:1;text-align:center;border:1px solid var(--line);background:#fff;border-radius:3px;padding:18px 8px 16px}
+.ladder div.on{border:1.5px solid var(--red)}
+.row{display:flex;gap:18px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.row img{width:96px;height:96px;object-fit:cover;border-radius:3px;flex:none}
+.ingr{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.ingr span{font:500 14px/1 'DM Sans',Arial;border:1px solid var(--line);border-radius:2px;padding:9px 12px;background:#fff}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.h):not(.fine):not(.pr):not(.big):not(.n):not(.to){font-size:17px!important;line-height:1.45!important}
+ .hdr{padding:13px 0 11px!important} .hdr img{height:28px!important}
+ .nav a{font-size:14px!important;letter-spacing:.02em!important;padding:15px 0 14px!important}
+ .hc{padding:24px 20px 0!important} .hc.top{padding-bottom:70px!important}
+ .hc .hd{font-size:40px!important} .hc .hsub{font-size:17px!important;margin:8px 0 16px!important}
+ .hc .eb{font-size:12px!important}
+ .btn{display:block!important;text-align:center!important;padding:17px 14px 16px!important;font-size:15px!important}
+ .hc .btn{display:inline-block!important;padding:16px 28px 15px!important}
+ h2.h{font-size:32px!important}
+ .split{display:block!important;height:auto!important;position:relative}
+ .split .si{position:relative;height:470px}
+ .split .si img{object-position:50% 0!important}
+ .split .sc{position:absolute;left:0;right:0;bottom:0;width:auto!important;z-index:2;text-align:center;padding:70px 20px 22px!important;
+  background:linear-gradient(to bottom,rgba(250,249,245,0),rgba(250,249,245,.94) 60px,var(--paper) 100px)}
+ .split .sc .hd{font-size:38px!important} .from{margin-bottom:10px!important;justify-content:center} .from img{width:38px!important;height:38px!important}
+ .split .sc .hsub{margin:8px 0 14px!important}
+ .split .sc .btn{display:inline-block!important;padding:16px 28px 15px!important}
+ .li{gap:14px!important;flex-wrap:wrap}
+ .li .n{font-size:44px!important;width:40px!important}
+ .li img{width:110px!important;height:110px!important}
+ .li .tx{flex:1 1 100%!important}
+ .tags{flex-direction:column}
+ .tag{width:100%!important}
+ .tag img{height:220px!important}
+ .tier{flex-direction:column}
+ .tier .pc{width:auto!important;flex-direction:row!important;gap:12px;padding:20px 0 4px!important}
+ .tier .pc .big{font-size:56px!important}
+ .tier .cards{padding:14px 20px 22px!important;flex-direction:column}
+ .card{display:flex!important;align-items:center}
+ .card img{width:120px!important;height:120px!important;flex:none}
+ .g3{flex-direction:column}
+ .ladder div{padding:14px 4px 12px!important}
+ .proof{flex-wrap:wrap} .proof div{flex:1 1 100%!important;border-left:0!important;border-top:1px solid var(--line)} .proof div:first-child{border-top:0}
+ .ship{flex-direction:column;gap:6px;text-align:center}
+ .reply{flex-direction:column;text-align:center} .ticket{flex-direction:column;text-align:center!important;gap:6px!important}
+ .rate{flex-direction:column;gap:6px} .rate>div{text-align:center!important}
+ .m-hide{display:none!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden">Plus the stocking stuffer I'm buying for literally everyone.</div><div class="e"><div class="hdr tx-cream"><img src="../assets/logo.png" alt="onekind"></div><div class="nav"><a class="on" href="https://onekind.us/pages/shop-holiday-2026">Sale</a><a class="" href="https://onekind.us/collections/shop-gifts">Gifts</a><a class="" href="https://onekind.us/collections/sets">Sets</a><a class="" href="https://onekind.us/collections/fragrance">Fragrance</a></div><div class="hero"><img src="../gifs/01_list.gif" alt=""><div class="hc top cream"><div class="from"><img src="../assets/madison_head.png" alt="Madison"><p class="eb" style="font-size:12px;text-align:left;line-height:1.4">From Madison<br><span style="color:var(--mute)">Co-Founder</span></p></div>
+<h1 class="h hd">My holiday <i>gift list</i></h1>
+<p class="hsub" style="color:#3A3A38">Four favorites, up to 50% off.</p><a class="btn " href="https://onekind.us/pages/shop-holiday-2026">Shop my list</a></div></div>
+<div class="pad tx-cream" style="padding-top:44px;padding-bottom:12px">
+<p style="font-size:17px">Hi Alex,</p>
+<h2 class="h" style="font-size:34px;margin:10px 0 6px">These are my must-have gifts <i>(and they're on sale now)</i></h2>
+<p style="font-size:15px;color:var(--mute);margin-bottom:22px">No code needed. Discounts come off at checkout.</p>
+<div class="li"><p class="n">1</p><img src="../assets/p_Onekind-Barrier-Recovery-Serum.jpg" alt="Barrier Recovery Serum">
+<div class="tx" style="flex:1;min-width:0"><p class="h" style="font-size:24px;margin-bottom:8px"><a href="https://onekind.us/products/radical-repair-barrier-recovery-serum" style="color:inherit;text-decoration:none">Radical Repair&reg; Barrier Recovery Serum</a></p>
+<p style="font-size:16px;line-height:1.5;color:#3A3A38;margin-bottom:12px">It's the busiest, most stressful time of year, and winter means dry, irritated skin. This keeps mine looking merry and bright.</p>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="chip">40% off</span><p class="pr"><s>$54</s><b>$32.40</b> <span style="color:var(--mute);font-size:14px">at checkout</span></p></div>
+<p style="margin-top:14px"><a class="lk" href="https://onekind.us/products/radical-repair-barrier-recovery-serum">Shop it</a></p></div></div><div class="li"><p class="n">2</p><img src="../assets/p_onekind-brighter-nights-skin-trio-816630.jpg" alt="Night Shift Routine">
+<div class="tx" style="flex:1;min-width:0"><p class="h" style="font-size:24px;margin-bottom:8px"><a href="https://onekind.us/products/night-shift-routine" style="color:inherit;text-decoration:none">Night Shift Routine</a></p>
+<p style="font-size:16px;line-height:1.5;color:#3A3A38;margin-bottom:12px">Checking off your list? Our three top-selling PM favorites in one complete (but super simple) set.</p>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="chip">40% off</span><p class="pr"><s>$120</s><b>$72</b> <span style="color:var(--mute);font-size:14px">at checkout</span></p></div>
+<p style="margin-top:14px"><a class="lk" href="https://onekind.us/products/night-shift-routine">Shop it</a></p></div></div><div class="li"><p class="n">3</p><img src="../assets/p_Dream-Cream-Lifestyle-with-Floral-Ingredients.jpg" alt="Dream Cream">
+<div class="tx" style="flex:1;min-width:0"><p class="h" style="font-size:24px;margin-bottom:8px"><a href="https://onekind.us/products/dream-cream-nighttime-moisturizer" style="color:inherit;text-decoration:none">Dream Cream Nighttime Moisturizer</a></p>
+<p style="font-size:16px;line-height:1.5;color:#3A3A38;margin-bottom:12px">My stocking stuffer for literally everyone: your busy BFF, tired coworkers, your MIL. Thousands of 5-star reviews.</p>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="chip">30% off</span><p class="pr"><s>$42</s><b>$29.40</b> <span style="color:var(--mute);font-size:14px">at checkout</span></p></div>
+<p style="margin-top:14px"><a class="lk" href="https://onekind.us/products/dream-cream-nighttime-moisturizer">Shop it</a></p></div></div><div class="li"><p class="n">4</p><img src="../assets/p_Onekind-4PerfumeOils-Square.jpg" alt="Fragrance Collection">
+<div class="tx" style="flex:1;min-width:0"><p class="h" style="font-size:24px;margin-bottom:8px"><a href="https://onekind.us/products/signature-fragrance-collection" style="color:inherit;text-decoration:none">Signature Fragrance Collection</a></p>
+<p style="font-size:16px;line-height:1.5;color:#3A3A38;margin-bottom:12px">The most luxe gift: a whole scent wardrobe, woody to fresh to floral to gourmand, in four rollerball oils.</p>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="chip">50% off</span><p class="pr"><s>$260</s><b>$130</b> <span style="color:var(--mute);font-size:14px">at checkout</span></p></div>
+<p style="margin-top:14px"><a class="lk" href="https://onekind.us/products/signature-fragrance-collection">Shop it</a></p></div></div>
+<div style="border-top:1px solid var(--line);padding:30px 0 10px"><img src="../assets/sig_ink.png" style="width:230px;display:block" alt="Madison Ruggieri">
+<p style="font-size:16px;margin-top:4px">xx Madison<br><span style="color:var(--mute)">Co-Founder, Onekind</span></p></div></div>
+<div class="pad tx-cream" style="padding-top:18px;padding-bottom:44px"><div class="reply"><img src="../assets/madison_head.png" alt="Madison"><div><p style="font-size:16px;line-height:1.5">Want personalized recommendations? Just hit reply and tell me who you're shopping for. I read every one.</p><p class="lora" style="font-size:16px;margin-top:6px;color:var(--mute)">Madison, Co-Founder</p></div></div>
+<div class="c" style="margin-top:30px"><a class="btn ink" href="https://onekind.us/pages/shop-holiday-2026">Shop the holiday sale</a></div></div>
+<div class="ship tx-navy"><p class="h" style="font-size:22px">Free U.S. shipping over $50.</p><p style="font-size:15px;opacity:.8">Plus free returns.</p></div><div class="proof tx-cream"><div><p class="eb" style="font-size:12px;letter-spacing:.12em">Clean formulations</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.12em">Cruelty-free: PETA + Leaping Bunny</p></div><div><p class="eb" style="font-size:12px;letter-spacing:.12em">For all skin</p></div></div><div class="ft tx-linen"><img src="../assets/logo.png" style="height:30px" alt="onekind">
+<p class="lora" style="font-size:22px;margin-top:16px">Your skin's in good company.</p>
+<nav><a href="https://onekind.us/pages/shop-holiday-2026">Holiday Sale</a><a href="https://onekind.us/collections/shop-gifts">Gifts</a><a href="https://onekind.us/collections/sets">Sets</a><a href="https://instagram.com/onekind.us">Instagram</a></nav>
+<small>Questions? Reply to this email or text 888.515.5444.</small>
+<small>Onekind &middot; PO Box 225215 Dallas, TX 75222</small>
+<small style="margin-top:6px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small></div></div></body></html>

@@ -1,0 +1,127 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gift Guide</title><style>
+@font-face{font-family:'Oracle';src:url(../assets/fonts/MadhappyOracle-Regular.woff) format('woff');font-weight:400}
+@font-face{font-family:'OracleMed';src:url(../assets/fonts/MadhappyOracle-Medium.woff) format('woff');font-weight:400}
+@font-face{font-family:'OracleBold';src:url(../assets/fonts/MadhappyOracle-Bold.ttf) format('woff2');font-weight:400}
+:root{--ink:#000;--paper:#fff;--grey:#EAEAEA;--flat:#E6E6E8;--mute:#737376;--yellow:#FBF21E;--box:#95BBD7;--line:rgba(0,0,0,.14)}
+*{box-sizing:border-box}
+body{margin:0;background:#D9D9D9}
+.e{width:600px;margin:0 auto;background:var(--paper);color:var(--ink);font:16px/1.5 Oracle,Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.h{font-family:OracleMed,Helvetica,Arial,sans-serif;letter-spacing:-.035em;line-height:1}
+.b{font-family:OracleBold,OracleMed,Helvetica,Arial,sans-serif;letter-spacing:-.04em;line-height:.92}
+.m{font-family:OracleMed,Helvetica,Arial,sans-serif}
+.eb{font:13px/1.2 OracleMed,Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.45}
+.mute{color:var(--mute)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto}
+.btn{display:inline-block;background:#000;color:#fff;font:16px/1 OracleMed,Helvetica,Arial;letter-spacing:.01em;padding:18px 30px 17px;text-decoration:none;border:1px solid #000}
+.btn.y{background:var(--yellow);color:#000;border-color:var(--yellow)} .btn.w{background:#fff;color:#000;border-color:#fff}
+.btn.o{background:transparent;color:inherit;border-color:currentColor}
+.link{font:14px OracleMed,Helvetica,Arial;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+.ann{background:#000;color:#fff;text-align:center;font:12px/1 OracleMed,Helvetica,Arial;letter-spacing:.08em;text-transform:uppercase;padding:11px 12px}
+.logo{text-align:center;padding:24px 0 22px;background:#fff}
+.logo img{height:20px;display:inline-block}
+.nav{display:flex;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nav a{flex:1;text-align:center;font:14px/1 OracleMed,Helvetica,Arial;letter-spacing:.08em;text-transform:uppercase;color:#000;
+ padding:16px 0 15px;border-left:1px solid var(--line);text-decoration:none;min-height:46px}
+.nav a:first-child{border-left:0}
+.tx-grey{background:var(--grey) url(../assets/tex_grey.jpg) center top/300px}
+.tx-black{background:#0E0E0E url(../assets/tex_black.jpg) center top/300px;color:#fff}
+.g{display:flex;gap:6px}
+.card{flex:1;min-width:0;text-decoration:none;color:inherit;display:block}
+.card .im{background:var(--flat);aspect-ratio:4/5;overflow:hidden}
+.card .im img{width:100%;height:100%;object-fit:cover;display:block}
+.card .tx{padding:10px 2px 0}
+.nm{font:15px/1.25 OracleMed,Helvetica,Arial;letter-spacing:-.005em}
+.pr{font:15px/1.25 Oracle,Helvetica,Arial}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.22);vertical-align:-2px}
+.dots{display:flex;gap:6px;margin-top:8px}
+.rule{height:1px;background:var(--line)}
+.ft{padding:40px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin:20px 0}
+.ft nav a{font:13px OracleMed,Helvetica,Arial;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.65;color:var(--mute)}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .e p:not(.eb):not(.fine):not(.nm):not(.pr):not(.h):not(.b):not(.k){font-size:16px!important;line-height:1.45!important}
+ h1.h{font-size:38px!important} h2.h{font-size:27px!important} .b.xl{font-size:120px!important}
+ .btn{display:block!important;text-align:center!important;padding:16px 14px 15px!important;min-height:50px}
+ .nav a{font-size:13px!important;letter-spacing:.05em!important}
+ .g4{flex-wrap:wrap!important;row-gap:18px!important}
+ .g4>*{flex:1 1 calc(50% - 3px)!important}
+ .g3{flex-direction:column!important;gap:14px!important}
+ .g3>.card{display:flex!important;gap:14px;align-items:center}
+ .g3>.card .im{width:42%!important;flex:none}
+ .g3>.card .tx{padding:0!important}
+ .g1{flex-direction:column!important}
+ .g1>*{width:100%!important;flex:1 1 auto!important}
+ .sz td{padding:9px 0!important;font-size:12px!important}
+ .sz td.cn{width:96px!important}
+ .sz td.pz{display:none!important}
+ .parts{columns:1!important}
+ .spec>div{flex:1 1 50%!important;border-top:1px solid var(--line)}
+ .spec{flex-wrap:wrap!important}
+ .gc{aspect-ratio:16/10!important;transform:scale(1.35)!important} .gb{aspect-ratio:16/10!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">From $30: Local Optimist, the Journal, the Joya Candle and Classics. Blue gift box $10.</div><div class="e"><div class="ann">Los Angeles, California</div><div class="logo"><img src="../assets/logo_black.svg" alt="madhappy"></div><div class="nav"><a href="https://www.madhappy.com/collections/all">Women</a><a href="https://www.madhappy.com/collections/mens-all">Men</a><a href="https://www.madhappy.com/collections/classics">Classics</a><a href="https://www.madhappy.com/collections/gift-guide">Gifts</a></div><div class="pad " style="padding-top:40px;padding-bottom:30px">
+ <p class="eb" style="">Gift Guide</p>
+ <h1 class="h" style="font-size:48px;margin:12px 0 12px">Gifts for the optimists.</h1>
+ <p style="font-size:17px;margin-bottom:22px">From $30. Add our blue gift box for $10.</p>
+ <a class="btn " href="https://www.madhappy.com/collections/gift-guide">Shop the Gift Guide</a>
+</div>
+<img src="../gifs/04_leak.gif" class="img" alt="Friends laughing, Madhappy Fall Classics campaign, gifts from $30">
+<div class="pad" style="padding-top:12px;padding-bottom:44px">
+ <div style="margin-top:34px"><div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:16px;gap:12px">
+<p class="h" style="font-size:26px">Under $50</p><p class="eb mute">$30 to $45</p></div><div class="g g3"><a class="card" href="https://www.madhappy.com/products/local-optimist-issue-04"><div class="im"><img src="../assets/p/local-optimist-issue-04.jpg" alt="Local Optimist Issue 04"></div>
+<div class="tx"><p class="nm">Local Optimist Issue 04</p><p class="fine mute" style="margin-top:3px;font-size:13px">The Pathways Issue, 188 pages</p>
+<p class="pr" style="margin-top:5px">$30</p></div></a><a class="card" href="https://www.madhappy.com/products/madhappy-journal-carolina"><div class="im"><img src="../assets/p/madhappy-journal-carolina.jpg" alt="Madhappy Journal"></div>
+<div class="tx"><p class="nm">Madhappy Journal</p><p class="fine mute" style="margin-top:3px;font-size:13px">Daily prompts, 192 pages</p>
+<p class="pr" style="margin-top:5px">$35</p></div></a><a class="card" href="https://www.madhappy.com/products/classic-socks-3-pack-monochrome"><div class="im"><img src="../assets/p/classic-socks-3-pack-monochrome.jpg" alt="Classic Socks 3-Pack"></div>
+<div class="tx"><p class="nm">Classic Socks 3-Pack</p><p class="fine mute" style="margin-top:3px;font-size:13px">Three pairs, organic cotton blend</p>
+<p class="pr" style="margin-top:5px">$45</p></div></a></div></div>
+ <div style="margin-top:34px"><div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:16px;gap:12px">
+<p class="h" style="font-size:26px">Under $100</p><p class="eb mute">$55 to $75</p></div><div class="g g3"><a class="card" href="https://www.madhappy.com/products/joya-candle"><div class="im"><img src="../assets/p/joya-candle.jpg" alt="Joya Candle"></div>
+<div class="tx"><p class="nm">Joya Candle</p><p class="fine mute" style="margin-top:3px;font-size:13px">Pomegranate and palo santo, 50 hr burn</p>
+<p class="pr" style="margin-top:5px">$55</p></div></a><a class="card" href="https://www.madhappy.com/products/classics-dad-hat-black"><div class="im"><img src="../assets/p/classics-dad-hat-black.jpg" alt="Classics Dad Hat"></div>
+<div class="tx"><p class="nm">Classics Dad Hat</p><p class="fine mute" style="margin-top:3px;font-size:13px">Embroidered logo, velcro strapback</p>
+<p class="pr" style="margin-top:5px">$55</p></div></a><a class="card" href="https://www.madhappy.com/products/classics-heavyweight-tee-black"><div class="im"><img src="../assets/p/classics-heavyweight-tee-black.jpg" alt="Classics Heavyweight Tee"></div>
+<div class="tx"><p class="nm">Classics Heavyweight Tee</p><p class="fine mute" style="margin-top:3px;font-size:13px">Heavyweight jersey, made in LA</p>
+<p class="pr" style="margin-top:5px">$75</p></div></a></div></div>
+ <div style="margin-top:34px"><div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:16px;gap:12px">
+<p class="h" style="font-size:26px">The big one</p><p class="eb mute">$165 to $195</p></div><div class="g g3"><a class="card" href="https://www.madhappy.com/products/classics-fleece-hoodie-white-with-pink"><div class="im"><img src="../assets/p/classics-fleece-hoodie-white-with-pink.jpg" alt="Classics Fleece Hoodie"></div>
+<div class="tx"><p class="nm">Classics Fleece Hoodie</p><p class="fine mute" style="margin-top:3px;font-size:13px">White with Pink</p>
+<p class="pr" style="margin-top:5px">$175</p></div></a><a class="card" href="https://www.madhappy.com/products/classics-fleece-crewneck-navy"><div class="im"><img src="../assets/p/classics-fleece-crewneck-navy.jpg" alt="Classics Fleece Crewneck"></div>
+<div class="tx"><p class="nm">Classics Fleece Crewneck</p><p class="fine mute" style="margin-top:3px;font-size:13px">Navy, heavyweight fleece</p>
+<p class="pr" style="margin-top:5px">$165</p></div></a><a class="card" href="https://www.madhappy.com/products/striped-midweight-fleece-zip-up-fudge-stripe"><div class="im"><img src="../assets/p/striped-midweight-fleece-zip-up-fudge-stripe.jpg" alt="Striped Midweight Fleece Zip Up"></div>
+<div class="tx"><p class="nm">Striped Midweight Fleece Zip Up</p><p class="fine mute" style="margin-top:3px;font-size:13px">Fudge Stripe, yarn dyed</p>
+<p class="pr" style="margin-top:5px">$195</p></div></a></div></div>
+</div>
+<div class="g g1" style="gap:0;background:var(--box)">
+ <div style="flex:none;width:250px;background:#F0F0F0;overflow:hidden"><img src="../assets/p/gift-card.jpg" class="gc" style="width:100%;display:block;aspect-ratio:1/1;object-fit:cover;object-position:50% 50%;transform:scale(1.9)" alt="Digital Gift Card artwork by Sasha December"></div>
+ <div class="pad" style="padding-top:28px;padding-bottom:26px;padding-left:28px;flex:1">
+  <p class="eb">Still deciding?</p><p class="h" style="font-size:26px;margin:8px 0 6px">Digital Gift Card</p>
+  <p style="font-size:15px;line-height:1.4;margin-bottom:14px">Artwork by Sasha December. Sent by email.</p>
+  <div><span style="display:inline-block;border:1px solid #000;padding:8px 11px 7px;font:14px OracleMed,Arial;margin:0 6px 6px 0">$50</span><span style="display:inline-block;border:1px solid #000;padding:8px 11px 7px;font:14px OracleMed,Arial;margin:0 6px 6px 0">$100</span><span style="display:inline-block;border:1px solid #000;padding:8px 11px 7px;font:14px OracleMed,Arial;margin:0 6px 6px 0">$250</span><span style="display:inline-block;border:1px solid #000;padding:8px 11px 7px;font:14px OracleMed,Arial;margin:0 6px 6px 0">$500</span><span style="display:inline-block;border:1px solid #000;padding:8px 11px 7px;font:14px OracleMed,Arial;margin:0 6px 6px 0">$1,000</span></div>
+  <p style="margin-top:10px"><a class="link" href="https://www.madhappy.com/products/gift-card">Send a gift card</a></p></div>
+</div>
+<div class="g g1" style="gap:0;background:#fff;border-bottom:1px solid var(--line)">
+ <div class="pad" style="padding-top:30px;padding-bottom:30px;padding-right:20px;flex:1">
+  <p class="h" style="font-size:26px">The blue box</p>
+  <p style="font-size:15px;line-height:1.4;margin:8px 0 14px">Gift Packaging, $10. One per order.</p>
+  <a class="link" href="https://www.madhappy.com/products/gift-packaging">Add to bag</a></div>
+ <div style="flex:none;width:250px;background:#EBEDEC"><img src="../assets/p/gift-packaging.jpg" class="gb" style="width:100%;display:block;aspect-ratio:1/1;object-fit:cover" alt="Madhappy blue gift box"></div>
+</div>
+<div class="pad c" style="padding-top:40px;padding-bottom:44px">
+ <h2 class="h" style="font-size:32px;margin-bottom:20px">Something for every optimist.</h2>
+ <a class="btn " href="https://www.madhappy.com/collections/gift-guide">Shop the Gift Guide</a>
+</div><div class="ft tx-grey"><img src="../assets/logo_black.svg" style="height:18px" alt="madhappy">
+<p class="m" style="font-size:17px;margin-top:16px;letter-spacing:-.01em">Clothing for a Community of Optimists</p>
+<nav><a href="https://www.madhappy.com/pages/stores">Stores</a><a href="https://www.madhappy.com/blogs/news/local-optimist-issue-04">Local Optimist</a><a href="https://www.madhappy.com/pages/madhappy-foundation">Foundation</a><a href="https://www.madhappy.com/pages/faq">FAQ</a></nav>
+<p style="font-size:14px;margin-bottom:14px">Questions? Reply to this email or write Support@Madhappy.com.</p>
+<small>@madhappy &middot; {{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:4px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small style="margin-top:14px">Concept email by Lenny Huynh. Not affiliated with or sent by Madhappy.</small></div></div></body></html>

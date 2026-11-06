@@ -1,0 +1,151 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aesop: A ritual in three measures</title><style>
+@font-face{font-family:'Zapf';src:url(../assets/fonts/Zapf-Humanist.woff2) format('woff2')}
+@font-face{font-family:'Suisse';src:url(../assets/fonts/SuisseIntl-Regular-WebXL.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'SuisseM';src:url(../assets/fonts/SuisseIntl-Medium-WebXL.woff2) format('woff2');font-weight:500}
+:root{--cream:#fffef2;--paper:#f6f5e8;--stone:#ebeade;--ink:#252525;--grey:#6b6b60;--amber:#965d34;--umber:#2a2019;
+--line:rgba(37,37,37,.18);--lineL:rgba(255,254,242,.22)}
+*{box-sizing:border-box}
+body{margin:0;background:#d9d6c8}
+.e{width:600px;margin:0 auto;background:var(--cream) url(../assets/tex_cream.jpg) center top/600px;color:var(--ink);
+ font:16px/1.6 Suisse,'Helvetica Neue',Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.z{font-family:Zapf,'Palatino Linotype',Palatino,Georgia,serif;font-weight:400;letter-spacing:-.005em}
+.m{font-family:SuisseM,Suisse,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:500}
+.eb{font:500 13px/1.3 SuisseM,Suisse,Helvetica,Arial,sans-serif;letter-spacing:.01em}
+.fine{font-size:12px;line-height:1.5;color:var(--grey)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto;border:0}
+.pre{display:none;max-height:0;overflow:hidden;opacity:0}
+.btn{display:inline-block;background:var(--ink);color:var(--cream)!important;font:500 15px/1 SuisseM,Suisse,Helvetica,Arial,sans-serif;letter-spacing:.01em;
+ padding:19px 30px 18px;text-decoration:none;border:1px solid var(--ink)}
+.btn.lt{background:var(--cream);color:var(--ink)!important;border-color:var(--cream)}
+.btn.ol{background:transparent;color:var(--ink)!important}
+.btn .ar{display:inline-block;margin-left:12px}
+.link{font:500 14px SuisseM,Suisse,Helvetica,Arial;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.util{font-size:12px;color:var(--grey);text-align:center;padding:10px 12px 0;letter-spacing:.01em}
+.logo{text-align:center;padding:16px 0 18px}
+.logo img{height:30px;width:auto;display:inline-block}
+.nav{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.nav a{flex:1;text-align:center;font:500 14px/1 SuisseM,Suisse,Helvetica,Arial;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+ padding:16px 0 15px;border-left:1px solid var(--line);text-decoration:none;white-space:nowrap}
+.nav a:first-child{border-left:0}
+.hero{background-color:var(--umber);background-repeat:no-repeat;background-position:center;background-size:cover;color:var(--cream)}
+.hero h1{font-size:46px;line-height:1.06}
+.hsub{font-size:17px;line-height:1.45;margin-top:12px}
+.trust{display:flex;border-bottom:1px solid var(--line)}
+.trust p{flex:1;text-align:center;font-size:13px;color:var(--grey);padding:14px 4px 13px;border-left:1px solid var(--line)}
+.trust p:first-child{border-left:0}
+.rule{height:1px;background:var(--line);margin:0 44px}
+.h2{font-size:32px;line-height:1.12}
+.tile{background:var(--stone) url(../assets/tex_stone.jpg) center/600px}
+.umber{background:var(--umber) url(../assets/tex_umber.jpg) center top/600px;color:var(--cream)}
+.linen{background:var(--paper) url(../assets/tex_linen.jpg) center top/600px}
+.g{display:flex;gap:12px}
+.price{font:500 15px SuisseM,Suisse,Helvetica,Arial}
+.chip{display:inline-block;border:1px solid var(--line);padding:6px 10px 5px;font-size:13px;line-height:1.2;color:var(--ink)}
+.ft{padding:44px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0 20px}
+.ft nav a{font:500 13px SuisseM,Suisse,Arial;color:var(--cream);text-decoration:none;opacity:.9}
+.ft small{display:block;font-size:12px;line-height:1.7;color:rgba(255,254,242,.62)}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .rule{margin:0 20px!important}
+ .e p:not(.eb):not(.fine):not(.price):not(.nb):not(.z){font-size:16px!important;line-height:1.5!important}
+ .hero h1{font-size:38px!important} .h2{font-size:27px!important}
+ .heroc{padding-left:20px!important;padding-right:20px!important}
+ .hero{height:560px!important}
+ .btn{display:block!important;text-align:center!important;padding:17px 16px 16px!important;min-height:50px;font-size:15px!important}
+ .nav a{flex:1 1 auto!important;font-size:14px!important;letter-spacing:0!important;padding-left:5px!important;padding-right:5px!important}
+ .util{font-size:12px!important}
+ .mx{margin-left:20px!important;margin-right:20px!important}
+ .g3{gap:8px!important;flex-wrap:nowrap!important}
+ .g3>*{flex:1 1 0!important}
+ .g3 img{height:150px!important}
+ .cardr{flex-wrap:wrap!important}
+ .cardr .price{width:100%;padding-left:90px}
+ .h01{height:600px!important} .h01 .heroc{padding-top:30px!important} .h01 h1{font-size:36px!important}
+ .h03{background-position:0% 50%!important} .h03 .btn{display:inline-block!important;padding-left:24px!important;padding-right:24px!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important;min-width:0}
+ .g1{flex-direction:column!important;align-items:stretch!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important;max-width:none!important}
+ .trust p{font-size:13px!important;line-height:1.35!important;padding-left:4px!important;padding-right:4px!important}
+ .mob-hide{display:none!important}
+ .reg .nm{font-size:19px!important}
+ .stepimg{width:96px!important;height:140px!important}
+ .stepimg img{max-width:70px!important;max-height:120px!important}
+ .stepn{font-size:28px!important}
+ .note{font-size:15px!important}
+ .gm{padding-left:20px!important;padding-right:20px!important}
+}
+</style></head><body><div class="e"><div class="pre">Half a teaspoon, then a quarter of a pipette: the Parsley Seed ritual.</div><p class="util nb">Complimentary samples &nbsp;&middot;&nbsp; Complimentary gift wrapping</p><div class="logo"><a href="https://www.aesop.com"><img src="../assets/logo.png" alt="Aesop"></a></div><div class="nav"><a href="https://www.aesop.com/gifts/seasonal-gift-kits/">Gifts</a><a href="https://www.aesop.com/skin-care/">Skin Care</a><a href="https://www.aesop.com/hand-body/">Hand &amp; Body</a><a href="https://www.aesop.com/fragrance/">Fragrance</a></div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse"><tr><td class="hero " background="../gifs/02_sheen.gif" style="background-image:url(../gifs/02_sheen.gif);height:640px;vertical-align:bottom"><div class="heroc" style="padding:0 44px 44px">
+ <p class="eb" style="opacity:.85">Parsley Seed Skin Care</p>
+ <h1 class="z" style="margin-top:10px">A ritual in<br>three measures</h1>
+ <p class="hsub" style="opacity:.9">Cleanse, tone, treat. Morning and evening.</p>
+ <div style="margin-top:24px"><a class="btn lt" href="https://www.aesop.com/travel/travel-kits/parsley-seed-anti-oxidant-skin-care-kit/APB285.html">Discover the kit &middot; $182<span class="ar">&rarr;</span></a></div></div></td></tr></table>
+<div class="trust"><p class="nb">Complimentary samples</p><p class="nb">Vegan formulations</p><p class="nb">Certified B Corp</p></div>
+<div class="pad" style="padding-top:44px;padding-bottom:20px">
+ <p class="eb" style="color:var(--amber)">A fortifying trio for urban-dwellers</p>
+ <h2 class="z h2" style="margin-top:10px">The measures</h2>
+ <div style="display:flex;gap:20px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--line)">
+<a href="https://www.aesop.com/skin-care/cleansers/parsley-seed-facial-cleanser/SK45.html" class="tile stepimg" style="flex:none;width:132px;height:176px;display:flex;align-items:center;justify-content:center"><img src="../assets/ps_cleanser.png" alt="Parsley Seed Facial Cleanser" style="max-width:96px;max-height:150px"></a>
+<div style="flex:1">
+ <p class="z stepn" style="font-size:34px;line-height:1;color:var(--amber)">I<span style="color:var(--ink);margin-left:14px">Cleanse</span></p>
+ <p class="m" style="font-size:15px;margin-top:12px">Parsley Seed Facial Cleanser</p>
+ <p style="font-size:15px;line-height:1.5;color:var(--grey);margin-top:6px">Massage over face and neck. Leave one to two minutes, then rinse with warm water.</p>
+ <p style="margin-top:12px"><span class="chip">Half a teaspoon</span> <span class="price" style="margin-left:10px;white-space:nowrap">100 mL &middot; $46</span></p>
+</div></div><div style="display:flex;gap:20px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--line)">
+<a href="https://www.aesop.com/skin-care/toners/parsley-seed-anti-oxidant-facial-toner/SK18.html" class="tile stepimg" style="flex:none;width:132px;height:176px;display:flex;align-items:center;justify-content:center"><img src="../assets/ps_toner.png" alt="Parsley Seed Anti-Oxidant Facial Toner" style="max-width:96px;max-height:150px"></a>
+<div style="flex:1">
+ <p class="z stepn" style="font-size:34px;line-height:1;color:var(--amber)">II<span style="color:var(--ink);margin-left:14px">Tone</span></p>
+ <p class="m" style="font-size:15px;margin-top:12px">Parsley Seed Anti-Oxidant Facial Toner</p>
+ <p style="font-size:15px;line-height:1.5;color:var(--grey);margin-top:6px">Splash into hands, or douse a cotton pad, and pat onto the skin.</p>
+ <p style="margin-top:12px"><span class="chip">Half a teaspoon</span> <span class="price" style="margin-left:10px;white-space:nowrap">100 mL &middot; $45</span></p>
+</div></div><div style="display:flex;gap:20px;align-items:flex-start;padding:26px 0;">
+<a href="https://www.aesop.com/skin-care/concentrates-serums/parsley-seed-anti-oxidant-intense-serum/SK69.html" class="tile stepimg" style="flex:none;width:132px;height:176px;display:flex;align-items:center;justify-content:center"><img src="../assets/ps_serum.png" alt="Parsley Seed Anti-Oxidant Intense Serum" style="max-width:96px;max-height:150px"></a>
+<div style="flex:1">
+ <p class="z stepn" style="font-size:34px;line-height:1;color:var(--amber)">III<span style="color:var(--ink);margin-left:14px">Treat</span></p>
+ <p class="m" style="font-size:15px;margin-top:12px">Parsley Seed Anti-Oxidant Intense Serum</p>
+ <p style="font-size:15px;line-height:1.5;color:var(--grey);margin-top:6px">Massage over face and neck once cleansed and toned.</p>
+ <p style="margin-top:12px"><span class="chip">A quarter of a pipette</span> <span class="price" style="margin-left:10px;white-space:nowrap">60 mL &middot; $95</span></p>
+</div></div>
+</div>
+<div class="tile mx" style="margin:0 44px;padding:22px 24px;display:flex;gap:18px;align-items:center">
+ <div style="flex:1"><p class="eb" style="color:var(--amber)">IV &middot; Then, hydrate</p>
+ <p class="m" style="font-size:15px;margin-top:8px">Parsley Seed Anti-Oxidant Hydrator</p>
+ <p class="fine" style="font-size:14px;margin-top:4px">For normal, dry and combination skin.</p><p style="margin-top:10px"><span class="chip">One to two pumps</span></p></div>
+ <div style="text-align:right"><p class="price">60 mL &middot; $77</p><p style="margin-top:8px"><a class="link" href="https://www.aesop.com/skin-care/moisturisers/parsley-seed-anti-oxidant-hydrator/SK48.html">Discover</a></p></div>
+</div>
+<div class="umber" style="margin-top:46px">
+ <div class="g1" style="display:flex">
+  <div class="gm" style="width:54%;padding:40px 26px 40px 44px">
+   <p class="eb" style="opacity:.7">The kit</p>
+   <h2 class="z" style="font-size:28px;line-height:1.12;margin-top:10px">All three, in one kit</h2>
+   <div style="margin-top:18px"><div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--lineL);font-size:15px"><span>Facial Cleanser, 100 mL</span><span>$46</span></div><div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--lineL);font-size:15px"><span>Facial Toner, 100 mL</span><span>$45</span></div><div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--lineL);font-size:15px"><span>Intense Serum, 60 mL</span><span>$95</span></div></div>
+   <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:15px;opacity:.7"><span>Purchased individually</span><span>$186</span></div>
+   <div style="display:flex;justify-content:space-between;padding:12px 0 22px;border-top:1px solid var(--cream)"><span class="m" style="font-size:16px">Parsley Seed Anti-Oxidant Skin Care Kit</span><span class="price" style="font-size:16px">$182</span></div>
+   <a class="btn lt" href="https://www.aesop.com/travel/travel-kits/parsley-seed-anti-oxidant-skin-care-kit/APB285.html">Add the kit<span class="ar">&rarr;</span></a>
+  </div>
+  <div class="tile" style="width:46%;display:flex;align-items:center;justify-content:center;padding:24px"><img src="../assets/ps_kit.png" alt="Parsley Seed Anti-Oxidant Skin Care Kit" style="width:100%;max-width:240px;height:auto"></div>
+ </div>
+</div>
+<img src="../assets/ps_serum_dose.jpg" class="img" alt="A pipette of Parsley Seed Anti-Oxidant Intense Serum" style="height:380px;object-fit:cover">
+<div class="c pad" style="padding-top:28px;padding-bottom:44px">
+ <p class="eb" style="color:var(--amber)">Key ingredients</p>
+ <p class="z" style="font-size:24px;line-height:1.3;margin-top:8px">Parsley Seed, Tocopherol (Vitamin E), Red Algae</p>
+ <p style="color:var(--grey);margin-top:8px">Lightweight. Rapidly absorbing. A matte finish.</p>
+</div>
+<div class="umber ft">
+<p class="z nb" style="font-size:22px;line-height:1.35;max-width:440px;margin:0 auto">&lsquo;Your best and wisest refuge from all troubles is in your science.&rsquo;</p>
+<p class="eb" style="margin-top:12px;opacity:.7">Ada Lovelace</p>
+<div style="height:1px;background:var(--lineL);margin:34px 0 30px"></div>
+<img src="../assets/logo_white.png" alt="Aesop" style="height:28px;width:auto">
+<nav><a href="https://www.aesop.com/stores">Find a store</a><a href="https://www.aesop.com/gift-finder/">Gift Finder</a><a href="https://www.aesop.com/replenishment-subscriptions.html">Replenishment subscriptions</a><a href="https://www.aesop.com/customer-service/contact-us.html">Contact us</a></nav>
+<small>All Aesop products are vegan. Leaping Bunny approved &middot; Certified B Corporation.</small>
+<small>Reply to this email and a member of our team will read it.</small>
+<small style="margin-top:10px">{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:4px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small style="margin-top:14px;opacity:.8">Concept work by Lenny Huynh. Not affiliated with or endorsed by Aesop.</small></div></div></body></html>

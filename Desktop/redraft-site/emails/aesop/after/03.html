@@ -1,0 +1,159 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aesop: Silently, Hwyl</title><style>
+@font-face{font-family:'Zapf';src:url(../assets/fonts/Zapf-Humanist.woff2) format('woff2')}
+@font-face{font-family:'Suisse';src:url(../assets/fonts/SuisseIntl-Regular-WebXL.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'SuisseM';src:url(../assets/fonts/SuisseIntl-Medium-WebXL.woff2) format('woff2');font-weight:500}
+:root{--cream:#fffef2;--paper:#f6f5e8;--stone:#ebeade;--ink:#252525;--grey:#6b6b60;--amber:#965d34;--umber:#2a2019;
+--line:rgba(37,37,37,.18);--lineL:rgba(255,254,242,.22)}
+*{box-sizing:border-box}
+body{margin:0;background:#d9d6c8}
+.e{width:600px;margin:0 auto;background:var(--cream) url(../assets/tex_cream.jpg) center top/600px;color:var(--ink);
+ font:16px/1.6 Suisse,'Helvetica Neue',Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.z{font-family:Zapf,'Palatino Linotype',Palatino,Georgia,serif;font-weight:400;letter-spacing:-.005em}
+.m{font-family:SuisseM,Suisse,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:500}
+.eb{font:500 13px/1.3 SuisseM,Suisse,Helvetica,Arial,sans-serif;letter-spacing:.01em}
+.fine{font-size:12px;line-height:1.5;color:var(--grey)}
+.pad{padding-left:44px;padding-right:44px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto;border:0}
+.pre{display:none;max-height:0;overflow:hidden;opacity:0}
+.btn{display:inline-block;background:var(--ink);color:var(--cream)!important;font:500 15px/1 SuisseM,Suisse,Helvetica,Arial,sans-serif;letter-spacing:.01em;
+ padding:19px 30px 18px;text-decoration:none;border:1px solid var(--ink)}
+.btn.lt{background:var(--cream);color:var(--ink)!important;border-color:var(--cream)}
+.btn.ol{background:transparent;color:var(--ink)!important}
+.btn .ar{display:inline-block;margin-left:12px}
+.link{font:500 14px SuisseM,Suisse,Helvetica,Arial;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.util{font-size:12px;color:var(--grey);text-align:center;padding:10px 12px 0;letter-spacing:.01em}
+.logo{text-align:center;padding:16px 0 18px}
+.logo img{height:30px;width:auto;display:inline-block}
+.nav{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.nav a{flex:1;text-align:center;font:500 14px/1 SuisseM,Suisse,Helvetica,Arial;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+ padding:16px 0 15px;border-left:1px solid var(--line);text-decoration:none;white-space:nowrap}
+.nav a:first-child{border-left:0}
+.hero{background-color:var(--umber);background-repeat:no-repeat;background-position:center;background-size:cover;color:var(--cream)}
+.hero h1{font-size:46px;line-height:1.06}
+.hsub{font-size:17px;line-height:1.45;margin-top:12px}
+.trust{display:flex;border-bottom:1px solid var(--line)}
+.trust p{flex:1;text-align:center;font-size:13px;color:var(--grey);padding:14px 4px 13px;border-left:1px solid var(--line)}
+.trust p:first-child{border-left:0}
+.rule{height:1px;background:var(--line);margin:0 44px}
+.h2{font-size:32px;line-height:1.12}
+.tile{background:var(--stone) url(../assets/tex_stone.jpg) center/600px}
+.umber{background:var(--umber) url(../assets/tex_umber.jpg) center top/600px;color:var(--cream)}
+.linen{background:var(--paper) url(../assets/tex_linen.jpg) center top/600px}
+.g{display:flex;gap:12px}
+.price{font:500 15px SuisseM,Suisse,Helvetica,Arial}
+.chip{display:inline-block;border:1px solid var(--line);padding:6px 10px 5px;font-size:13px;line-height:1.2;color:var(--ink)}
+.ft{padding:44px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0 20px}
+.ft nav a{font:500 13px SuisseM,Suisse,Arial;color:var(--cream);text-decoration:none;opacity:.9}
+.ft small{display:block;font-size:12px;line-height:1.7;color:rgba(255,254,242,.62)}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad,.ft{padding-left:20px!important;padding-right:20px!important}
+ .rule{margin:0 20px!important}
+ .e p:not(.eb):not(.fine):not(.price):not(.nb):not(.z){font-size:16px!important;line-height:1.5!important}
+ .hero h1{font-size:38px!important} .h2{font-size:27px!important}
+ .heroc{padding-left:20px!important;padding-right:20px!important}
+ .hero{height:560px!important}
+ .btn{display:block!important;text-align:center!important;padding:17px 16px 16px!important;min-height:50px;font-size:15px!important}
+ .nav a{flex:1 1 auto!important;font-size:14px!important;letter-spacing:0!important;padding-left:5px!important;padding-right:5px!important}
+ .util{font-size:12px!important}
+ .mx{margin-left:20px!important;margin-right:20px!important}
+ .g3{gap:8px!important;flex-wrap:nowrap!important}
+ .g3>*{flex:1 1 0!important}
+ .g3 img{height:150px!important}
+ .cardr{flex-wrap:wrap!important}
+ .cardr .price{width:100%;padding-left:90px}
+ .h01{height:600px!important} .h01 .heroc{padding-top:30px!important} .h01 h1{font-size:36px!important}
+ .h03{background-position:0% 50%!important} .h03 .btn{display:inline-block!important;padding-left:24px!important;padding-right:24px!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important;min-width:0}
+ .g1{flex-direction:column!important;align-items:stretch!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important;max-width:none!important}
+ .trust p{font-size:13px!important;line-height:1.35!important;padding-left:4px!important;padding-right:4px!important}
+ .mob-hide{display:none!important}
+ .reg .nm{font-size:19px!important}
+ .stepimg{width:96px!important;height:140px!important}
+ .stepimg img{max-width:70px!important;max-height:120px!important}
+ .stepn{font-size:28px!important}
+ .note{font-size:15px!important}
+ .gm{padding-left:20px!important;padding-right:20px!important}
+}
+</style></head><body><div class="e"><div class="pre">Thyme, Cypress, Frankincense. A 2 mL sample comes with every Eau de Parfum.</div><p class="util nb">Complimentary samples &nbsp;&middot;&nbsp; Complimentary gift wrapping</p><div class="logo"><a href="https://www.aesop.com"><img src="../assets/logo.png" alt="Aesop"></a></div><div class="nav"><a href="https://www.aesop.com/gifts/seasonal-gift-kits/">Gifts</a><a href="https://www.aesop.com/skin-care/">Skin Care</a><a href="https://www.aesop.com/hand-body/">Hand &amp; Body</a><a href="https://www.aesop.com/fragrance/">Fragrance</a></div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse"><tr><td class="hero h03" background="../gifs/03_light.gif" style="background-image:url(../gifs/03_light.gif);height:700px;vertical-align:top"><div class="heroc" style="padding:48px 44px 0">
+ <p class="eb" style="opacity:.8">A fragrant fable &middot; New addition</p>
+ <h1 class="z" style="margin-top:10px">Silently, Hwyl</h1>
+ <p class="hsub" style="opacity:.9;max-width:230px">Smoky, woody, spicy. A walk in the Hinoki Forest.</p>
+ <div style="margin-top:24px"><a class="btn lt" href="https://www.aesop.com/fragrance/silently--hwyl-eau-de-parfum/FR43.html">Discover &middot; $230<span class="ar">&rarr;</span></a></div></div></td></tr></table>
+<div class="c pad" style="padding-top:48px;padding-bottom:44px">
+ <p class="eb" style="color:var(--amber)">From the fable</p>
+ <p class="z" style="font-size:27px;line-height:1.35;margin-top:14px">Mist filtering light<br>Like incense<br>Through the canopy</p>
+</div>
+<div class="umber">
+ <div class="pad" style="padding-top:42px;padding-bottom:12px">
+  <p class="eb" style="opacity:.65">The scent notes</p>
+  <h2 class="z h2" style="margin-top:8px">How it unfolds</h2>
+  <p style="opacity:.78;margin:8px 0 26px">Resinous spice, evolving into earthy, warm woods.</p>
+  <div style="display:flex;align-items:stretch;border-top:1px solid var(--lineL)">
+<div style="flex:none;width:10px;background:#c58a52"></div>
+<div style="flex:1;padding:18px 0 18px 20px"><p class="eb" style="opacity:.65">Top notes</p><p class="z" style="font-size:24px;line-height:1.25;margin-top:6px">Thyme, Elemi, Pink Pepper</p></div></div><div style="display:flex;align-items:stretch;border-top:1px solid var(--lineL)">
+<div style="flex:none;width:10px;background:#8a5630"></div>
+<div style="flex:1;padding:18px 0 18px 20px"><p class="eb" style="opacity:.65">Middle notes</p><p class="z" style="font-size:24px;line-height:1.25;margin-top:6px">Cypress, Suede, Geranium</p></div></div><div style="display:flex;align-items:stretch;border-top:1px solid var(--lineL)">
+<div style="flex:none;width:10px;background:#4a2e1c"></div>
+<div style="flex:1;padding:18px 0 18px 20px"><p class="eb" style="opacity:.65">Base notes</p><p class="z" style="font-size:24px;line-height:1.25;margin-top:6px">Vetiver, Frankincense, Cedar</p></div></div>
+  <div style="border-top:1px solid var(--lineL)"></div>
+  <div class="g" style="margin:22px 0 34px">
+   <div style="flex:1"><p class="fine" style="color:rgba(255,254,242,.6)">Aroma</p><p class="nb" style="font-size:15px;margin-top:2px">Smoky, woody, spicy</p></div>
+   <div style="flex:1.4"><p class="fine" style="color:rgba(255,254,242,.6)">Suited to</p><p class="nb" style="font-size:15px;margin-top:2px">Freethinkers, eccentrics, wanderers</p></div>
+  </div>
+ </div>
+</div>
+<div class="pad" style="padding-top:44px;padding-bottom:40px">
+ <p class="eb" style="color:var(--amber)">The Fabulist Accord</p>
+ <h2 class="z h2" style="margin-top:8px">Hinoki Forest</h2>
+ <p style="color:var(--grey);margin:8px 0 22px">Branches brush the air.</p>
+ <div class="g g3" style="flex-wrap:nowrap"><div style="flex:1"><img src="../assets/hwyl_i1.jpg" alt="Cedar" style="width:100%;height:210px;object-fit:cover;display:block"><p class="eb" style="margin-top:10px">Cedar</p></div><div style="flex:1"><img src="../assets/hwyl_i2.jpg" alt="Hinoki" style="width:100%;height:210px;object-fit:cover;display:block"><p class="eb" style="margin-top:10px">Hinoki</p></div><div style="flex:1"><img src="../assets/hwyl_i3.jpg" alt="Thyme" style="width:100%;height:210px;object-fit:cover;display:block"><p class="eb" style="margin-top:10px">Thyme</p></div></div>
+</div>
+<div class="g1" style="display:flex;background:#2b2219">
+ <img src="../assets/hwyl_ingr.jpg" alt="Frankincense resin" style="width:50%;height:auto;display:block">
+ <div class="gm" style="width:50%;padding:34px 30px;color:var(--cream);display:flex;flex-direction:column;justify-content:center">
+  <p class="eb" style="opacity:.65">The Radical Ingredient</p>
+  <h2 class="z" style="font-size:30px;line-height:1.1;margin-top:8px">Frankincense</h2>
+  <p style="opacity:.82;margin-top:10px;font-size:15px">Gleaming with resinous intensity.</p>
+ </div>
+</div>
+<div class="pad c" style="padding-top:46px;padding-bottom:46px">
+ <p class="eb" style="color:var(--amber)">With every Eau de Parfum</p>
+ <h2 class="z h2" style="margin-top:8px">Smell before you settle</h2>
+ <p style="color:var(--grey);margin:10px auto 0;max-width:430px">A 2 mL sample arrives with it. If the scent does not agree, return the unopened bottle.</p>
+ <div class="tile cardr" style="display:flex;align-items:center;gap:20px;text-align:left;margin-top:28px;padding:18px 22px">
+  <img src="../assets/hwyl_front1.png" alt="Silently, Hwyl Eau de Parfum" style="width:70px;height:auto;flex:none">
+  <div style="flex:1"><p class="m" style="font-size:15px">Silently, Hwyl Eau de Parfum</p><p class="fine" style="font-size:14px;margin-top:2px">Cypress, Frankincense, Vetiver</p></div>
+  <p class="price">50 mL &middot; $230</p>
+ </div>
+ <div style="margin-top:22px"><a class="btn " href="https://www.aesop.com/fragrance/silently--hwyl-eau-de-parfum/FR43.html">Discover Silently, Hwyl<span class="ar">&rarr;</span></a></div>
+</div>
+<div class="rule"></div><div class="pad" style="padding-top:42px;padding-bottom:46px">
+ <p class="eb" style="color:var(--amber)">Amplified aromas</p>
+ <h2 class="z h2" style="margin-top:8px">Sensorial pairings</h2>
+ <p style="color:var(--grey);margin:8px 0 22px">Layer it with hand and body care.</p>
+ <div class="g"><a href="https://www.aesop.com/hand-body/body-cleansers-scrubs/antithesis-intense-body-cleanser/BT26.html" style="flex:1;text-decoration:none;color:inherit;display:block">
+<div class="tile" style="height:220px;display:flex;align-items:center;justify-content:center"><img src="../assets/antithesis_front.png" alt="Antithesis Intense Body Cleanser" style="max-height:190px;max-width:80%"></div>
+<p class="m" style="font-size:15px;margin-top:12px">Antithesis Intense Body Cleanser</p><p class="fine" style="font-size:14px;margin-top:2px">Spicy, woody, herbaceous</p>
+<p class="price" style="margin-top:8px">500 mL &middot; $59</p></a>
+ <a href="https://www.aesop.com/hand-body/hand-washes-balms/reverence-aromatique-hand-balm/BM13.html" style="flex:1;text-decoration:none;color:inherit;display:block">
+<div class="tile" style="height:220px;display:flex;align-items:center;justify-content:center"><img src="../assets/rever_balm.png" alt="Reverence Aromatique Hand Balm" style="max-height:190px;max-width:80%"></div>
+<p class="m" style="font-size:15px;margin-top:12px">Reverence Aromatique Hand Balm</p><p class="fine" style="font-size:14px;margin-top:2px">Woody, earthy, smoky</p>
+<p class="price" style="margin-top:8px">500 mL &middot; $109</p></a></div>
+</div><div class="umber ft">
+<p class="z nb" style="font-size:22px;line-height:1.35;max-width:440px;margin:0 auto">&lsquo;Although they are<br>Only breath, words<br>which I command<br>are immortal.&rsquo;</p>
+<p class="eb" style="margin-top:12px;opacity:.7">Sappho</p>
+<div style="height:1px;background:var(--lineL);margin:34px 0 30px"></div>
+<img src="../assets/logo_white.png" alt="Aesop" style="height:28px;width:auto">
+<nav><a href="https://www.aesop.com/stores">Find a store</a><a href="https://www.aesop.com/gift-finder/">Gift Finder</a><a href="https://www.aesop.com/replenishment-subscriptions.html">Replenishment subscriptions</a><a href="https://www.aesop.com/customer-service/contact-us.html">Contact us</a></nav>
+<small>All Aesop products are vegan. Leaping Bunny approved &middot; Certified B Corporation.</small>
+<small>Reply to this email and a member of our team will read it.</small>
+<small style="margin-top:10px">{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small style="margin-top:4px"><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small style="margin-top:14px;opacity:.8">Concept work by Lenny Huynh. Not affiliated with or endorsed by Aesop.</small></div></div></body></html>

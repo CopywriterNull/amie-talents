@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Madrid, in bold colour</title><style>
+@font-face{font-family:'LoeweSerif';src:url(../assets/fonts/Loewe.woff2) format('woff2')}
+@font-face{font-family:'Avus';src:url(../assets/fonts/AvusPro.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Avus';src:url(../assets/fonts/AvusProMedium.woff2) format('woff2');font-weight:500}
+:root{--ink:#000;--paper:#fff;--grey:#F2F2F2;--mute:#5E5E5E;--line:rgba(0,0,0,.14);
+--cyan:#00AFF0;--clay:#835C40;--yellow:#F2CA56;--tomato:#A3262A;--terra:#B04232}
+*{box-sizing:border-box}
+body{margin:0;background:#E7E5E1}
+.e{width:600px;margin:0 auto;background:#fff;color:var(--ink);font:15px/1.55 Avus,'Helvetica Neue',Helvetica,Arial,sans-serif;overflow:hidden}
+p{margin:0} h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.d{font-family:LoeweSerif,'Times New Roman',Georgia,serif;font-weight:400;letter-spacing:-.005em;line-height:1.04}
+.eb{font:500 12px/1.3 Avus,Helvetica,Arial;letter-spacing:.16em;text-transform:uppercase}
+.fine{font-size:12px;line-height:1.55;color:var(--mute)}
+.pad{padding-left:44px;padding-right:44px}
+.sec{padding-top:56px;padding-bottom:56px}
+.c{text-align:center}
+.img{display:block;width:100%;height:auto}
+.btn{display:inline-block;background:#000;color:#fff;font:500 13px/1 Avus,Helvetica,Arial;letter-spacing:.14em;text-transform:uppercase;
+ padding:18px 26px 17px;text-decoration:none;white-space:nowrap;text-align:center}
+.btn.w{background:#fff;color:#000}
+.btn.o{background:transparent;color:#000;box-shadow:inset 0 0 0 1px #000}
+.link{font:500 12px Avus,Helvetica,Arial;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.hd{text-align:center;padding:26px 0 22px;background:#fff}
+.hd img{width:128px;display:inline-block}
+.nav{display:flex;border-top:1px solid #000;border-bottom:1px solid #000;background:#fff}
+.nav a{flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;padding:6px 4px;text-align:center;font:500 14px/1.15 Avus,Helvetica,Arial;
+ letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:#000;border-left:1px solid var(--line)}
+.nav a:first-child{border-left:0}
+.hero{position:relative;background:#111}
+.hero>img{display:block;width:600px;height:auto}
+.hc{position:absolute}
+.hc .eb{margin-bottom:12px}
+.hc h1{font-size:40px;margin-bottom:22px}
+.tx-paper{background:#F6F4F0 url(../assets/tex_paper.jpg) center top/600px}
+.tx-stone{background:#ECEBE8 url(../assets/tex_stone.jpg) center top/600px}
+.tx-ink{background:#141414 url(../assets/tex_ink.jpg) center top/600px;color:#fff}
+.tx-cyan{background:var(--cyan) url(../assets/tex_cyan.jpg) center top/600px}
+.tx-clay{background:var(--clay) url(../assets/tex_clay.jpg) center top/600px;color:#fff}
+.tx-yellow{background:var(--yellow) url(../assets/tex_yellow.jpg) center top/600px}
+.tx-terra{background:var(--terra) url(../assets/tex_terra.jpg) center top/600px;color:#fff}
+.g{display:flex;gap:12px}
+.g>*{flex:1;min-width:0}
+.lab{display:block;text-decoration:none;color:#000}
+.lab .ph{background:var(--grey);aspect-ratio:1/1;overflow:hidden}
+.lab .ph img{display:block;width:100%;height:100%;object-fit:cover}
+.lab .tt{border-top:1px solid #000;margin-top:12px;padding-top:10px}
+.lt{font:500 14px/1.3 Avus,Helvetica,Arial}
+.lm{font-size:14px;line-height:1.35;color:var(--mute)}
+.ld{font-size:12px;line-height:1.45;color:var(--mute);margin-top:6px}
+.lp{font:500 14px/1.3 Avus,Helvetica,Arial;margin-top:8px}
+.h2{font-size:32px}
+.g3 .lt{font-size:13px}
+.g6{display:flex;flex-wrap:wrap;gap:26px 12px}
+.g6>*{flex:0 0 calc((100% - 24px) / 3);min-width:0}
+.intro{font-size:16px;line-height:1.55;max-width:470px}
+.svc{display:flex;border-top:1px solid var(--line)}
+.svc div{flex:1;padding:18px 10px 17px;text-align:center;border-left:1px solid var(--line)}
+.svc div:first-child{border-left:0}
+.svc p{font-size:12px;line-height:1.45;color:var(--mute)}
+.svc b{display:block;font:500 12px/1.3 Avus;letter-spacing:.12em;text-transform:uppercase;color:#000;margin-bottom:4px}
+.ft{padding:44px 44px 34px;text-align:center}
+.ft nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:22px 0 20px}
+.ft nav a{font:500 12px Avus;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.ft small{display:block;font-size:12px;line-height:1.7;color:var(--mute)}
+.concept{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.dots{letter-spacing:3px;font-size:12px}
+@media (max-width:480px){
+ .e{width:100%!important}
+ .pad{padding-left:20px!important;padding-right:20px!important}
+ .sec{padding-top:44px!important;padding-bottom:44px!important}
+ .e p:not(.eb):not(.fine):not(.lt):not(.lm):not(.ld):not(.lp):not(.dots):not(.big){font-size:16px!important;line-height:1.5!important}
+ .hd{padding:22px 0 18px!important} .hd img{width:116px!important}
+ .nav a{font-size:12.5px!important;letter-spacing:.06em!important;min-height:54px!important}
+ .hero>img{width:100%!important}
+ .hc{position:static!important;width:auto!important;max-width:none!important;padding:24px 20px 28px!important;background:#141414 url(../assets/tex_ink.jpg) center top/600px;color:#fff!important;text-align:left!important}
+ .hc h1{font-size:34px!important;margin-bottom:20px!important}
+ .hc .btn{background:#fff!important;color:#000!important}
+ .btn{display:block!important;width:100%!important;padding:18px 12px 17px!important;min-height:50px;font-size:14px!important}
+ .h2{font-size:28px!important}
+ .g{flex-wrap:wrap!important}
+ .g>*{flex:1 1 calc(50% - 12px)!important}
+ .g1{flex-direction:column!important}
+ .g1>*{flex:1 1 auto!important;width:100%!important}
+ .g3>*{flex:1 1 calc(33% - 12px)!important}
+ .g6>*{flex:0 0 calc((100% - 12px) / 2)!important}
+ .lt,.lp{font-size:14px!important} .lm{font-size:13px!important}
+ .svc{flex-direction:column!important} .svc div{border-left:0!important;border-top:1px solid var(--line)}
+ .svc div:first-child{border-top:0}
+ .ft{padding:36px 20px 28px!important}
+ .big{font-size:64px!important}
+ .m-hide{display:none!important}
+ .m-full{width:100%!important;height:auto!important}
+}
+</style></head><body><div style="display:none;max-height:0;overflow:hidden;opacity:0">The Spring Summer 2027 precollection by Jack McCollough and Lazaro Hernandez. In stores and online from 12 November.</div><div class="e"><div class="hd"><a href="https://www.loewe.com/usa/en/home"><img src="../assets/logo_black.svg" alt="LOEWE"></a></div><div class="nav"><a href="https://www.loewe.com/usa/en/women">Women</a><a href="https://www.loewe.com/usa/en/men">Men</a><a href="https://www.loewe.com/usa/en/gifts">Gifts</a><a href="https://www.loewe.com/usa/en/art-and-craft">Art &amp; Craft</a></div><div class="hero"><img src="../gifs/01_flap.gif" width="600" height="750" alt="Spring Summer 2027 precollection campaign, Madrid: a woman in a yellow jacket on a green chair with an ivory bag"><div class="hc" style="left:318px;top:282px;width:250px;color:#fff"><p class="eb">Spring Summer 2027 precollection</p><h1 class="d">Madrid, in<br>bold colour</h1><a class="btn w" href="https://www.loewe.com/usa/en/stories-collection/ss27-precollection-campaign.html">Discover the campaign</a></div></div>
+<div class="pad sec c">
+ <p class="intro" style="margin:0 auto">A wardrobe of bold colour, hybrid materiality, and a heightened attention to craft.</p>
+ <p class="eb" style="margin-top:18px;color:var(--mute);letter-spacing:.12em">Jack McCollough and Lazaro Hernandez &middot; Captured in Madrid by Talia Chetrit and Julian Klincewicz</p>
+</div>
+<div class="tx-cyan" style="display:flex" >
+ <div class="g" style="gap:0;width:100%;flex-wrap:nowrap">
+  <div style="padding:26px 22px 24px;border-left:1px solid rgba(0,0,0,.28)">
+<p class="d big" style="font-size:86px;line-height:1">12</p><p class="eb" style="margin-top:28px">November</p>
+<p style="font-size:15px;line-height:1.45;margin-top:10px">The precollection arrives in stores and on loewe.com.</p></div>
+  <div style="padding:26px 22px 24px;border-left:1px solid rgba(0,0,0,.28)">
+<p class="d big" style="font-size:86px;line-height:1">3</p><p class="eb" style="margin-top:28px">December</p>
+<p style="font-size:15px;line-height:1.45;margin-top:10px">The Flamenco Flap joins it.</p></div>
+ </div>
+</div>
+<img src="../assets/e01_flap.jpg" class="img" alt="Small Flamenco Flap bag in red nappa calfskin against a yellow shutter, SS27 precollection campaign" style="height:700px;object-fit:cover">
+<div class="pad sec">
+ <div class=""><p class="eb" style="margin-bottom:12px;">Introducing</p><h2 class="d h2">Flamenco Flap</h2><p class="intro" style="margin-top:12px;">Signature knots evolve into a bold interlocking metal piece.</p></div>
+ <div class="g" style="margin-top:28px;gap:2px">
+  <div><img src="../assets/p/flap_med_knot_closed.jpg" class="img" alt="Flamenco Flap knots closed"><p class="eb" style="margin-top:10px">Worn closed</p></div>
+  <div><img src="../assets/p/flap_med_knot_open.jpg" class="img" alt="Flamenco Flap knots open"><p class="eb" style="margin-top:10px">Worn open</p></div>
+ </div>
+ <p class="fine" style="margin-top:12px">The knots can be worn open or closed for two distinct looks.</p>
+ <div class="g" style="margin-top:34px">
+  <a class="lab" href="https://www.loewe.com/usa/en/women/bags/flamenco/medium-flamenco-flap-bag-in-suede/A411P73X02-0214.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/flap_med_suede.jpg" alt="Medium Flamenco Flap bag in suede"></div><div class="tt"><p class="lt">Medium Flamenco Flap bag</p><p class=lm>in suede</p><p class=ld>H 21.5 &times; W 35 cm &middot; From 3 December</p><p class="lp">$4,200</p></div></a>
+  <a class="lab" href="https://www.loewe.com/usa/en/women/bags/flamenco/small-flamenco-flap-bag-in-nappa-calfskin/A411065X01-3240.html"><div class="ph" style="background:var(--grey)"><img src="../assets/p/flap_small_bronze.jpg" alt="Small Flamenco Flap bag in nappa calfskin"></div><div class="tt"><p class="lt">Small Flamenco Flap bag</p><p class=lm>in nappa calfskin</p><p class=ld>H 16.5 &times; W 27 cm &middot; From 3 December</p><p class="lp">$3,800</p></div></a>
+ </div>
+ <div class="c" style="margin-top:34px"><a class="btn " href="https://www.loewe.com/usa/en/stories-collection/ss27-precollection-campaign.html">Be the first to know</a></div>
+</div>
+<div class="tx-paper sec">
+ <div class="pad"><div class=""><p class="eb" style="margin-bottom:12px;">The protagonists</p><h2 class="d h2">Through Madrid</h2><p class="intro" style="margin-top:12px;">Its markets, modernist buildings, and tiled tapas bars.</p></div></div>
+ <div class="g" style="gap:2px;margin-top:28px">
+  <img src="../assets/e01_market.jpg" class="img" alt="SS27 precollection campaign, Madrid market">
+  <img src="../assets/e01_man.jpg" class="img" alt="SS27 precollection campaign, Madrid">
+  <img src="../assets/e01_cap.jpg" class="img m-hide" alt="SS27 precollection campaign, Madrid">
+ </div>
+ <p class="fine pad" style="margin-top:14px">Diego Calva, Victoria Luengo, Kristine Fr&oslash;seth and LOEWE brand ambassador Jiang Qiming.</p>
+</div>
+<div class="pad sec">
+ <div class="g g1" style="gap:26px;align-items:center">
+  <div style="display:flex;gap:2px"><img src="../assets/e01_mussels.jpg" style="width:50%;display:block" alt="SS27 precollection still life"><img src="../assets/e01_loafers.jpg" style="width:50%;display:block" alt="SS27 precollection still life"></div>
+  <div><p class="eb" style="margin-bottom:12px">About the collection</p><p class="d" style="font-size:25px;line-height:1.15">Shirts and sweaters, fused into singular garments.</p>
+  <p style="margin-top:22px"><a class="link" href="https://www.loewe.com/usa/en/stories-collection/ss27-precollection-campaign.html">Discover the campaign</a></p></div>
+ </div>
+</div><div class="svc tx-paper"><div><b>Complimentary shipping</b><p>Within 2&ndash;7 business days</p></div><div><b>Free online returns</b><p>Within 14 days of delivery</p></div><div><b><a href="https://www.loewe.com/usa/en/services/book-an-appointment.html" style="text-decoration:none">Book an appointment</a></b><p>With your Client Advisor</p></div></div><div class="ft tx-stone"><img src="../assets/anagram_black.svg" alt="" style="width:54px;display:inline-block">
+<p style="font-size:14px;margin-top:18px">Client Services &middot; +1 888 710 0009 &middot; clientservices_us@loewe.com</p>
+<nav><a href="https://www.loewe.com/usa/en/contactus">Client Services</a><a href="https://www.loewe.com/usa/en/storeLocator">Store Finder</a><a href="https://www.loewe.com/usa/en/services/book-an-appointment.html">Book an appointment</a><a href="https://www.loewe.com/usa/en/help/care-guide.html">Care guide</a></nav>
+<small>Instagram &middot; TikTok &middot; YouTube &middot; Pinterest</small>
+<small>{{ organization.name }} &middot; {{ organization.full_address }}</small>
+<small><u>Unsubscribe</u> &nbsp;&middot;&nbsp; <u>Manage preferences</u></small>
+<small class="concept">Concept email by Lenny Huynh. Not affiliated with or sent by LOEWE.</small></div></div></body></html>

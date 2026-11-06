@@ -1,0 +1,43 @@
+/* X-Men '97 flash sale, day 2 (2026-10-29): comic-book art direction on top of ds.css.
+   Palette pulled from the packaging: cyan rays, X-yellow, red, navy, black ink. Pink stays the CTA. */
+:root{--k:#0d0d12;--y:#ffd23f;--r:#e4252b;--b:#1268d8;--c:#43c4ff;--n:#0a1a4f;--paper:#f4ecd8;}
+.m img{max-width:none;}
+.abs{position:absolute;}
+.blunt{font-family:'Blunt';text-transform:uppercase;}
+.semi{font-family:'Blunt SemiCon';text-transform:uppercase;}
+.ink{color:var(--k);}
+
+/* textures */
+.rays{background:repeating-conic-gradient(from 0deg at 50% 46%,#ffffff 0 3deg,#bfeaff 3deg 9deg);}
+.rays-c{background:repeating-conic-gradient(from 0deg at 50% 46%,#43c4ff 0 4deg,#1fa3e8 4deg 10deg);}
+.rays-y{background:repeating-conic-gradient(from 0deg at 50% 50%,#ffd23f 0 5deg,#ffbf1f 5deg 12deg);}
+.tone{background-image:radial-gradient(circle,rgba(13,13,18,.16) 1.7px,transparent 2.1px);background-size:11px 11px;}
+.tone-w{background-image:radial-gradient(circle,rgba(255,255,255,.22) 1.7px,transparent 2.1px);background-size:11px 11px;}
+
+/* comic parts */
+.pnl{position:relative;overflow:hidden;border:5px solid var(--k);box-shadow:8px 8px 0 var(--k);background:#fff;}
+.cap{display:inline-block;padding:8px 14px 7px;background:var(--y);border:3px solid var(--k);font:700 17px/21px 'Acumin';text-transform:uppercase;color:var(--k);}
+.bub{position:absolute;padding:18px 24px;background:#fff;border:4px solid var(--k);border-radius:50%;font:30px/30px 'Blunt';text-transform:uppercase;color:var(--k);text-align:center;}
+.bub:after{content:'';position:absolute;left:30%;bottom:-26px;border:14px solid transparent;border-top:24px solid var(--k);border-bottom:0;}
+.pop{font-family:'Blunt';text-transform:uppercase;-webkit-text-stroke:3px var(--k);paint-order:stroke fill;}
+.shade{text-shadow:6px 6px 0 var(--k);}
+.chip{display:inline-block;padding:0 18px;height:40px;border-radius:20px;font:700 18px/40px 'Acumin';text-transform:uppercase;letter-spacing:1px;}
+
+/* CTA: house pink pill, inked */
+.xbtn{display:block;margin:0 auto;width:418px;height:76px;border-radius:38px;background:#fe2f70;border:4px solid var(--k);box-shadow:0 7px 0 var(--k);
+  color:#fff;font:34px/68px 'Blunt SemiCon';text-transform:uppercase;text-align:center;text-decoration:none;}
+.xbtn.sm{width:200px;height:50px;border-radius:25px;font-size:22px;line-height:43px;box-shadow:0 4px 0 var(--k);border-width:3px;}
+
+/* price */
+.was{font:700 18px/20px 'Acumin';color:#6b6b6b;text-decoration:line-through;text-decoration-thickness:2px;}
+.now{font:44px/40px 'Blunt';color:var(--r);}
+.fine{font:400 15px/20px 'Acumin';color:#555;}
+
+/* shared product row */
+.trio{display:flex;gap:18px;justify-content:center;}
+.trio .pnl{width:166px;padding:14px 10px 16px;text-align:center;}
+.trio .pic{height:170px;display:flex;align-items:flex-end;justify-content:center;}
+.trio .pic img{max-height:170px;max-width:150px;filter:drop-shadow(0 10px 8px rgba(0,0,0,.25));}
+.trio .now{font-size:36px;line-height:38px;}
+.trio .nm{margin-top:10px;font:24px/24px 'Blunt SemiCon';text-transform:uppercase;color:var(--k);min-height:48px;}
+.shadow{filter:drop-shadow(0 18px 18px rgba(0,0,0,.35));}
