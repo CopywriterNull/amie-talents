@@ -345,6 +345,22 @@ footer{padding:60px 0 40px}
 .v-body iframe{width:600px;max-width:100%;border:0;background:#fff;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.4);transition:width .3s}
 .viewer.m .v-body iframe{width:375px}
 @media (max-width:900px){.gal{grid-template-columns:repeat(2,1fr)}}
+/* get-started dialog: store, then email. No account, no confirm link: /api/leads starts the free email. */
+.get [hidden]{display:none!important}
+.get{position:fixed;inset:0;margin:auto;height:fit-content;max-height:calc(100dvh - 32px);overflow:auto;border:0;padding:0;border-radius:24px;width:min(440px,calc(100vw - 32px));box-shadow:0 40px 120px -20px rgba(10,20,60,.45);color:var(--ink)}
+.get::backdrop{background:rgba(9,9,11,.45);backdrop-filter:blur(4px)}
+.get form,.get .ok{padding:30px 28px 26px;display:grid;gap:12px}
+.get h3{font-size:28px;font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.get h3 em{font-family:var(--serif);font-style:italic;font-weight:400}
+.get p{font-size:14px;color:var(--ink2)}
+.get label{font:500 12px var(--sans);color:var(--ink2);display:grid;gap:6px}
+.get input{height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font:16px var(--sans);background:#fff;color:var(--ink);width:100%}
+.get input:focus{outline:2px solid var(--blue);outline-offset:-1px}
+.get .btn{justify-content:center;height:48px;margin-top:6px;width:100%}
+.get .x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:0;background:var(--soft);cursor:pointer;font-size:14px}
+.get .err{color:#dc2626;font-size:13px}
+.get small{font-size:12px;color:var(--ink3);text-align:center}
+.get .step{font:500 11px var(--mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
 </style>
 </head>
 <body>
@@ -612,19 +628,65 @@ footer{padding:60px 0 40px}
   <div class="v-bar"><b id="vTitle"></b><div class="seg" id="vDev"><button aria-pressed="true" data-d="d">Desktop</button><button aria-pressed="false" data-d="m">Mobile</button></div><button class="v-x" id="vX" aria-label="Close">✕</button></div>
   <div class="v-body"><iframe id="vFrame" title="Email preview"></iframe></div>
 </div>
+<dialog class="get" id="get" aria-labelledby="getT">
+  <button class="x" type="button" aria-label="Close" data-close>&#x2715;</button>
+  <form id="getForm" novalidate>
+    <span class="step" id="getStep">Step 1 of 2</span>
+    <h3 id="getT">Your first email, <em>free.</em></h3>
+    <p id="getP">What's your store? We design a new email from your site and products.</p>
+    <label id="lSite">Store URL<input name="site" type="text" inputmode="url" autocomplete="url" placeholder="yourbrand.com" required></label>
+    <label id="lEmail" hidden>Work email<input name="email" type="email" autocomplete="email" placeholder="you@yourbrand.com"></label>
+    <div class="err" id="getErr" role="alert"></div>
+    <button class="btn btn-ink" type="submit" id="getBtn">Continue &rarr;</button>
+    <small>No card, no account. Then $10 an email, only if you want more.</small>
+  </form>
+  <div class="ok" id="getOk" hidden>
+    <h3>You're in. <em>It's on its way.</em></h3>
+    <p>We're designing a free email for <b id="okSite"></b> and will send it to <b id="okEmail"></b> in about 10 minutes. Not there? Check Promotions or spam for hello@mailtail.app.</p>
+    <button class="btn btn-line" type="button" data-close>Keep browsing</button>
+  </div>
+</dialog>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1430832422482466');fbq('track','PageView');
 (()=>{
   let sid;try{sid=sessionStorage.getItem('rd_sid')||crypto.randomUUID();sessionStorage.setItem('rd_sid',sid)}catch{sid=crypto.randomUUID()}
+  // First-touch attribution: the first visit with utm_* or fbclid writes mt_attr (30 days, whole site); signup copies it onto the account.
+  try{if(!document.cookie.includes('mt_attr=')){const q=new URLSearchParams(location.search),a={};
+    for(const k of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid']){const v=q.get(k);if(v)a[k]=v.slice(0,200)}
+    if(Object.keys(a).length){a.landing=location.pathname.slice(0,100);try{const r=new URL(document.referrer).hostname;if(r&&r!==location.hostname)a.ref=r}catch{}
+      document.cookie='mt_attr='+encodeURIComponent(JSON.stringify(a))+'; max-age='+30*86400+'; path=/; domain=.mailtail.app; samesite=lax; secure'}}}catch{}
   const beacon=(event,props={},meta)=>{try{fetch('/api/track',{method:'POST',keepalive:true,body:JSON.stringify({sid,event,path:location.pathname,props,meta})})}catch{}};
   beacon('redraft_view',{q:location.search.slice(0,180)});
-  // No form here: every CTA goes to signup, then onboarding (/redraft/start) designs the first email.
-  const go=site=>{beacon('redraft_open',{plan:'free'});fbq('track','ViewContent',{content_name:'redraft',content_category:'free'});
-    location.href='/redraft/signup?redirect='+encodeURIComponent('/redraft/start'+(site?'?site='+encodeURIComponent(site):''))};
-  document.addEventListener('click',e=>{const a=e.target.closest('[data-get]');if(!a)return;e.preventDefault();go()});
-  document.getElementById('urlForm').addEventListener('submit',e=>{e.preventDefault();go(e.target.site.value.trim())});
-  if(location.hash==='#get')go();
+  // Popup: store URL, then email. /api/leads (source redraft) pings Slack and starts the free email as a guest job.
+  const dlg=document.getElementById('get'),form=document.getElementById('getForm'),err=document.getElementById('getErr'),btn=document.getElementById('getBtn');
+  let step=1;
+  const show=n=>{step=n;document.getElementById('lSite').hidden=n!==1;document.getElementById('lEmail').hidden=n!==2;
+    document.getElementById('getStep').textContent='Step '+n+' of 2';
+    document.getElementById('getP').textContent=n===1?"What's your store? We design a new email from your site and products.":'Where should we send it? It lands in your inbox in about 10 minutes.';
+    btn.textContent=n===1?'Continue \u2192':'Get my free email \u2192';(n===1?form.site:form.email).focus()};
+  const clean=v=>v.trim().replace(/^https?:\/\//i,'').replace(/^www\./i,'').replace(/\/.*$/,'');
+  const open=site=>{form.hidden=false;document.getElementById('getOk').hidden=true;err.textContent='';if(site)form.site.value=clean(site);
+    if(!dlg.open)dlg.showModal();show(form.site.value?2:1);beacon('redraft_open',{plan:'free'});fbq('track','ViewContent',{content_name:'redraft',content_category:'free'})};
+  document.addEventListener('click',e=>{const a=e.target.closest('[data-get]');if(!a)return;e.preventDefault();open()});
+  dlg.addEventListener('click',e=>{if(e.target===dlg||e.target.closest('[data-close]'))dlg.close()});
+  document.getElementById('urlForm').addEventListener('submit',e=>{e.preventDefault();open(e.target.site.value)});
+  if(location.hash==='#get')setTimeout(()=>open(),400);
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();err.textContent='';
+    const site=clean(form.site.value);
+    if(!/^[^\s]+\.[a-z]{2,}$/i.test(site)){show(1);err.textContent='Enter your store, like yourbrand.com.';return}
+    if(step===1){show(2);return}
+    const email=form.email.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Enter a valid email.';return}
+    btn.disabled=true;btn.textContent='Sending\u2026';
+    try{await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,company:site,monthlyEmails:'Redraft \u00b7 free',source:'redraft',landingPage:location.href})})}catch{}
+    const id='rd-'+sid+'-'+Date.now();
+    fbq('track','Lead',{content_name:'redraft',content_category:'free'},{eventID:id});
+    beacon('redraft_lead',{plan:'free'},{name:'Lead',id,em:email,params:{content_name:'redraft',content_category:'free'}});
+    document.getElementById('okSite').textContent=site;document.getElementById('okEmail').textContent=email;
+    form.hidden=true;document.getElementById('getOk').hidden=false;btn.disabled=false;
+  });
 })();
 </script>
 <script>
