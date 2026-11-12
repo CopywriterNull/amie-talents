@@ -675,7 +675,7 @@ fbq('init','1430832422482466');fbq('track','PageView');
   form.addEventListener('submit',async e=>{
     e.preventDefault();err.textContent='';
     const site=clean(form.site.value);
-    if(!/^[^\s]+\.[a-z]{2,}$/i.test(site)){show(1);err.textContent='Enter your store, like yourbrand.com.';return}
+    if(!/^[^\s@]+\.[a-z]{2,}$/i.test(site)){show(1);err.textContent='Enter your store, like yourbrand.com.';return}
     if(step===1){show(2);return}
     const email=form.email.value.trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Enter a valid email.';return}
