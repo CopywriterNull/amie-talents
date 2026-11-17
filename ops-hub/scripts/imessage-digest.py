@@ -160,8 +160,8 @@ def waiting_scan(con: sqlite3.Connection, contacts: dict[str, str], days: int) -
     waiting: list[dict] = []
 
     for cid, _ in active:
-        ident, display, style = con.execute(
-            "SELECT chat_identifier, display_name, style FROM chat WHERE ROWID = ?", (cid,)
+        ident, display, style, guid = con.execute(
+            "SELECT chat_identifier, display_name, style, guid FROM chat WHERE ROWID = ?", (cid,)
         ).fetchone()
 
         rows = con.execute(
@@ -203,6 +203,7 @@ def waiting_scan(con: sqlite3.Connection, contacts: dict[str, str], days: int) -
         waiting.append({
             "label": label,
             "kind": "group" if style == 43 else "direct",
+            "chatGuid": guid,  # what Messages needs to reply into this thread
             "participants": roster,
             "lastFrom": who(last_handle, contacts),
             "waitingSince": datetime.fromtimestamp(apple_to_unix(last_date)).isoformat(timespec="minutes"),
